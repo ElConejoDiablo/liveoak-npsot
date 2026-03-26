@@ -1,93 +1,164 @@
+export type EventType =
+  | "Chapter Meeting"
+  | "Plant Walk"
+  | "Workshop"
+  | "Talk"
+  | "Volunteer Day";
+
+export type EventStatus = "Upcoming" | "Details being finalized";
+
 export type EventItem = {
+  slug: string;
   title: string;
-  date: string;
-  time: string;
-  location: string;
+  type: EventType;
   county: string;
-  category: string;
-  format: string;
+  locationName: string;
+  locationAddress: string;
+  city: string;
+  startDateTime: string;
+  endDateTime: string;
   description: string;
+  summary: string;
+  status: EventStatus;
+  audience: string;
+  accessibilityNotes?: string;
+  weatherNote?: string;
+  whatToBring?: string[];
   details: string[];
-  sample: boolean;
 };
 
-export const eventScheduleNote =
-  "These upcoming dates are polished sample content to help launch the site while the chapter finalizes its public calendar.";
+export const eventPageIntro =
+  "The chapter calendar is organized so upcoming programming can be updated in one place and remain easy to browse on both desktop and mobile.";
 
 export const participationNotes = [
-  "Meetings and public programs are intended to be welcoming to newcomers as well as experienced native-plant advocates.",
-  "Field outings and volunteer workdays are easiest when you bring water, sun protection, sturdy shoes, and weather-appropriate layers.",
-  "Final event details, accessibility notes, and RSVP instructions can be added later in one place without changing the page structure.",
+  "Chapter gatherings are intended to be welcoming to newcomers as well as experienced native-plant advocates.",
+  "Outdoor events are easiest when participants bring water, sun protection, sturdy shoes, and weather-appropriate layers.",
+  "Accessibility notes, RSVP details, and weather guidance can be updated event by event as chapter planning continues.",
 ];
 
-export const upcomingEvents: EventItem[] = [
+export const eventsEmptyState = {
+  title: "Upcoming chapter programming will appear here",
+  description:
+    "The event structure is in place so meetings, walks, and volunteer opportunities can be posted as soon as dates are confirmed.",
+};
+
+export const allEvents: EventItem[] = [
   {
+    slug: "spring-chapter-gathering-native-grasses",
     title: "Spring Chapter Gathering: Native Grasses for Everyday Landscapes",
-    date: "2026-04-16",
-    time: "6:30 PM to 8:00 PM",
-    location: "Sample community room in Schulenburg, Texas",
+    type: "Chapter Meeting",
     county: "Fayette County",
-    category: "Chapter Meeting",
-    format: "In person with future virtual option possible",
+    locationName: "Schulenburg Public Library meeting room",
+    locationAddress: "310 Simpson Street",
+    city: "Schulenburg, Texas",
+    startDateTime: "2026-04-16T18:30:00-05:00",
+    endDateTime: "2026-04-16T20:00:00-05:00",
     description:
-      "A welcoming evening program focused on how native grasses anchor resilient planting design, support habitat, and hold up through south-central Texas weather swings.",
+      "A welcoming evening program on how native grasses support habitat, anchor resilient plantings, and add year-round structure in south-central Texas landscapes.",
+    summary:
+      "An early-season chapter gathering focused on practical native grass choices for home landscapes and community plantings.",
+    status: "Details being finalized",
+    audience:
+      "Open to members, prospective members, gardeners, and anyone curious about getting started with Texas natives.",
+    accessibilityNotes:
+      "Indoor meeting room with seating, restrooms, and nearby parking. Final accessibility details can be updated once the room reservation is confirmed.",
     details: [
-      "Arrive early for introductions, plant questions, and chapter updates.",
-      "Program content is written for both new gardeners and long-time native-plant advocates.",
-      "This sample listing is ready to swap with finalized venue details later.",
+      "Arrive early for introductions, chapter updates, and native plant conversation.",
+      "The presentation is designed to be useful for both beginners and long-time native-plant advocates.",
+      "Venue details may be refined as the chapter finalizes spring programming logistics.",
     ],
-    sample: true,
   },
   {
-    title: "Plant Walk and Prairie Edge Observation Morning",
-    date: "2026-04-25",
-    time: "9:00 AM to 11:00 AM",
-    location: "Sample public greenspace near La Grange, Texas",
+    slug: "prairie-edge-plant-walk-la-grange",
+    title: "Prairie Edge Plant Walk",
+    type: "Plant Walk",
     county: "Fayette County",
-    category: "Field Trip",
-    format: "Outdoor group walk",
+    locationName: "Public greenspace near La Grange",
+    locationAddress: "Location details to be posted with final outing notice",
+    city: "La Grange, Texas",
+    startDateTime: "2026-04-25T09:00:00-05:00",
+    endDateTime: "2026-04-25T11:00:00-05:00",
     description:
-      "A slow-paced plant walk designed for noticing bloom timing, grass structure, pollinator activity, and what healthy spring habitat can look like in the field.",
+      "A slow-paced morning walk for observing spring bloom timing, grass structure, and pollinator activity in a local field setting.",
+    summary:
+      "A beginner-friendly field walk built around observation, habitat context, and practical plant ID conversation.",
+    status: "Details being finalized",
+    audience:
+      "Suitable for beginners, families with older children, and anyone interested in seeing native plants in the field.",
+    accessibilityNotes:
+      "This outing will involve uneven ground. Final notes on terrain, parking, and walking distance will be posted with the confirmed location.",
+    weatherNote:
+      "Outdoor programming may shift in the event of heavy rain or severe weather.",
+    whatToBring: ["Water", "Hat", "Walking shoes", "Notebook or field guide"],
     details: [
-      "Bring water, a hat, and shoes suitable for uneven ground.",
-      "Expect beginner-friendly plant ID conversation rather than a fast hike.",
-      "Site and parking details can be replaced once the chapter confirms the final stop.",
+      "Expect a conversational plant walk rather than a fast hike.",
+      "The chapter will use the outing to connect habitat observation with garden and stewardship decisions back home.",
+      "Location and parking details will be shared once the final site is confirmed.",
     ],
-    sample: true,
   },
   {
+    slug: "pollinator-garden-talk-weimar",
     title: "Pollinator Garden Talk: Plants That Carry Summer Into Fall",
-    date: "2026-05-14",
-    time: "6:30 PM to 8:00 PM",
-    location: "Sample library or civic room in Weimar, Texas",
+    type: "Talk",
     county: "Colorado County",
-    category: "Educational Talk",
-    format: "Indoor presentation and discussion",
+    locationName: "Community room in Weimar",
+    locationAddress: "Final venue details forthcoming",
+    city: "Weimar, Texas",
+    startDateTime: "2026-05-14T18:30:00-05:00",
+    endDateTime: "2026-05-14T20:00:00-05:00",
     description:
-      "A practical chapter talk centered on Turk’s cap, American beautyberry, goldenrod, and the kind of planting succession that helps pollinators beyond a single season.",
+      "A practical chapter talk centered on Turk’s cap, American beautyberry, goldenrod, and the kind of planting sequence that supports pollinators across changing seasons.",
+    summary:
+      "A regionally grounded evening talk on long-season pollinator value in home landscapes and community plantings.",
+    status: "Details being finalized",
+    audience:
+      "Useful for gardeners, teachers, land stewards, and local residents looking for native plants with ecological value.",
+    accessibilityNotes:
+      "Planned as an indoor presentation with seating. Final room accessibility details will be added once the reservation is complete.",
     details: [
-      "Ideal for home gardeners, teachers, and land stewards looking for useful plant choices.",
-      "Content pairs native plant ecology with regionally grounded garden decisions.",
-      "This listing is marked as sample content until the public calendar is posted.",
+      "The program will compare bloom timing, structure, and wildlife value across several native plants useful in the chapter service area.",
+      "Plenty of time is planned for questions and local planting discussion.",
+      "This listing will be updated with final room details when available.",
     ],
-    sample: true,
   },
   {
+    slug: "seed-stewardship-morning-hallettsville",
     title: "Seed Stewardship Morning: Collection, Cleaning, and Storage Basics",
-    date: "2026-06-06",
-    time: "8:30 AM to 10:30 AM",
-    location: "Sample demonstration garden in Hallettsville, Texas",
+    type: "Workshop",
     county: "Lavaca County",
-    category: "Hands-on Workshop",
-    format: "Outdoor demonstration with small-group conversation",
+    locationName: "Demonstration garden in Hallettsville",
+    locationAddress: "Site announcement to follow",
+    city: "Hallettsville, Texas",
+    startDateTime: "2026-06-06T08:30:00-05:00",
+    endDateTime: "2026-06-06T10:30:00-05:00",
     description:
       "A hands-on introduction to responsible seed collecting, drying, labeling, and storage practices for chapter members and curious community gardeners.",
+    summary:
+      "A practical workshop on seed stewardship and the ethics of collecting native seed with care.",
+    status: "Details being finalized",
+    audience:
+      "Best suited to gardeners, volunteers, and chapter participants interested in native seed handling and seasonal stewardship.",
+    accessibilityNotes:
+      "Planned as an outdoor demonstration with some standing and walking. Accessibility details will be expanded once the final site is set.",
+    weatherNote:
+      "Outdoor workshop timing may be adjusted if weather conditions are unsafe or unusually wet.",
+    whatToBring: ["Water", "Sun protection", "Notebook", "Work gloves if preferred"],
     details: [
-      "The session is built to be practical, seasonal, and easy to update as the chapter refines its seed activities.",
-      "Responsible harvesting and landowner permission are core parts of the conversation.",
-      "Location details are intentionally flexible until the chapter confirms the final site.",
+      "The workshop will cover permission, timing, restraint, and basic handling practices for native seed.",
+      "Chapter organizers can build from this format later for seed swaps, workdays, or educational demos.",
+      "Final location information will be added when the host site is confirmed.",
     ],
-    sample: true,
   },
 ];
 
+export const upcomingEvents = allEvents.filter(
+  (event) => new Date(event.startDateTime).getTime() >= Date.now(),
+);
+
+export const pastEvents = allEvents.filter(
+  (event) => new Date(event.startDateTime).getTime() < Date.now(),
+);
+
+export const eventTypes = Array.from(
+  new Set(allEvents.map((event) => event.type)),
+) as EventType[];

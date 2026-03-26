@@ -13,6 +13,7 @@ export const metadata = createMetadata({
   description:
     "Learn about the Live Oak Chapter, the counties it serves, the chapter mission, and how people can participate.",
   path: "/about",
+  eyebrow: "About the Chapter",
 });
 
 export default function AboutPage() {
@@ -32,22 +33,17 @@ export default function AboutPage() {
 
       <SectionShell
         eyebrow="Who we serve"
-        title="Regional relevance matters"
-        intro="A chapter website should immediately answer who it is for and why it exists. The Live Oak Chapter is built around the landscapes, communities, and habitat questions that matter in Fayette, Colorado, and Lavaca Counties."
+        title="A local chapter for Fayette, Colorado, and Lavaca Counties"
+        intro="The Live Oak Chapter is meant to be useful on the ground: local in scope, welcoming in tone, and rooted in the landscapes, plant communities, and habitat questions that matter across the three-county service area."
       >
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
           <MotionReveal className="rounded-[1.8rem] border border-primary/10 bg-white/78 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)] sm:p-8">
             <h2 className="font-heading text-3xl text-foreground">Chapter summary</h2>
             <p className="mt-4 text-lg leading-8 text-foreground/74">
-              The chapter provides a local home for education, outreach, and
-              conservation-minded action. That can include public talks, field
-              outings, seed stewardship, restoration-minded volunteer work, and
-              simple help for people trying to make better native-plant choices.
+              {siteConfig.about.overview}
             </p>
             <p className="mt-4 text-lg leading-8 text-foreground/74">
-              It is intentionally welcoming to gardeners, land stewards,
-              families, teachers, and anyone who wants to understand how native
-              plants support Texas habitats.
+              {siteConfig.about.regionalContext}
             </p>
           </MotionReveal>
 
@@ -69,8 +65,26 @@ export default function AboutPage() {
       </SectionShell>
 
       <SectionShell
+        eyebrow="What we do"
+        title="Education, field-based learning, and practical chapter participation"
+        intro="The chapter does not exist only to share information. It exists to help people connect that information to local landscapes, seasonal observation, and the work of caring for habitat."
+      >
+        <div className="grid gap-4 md:grid-cols-2">
+          {siteConfig.about.whatWeDo.map((item, index) => (
+            <MotionReveal
+              key={item}
+              delay={index * 0.05}
+              className="rounded-[1.7rem] border border-primary/10 bg-white/78 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
+            >
+              <p className="text-base leading-8 text-foreground/74">{item}</p>
+            </MotionReveal>
+          ))}
+        </div>
+      </SectionShell>
+
+      <SectionShell
         eyebrow="How to participate"
-        title="There are multiple ways to plug in, even if you are just getting started"
+        title="There are multiple ways to join in, even if you are just getting started"
         intro="A healthy chapter makes room for people with different levels of time, knowledge, and confidence."
       >
         <div className="grid gap-4 md:grid-cols-3">
@@ -97,12 +111,23 @@ export default function AboutPage() {
             </MotionReveal>
           ))}
         </div>
+        <div className="mt-5 grid gap-4 md:grid-cols-2">
+          {siteConfig.about.howToParticipate.map((item, index) => (
+            <MotionReveal
+              key={item}
+              delay={index * 0.04}
+              className="rounded-[1.5rem] border border-primary/10 bg-[#F7F4E8] p-5 text-base leading-7 text-foreground/74"
+            >
+              {item}
+            </MotionReveal>
+          ))}
+        </div>
       </SectionShell>
 
       <SectionShell
         eyebrow="Leadership snapshot"
         title="Current chapter leadership"
-        intro="Leadership details live in the site's editable data layer so officer names can be updated without touching layout code."
+        intro="Leadership information is centralized in the site data layer so officer names and responsibilities can be updated cleanly as the chapter grows."
       >
         <div className="grid gap-5 lg:grid-cols-3">
           {siteConfig.leadership.map((member, index) => (

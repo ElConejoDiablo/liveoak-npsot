@@ -1,0 +1,66 @@
+export const countyHighlights = [
+  {
+    county: "Fayette County",
+    landscape:
+      "Prairie edges, oak savanna character, and town landscapes around La Grange and Schulenburg make this a strong place to notice how natives handle both beauty and toughness.",
+    starterFocus:
+      "A good starting point here is learning which native grasses, spring bloomers, and pollinator plants can carry a yard through heat and dry spells.",
+    link: {
+      href: "/news/whats-blooming-now-in-fayette-colorado-and-lavaca-counties",
+      label: "See current bloom cues",
+    },
+  },
+  {
+    county: "Colorado County",
+    landscape:
+      "Roadsides, open lots, and working landscapes often reveal how much habitat value can still be built into ordinary places when native plants are given room.",
+    starterFocus:
+      "Begin with practical, durable plants that support pollinators and still look grounded in the local landscape rather than imported from somewhere else.",
+    link: {
+      href: "/news/getting-started-with-texas-native-plants-in-fayette-colorado-and-lavaca-counties",
+      label: "Read the beginner guide",
+    },
+  },
+  {
+    county: "Lavaca County",
+    landscape:
+      "Farm-to-town transitions, sunny home sites, and community spaces all benefit from plants that belong to the region and can carry ecological value across long seasons.",
+    starterFocus:
+      "Seed stewardship, pollinator support, and layered planting structure are especially useful entry points for gardeners and volunteers here.",
+    link: {
+      href: "/news/plant-of-the-month-frogfruit-for-ground-layer-habitat",
+      label: "Explore a useful native plant",
+    },
+  },
+] as const;
+
+export const homepageActionPaths = [
+  {
+    title: "Attend an event",
+    description:
+      "See what is coming up next, where it will happen, and how to take part.",
+    href: "/events",
+    label: "View events",
+  },
+  {
+    title: "Join NPSOT",
+    description:
+      "Support statewide native plant work and connect with the local chapter as programming grows.",
+    href: "https://www.npsot.org/join-or-renew-membership/",
+    label: "Join now",
+  },
+  {
+    title: "Volunteer locally",
+    description:
+      "Help with outreach, hospitality, stewardship, education, and chapter support.",
+    href: "/volunteer",
+    label: "Volunteer with us",
+  },
+  {
+    title: "Contact the chapter",
+    description:
+      "Ask a question, share an idea, or request newsletter updates from the chapter inbox.",
+    href: "/contact",
+    label: "Get in touch",
+  },
+] as const;

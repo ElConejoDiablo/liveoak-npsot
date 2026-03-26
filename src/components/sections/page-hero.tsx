@@ -2,8 +2,8 @@ import { ArrowRight, MapPin } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button-styles";
 import { Container } from "@/components/shared/container";
+import { EditorialImageSlot } from "@/components/shared/editorial-image-slot";
 import { MotionReveal } from "@/components/shared/motion-reveal";
-import { PlantIllustration } from "@/components/shared/plant-illustration";
 import { SmartLink } from "@/components/shared/smart-link";
 import { cn } from "@/lib/utils";
 
@@ -70,9 +70,11 @@ export function PageHero({
             ) : null}
           </MotionReveal>
           <MotionReveal delay={0.1} className="lg:justify-self-end">
-            <PlantIllustration
+            <EditorialImageSlot
               variant={variant}
-              className="mx-auto aspect-[5/4] w-full max-w-2xl"
+              title={serviceArea}
+              note="The layout is ready for future chapter photography from field walks, native plantings, community gatherings, or local habitat scenes."
+              className="mx-auto w-full max-w-2xl"
             />
           </MotionReveal>
         </div>

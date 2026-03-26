@@ -9,7 +9,12 @@ tags:
   - "Butterflies"
   - "Pollinators"
   - "Field guide"
+counties:
+  - "Fayette County"
+  - "Colorado County"
+  - "Lavaca County"
 coverTheme: "monarch"
+coverNote: "Suggested future photo: a monarch at rest on a nectar plant, close enough to show wing veins and hindwing spots."
 featured: true
 ---
 
@@ -69,4 +74,3 @@ The more time you spend watching them in native plantings, the easier they becom
 Learning to identify monarchs is not just a fun skill. It helps people pay closer attention to migration, habitat use, and the role native plants play in supporting wildlife. Once people can name what they are seeing, they often become much more invested in protecting it.
 
 That is a strong place for a chapter to begin: not with abstract concern, but with careful looking.
-

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { siteConfig } from "@/data/site";
+import { buildOgImageUrl } from "@/lib/og";
 
 type MetadataOptions = {
   title?: string;
@@ -9,6 +10,7 @@ type MetadataOptions = {
   type?: "website" | "article";
   publishedTime?: string;
   tags?: string[];
+  eyebrow?: string;
 };
 
 export function createMetadata({
@@ -18,11 +20,17 @@ export function createMetadata({
   type = "website",
   publishedTime,
   tags = [],
+  eyebrow,
 }: MetadataOptions): Metadata {
   const metadataTitle = title
     ? `${title} | ${siteConfig.shortName}`
     : siteConfig.chapterName;
   const canonicalUrl = new URL(path, siteConfig.siteUrl).toString();
+  const ogImageUrl = buildOgImageUrl({
+    title: title ?? "Native plant community for south-central Texas",
+    subtitle: description,
+    eyebrow: eyebrow ?? siteConfig.shortName,
+  });
 
   return {
     title: metadataTitle,
@@ -40,10 +48,10 @@ export function createMetadata({
       locale: "en_US",
       images: [
         {
-          url: `${siteConfig.siteUrl}/opengraph-image`,
+          url: ogImageUrl,
           width: 1200,
           height: 630,
-          alt: siteConfig.chapterName,
+          alt: title ?? siteConfig.chapterName,
         },
       ],
       ...(publishedTime ? { publishedTime } : {}),
@@ -52,8 +60,7 @@ export function createMetadata({
       card: "summary_large_image",
       title: metadataTitle,
       description,
-      images: [`${siteConfig.siteUrl}/opengraph-image`],
+      images: [ogImageUrl],
     },
   };
 }
-

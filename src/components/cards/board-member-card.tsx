@@ -23,6 +23,12 @@ export function BoardMemberCard({ member }: BoardMemberCardProps) {
           <dt className="font-semibold text-foreground">Connection</dt>
           <dd className="mt-1 text-foreground/72">{member.countyConnection}</dd>
         </div>
+        {member.participationNote ? (
+          <div>
+            <dt className="font-semibold text-foreground">Best for</dt>
+            <dd className="mt-1 text-foreground/72">{member.participationNote}</dd>
+          </div>
+        ) : null}
       </dl>
     </article>
   );

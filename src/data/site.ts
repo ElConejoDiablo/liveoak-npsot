@@ -10,6 +10,7 @@ export type LeadershipMember = {
   bio: string;
   focus: string;
   countyConnection: string;
+  participationNote?: string;
 };
 
 export const siteConfig = {
@@ -65,6 +66,8 @@ export const siteConfig = {
       bio: "Anthony helps guide the chapter's public presence, chapter priorities, and steady growth as the organization welcomes more native-plant advocates across the region.",
       focus: "Chapter direction, partnerships, and member engagement",
       countyConnection: "Serving the chapter across Fayette, Colorado, and Lavaca Counties",
+      participationNote:
+        "A good contact for chapter direction, partnerships, and broader organizational questions.",
     },
     {
       role: "Secretary",
@@ -72,6 +75,8 @@ export const siteConfig = {
       bio: "Morgan supports communication, meeting coordination, and the clear day-to-day organization that keeps chapter activities accessible and easy to follow.",
       focus: "Communications, meeting records, and chapter coordination",
       countyConnection: "Helping connect chapter volunteers and participants across the service area",
+      participationNote:
+        "Helps keep chapter communication and participation details clear and easy to follow.",
     },
     {
       role: "Treasurer",
@@ -79,8 +84,28 @@ export const siteConfig = {
       bio: "Barry helps steward the chapter's resources so educational programs, outreach efforts, and volunteer projects can grow on a dependable foundation.",
       focus: "Financial stewardship and chapter operations",
       countyConnection: "Supporting practical, sustainable chapter growth across south-central Texas",
+      participationNote:
+        "Supports the practical side of chapter sustainability as programming and outreach continue to grow.",
     },
   ] satisfies LeadershipMember[],
+  about: {
+    overview:
+      "The Live Oak Chapter of the Native Plant Society of Texas serves Fayette, Colorado, and Lavaca Counties with local programming, chapter gatherings, field-based learning, and conservation-minded outreach rooted in south-central Texas.",
+    regionalContext:
+      "This chapter exists to make native plants more understandable and more useful in everyday life, whether someone is starting a home planting, learning pollinator basics, joining a field walk, or looking for a local conservation community.",
+    whatWeDo: [
+      "Offer chapter meetings and public programs grounded in Texas native plants and habitat stewardship.",
+      "Organize plant walks, educational talks, and seasonal learning opportunities that connect local observation with practical action.",
+      "Support native gardening, pollinator habitat, seed stewardship, and conservation-minded land care through education and example.",
+      "Create welcoming entry points for members, prospective members, and neighbors who want to learn alongside the chapter.",
+    ],
+    howToParticipate: [
+      "Attend meetings, walks, and educational programs as they are posted on the chapter calendar.",
+      "Join NPSOT and connect with the Live Oak Chapter as local programming grows.",
+      "Volunteer with chapter hospitality, outreach, educational events, or stewardship activities.",
+      "Use the chapter email to ask questions, share ideas, or express interest in helping.",
+    ],
+  },
   homePillars: [
     {
       title: "Learn native plants with confidence",
@@ -121,7 +146,7 @@ export const primaryNavigation: NavigationItem[] = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/events", label: "Events" },
-  { href: "/news", label: "News" },
+  { href: "/news", label: "News & Blog" },
   { href: "/programs", label: "Programs" },
   { href: "/resources", label: "Resources" },
   { href: "/volunteer", label: "Volunteer" },
@@ -161,4 +186,3 @@ export const footerLinkGroups = [
     ],
   },
 ];
-

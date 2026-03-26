@@ -9,7 +9,12 @@ tags:
   - "Turk's cap"
   - "American beautyberry"
   - "Goldenrod"
+counties:
+  - "Fayette County"
+  - "Colorado County"
+  - "Lavaca County"
 coverTheme: "pollinator"
+coverNote: "Suggested future photo: a layered planting or field edge showing pollinator-friendly natives across different bloom forms and heights."
 featured: true
 ---
 
@@ -64,4 +69,3 @@ If you are starting small, even one of these species is a step in the right dire
 The question to ask is not just, "What is blooming today?" It is, "What is this planting offering from spring into fall, and who can use it?"
 
 That is where native plant choices begin to create real ecological lift.
-

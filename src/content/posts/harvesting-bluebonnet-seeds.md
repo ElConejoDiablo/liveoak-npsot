@@ -8,7 +8,12 @@ tags:
   - "Bluebonnets"
   - "Seed saving"
   - "Native gardening"
+counties:
+  - "Fayette County"
+  - "Colorado County"
+  - "Lavaca County"
 coverTheme: "bluebonnet"
+coverNote: "Suggested future photo: mature bluebonnet seed pods in hand, with a paper envelope or bag ready for careful collection."
 featured: true
 ---
 
@@ -64,4 +69,3 @@ Choose a sunny location with drainage, keep site disturbance modest, and avoid b
 Native seed work is not just about getting more flowers at home. It is also about respecting habitat, genetics, landowners, and the long life of the stand you are visiting. If the patch looks sparse, stressed, heavily visited, or especially significant, enjoy it and leave it alone.
 
 Bluebonnet seed saving is most useful when it is done with care, humility, and enough patience to let the plant finish its cycle.
-

@@ -1,7 +1,7 @@
 import { CheckCircle2 } from "lucide-react";
 
+import { EditorialImageSlot } from "@/components/shared/editorial-image-slot";
 import { MotionReveal } from "@/components/shared/motion-reveal";
-import { PlantIllustration } from "@/components/shared/plant-illustration";
 import { cn } from "@/lib/utils";
 
 type ImageFeatureSectionProps = {
@@ -48,9 +48,14 @@ export function ImageFeatureSection({
         </ul>
       </MotionReveal>
       <MotionReveal delay={0.08} className={cn(reverse && "lg:order-1")}>
-        <PlantIllustration variant={variant} className="aspect-[4/3] w-full" />
+        <EditorialImageSlot
+          variant={variant}
+          title={title}
+          note="This section is set up for future chapter photography, whether that is a demonstration garden, field walk, volunteer project, or close plant study."
+          compact
+          className="w-full"
+        />
       </MotionReveal>
     </div>
   );
 }
-

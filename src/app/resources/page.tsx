@@ -1,7 +1,7 @@
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionShell } from "@/components/sections/section-shell";
-import { ResourceGrid } from "@/components/cards/resource-grid";
+import { ResourceBrowser } from "@/components/resources/resource-browser";
 import { resourceGroups } from "@/data/resources";
 import { siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
@@ -11,6 +11,7 @@ export const metadata = createMetadata({
   description:
     "Find official NPSOT links, native plant education resources, habitat references, and chapter document placeholders.",
   path: "/resources",
+  eyebrow: "Resources",
 });
 
 export default function ResourcesPage() {
@@ -31,9 +32,9 @@ export default function ResourcesPage() {
       <SectionShell
         eyebrow="Reference library"
         title="Organized for local chapter visitors, not just link dumping"
-        intro="The page groups resources by job so a visitor can quickly tell where to begin."
+        intro="Use the lightweight search to quickly find membership links, monarch resources, documents, or starter guidance."
       >
-        <ResourceGrid groups={resourceGroups} />
+        <ResourceBrowser groups={resourceGroups} />
       </SectionShell>
 
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">

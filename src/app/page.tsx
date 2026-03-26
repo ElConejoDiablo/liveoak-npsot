@@ -15,20 +15,24 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 import { ImageFeatureSection } from "@/components/sections/image-feature-section";
 import { SectionShell } from "@/components/sections/section-shell";
 import { Container } from "@/components/shared/container";
+import { EditorialImageSlot } from "@/components/shared/editorial-image-slot";
 import { MotionReveal } from "@/components/shared/motion-reveal";
 import { PlantIllustration } from "@/components/shared/plant-illustration";
 import { SmartLink } from "@/components/shared/smart-link";
-import { eventScheduleNote, upcomingEvents } from "@/data/events";
+import { NextEventPanel } from "@/components/events/next-event-panel";
+import { eventPageIntro, upcomingEvents } from "@/data/events";
+import { countyHighlights, homepageActionPaths } from "@/data/local";
 import { programAreas, seasonalHighlights } from "@/data/programs";
 import { resourceGroups } from "@/data/resources";
 import { siteConfig } from "@/data/site";
-import { getFeaturedPosts } from "@/lib/blog";
+import { getFeaturedPosts, getLatestPost } from "@/lib/blog";
 import { createMetadata } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 
 export const metadata = createMetadata({
   description: siteConfig.description,
   path: "/",
+  eyebrow: "Live Oak Chapter",
 });
 
 const programIcons = {
@@ -40,7 +44,15 @@ const programIcons = {
 };
 
 export default async function Home() {
-  const featuredPosts = await getFeaturedPosts(3);
+  const [featuredPosts, latestPost] = await Promise.all([
+    getFeaturedPosts(3),
+    getLatestPost(),
+  ]);
+  const nextEvent = upcomingEvents[0];
+  const moreReading =
+    latestPost === undefined
+      ? featuredPosts
+      : featuredPosts.filter((post) => post.slug !== latestPost.slug);
 
   return (
     <>
@@ -111,18 +123,69 @@ export default async function Home() {
           </MotionReveal>
 
           <MotionReveal delay={0.08} className="lg:justify-self-end">
-            <PlantIllustration
+            <EditorialImageSlot
               variant="savanna"
-              className="aspect-[4/4.4] w-full max-w-2xl"
+              title="Field walks, chapter gatherings, and local habitat stories"
+              note="A future hero photo can drop here cleanly, whether it is a prairie-edge walk, a native planting, or neighbors gathered around a chapter program."
+              className="w-full max-w-2xl"
             />
           </MotionReveal>
         </Container>
       </section>
 
       <SectionShell
+        eyebrow="Alive now"
+        title="See what is happening in the chapter right now"
+        intro="Start with the next event, the latest article, or a clear way to join, volunteer, and connect."
+      >
+        <div className="grid gap-5 xl:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
+          <MotionReveal>
+            <NextEventPanel event={nextEvent} />
+          </MotionReveal>
+
+          <div className="grid gap-5 lg:grid-cols-2">
+            {latestPost ? (
+              <MotionReveal>
+                <ArticleCard post={latestPost} />
+              </MotionReveal>
+            ) : null}
+            <MotionReveal className="rounded-[1.8rem] border border-primary/10 bg-[#F5F0E1] p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary/72">
+                Start here
+              </p>
+              <h2 className="mt-3 font-heading text-3xl leading-tight text-foreground">
+                Clear paths for first-time visitors
+              </h2>
+              <div className="mt-5 space-y-3">
+                {homepageActionPaths.map((action) => (
+                  <SmartLink
+                    key={action.title}
+                    href={action.href}
+                    className="block rounded-[1.35rem] border border-primary/10 bg-white/80 px-4 py-4 transition hover:border-primary/18 hover:bg-white"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h3 className="text-base font-semibold text-foreground">
+                          {action.title}
+                        </h3>
+                        <p className="mt-1 text-sm leading-6 text-foreground/68">
+                          {action.description}
+                        </p>
+                      </div>
+                      <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-primary" />
+                    </div>
+                  </SmartLink>
+                ))}
+              </div>
+            </MotionReveal>
+          </div>
+        </div>
+      </SectionShell>
+
+      <SectionShell
         eyebrow="Grounded mission"
-        title="Useful first, beautiful second, and always rooted in place"
-        intro="This chapter is designed to be a practical home for native-plant learning and participation in south-central Texas. Visitors should be able to find events, trustworthy guidance, and a clear way to connect from the first screen onward."
+        title="A local chapter built to be useful, welcoming, and rooted in place"
+        intro="The chapter exists to help people learn, participate, and care for habitat in ways that make sense in south-central Texas."
       >
         <div className="grid gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
           <MotionReveal className="rounded-[2rem] border border-primary/10 bg-[#F5F0E1] p-6 shadow-[0_24px_70px_rgba(39,59,42,0.08)] sm:p-8">
@@ -159,8 +222,8 @@ export default async function Home() {
       <SectionShell
         id="home-events"
         eyebrow="Upcoming events"
-        title="A clear front door into meetings, walks, and hands-on learning"
-        intro="The chapter calendar should feel immediately useful. These launch-ready sample events show the kinds of chapter gatherings visitors can expect, while making it easy to swap in final details later."
+        title="Upcoming programming across the chapter region"
+        intro="Meetings, walks, and hands-on learning should be easy to understand at a glance, with enough detail to help people show up confidently."
         actions={
           <SmartLink
             href="/events"
@@ -179,14 +242,14 @@ export default async function Home() {
           ))}
         </div>
         <MotionReveal className="mt-5 rounded-[1.5rem] border border-dashed border-primary/20 bg-[#F7F4E8] px-5 py-4 text-sm leading-7 text-foreground/72">
-          {eventScheduleNote}
+          {eventPageIntro}
         </MotionReveal>
       </SectionShell>
 
       <SectionShell
         eyebrow="Programs"
-        title="What the chapter can do in the field, in the community, and over the course of a year"
-        intro="The practical architecture for a strong chapter site is not only navigation. It is showing, clearly and warmly, how the chapter helps people participate."
+        title="What the chapter can do in the field, in the community, and over the course of the year"
+        intro="Programs should help people move from curiosity to practice, whether that starts with a first event, a plant question, or a volunteer shift."
       >
         <ImageFeatureSection
           eyebrow="Field-ready and welcoming"
@@ -228,7 +291,7 @@ export default async function Home() {
       <SectionShell
         eyebrow="Seasonal focus"
         title="What matters this season for seeds, pollinators, and field observation"
-        intro="Seasonal guidance makes a chapter site feel alive. These highlights give visitors a reason to return and show how native-plant learning changes over the year."
+        intro="Seasonal guidance gives visitors a reason to come back and helps the site stay tied to what is actually happening outdoors."
       >
         <div className="grid gap-5 lg:grid-cols-3">
           {seasonalHighlights.map((highlight, index) => (
@@ -268,9 +331,42 @@ export default async function Home() {
       </SectionShell>
 
       <SectionShell
+        eyebrow="Across the chapter region"
+        title="Useful local context for Fayette, Colorado, and Lavaca Counties"
+        intro="The chapter is regional by design. These county notes help the site feel grounded in the places it serves rather than broadly Texas-wide."
+      >
+        <div className="grid gap-5 lg:grid-cols-3">
+          {countyHighlights.map((highlight, index) => (
+            <MotionReveal
+              key={highlight.county}
+              delay={index * 0.05}
+              className="rounded-[1.8rem] border border-primary/10 bg-white/80 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
+            >
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary/72">
+                {highlight.county}
+              </p>
+              <p className="mt-4 text-base leading-7 text-foreground/74">
+                {highlight.landscape}
+              </p>
+              <p className="mt-4 text-base leading-7 text-foreground/74">
+                {highlight.starterFocus}
+              </p>
+              <SmartLink
+                href={highlight.link.href}
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+              >
+                <span>{highlight.link.label}</span>
+                <ArrowRight className="h-4 w-4" />
+              </SmartLink>
+            </MotionReveal>
+          ))}
+        </div>
+      </SectionShell>
+
+      <SectionShell
         eyebrow="Latest news"
-        title="Starter articles that feel local, practical, and worth reading"
-        intro="The blog system is seeded with regionally relevant content so the site launches with real substance instead of placeholders alone."
+        title="Recent reading from the chapter"
+        intro="Field guides, seasonal notes, habitat articles, and chapter updates help visitors keep learning between events."
         actions={
           <SmartLink
             href="/news"
@@ -282,7 +378,7 @@ export default async function Home() {
         }
       >
         <div className="grid gap-5 lg:grid-cols-3">
-          {featuredPosts.map((post, index) => (
+          {(moreReading.length ? moreReading : featuredPosts).slice(0, 3).map((post, index) => (
             <MotionReveal key={post.slug} delay={index * 0.05}>
               <ArticleCard post={post} />
             </MotionReveal>
@@ -292,8 +388,8 @@ export default async function Home() {
 
       <SectionShell
         eyebrow="Resources"
-        title="Connect local chapter activity to the statewide NPSOT ecosystem"
-        intro="A chapter site should help visitors move easily between local engagement and deeper statewide resources. These shortcuts keep that path obvious."
+        title="Connect local chapter activity to deeper native-plant resources"
+        intro="The chapter should help people move easily between local engagement and dependable statewide guidance."
       >
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {resourceGroups[0].links.map((link, index) => (
@@ -321,10 +417,10 @@ export default async function Home() {
       <Container className="pb-20">
         <CtaBanner
           eyebrow="Get involved"
-          title="Join, volunteer, or ask a question while the chapter keeps growing"
-          description="A strong chapter site should make next steps clear. Whether you want to become a member, stay updated, volunteer, or simply reach out, the pathways are ready."
+          title="Join NPSOT, attend an event, or reach out to the chapter"
+          description="Whether you want to become a member, show up for a program, volunteer locally, or ask a question, the next step should feel easy."
           primaryAction={{ href: siteConfig.joinUrl, label: "Join NPSOT" }}
-          secondaryAction={{ href: "/contact", label: "Contact the chapter" }}
+          secondaryAction={{ href: "/events", label: "View events" }}
           variant="community"
         />
       </Container>

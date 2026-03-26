@@ -1,10 +1,13 @@
-import { EventCard } from "@/components/cards/event-card";
+import { NextEventPanel } from "@/components/events/next-event-panel";
+import { EventsBrowser } from "@/components/events/events-browser";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionShell } from "@/components/sections/section-shell";
 import { MotionReveal } from "@/components/shared/motion-reveal";
 import {
-  eventScheduleNote,
+  eventPageIntro,
+  eventTypes,
+  eventsEmptyState,
   participationNotes,
   upcomingEvents,
 } from "@/data/events";
@@ -14,17 +17,20 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Events and Calendar",
   description:
-    "Browse sample upcoming chapter meetings, plant walks, and volunteer gatherings for the Live Oak Chapter.",
+    "Browse upcoming chapter meetings, plant walks, talks, and hands-on programming for the Live Oak Chapter.",
   path: "/events",
+  eyebrow: "Events and Calendar",
 });
 
 export default function EventsPage() {
+  const nextEvent = upcomingEvents[0];
+
   return (
     <>
       <PageHero
         eyebrow="Events and calendar"
         title="Meetings, walks, and seasonal gatherings built to feel approachable"
-        description="Chapter events should be easy to scan, easy to update, and easy to say yes to. This launch version includes realistic sample content until the final public calendar is posted."
+        description="Chapter events should be easy to scan, easy to update, and easy to say yes to. This calendar is structured so chapter programming can grow over time without becoming harder to maintain."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="community"
         actions={[
@@ -34,27 +40,32 @@ export default function EventsPage() {
       />
 
       <SectionShell
-        eyebrow="Schedule note"
-        title="Ready for real calendar updates"
-        intro="The event layout is intentionally polished without locking the chapter into hard-coded assumptions."
+        eyebrow="Calendar overview"
+        title="A flexible foundation for chapter programming"
+        intro={eventPageIntro}
       >
-        <MotionReveal className="rounded-[1.7rem] border border-dashed border-primary/20 bg-[#F7F4E8] p-6 text-lg leading-8 text-foreground/74">
-          {eventScheduleNote}
+        <MotionReveal>
+          <NextEventPanel event={nextEvent} />
         </MotionReveal>
       </SectionShell>
 
       <SectionShell
         eyebrow="Upcoming"
-        title="Sample event listings that can be edited in one place later"
-        intro="These examples span meetings, talks, field walks, and hands-on seed work to show the breadth a chapter calendar can hold."
+        title="Upcoming chapter programming"
+        intro="Filter by event type to quickly find meetings, walks, talks, workshops, and volunteer opportunities."
       >
-        <div className="space-y-5">
-          {upcomingEvents.map((event, index) => (
-            <MotionReveal key={event.title} delay={index * 0.05}>
-              <EventCard event={event} />
-            </MotionReveal>
-          ))}
-        </div>
+        {upcomingEvents.length ? (
+          <EventsBrowser events={upcomingEvents} eventTypes={eventTypes} />
+        ) : (
+          <MotionReveal className="rounded-[1.7rem] border border-dashed border-primary/20 bg-[#F7F4E8] p-6">
+            <h3 className="font-heading text-2xl text-foreground">
+              {eventsEmptyState.title}
+            </h3>
+            <p className="mt-3 text-base leading-7 text-foreground/72">
+              {eventsEmptyState.description}
+            </p>
+          </MotionReveal>
+        )}
       </SectionShell>
 
       <SectionShell

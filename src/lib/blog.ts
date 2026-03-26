@@ -23,7 +23,9 @@ type PostFrontmatter = {
   author: string;
   category: string;
   tags: string[];
+  counties?: string[];
   coverTheme: CoverTheme;
+  coverNote?: string;
   featured?: boolean;
   sample?: boolean;
 };
@@ -91,7 +93,9 @@ export async function getPostSummaries() {
     author: post.author,
     category: post.category,
     tags: post.tags,
+    counties: post.counties,
     coverTheme: post.coverTheme,
+    coverNote: post.coverNote,
     featured: post.featured,
     sample: post.sample,
     readingTime: post.readingTime,
@@ -110,18 +114,53 @@ export async function getPostBySlug(slug: string) {
   return posts.find((post) => post.slug === slug);
 }
 
+export async function getLatestPosts(limit = 4) {
+  const posts = await getPostSummaries();
+  return posts.slice(0, limit);
+}
+
+export async function getLatestPost() {
+  const posts = await getPostSummaries();
+  return posts[0];
+}
+
 export async function getAllTags() {
   const posts = await getPostSummaries();
   return Array.from(new Set(posts.flatMap((post) => post.tags))).sort();
 }
 
+export async function getAllCategories() {
+  const posts = await getPostSummaries();
+  return Array.from(new Set(posts.map((post) => post.category))).sort();
+}
+
 export async function getRelatedPosts(
   slug: string,
   category: string,
-  limit = 2,
+  tags: string[],
+  counties: string[],
+  limit = 3,
 ) {
   const posts = await getPostSummaries();
+
   return posts
-    .filter((post) => post.slug !== slug && post.category === category)
+    .filter((post) => post.slug !== slug)
+    .map((post) => {
+      const sharedTags = post.tags.filter((tag) => tags.includes(tag)).length;
+      const sharedCounties = (post.counties ?? []).filter((county) =>
+        counties.includes(county),
+      ).length;
+      const score =
+        (post.category === category ? 4 : 0) + sharedTags * 2 + sharedCounties;
+
+      return { ...post, score };
+    })
+    .sort((a, b) => {
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+
+      return a.date < b.date ? 1 : -1;
+    })
     .slice(0, limit);
 }

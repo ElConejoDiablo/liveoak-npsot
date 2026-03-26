@@ -9,7 +9,7 @@ export function SiteFooter() {
   return (
     <footer className="mt-16 border-t border-primary/10 bg-[linear-gradient(180deg,rgba(246,240,228,0.7),rgba(233,223,201,0.92))]">
       <Container className="py-12 sm:py-14">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1.8fr)]">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1.85fr)]">
           <div className="max-w-xl">
             <div className="flex items-center gap-3">
               <SiteLogo />
@@ -30,14 +30,30 @@ export function SiteFooter() {
             <p className="mt-5 max-w-xl text-sm leading-7 text-foreground/62">
               {siteConfig.mission}
             </p>
-            <div className="mt-6">
-              <SocialLinks />
+            <div className="mt-7 rounded-[1.7rem] border border-primary/10 bg-white/65 p-5 shadow-[0_14px_40px_rgba(39,59,42,0.06)]">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/72">
+                Contact and follow
+              </p>
+              <a
+                href={siteConfig.contactUrl}
+                className="mt-3 inline-block text-lg font-semibold text-primary underline decoration-primary/30 underline-offset-4"
+              >
+                {siteConfig.contactEmail}
+              </a>
+              <p className="mt-2 text-sm leading-6 text-foreground/64">
+                Chapter email for questions, introductions, and newsletter
+                requests.
+              </p>
+              <SocialLinks className="mt-5" />
             </div>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-[repeat(3,minmax(0,1fr))]">
             {footerLinkGroups.map((group) => (
-              <div key={group.title}>
+              <div
+                key={group.title}
+                className="rounded-[1.6rem] border border-primary/10 bg-white/62 p-5 shadow-[0_14px_40px_rgba(39,59,42,0.05)]"
+              >
                 <h2 className="font-heading text-2xl text-foreground">
                   {group.title}
                 </h2>
@@ -58,17 +74,16 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-primary/10 pt-6 text-sm text-foreground/58 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-4 border-t border-primary/10 pt-6 text-sm text-foreground/58 sm:flex-row sm:items-center sm:justify-between">
           <p>{siteConfig.serviceAreaSentence}</p>
-          <p>
-            Contact:{" "}
-            <a className="underline decoration-primary/30 underline-offset-4" href={siteConfig.contactUrl}>
-              {siteConfig.contactEmail}
-            </a>
-          </p>
+          <a
+            className="inline-flex min-h-11 items-center rounded-full border border-primary/12 bg-white/72 px-4 py-2 font-medium text-foreground underline decoration-primary/30 underline-offset-4"
+            href={siteConfig.contactUrl}
+          >
+            {siteConfig.contactEmail}
+          </a>
         </div>
       </Container>
     </footer>
   );
 }
-

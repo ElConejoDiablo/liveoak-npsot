@@ -19,7 +19,7 @@ export function SmartLink({
     return (
       <a
         href={href}
-        rel={href.startsWith("http") ? "noreferrer" : undefined}
+        rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
         target={href.startsWith("http") ? "_blank" : undefined}
         {...props}
       />

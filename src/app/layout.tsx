@@ -4,6 +4,7 @@ import { Fraunces, Geist_Mono, Source_Sans_3 } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { siteConfig } from "@/data/site";
+import { buildOgImageUrl } from "@/lib/og";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -46,7 +47,11 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${siteConfig.siteUrl}/opengraph-image`,
+        url: buildOgImageUrl({
+          title: "Native plant community for south-central Texas",
+          subtitle: siteConfig.description,
+          eyebrow: siteConfig.shortName,
+        }),
         width: 1200,
         height: 630,
         alt: siteConfig.chapterName,
@@ -57,7 +62,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.chapterName,
     description: siteConfig.description,
-    images: [`${siteConfig.siteUrl}/opengraph-image`],
+    images: [
+      buildOgImageUrl({
+        title: "Native plant community for south-central Texas",
+        subtitle: siteConfig.description,
+        eyebrow: siteConfig.shortName,
+      }),
+    ],
   },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],

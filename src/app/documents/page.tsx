@@ -12,7 +12,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Documents",
   description:
-    "View chapter document placeholders and the structure reserved for bylaws, meeting records, and volunteer files.",
+    "Browse chapter governance, meeting materials, handouts, flyers, and member-resource placeholders for the Live Oak Chapter.",
   path: "/documents",
 });
 
@@ -21,8 +21,8 @@ export default function DocumentsPage() {
     <>
       <PageHero
         eyebrow="Documents"
-        title="A ready-to-grow home for chapter bylaws, minutes, forms, and shared files"
-        description="Not every chapter document exists on launch day, but the page structure should still be thoughtful. This page is prepared for that future library now."
+        title="A usable home for chapter governance, handouts, flyers, and member resources"
+        description="This page gives the chapter a dependable place to publish materials as they become available, while still presenting a clear structure before every file is posted."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="savanna"
         actions={[
@@ -32,11 +32,11 @@ export default function DocumentsPage() {
       />
 
       <SectionShell
-        eyebrow="Planned collections"
-        title="Organized around the documents chapter participants actually need"
-        intro="The page is structured for chapter operations rather than generic file dumping, which will make it easier to maintain later."
+        eyebrow="Document library"
+        title="Organized around the materials chapter participants actually need"
+        intro="Instead of feeling like an empty placeholder, the document page now reflects the kinds of files a chapter commonly publishes and gives each category an intentional home."
       >
-        <div className="grid gap-5 lg:grid-cols-3">
+        <div className="grid gap-5 xl:grid-cols-2">
           {documentCollections.map((collection, index) => (
             <MotionReveal
               key={collection.title}
@@ -67,6 +67,9 @@ export default function DocumentsPage() {
                   </li>
                 ))}
               </ul>
+              <p className="mt-5 text-sm leading-7 text-foreground/64">
+                {collection.emptyMessage}
+              </p>
             </MotionReveal>
           ))}
         </div>

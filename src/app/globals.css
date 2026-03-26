@@ -110,11 +110,23 @@
   a {
     @apply transition-colors;
   }
+
+  a,
+  button,
+  input,
+  select,
+  textarea {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  select {
+    @apply text-base sm:text-sm;
+  }
 }
 
 @layer components {
   .rich-content {
-    @apply text-lg leading-8 text-foreground/78;
+    @apply text-[1.15rem] leading-9 text-foreground/80 sm:text-xl;
   }
 
   .rich-content > :first-child {
@@ -126,20 +138,20 @@
   }
 
   .rich-content h2 {
-    @apply mt-12 font-heading text-3xl leading-tight text-foreground sm:text-[2.45rem];
+    @apply mt-14 font-heading text-3xl leading-tight text-foreground sm:text-[2.65rem];
   }
 
   .rich-content h3 {
-    @apply mt-10 font-heading text-2xl leading-tight text-foreground sm:text-[2rem];
+    @apply mt-11 font-heading text-2xl leading-tight text-foreground sm:text-[2.1rem];
   }
 
   .rich-content p {
-    @apply mt-5;
+    @apply mt-6;
   }
 
   .rich-content ul,
   .rich-content ol {
-    @apply mt-5 space-y-3 pl-6;
+    @apply mt-6 space-y-3.5 pl-6;
   }
 
   .rich-content li {
@@ -155,7 +167,7 @@
   }
 
   .rich-content blockquote {
-    @apply mt-6 border-l-4 border-primary/20 pl-5 italic text-foreground/74;
+    @apply mt-8 rounded-r-[1.2rem] border-l-4 border-primary/20 bg-[#F7F4E8] px-5 py-4 italic text-foreground/74;
   }
 
   .rich-content hr {
@@ -166,4 +178,3 @@
     @apply rounded-md bg-primary/8 px-1.5 py-0.5 font-mono text-[0.95em];
   }
 }
-
