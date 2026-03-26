@@ -30,7 +30,7 @@ export default function EventsPage() {
       <PageHero
         eyebrow="Events and calendar"
         title="Meetings, walks, and seasonal gatherings built to feel approachable"
-        description="Chapter events should be easy to scan, easy to update, and easy to say yes to. This calendar is structured so chapter programming can grow over time without becoming harder to maintain."
+        description="Use the chapter calendar to find meetings, walks, talks, and seasonal programming across the Live Oak Chapter service area."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="community"
         actions={[
@@ -41,7 +41,7 @@ export default function EventsPage() {
 
       <SectionShell
         eyebrow="Calendar overview"
-        title="A flexible foundation for chapter programming"
+        title="Upcoming chapter events at a glance"
         intro={eventPageIntro}
       >
         <MotionReveal>
@@ -71,7 +71,7 @@ export default function EventsPage() {
       <SectionShell
         eyebrow="Participation notes"
         title="Helpful expectations for visitors"
-        intro="Clear guidance lowers friction for new attendees and keeps the chapter experience legible."
+        intro="A little advance information helps first-time visitors feel more comfortable attending."
       >
         <div className="grid gap-4 md:grid-cols-3">
           {participationNotes.map((note, index) => (
@@ -89,8 +89,8 @@ export default function EventsPage() {
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
         <CtaBanner
           eyebrow="Stay connected"
-          title="Use the chapter email until registration and newsletter tools are finalized"
-          description="The current setup keeps communication simple and dependable while the chapter's long-term event workflow takes shape."
+          title="Use the chapter email for current event details and chapter updates"
+          description="The chapter inbox is the simplest way to ask about upcoming programs, receive current event details, and stay connected between gatherings."
           primaryAction={{ href: "/contact", label: "Contact / subscribe" }}
           secondaryAction={{ href: siteConfig.contactUrl, label: "Email now" }}
           variant="savanna"

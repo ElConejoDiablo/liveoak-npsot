@@ -73,7 +73,7 @@ export function PageHero({
             <EditorialImageSlot
               variant={variant}
               title={serviceArea}
-              note="The layout is ready for future chapter photography from field walks, native plantings, community gatherings, or local habitat scenes."
+              note="Native plants, local landscapes, and chapter gatherings across the Live Oak Chapter region."
               className="mx-auto w-full max-w-2xl"
             />
           </MotionReveal>

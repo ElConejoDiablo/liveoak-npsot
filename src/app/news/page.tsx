@@ -32,7 +32,7 @@ export default async function NewsPage() {
       <PageHero
         eyebrow="News and blog"
         title="Local articles, chapter updates, and practical guidance that reward a return visit"
-        description="The Live Oak Chapter blog is meant to be useful: regional reading for beginners, gardeners, volunteers, and anyone paying closer attention to native plants in Fayette, Colorado, and Lavaca Counties."
+        description="Regional reading for beginners, gardeners, volunteers, and anyone paying closer attention to native plants in Fayette, Colorado, and Lavaca Counties."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="monarch"
         actions={[
@@ -43,8 +43,8 @@ export default async function NewsPage() {
 
       <SectionShell
         eyebrow="Featured article"
-        title="A stronger editorial front door for the chapter"
-        intro="The featured story gives visitors an easy place to start, while the rest of the index keeps seasonal guidance, educational posts, and chapter updates easy to scan."
+        title="Featured reading from the chapter"
+        intro="Start here for seasonal guidance, chapter updates, and practical native-plant reading rooted in the Live Oak Chapter region."
       >
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
           <MotionReveal>
@@ -110,7 +110,7 @@ export default async function NewsPage() {
       <SectionShell
         eyebrow="Recent reading"
         title="Chapter updates and practical field notes"
-        intro="Use the filters to browse by topic, narrow the list by tag, or search across article titles and local themes."
+        intro="Browse by topic, narrow the list by tag, or search across article titles and local themes."
       >
         <NewsBrowser
           posts={remainingPosts}

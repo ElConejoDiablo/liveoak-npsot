@@ -1,4 +1,4 @@
-export type DocumentStatus = "Available" | "In preparation" | "Not yet posted";
+export type DocumentStatus = "Available" | "Check back soon";
 
 export type DocumentItem = {
   title: string;
@@ -21,19 +21,19 @@ export const documentCollections: DocumentCollection[] = [
     description:
       "Core documents that explain how the chapter is organized and how leadership responsibilities are carried out.",
     emptyMessage:
-      "Governance files will be posted here as the chapter finalizes public-facing versions for members and visitors.",
+      "Governance files will be posted here as they are approved for public release.",
     items: [
       {
         title: "Chapter bylaws",
         description:
           "A public copy of the chapter bylaws can be added here once the board approves the version for posting.",
-        status: "In preparation",
+        status: "Check back soon",
       },
       {
         title: "Officer responsibilities overview",
         description:
-          "A concise guide to chapter leadership roles, useful for volunteers, future officers, and succession planning.",
-        status: "In preparation",
+          "A concise guide to chapter leadership roles for volunteers, officers, and chapter planning.",
+        status: "Check back soon",
       },
     ],
   },
@@ -42,19 +42,19 @@ export const documentCollections: DocumentCollection[] = [
     description:
       "A place for agendas, approved minutes, annual reports, and presentation materials that chapter participants may want to revisit.",
     emptyMessage:
-      "Meeting materials will appear as the chapter begins publishing regular agendas, recaps, and annual summaries.",
+      "Meeting materials will appear here as agendas, minutes, and annual summaries are posted.",
     items: [
       {
         title: "Meeting minutes archive",
         description:
           "Reserved for approved meeting minutes or chapter summaries once regular public records are posted.",
-        status: "Not yet posted",
+        status: "Check back soon",
       },
       {
         title: "Annual chapter highlights",
         description:
-          "A future archive for annual accomplishments, chapter milestones, and major outreach updates.",
-        status: "Not yet posted",
+          "Annual accomplishments, chapter milestones, and major outreach updates can be shared here.",
+        status: "Check back soon",
       },
     ],
   },
@@ -63,19 +63,19 @@ export const documentCollections: DocumentCollection[] = [
     description:
       "Quick-reference educational materials that support chapter talks, plant walks, and public outreach.",
     emptyMessage:
-      "Handouts will be especially useful once the chapter begins sharing recurring educational materials and field references.",
+      "Handouts will appear here as the chapter begins sharing recurring educational materials and field references.",
     items: [
       {
         title: "Native plant basics handout",
         description:
-          "A future starter guide for visitors beginning their first native-plant project in Fayette, Colorado, or Lavaca County.",
-        status: "In preparation",
+          "A starter guide for visitors beginning their first native-plant project in Fayette, Colorado, or Lavaca County.",
+        status: "Check back soon",
       },
       {
         title: "Seasonal seed stewardship notes",
         description:
           "A short reference sheet the chapter can publish alongside seed workshops or educational demonstrations.",
-        status: "In preparation",
+        status: "Check back soon",
       },
     ],
   },
@@ -89,8 +89,8 @@ export const documentCollections: DocumentCollection[] = [
       {
         title: "Upcoming meeting flyer archive",
         description:
-          "Reserved for downloadable event notices once the chapter starts publishing flyers for public programs.",
-        status: "Not yet posted",
+          "Downloadable notices for public programs can be shared here.",
+        status: "Check back soon",
       },
     ],
   },
@@ -104,18 +104,18 @@ export const documentCollections: DocumentCollection[] = [
       {
         title: "Volunteer welcome packet",
         description:
-          "A future PDF for common volunteer roles, chapter expectations, and ways to stay in touch.",
-        status: "In preparation",
+          "A simple guide to common volunteer roles, chapter expectations, and ways to stay in touch.",
+        status: "Check back soon",
       },
       {
         title: "Field outing participation guidance",
         description:
-          "A future home for outing expectations, safety reminders, or any field trip forms the chapter wants to share.",
-        status: "In preparation",
+          "Outing expectations, safety reminders, or field trip forms can be shared here.",
+        status: "Check back soon",
       },
     ],
   },
 ];
 
 export const documentsEmptyState =
-  "The document library now has a clear structure, even though the chapter is still assembling its first public files.";
+  "Check back here for additional chapter files, or contact the chapter if you are looking for something specific.";

@@ -7,7 +7,6 @@ type EditorialImageSlotProps = {
   variant: CoverTheme;
   title: string;
   note: string;
-  badge?: string;
   compact?: boolean;
   className?: string;
 };
@@ -16,7 +15,6 @@ export function EditorialImageSlot({
   variant,
   title,
   note,
-  badge = "Photography-ready layout",
   compact = false,
   className,
 }: EditorialImageSlotProps) {
@@ -33,9 +31,6 @@ export function EditorialImageSlot({
         className="h-full w-full rounded-none border-0 shadow-none"
       />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(22,30,21,0.02),rgba(22,30,21,0.62))]" />
-      <div className="absolute left-4 top-4 rounded-full border border-white/25 bg-[rgba(245,240,232,0.84)] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-foreground/72 backdrop-blur-sm sm:left-5 sm:top-5">
-        {badge}
-      </div>
       <div className="absolute inset-x-0 bottom-0 p-5 text-white sm:p-6">
         <p
           className={cn(

@@ -126,7 +126,7 @@ export default async function Home() {
             <EditorialImageSlot
               variant="savanna"
               title="Field walks, chapter gatherings, and local habitat stories"
-              note="A future hero photo can drop here cleanly, whether it is a prairie-edge walk, a native planting, or neighbors gathered around a chapter program."
+              note="Prairie edges, oak shade, working lands, and native plant communities all shape the places this chapter serves."
               className="w-full max-w-2xl"
             />
           </MotionReveal>
@@ -223,7 +223,7 @@ export default async function Home() {
         id="home-events"
         eyebrow="Upcoming events"
         title="Upcoming programming across the chapter region"
-        intro="Meetings, walks, and hands-on learning should be easy to understand at a glance, with enough detail to help people show up confidently."
+        intro="Browse upcoming meetings, walks, and hands-on learning with the details you need before you go."
         actions={
           <SmartLink
             href="/events"
@@ -249,12 +249,12 @@ export default async function Home() {
       <SectionShell
         eyebrow="Programs"
         title="What the chapter can do in the field, in the community, and over the course of the year"
-        intro="Programs should help people move from curiosity to practice, whether that starts with a first event, a plant question, or a volunteer shift."
+        intro="Chapter programs can begin with a first event, a plant question, a volunteer shift, or a field walk that makes the region easier to understand."
       >
         <ImageFeatureSection
           eyebrow="Field-ready and welcoming"
           title="Programs that turn curiosity into practice"
-          description="The strongest chapter activities make native plants more legible in everyday life. They combine education, outdoor observation, stewardship, and friendly entry points for people who are just getting started."
+          description="Chapter activities can bring together education, outdoor observation, stewardship, and beginner-friendly entry points that make local native plants easier to know."
           bullets={[
             "Public programs that feel useful to new gardeners and longtime members alike",
             "Field walks and plant observation that translate ecology into direct experience",
@@ -291,7 +291,7 @@ export default async function Home() {
       <SectionShell
         eyebrow="Seasonal focus"
         title="What matters this season for seeds, pollinators, and field observation"
-        intro="Seasonal guidance gives visitors a reason to come back and helps the site stay tied to what is actually happening outdoors."
+        intro="Seasonal notes help connect chapter learning to what is happening outdoors right now."
       >
         <div className="grid gap-5 lg:grid-cols-3">
           {seasonalHighlights.map((highlight, index) => (
@@ -333,7 +333,7 @@ export default async function Home() {
       <SectionShell
         eyebrow="Across the chapter region"
         title="Useful local context for Fayette, Colorado, and Lavaca Counties"
-        intro="The chapter is regional by design. These county notes help the site feel grounded in the places it serves rather than broadly Texas-wide."
+        intro="These county notes keep the chapter grounded in the places it serves."
       >
         <div className="grid gap-5 lg:grid-cols-3">
           {countyHighlights.map((highlight, index) => (
@@ -389,7 +389,7 @@ export default async function Home() {
       <SectionShell
         eyebrow="Resources"
         title="Connect local chapter activity to deeper native-plant resources"
-        intro="The chapter should help people move easily between local engagement and dependable statewide guidance."
+        intro="Use these resources to move between local chapter activity and dependable statewide guidance."
       >
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {resourceGroups[0].links.map((link, index) => (

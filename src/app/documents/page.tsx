@@ -12,7 +12,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Documents",
   description:
-    "Browse chapter governance, meeting materials, handouts, flyers, and member-resource placeholders for the Live Oak Chapter.",
+    "Browse chapter governance, meeting materials, handouts, flyers, and member resources for the Live Oak Chapter.",
   path: "/documents",
 });
 
@@ -34,7 +34,7 @@ export default function DocumentsPage() {
       <SectionShell
         eyebrow="Document library"
         title="Organized around the materials chapter participants actually need"
-        intro="Instead of feeling like an empty placeholder, the document page now reflects the kinds of files a chapter commonly publishes and gives each category an intentional home."
+        intro="This page is organized around the kinds of files chapter participants commonly look for, from governance documents to handouts and event materials."
       >
         <div className="grid gap-5 xl:grid-cols-2">
           {documentCollections.map((collection, index) => (
@@ -77,7 +77,7 @@ export default function DocumentsPage() {
 
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
         <EmptyStatePanel
-          title="The document library is ready, even though the first public files are not posted yet"
+          title="More chapter files will be added here over time"
           description={documentsEmptyState}
           action={{ href: siteConfig.contactUrl, label: "Request information by email" }}
         />

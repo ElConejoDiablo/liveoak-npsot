@@ -1,7 +1,7 @@
 import { ArrowRight, CalendarDays, Clock3, MapPin } from "lucide-react";
 
 import type { EventItem } from "@/data/events";
-import { formatDateRange, formatDay, formatMonth } from "@/lib/format";
+import { formatDay, formatFullDate, formatMonth, formatTimeRange } from "@/lib/format";
 import { SmartLink } from "@/components/shared/smart-link";
 
 type EventCardProps = {
@@ -25,11 +25,6 @@ export function EventCard({ event, showLink = true }: EventCardProps) {
           <span className="rounded-full bg-primary/8 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary/78">
             {event.type}
           </span>
-          {event.status === "Details being finalized" ? (
-            <span className="rounded-full bg-[#EBCF87]/35 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#765724]">
-              Details being finalized
-            </span>
-          ) : null}
         </div>
         <h3 className="font-heading text-2xl leading-tight text-foreground">
           {event.title}
@@ -42,14 +37,14 @@ export function EventCard({ event, showLink = true }: EventCardProps) {
             <CalendarDays className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
             <div>
               <dt className="sr-only">Date</dt>
-              <dd>{formatDateRange(event.startDateTime, event.endDateTime)}</dd>
+              <dd>{formatFullDate(event.startDateTime)}</dd>
             </div>
           </div>
           <div className="flex gap-2">
             <Clock3 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
             <div>
               <dt className="sr-only">Time</dt>
-              <dd>{event.audience}</dd>
+              <dd>{formatTimeRange(event.startDateTime, event.endDateTime)}</dd>
             </div>
           </div>
           <div className="flex gap-2">
@@ -65,6 +60,18 @@ export function EventCard({ event, showLink = true }: EventCardProps) {
             </div>
           </div>
         </dl>
+        <div className="mt-4 grid gap-3 text-sm text-foreground/72 sm:grid-cols-2">
+          <div>
+            <p className="font-semibold text-foreground">Who it’s for</p>
+            <p className="mt-1 leading-7">{event.audience}</p>
+          </div>
+          {event.attendanceNote ? (
+            <div>
+              <p className="font-semibold text-foreground">Attendance note</p>
+              <p className="mt-1 leading-7">{event.attendanceNote}</p>
+            </div>
+          ) : null}
+        </div>
         <ul className="mt-5 space-y-2 text-sm leading-7 text-foreground/72">
           {event.details.map((detail) => (
             <li key={detail} className="flex gap-2">

@@ -7,7 +7,7 @@ import { SmartLink } from "@/components/shared/smart-link";
 import { allEvents, upcomingEvents } from "@/data/events";
 import { siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
-import { formatDateRange } from "@/lib/format";
+import { formatFullDate, formatTimeRange } from "@/lib/format";
 
 type EventPageProps = {
   params: Promise<{
@@ -78,8 +78,17 @@ export default async function EventDetailPage({ params }: EventPageProps) {
               <div className="flex gap-3">
                 <CalendarDays className="mt-1 h-5 w-5 shrink-0 text-primary" />
                 <div>
-                  <dt className="font-semibold text-foreground">When</dt>
-                  <dd className="mt-1">{formatDateRange(event.startDateTime, event.endDateTime)}</dd>
+                  <dt className="font-semibold text-foreground">Date</dt>
+                  <dd className="mt-1">{formatFullDate(event.startDateTime)}</dd>
+                </div>
+              </div>
+              <div className="flex gap-3">
+                <CalendarDays className="mt-1 h-5 w-5 shrink-0 text-primary" />
+                <div>
+                  <dt className="font-semibold text-foreground">Time</dt>
+                  <dd className="mt-1">
+                    {formatTimeRange(event.startDateTime, event.endDateTime)}
+                  </dd>
                 </div>
               </div>
               <div className="flex gap-3">
@@ -89,9 +98,8 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                   <dd className="mt-1">
                     {event.locationName}
                     <span className="block">{event.locationAddress}</span>
-                    <span className="block">
-                      {event.city} · {event.county}
-                    </span>
+                    <span className="block">{event.city}</span>
+                    <span className="block">{event.county}</span>
                   </dd>
                 </div>
               </div>
@@ -102,6 +110,15 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                   <dd className="mt-1">{event.audience}</dd>
                 </div>
               </div>
+              {event.attendanceNote ? (
+                <div className="flex gap-3">
+                  <UserRound className="mt-1 h-5 w-5 shrink-0 text-primary" />
+                  <div>
+                    <dt className="font-semibold text-foreground">Attendance note</dt>
+                    <dd className="mt-1">{event.attendanceNote}</dd>
+                  </div>
+                </div>
+              ) : null}
               {event.whatToBring?.length ? (
                 <div className="flex gap-3">
                   <Shirt className="mt-1 h-5 w-5 shrink-0 text-primary" />
@@ -152,7 +169,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
         <SectionShell
           eyebrow="More upcoming programming"
           title="Additional events on the chapter calendar"
-          intro="As the calendar grows, related upcoming events can continue to surface here."
+          intro="See what else is coming up with the chapter."
         >
           <div className="grid gap-4 md:grid-cols-2">
             {otherUpcoming.map((item) => (

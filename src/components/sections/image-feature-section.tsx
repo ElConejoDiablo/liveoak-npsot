@@ -51,7 +51,7 @@ export function ImageFeatureSection({
         <EditorialImageSlot
           variant={variant}
           title={title}
-          note="This section is set up for future chapter photography, whether that is a demonstration garden, field walk, volunteer project, or close plant study."
+          note="Field observation, plant study, stewardship, and chapter learning all belong in this work."
           compact
           className="w-full"
         />

@@ -211,8 +211,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       <Container className="pb-20">
         <CtaBanner
           eyebrow="Keep going"
-          title="Use the chapter site as a practical next step, not just a reading stop"
-          description="Read an article, attend an event, join NPSOT, or reach out to the chapter. The goal is to make local participation easier."
+          title="Keep learning with the chapter"
+          description="Attend an event, join NPSOT, or reach out to the chapter when you are ready for the next step."
           primaryAction={{ href: "/events", label: "Attend an event" }}
           secondaryAction={{ href: siteConfig.joinUrl, label: "Join NPSOT" }}
           variant="pollinator"

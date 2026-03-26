@@ -33,7 +33,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-primary/10 bg-[rgba(250,245,236,0.92)] backdrop-blur-md">
-      <Container className="flex min-h-20 items-center justify-between gap-4 py-3">
+      <Container className="flex min-h-20 items-center justify-between gap-3 py-3">
         <Link href="/" className="flex items-center gap-3 text-left">
           <SiteLogo />
           <div className="min-w-0">
@@ -46,27 +46,28 @@ export function SiteHeader() {
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        <nav className="hidden flex-1 items-center justify-center gap-0.5 lg:flex" aria-label="Primary">
           {primaryNavigation.map((item) => {
             const active = isActive(pathname, item.href);
+            const desktopLabel = item.href === "/news" ? "Blog" : item.label;
 
             return (
               <SmartLink
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "rounded-full px-4 py-2 text-sm font-medium text-foreground/74 transition hover:bg-white hover:text-foreground",
+                  "whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium text-foreground/74 transition hover:bg-white hover:text-foreground xl:px-4",
                   active && "bg-white text-foreground shadow-sm",
                 )}
                 aria-current={active ? "page" : undefined}
               >
-                {item.label}
+                {desktopLabel}
               </SmartLink>
             );
           })}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-2 lg:flex">
           <SmartLink
             href={siteConfig.joinUrl}
             className={cn(

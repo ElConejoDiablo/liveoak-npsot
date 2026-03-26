@@ -76,7 +76,7 @@ export const resourceGroups: ResourceGroup[] = [
     ],
   },
   {
-    title: "Chapter-specific tools and placeholders",
+    title: "Chapter-specific links",
     description:
       "These blocks are ready for real chapter files and sign-up destinations as soon as they are available.",
     links: [
@@ -104,4 +104,3 @@ export const resourceGroups: ResourceGroup[] = [
     ],
   },
 ];
-

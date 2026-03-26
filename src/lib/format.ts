@@ -24,6 +24,10 @@ export function formatTime(date: string) {
   return format(parseISO(date), "h:mm a");
 }
 
+export function formatTimeRange(startDate: string, endDate: string) {
+  return `${formatTime(startDate)} to ${formatTime(endDate)}`;
+}
+
 export function formatDateRange(startDate: string, endDate: string) {
   const start = parseISO(startDate);
   const end = parseISO(endDate);

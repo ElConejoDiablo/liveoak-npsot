@@ -82,7 +82,7 @@ export default function VolunteerPage() {
         <CtaBanner
           eyebrow="Take the next step"
           title="Reach out, join the chapter, or ask where help is needed most"
-          description="The current contact flow is deliberately simple so the chapter can start conversations now and refine volunteer systems later."
+          description="A simple email is enough to let the chapter know where you would like to help."
           primaryAction={{ href: "/contact", label: "Contact / subscribe" }}
           secondaryAction={{ href: siteConfig.contactUrl, label: "Email volunteer interest" }}
           variant="savanna"

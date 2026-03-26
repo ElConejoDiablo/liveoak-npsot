@@ -1,7 +1,6 @@
 import { Mail, MapPin, Newspaper, Send } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button-styles";
-import { Input } from "@/components/ui/input";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionShell } from "@/components/sections/section-shell";
 import { Container } from "@/components/shared/container";
@@ -15,7 +14,7 @@ import { cn } from "@/lib/utils";
 export const metadata = createMetadata({
   title: "Contact and Subscribe",
   description:
-    "Contact the Live Oak Chapter, connect on social media, and use the current newsletter signup placeholder until a dedicated mailing platform is connected.",
+    "Contact the Live Oak Chapter, connect on social media, and request chapter updates by email.",
   path: "/contact",
   eyebrow: "Contact and Subscribe",
 });
@@ -26,12 +25,12 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact and subscribe"
         title="A simple, friendly way to reach the chapter and stay in the loop"
-        description="Use the chapter inbox for questions, introductions, event follow-up, and newsletter requests while the long-term communications tools continue to take shape."
+        description="Use the chapter inbox for questions, introductions, event follow-up, and requests to receive chapter updates."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="pollinator"
         actions={[
           { href: siteConfig.contactUrl, label: "Email the chapter" },
-          { href: siteConfig.newsletterSignupUrl, label: "Request newsletter signup", variant: "secondary" },
+          { href: siteConfig.newsletterSignupUrl, label: "Request chapter updates", variant: "secondary" },
         ]}
       />
 
@@ -60,8 +59,7 @@ export default function ContactPage() {
             </div>
             <div className="mt-6 rounded-[1.4rem] border border-primary/10 bg-[#F7F4E8] p-4 text-sm leading-7 text-foreground/68">
               Best for event questions, volunteer interest, chapter introductions,
-              and newsletter requests while the site’s dedicated signup platform
-              is still pending.
+              and requests to receive future chapter announcements.
             </div>
             <div className="mt-6">
               <SocialLinks stacked />
@@ -73,51 +71,32 @@ export default function ContactPage() {
               <Newspaper className="h-6 w-6" />
             </div>
             <h2 className="mt-5 font-heading text-3xl text-foreground">
-              Newsletter signup
+              Chapter updates
             </h2>
             <p className="mt-4 text-lg leading-8 text-foreground/74">
-              The chapter’s email newsletter platform is not connected yet, but
-              this block is ready for a future form integration. For now, the
-              button opens an email-based signup request so visitors still have
-              a clear way to ask for updates.
+              If you would like to hear about upcoming meetings, walks, talks,
+              and chapter news, send a short email to the chapter and ask to be
+              included in future updates.
             </p>
-            <label htmlFor="newsletter-email" className="mt-6 block text-sm font-semibold uppercase tracking-[0.18em] text-primary/72">
-              Your email address
-            </label>
-            <div className="mt-3 flex flex-col gap-3 sm:flex-row">
-              <Input
-                id="newsletter-email"
-                type="email"
-                placeholder="name@example.com"
-                disabled
-                aria-describedby="newsletter-note"
-                className="h-12 rounded-full border-primary/12 bg-white/80 px-4 disabled:opacity-100"
-              />
+            <div className="mt-6 rounded-[1.4rem] border border-primary/10 bg-white/75 p-5">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/72">
+                Simple email request
+              </p>
+              <p className="mt-3 text-base leading-7 text-foreground/72">
+                Include your name and a note that you would like chapter
+                updates. The chapter can follow up from there with current
+                event notices and future communication options.
+              </p>
               <SmartLink
                 href={siteConfig.newsletterSignupUrl}
                 className={cn(
                   buttonVariants({ variant: "default", size: "lg" }),
-                  "inline-flex h-12 items-center justify-center rounded-full px-5",
+                  "mt-5 inline-flex h-12 items-center justify-center rounded-full px-5",
                 )}
               >
                 <Send className="mr-2 h-4 w-4" />
-                Request signup
+                Request updates
               </SmartLink>
-            </div>
-            <p id="newsletter-note" className="mt-3 text-sm leading-7 text-foreground/64">
-              Integration-ready placeholder: the email field and CTA can be
-              connected later to Buttondown, Mailchimp, ConvertKit, or another
-              mailing platform without restructuring the page.
-            </p>
-            <div className="mt-6 rounded-[1.4rem] border border-primary/10 bg-white/78 p-4">
-              <h3 className="font-semibold text-foreground">
-                Recommended future integration
-              </h3>
-              <p className="mt-2 text-sm leading-7 text-foreground/68">
-                Connect this block to a lightweight newsletter service and keep
-                the chapter inbox as a backup contact path for people who prefer
-                direct email.
-              </p>
             </div>
           </MotionReveal>
         </div>
@@ -130,10 +109,9 @@ export default function ContactPage() {
               Welcoming, grounded, and easy to reach
             </h2>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-white/78">
-              The chapter tone across the site is intentional: practical,
-              conservation-minded, and inviting to people who may be new to
-              native plants. That same tone should carry through in email and
-              social responses as the chapter grows.
+              Whether you are new to native plants, looking for a local event,
+              or hoping to help with chapter efforts, the easiest next step is
+              simply to reach out. A short email is always welcome.
             </p>
           </div>
           <div className="rounded-[1.6rem] border border-white/12 bg-white/10 p-5">

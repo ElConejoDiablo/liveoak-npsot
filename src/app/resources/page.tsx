@@ -9,7 +9,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Resources",
   description:
-    "Find official NPSOT links, native plant education resources, habitat references, and chapter document placeholders.",
+    "Find official NPSOT links, native plant education resources, habitat references, and chapter documents.",
   path: "/resources",
   eyebrow: "Resources",
 });
@@ -41,7 +41,7 @@ export default function ResourcesPage() {
         <CtaBanner
           eyebrow="Need something specific?"
           title="Ask the chapter if you are looking for the right next plant, book, or starting point"
-          description="The chapter inbox is a simple way to request guidance while the local document library and newsletter flow continue to grow."
+          description="The chapter inbox is a simple way to request guidance if you are looking for a useful next step."
           primaryAction={{ href: "/contact", label: "Contact the chapter" }}
           secondaryAction={{ href: siteConfig.contactUrl, label: "Send an email" }}
           variant="pollinator"

@@ -127,7 +127,7 @@ export default function AboutPage() {
       <SectionShell
         eyebrow="Leadership snapshot"
         title="Current chapter leadership"
-        intro="Leadership information is centralized in the site data layer so officer names and responsibilities can be updated cleanly as the chapter grows."
+        intro="Meet the chapter officers helping guide local programs, communication, and chapter stewardship."
       >
         <div className="grid gap-5 lg:grid-cols-3">
           {siteConfig.leadership.map((member, index) => (
