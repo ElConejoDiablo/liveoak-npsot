@@ -169,6 +169,7 @@ export const footerLinkGroups = [
     links: [
       { href: "/leadership", label: "Leadership" },
       { href: "/documents", label: "Documents" },
+      { href: "/members", label: "Members" },
       { href: "/contact", label: "Contact / Subscribe" },
       { href: siteConfig.contactUrl, label: "Email the Chapter" },
     ],
