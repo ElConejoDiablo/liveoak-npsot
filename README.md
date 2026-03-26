@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Live Oak Chapter, Native Plant Society of Texas
 
-## Getting Started
+Production-ready chapter website for the Live Oak Chapter of the Native Plant Society of Texas. The site uses a local data/content model so chapter information can be updated without adding CMS overhead.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 App Router
+- TypeScript
+- Tailwind CSS v4
+- shadcn/ui primitives
+- lucide-react icons
+- Framer Motion for restrained entrance motion
+- Markdown-based local blog content
+
+## Local setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Helpful commands:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm lint
+pnpm typecheck
+pnpm build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The dev server defaults to `http://localhost:3000`, but will move to another port automatically if needed.
 
-## Learn More
+## Content editing
 
-To learn more about Next.js, take a look at the following resources:
+Chapter content is centralized in a small set of files:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/data/site.ts`
+  Chapter identity, domain, contact email, social links, mission, service area, navigation, and leadership.
+- `src/data/events.ts`
+  Upcoming events and event-page guidance.
+- `src/data/programs.ts`
+  Program descriptions, seasonal highlights, and volunteer pathways.
+- `src/data/resources.ts`
+  Structured external and internal resource links.
+- `src/data/documents.ts`
+  Document placeholders and empty-state messaging.
+- `src/content/posts/*.md`
+  Blog/news posts with frontmatter metadata and Markdown content.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project structure
 
-## Deploy on Vercel
+```text
+src/
+  app/                 App Router pages and metadata routes
+  components/          Layout, section, card, and shared UI building blocks
+  content/posts/       Markdown articles
+  data/                Editable chapter/site data
+  lib/                 Blog parsing, metadata helpers, formatting utilities
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Vercel deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is ready to import directly into Vercel.
+
+- Framework preset: `Next.js`
+- Install command: `pnpm install`
+- Build command: `pnpm build`
+- Output setting: default Next.js output
+- Environment variables: none required
+
+Suggested deployment steps:
+
+1. Import the GitHub repository into Vercel.
+2. Confirm the production domain `liveoak-npsot.org`.
+3. Trigger the first production deployment.
+4. Update site content in `src/data/*` and `src/content/posts/*` as chapter details evolve.
+
+## Included platform/SEO basics
+
+- route-level metadata
+- Open Graph image generation
+- `robots.txt`
+- `sitemap.xml`
+- web app manifest
+- placeholder site icon
+
+## Notes
+
+- Blog content is file-based and intentionally lightweight.
+- Several calendar and operational details are marked as sample content until the chapter publishes final schedules and documents.
+- Newsletter signup currently uses an email-based placeholder flow until a dedicated mailing platform is chosen.

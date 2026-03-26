@@ -1,0 +1,127 @@
+import fs from "node:fs";
+import path from "node:path";
+import { cache } from "react";
+
+import matter from "gray-matter";
+import { remark } from "remark";
+import remarkGfm from "remark-gfm";
+import remarkHtml from "remark-html";
+
+const postsDirectory = path.join(process.cwd(), "src/content/posts");
+
+export type CoverTheme =
+  | "savanna"
+  | "bluebonnet"
+  | "pollinator"
+  | "monarch"
+  | "community";
+
+type PostFrontmatter = {
+  title: string;
+  excerpt: string;
+  date: string;
+  author: string;
+  category: string;
+  tags: string[];
+  coverTheme: CoverTheme;
+  featured?: boolean;
+  sample?: boolean;
+};
+
+export type BlogPostSummary = PostFrontmatter & {
+  slug: string;
+  readingTime: number;
+};
+
+export type BlogPost = BlogPostSummary & {
+  contentHtml: string;
+};
+
+function getReadingTime(markdown: string) {
+  const words = markdown.trim().split(/\s+/).length;
+  return Math.max(3, Math.round(words / 220));
+}
+
+async function markdownToHtml(markdown: string) {
+  const processed = await remark()
+    .use(remarkGfm)
+    .use(remarkHtml, { sanitize: false })
+    .process(markdown);
+
+  return processed.toString();
+}
+
+const loadPosts = cache(async () => {
+  const filenames = fs
+    .readdirSync(postsDirectory)
+    .filter((filename) => filename.endsWith(".md"));
+
+  const posts = await Promise.all(
+    filenames.map(async (filename) => {
+      const slug = filename.replace(/\.md$/, "");
+      const filePath = path.join(postsDirectory, filename);
+      const source = fs.readFileSync(filePath, "utf8");
+      const { data, content } = matter(source);
+      const frontmatter = data as PostFrontmatter;
+
+      return {
+        slug,
+        ...frontmatter,
+        readingTime: getReadingTime(content),
+        contentHtml: await markdownToHtml(content),
+      } satisfies BlogPost;
+    }),
+  );
+
+  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+});
+
+export async function getAllPosts() {
+  return loadPosts();
+}
+
+export async function getPostSummaries() {
+  const posts = await loadPosts();
+
+  return posts.map((post) => ({
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    date: post.date,
+    author: post.author,
+    category: post.category,
+    tags: post.tags,
+    coverTheme: post.coverTheme,
+    featured: post.featured,
+    sample: post.sample,
+    readingTime: post.readingTime,
+  }));
+}
+
+export async function getFeaturedPosts(limit = 3) {
+  const posts = await getPostSummaries();
+  const featured = posts.filter((post) => post.featured);
+
+  return (featured.length ? featured : posts).slice(0, limit);
+}
+
+export async function getPostBySlug(slug: string) {
+  const posts = await loadPosts();
+  return posts.find((post) => post.slug === slug);
+}
+
+export async function getAllTags() {
+  const posts = await getPostSummaries();
+  return Array.from(new Set(posts.flatMap((post) => post.tags))).sort();
+}
+
+export async function getRelatedPosts(
+  slug: string,
+  category: string,
+  limit = 2,
+) {
+  const posts = await getPostSummaries();
+  return posts
+    .filter((post) => post.slug !== slug && post.category === category)
+    .slice(0, limit);
+}
