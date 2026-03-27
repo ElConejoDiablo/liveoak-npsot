@@ -1,4 +1,7 @@
+"use client";
+
 import { CheckCircle2, Handshake } from "lucide-react";
+import { useActionState } from "react";
 
 import { confirmTransactionAction, selectCounterpartAction } from "@/lib/members/actions";
 import { buttonVariants } from "@/components/ui/button-styles";
@@ -20,6 +23,10 @@ type TransactionPanelProps = {
   completed: boolean;
 };
 
+const initialState = {
+  status: "idle",
+} as const;
+
 export function TransactionPanel({
   postId,
   isOwner,
@@ -31,6 +38,15 @@ export function TransactionPanel({
   counterpartName,
   completed,
 }: TransactionPanelProps) {
+  const [selectionState, selectionAction, isSelecting] = useActionState(
+    selectCounterpartAction,
+    initialState,
+  );
+  const [confirmationState, confirmationAction, isConfirming] = useActionState(
+    confirmTransactionAction,
+    initialState,
+  );
+
   return (
     <div className="rounded-[1.6rem] border border-primary/10 bg-[#F5F0E1] p-5 shadow-[0_18px_60px_rgba(39,59,42,0.08)]">
       <div className="flex items-center gap-3">
@@ -48,7 +64,7 @@ export function TransactionPanel({
       </div>
 
       {isOwner && replyAuthors.length ? (
-        <form action={selectCounterpartAction} className="mt-5 space-y-3">
+        <form action={selectionAction} className="mt-5 space-y-3">
           <input type="hidden" name="postId" value={postId} />
           <label className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/72">
             Choose the other member involved
@@ -70,14 +86,27 @@ export function TransactionPanel({
             </select>
             <button
               type="submit"
+              disabled={isSelecting}
               className={cn(
                 buttonVariants({ variant: "outline", size: "lg" }),
                 "h-11 rounded-full border-primary/15 bg-white/80 px-5",
               )}
             >
-              Save counterpart
+              {isSelecting ? "Saving..." : "Save counterpart"}
             </button>
           </div>
+          {selectionState.message ? (
+            <p
+              className={cn(
+                "rounded-[1.2rem] px-4 py-3 text-sm leading-7",
+                selectionState.status === "error"
+                  ? "border border-amber-300/40 bg-amber-50 text-amber-900"
+                  : "border border-primary/12 bg-white/78 text-foreground/72",
+              )}
+            >
+              {selectionState.message}
+            </p>
+          ) : null}
         </form>
       ) : null}
 
@@ -106,17 +135,30 @@ export function TransactionPanel({
               Points awarded to both members
             </div>
           ) : canConfirm ? (
-            <form action={confirmTransactionAction} className="mt-4">
+            <form action={confirmationAction} className="mt-4 space-y-3">
               <input type="hidden" name="postId" value={postId} />
               <button
                 type="submit"
+                disabled={isConfirming}
                 className={cn(
                   buttonVariants({ variant: "default", size: "lg" }),
                   "h-11 rounded-full px-5",
                 )}
               >
-                Confirm this interaction
+                {isConfirming ? "Saving..." : "Confirm this interaction"}
               </button>
+              {confirmationState.message ? (
+                <p
+                  className={cn(
+                    "rounded-[1.2rem] px-4 py-3 text-sm leading-7",
+                    confirmationState.status === "error"
+                      ? "border border-amber-300/40 bg-amber-50 text-amber-900"
+                      : "border border-primary/12 bg-white/78 text-foreground/72",
+                  )}
+                >
+                  {confirmationState.message}
+                </p>
+              ) : null}
             </form>
           ) : null}
         </div>

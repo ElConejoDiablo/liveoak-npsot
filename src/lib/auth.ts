@@ -9,6 +9,7 @@ import { Resend } from "resend";
 import {
   getMemberByEmail,
   isAllowedMemberEmail,
+  normalizeMemberEmail,
   type ActiveMember,
 } from "@/lib/members/allowlist";
 import { prisma } from "@/lib/db";
@@ -20,6 +21,26 @@ export function isMembersPortalConfigured() {
       process.env.AUTH_EMAIL_FROM &&
       process.env.AUTH_RESEND_API_KEY,
   );
+}
+
+export function normalizeMemberSignInEmail(email: string | null | undefined) {
+  if (!email) {
+    return "";
+  }
+
+  return normalizeMemberEmail(email);
+}
+
+export async function canAccessMembersPortalEmail(
+  email: string | null | undefined,
+) {
+  const candidate = normalizeMemberSignInEmail(email);
+
+  if (!candidate) {
+    return false;
+  }
+
+  return isAllowedMemberEmail(candidate);
 }
 
 function getRequiredEnv(name: string) {
@@ -133,13 +154,9 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user, email }) {
-      const candidate = (user.email ?? "").trim().toLowerCase();
+      const candidate = normalizeMemberSignInEmail(user.email);
 
-      if (!candidate) {
-        return false;
-      }
-
-      const allowed = await isAllowedMemberEmail(candidate);
+      const allowed = await canAccessMembersPortalEmail(candidate);
 
       if (!allowed) {
         return false;

@@ -2,6 +2,18 @@ import { PointLedgerReason, Prisma } from "@prisma/client";
 
 import { prisma } from "@/lib/db";
 
+export function shouldAwardCompletedInteractionPoints(input: {
+  ownerConfirmedAt: Date | null;
+  counterpartConfirmedAt: Date | null;
+  pointsAwardedAt: Date | null;
+}) {
+  return Boolean(
+    input.ownerConfirmedAt &&
+      input.counterpartConfirmedAt &&
+      !input.pointsAwardedAt,
+  );
+}
+
 export async function awardCompletedInteractionPoints(input: {
   transactionId: string;
   ownerId: string;
@@ -17,11 +29,13 @@ export async function awardCompletedInteractionPoints(input: {
       throw new Error("Transaction not found");
     }
 
-    if (transaction.pointsAwardedAt) {
-      return;
-    }
-
-    if (!transaction.ownerConfirmedAt || !transaction.counterpartConfirmedAt) {
+    if (
+      !shouldAwardCompletedInteractionPoints({
+        ownerConfirmedAt: transaction.ownerConfirmedAt,
+        counterpartConfirmedAt: transaction.counterpartConfirmedAt,
+        pointsAwardedAt: transaction.pointsAwardedAt,
+      })
+    ) {
       return;
     }
 

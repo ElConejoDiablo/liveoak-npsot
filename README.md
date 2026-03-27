@@ -26,6 +26,7 @@ Helpful commands:
 
 ```bash
 pnpm lint
+pnpm test:members
 pnpm typecheck
 pnpm build
 pnpm prisma:generate
@@ -124,6 +125,25 @@ Members portal notes:
 - Only allowlisted emails can complete member sign-in.
 - Unauthorized users should see only generic auth failure messaging.
 - Exchange posts, replies, transaction confirmations, and points live in Postgres, not markdown.
+- Resend must be configured with a verified sender/domain for `AUTH_EMAIL_FROM`.
+- Vercel Blob is required only for top-level member post image uploads.
+- Without the members env vars, the public site still works, but local member sign-in stays unavailable by design.
+
+Operational checks:
+
+```bash
+pnpm test:members
+pnpm lint
+pnpm typecheck
+pnpm build
+```
+
+Current production-readiness notes:
+
+- Server-side allowlist enforcement, protected member routes, and mutation guards are implemented.
+- The members portal still needs real Postgres, Resend, and Vercel Blob credentials for full end-to-end verification.
+- Protected member document metadata is ready, but real internal files still need to be supplied by the chapter.
+- This MVP does not yet include moderation tools, admin dashboards, or member content editing/deletion flows.
 
 ## Included platform/SEO basics
 

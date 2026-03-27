@@ -9,9 +9,13 @@ import { redirect } from "next/navigation";
 import { requireMemberActionContext } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { awardCompletedInteractionPoints } from "@/lib/members/points";
+import {
+  getCounterpartSelectionUpdate,
+  getTransactionConfirmationUpdate,
+} from "@/lib/members/transactions";
 
 export type MemberActionState = {
-  status: "idle" | "error";
+  status: "idle" | "error" | "success";
   message?: string;
 };
 
@@ -26,6 +30,10 @@ const ALLOWED_IMAGE_TYPES = new Set([
 
 function errorState(message: string): MemberActionState {
   return { status: "error", message };
+}
+
+function successState(message: string): MemberActionState {
+  return { status: "success", message };
 }
 
 function isValidCategory(value: string): value is ExchangeCategory {
@@ -177,113 +185,135 @@ export async function createExchangeReplyAction(
   });
 
   revalidatePath(`/members/exchange/${postId}`);
-  return { status: "idle" };
+  return successState("Reply posted.");
 }
 
-export async function selectCounterpartAction(formData: FormData) {
-  const { user } = await requireMemberActionContext();
-  const postId = normalizeTextField(formData.get("postId"));
-  const counterpartId = normalizeTextField(formData.get("counterpartId"));
+export async function selectCounterpartAction(
+  _previousState: MemberActionState,
+  formData: FormData,
+): Promise<MemberActionState> {
+  try {
+    const { user } = await requireMemberActionContext();
+    const postId = normalizeTextField(formData.get("postId"));
+    const counterpartId = normalizeTextField(formData.get("counterpartId"));
 
-  if (!postId || !counterpartId) {
-    throw new Error("Missing transaction selection.");
-  }
+    if (!postId || !counterpartId) {
+      return errorState("Choose the member involved before saving this interaction.");
+    }
 
-  const post = await prisma.exchangePost.findUnique({
-    where: { id: postId },
-    include: {
-      replies: {
-        select: { authorId: true },
+    const post = await prisma.exchangePost.findUnique({
+      where: { id: postId },
+      include: {
+        replies: {
+          select: { authorId: true },
+        },
+        transaction: {
+          select: {
+            counterpartId: true,
+          },
+        },
       },
-    },
-  });
+    });
 
-  if (!post || post.authorId !== user.id) {
-    throw new Error("You cannot update this transaction.");
+    if (!post || post.authorId !== user.id) {
+      return errorState("You cannot update this interaction.");
+    }
+
+    const validCounterpart = post.replies.some(
+      (reply) => reply.authorId === counterpartId && reply.authorId !== user.id,
+    );
+
+    if (!validCounterpart) {
+      return errorState("Choose a replying member to associate with this interaction.");
+    }
+
+    await prisma.exchangeTransaction.upsert({
+      where: { postId },
+      update: getCounterpartSelectionUpdate({
+        currentCounterpartId: post.transaction?.counterpartId ?? null,
+        nextCounterpartId: counterpartId,
+      }),
+      create: {
+        postId,
+        counterpartId,
+      },
+    });
+
+    await prisma.exchangePost.update({
+      where: { id: postId },
+      data: {
+        status: "pending",
+      },
+    });
+
+    revalidatePath(`/members/exchange/${postId}`);
+    revalidatePath("/members/exchange");
+    return successState("Interaction participant saved.");
+  } catch {
+    return errorState("That interaction could not be updated right now.");
   }
-
-  const validCounterpart = post.replies.some(
-    (reply) => reply.authorId === counterpartId && reply.authorId !== user.id,
-  );
-
-  if (!validCounterpart) {
-    throw new Error("Choose a replying member to associate with this interaction.");
-  }
-
-  await prisma.exchangeTransaction.upsert({
-    where: { postId },
-    update: {
-      counterpartId,
-    },
-    create: {
-      postId,
-      counterpartId,
-    },
-  });
-
-  await prisma.exchangePost.update({
-    where: { id: postId },
-    data: {
-      status: "pending",
-    },
-  });
-
-  revalidatePath(`/members/exchange/${postId}`);
-  revalidatePath("/members/exchange");
 }
 
-export async function confirmTransactionAction(formData: FormData) {
-  const { user } = await requireMemberActionContext();
-  const postId = normalizeTextField(formData.get("postId"));
+export async function confirmTransactionAction(
+  _previousState: MemberActionState,
+  formData: FormData,
+): Promise<MemberActionState> {
+  try {
+    const { user } = await requireMemberActionContext();
+    const postId = normalizeTextField(formData.get("postId"));
 
-  if (!postId) {
-    throw new Error("Missing transaction information.");
-  }
+    if (!postId) {
+      return errorState("Missing transaction information.");
+    }
 
-  const post = await prisma.exchangePost.findUnique({
-    where: { id: postId },
-    include: {
-      transaction: true,
-    },
-  });
-
-  if (!post || !post.transaction || !post.transaction.counterpartId) {
-    throw new Error("This interaction is not ready for confirmation.");
-  }
-
-  const updates: {
-    ownerConfirmedAt?: Date;
-    counterpartConfirmedAt?: Date;
-  } = {};
-
-  if (user.id === post.authorId && !post.transaction.ownerConfirmedAt) {
-    updates.ownerConfirmedAt = new Date();
-  } else if (
-    user.id === post.transaction.counterpartId &&
-    !post.transaction.counterpartConfirmedAt
-  ) {
-    updates.counterpartConfirmedAt = new Date();
-  } else {
-    throw new Error("You are not allowed to confirm this interaction.");
-  }
-
-  const transaction = await prisma.exchangeTransaction.update({
-    where: { id: post.transaction.id },
-    data: updates,
-  });
-
-  if (
-    (transaction.ownerConfirmedAt || updates.ownerConfirmedAt) &&
-    (transaction.counterpartConfirmedAt || updates.counterpartConfirmedAt)
-  ) {
-    await awardCompletedInteractionPoints({
-      transactionId: transaction.id,
-      ownerId: post.authorId,
-      counterpartId: post.transaction.counterpartId,
+    const post = await prisma.exchangePost.findUnique({
+      where: { id: postId },
+      include: {
+        transaction: true,
+      },
     });
-  }
 
-  revalidatePath(`/members/exchange/${postId}`);
-  revalidatePath("/members");
-  revalidatePath("/members/exchange");
+    if (!post || !post.transaction || !post.transaction.counterpartId) {
+      return errorState("This interaction is not ready for confirmation yet.");
+    }
+
+    const confirmation = getTransactionConfirmationUpdate({
+      actorUserId: user.id,
+      ownerUserId: post.authorId,
+      counterpartUserId: post.transaction.counterpartId,
+      transaction: {
+        ownerConfirmedAt: post.transaction.ownerConfirmedAt,
+        counterpartConfirmedAt: post.transaction.counterpartConfirmedAt,
+        pointsAwardedAt: post.transaction.pointsAwardedAt,
+      },
+    });
+
+    if (!confirmation.ok) {
+      return errorState(confirmation.message);
+    }
+
+    const transaction = await prisma.exchangeTransaction.update({
+      where: { id: post.transaction.id },
+      data: confirmation.update,
+    });
+
+    if (transaction.ownerConfirmedAt && transaction.counterpartConfirmedAt) {
+      await awardCompletedInteractionPoints({
+        transactionId: transaction.id,
+        ownerId: post.authorId,
+        counterpartId: post.transaction.counterpartId,
+      });
+    }
+
+    revalidatePath(`/members/exchange/${postId}`);
+    revalidatePath("/members");
+    revalidatePath("/members/exchange");
+    return successState(
+      transaction.ownerConfirmedAt && transaction.counterpartConfirmedAt
+        ? "Both confirmations are in. Points have been awarded."
+        : "Your confirmation has been recorded.",
+    );
+  } catch {
+    return errorState("That confirmation could not be saved right now.");
+  }
 }
