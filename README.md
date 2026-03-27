@@ -175,6 +175,11 @@ Current production-readiness notes:
 
 Use this checklist for a real staging verification run:
 
+0. Deployment preflight
+- Visit `/members/sign-in` on the target deployment before deeper testing.
+- If `/members` or `/members/sign-in` returns the public 404 page, stop there: the deployment is not running a revision that includes the members portal yet.
+- Confirm the target deployment is built from the expected `main` commit before testing auth, uploads, or exchange flows.
+
 1. Auth and access
 - Visit `/members` while signed out and confirm it redirects to `/members/sign-in`.
 - Request a magic link with an allowlisted email and confirm the sign-in email is delivered.
