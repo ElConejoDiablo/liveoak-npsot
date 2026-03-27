@@ -20,6 +20,7 @@ export const dynamic = "force-dynamic";
 export default async function MemberSignInPage() {
   const membersPortalConfigured = isMembersPortalConfigured();
   const session = await auth();
+  const isProductionDeployment = process.env.NODE_ENV === "production";
 
   if (session?.user?.email) {
     redirect("/members" as Route);
@@ -51,10 +52,19 @@ export default async function MemberSignInPage() {
         </div>
         {!membersPortalConfigured ? (
           <div className="mt-5 rounded-[1.4rem] border border-amber-300/40 bg-amber-50 p-5 text-sm leading-7 text-amber-950">
-            This local environment is missing the auth/database configuration needed
-            to send live magic links. Add the members portal variables from
-            <code className="mx-1 rounded bg-white/70 px-1.5 py-0.5 text-xs">.env.example</code>
-            to enable full member sign-in locally.
+            {isProductionDeployment ? (
+              "This deployment is not yet configured for live member sign-in. Add the required members portal environment variables in the deployment settings to enable access."
+            ) : (
+              <>
+                This local environment is missing the auth/database configuration
+                needed to send live magic links. Add the members portal variables
+                from
+                <code className="mx-1 rounded bg-white/70 px-1.5 py-0.5 text-xs">
+                  .env.example
+                </code>
+                to enable full member sign-in locally.
+              </>
+            )}
           </div>
         ) : null}
       </div>
