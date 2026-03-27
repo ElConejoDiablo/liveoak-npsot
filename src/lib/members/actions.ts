@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 
 import { requireMemberActionContext } from "@/lib/auth";
 import { prisma } from "@/lib/db";
+import { requireServerEnv } from "@/lib/env";
 import { logMembersPortalEvent } from "@/lib/members/log";
 import { awardCompletedInteractionPoints } from "@/lib/members/points";
 import {
@@ -81,11 +82,7 @@ async function uploadPostImages(files: File[], authorId: string) {
     return [];
   }
 
-  const token = process.env.BLOB_READ_WRITE_TOKEN;
-
-  if (!token) {
-    throw new Error("Image uploads are not configured on this environment.");
-  }
+  const token = requireServerEnv("BLOB_READ_WRITE_TOKEN");
 
   const uploadedImages: { blobUrl: string; blobPath: string; sortOrder: number }[] = [];
 

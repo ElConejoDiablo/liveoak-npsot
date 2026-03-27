@@ -7,6 +7,11 @@ import { redirect } from "next/navigation";
 import { Resend } from "resend";
 
 import {
+  getMembersPortalConfigurationError,
+  isMembersPortalConfigured,
+  requireServerEnv,
+} from "@/lib/env";
+import {
   getMemberByEmail,
   isAllowedMemberEmail,
   normalizeMemberEmail,
@@ -18,14 +23,7 @@ import {
 } from "@/lib/members/log";
 import { prisma } from "@/lib/db";
 
-export function isMembersPortalConfigured() {
-  return Boolean(
-    process.env.DATABASE_URL &&
-      process.env.AUTH_SECRET &&
-      process.env.AUTH_EMAIL_FROM &&
-      process.env.AUTH_RESEND_API_KEY,
-  );
-}
+export { isMembersPortalConfigured } from "@/lib/env";
 
 export function normalizeMemberSignInEmail(email: string | null | undefined) {
   if (!email) {
@@ -47,16 +45,6 @@ export async function canAccessMembersPortalEmail(
   return isAllowedMemberEmail(candidate);
 }
 
-function getRequiredEnv(name: string) {
-  const value = process.env[name];
-
-  if (!value) {
-    throw new Error(`Missing required environment variable: ${name}`);
-  }
-
-  return value;
-}
-
 async function sendMagicLinkEmail({
   identifier,
   url,
@@ -67,11 +55,11 @@ async function sendMagicLinkEmail({
   provider: { from?: string };
 }) {
   try {
-    const resend = new Resend(getRequiredEnv("AUTH_RESEND_API_KEY"));
+    const resend = new Resend(requireServerEnv("AUTH_RESEND_API_KEY"));
     const siteName = "Live Oak Chapter members portal";
 
     await resend.emails.send({
-      from: provider.from ?? getRequiredEnv("AUTH_EMAIL_FROM"),
+      from: provider.from ?? requireServerEnv("AUTH_EMAIL_FROM"),
       to: identifier,
       subject: `${siteName} sign-in link`,
       text: [
@@ -217,6 +205,14 @@ export const authOptions: NextAuthOptions = {
 
 export async function auth() {
   if (!isMembersPortalConfigured()) {
+    const configurationError = getMembersPortalConfigurationError("auth");
+
+    if (configurationError) {
+      logMembersPortalEvent("members-portal-env-misconfigured", {
+        error: configurationError.message,
+      });
+    }
+
     return null;
   }
 

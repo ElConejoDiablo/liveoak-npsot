@@ -97,15 +97,17 @@ Suggested deployment steps:
 Required environment variables:
 
 - `DATABASE_URL`
-  Postgres connection string for Prisma and Auth.js data.
+  Postgres connection string for Prisma and Auth.js session/user data.
 - `AUTH_SECRET`
-  Long random secret used by NextAuth/Auth.js.
+  Long random secret used by Auth.js for signing and encryption.
 - `AUTH_EMAIL_FROM`
   Verified sender address used for magic-link emails.
+  Format: `Display Name <email@example.com>`
 - `AUTH_RESEND_API_KEY`
   Resend API key for sending sign-in emails.
 - `NEXTAUTH_URL`
-  Base URL for local development, for example `http://localhost:3000`.
+  Full base URL for the current environment.
+  Use `http://localhost:3000` locally and the exact deployed `https://...` URL in staging and production.
 - `BLOB_READ_WRITE_TOKEN`
   Vercel Blob token used for top-level member post image uploads.
 
@@ -119,14 +121,29 @@ pnpm prisma:push
 pnpm dev
 ```
 
+Environment setup notes:
+
+- Copy `.env.example` to `.env.local` for local development.
+- Do not commit real secrets.
+- `AUTH_EMAIL_FROM` must be a Resend-verified sender and should stay in the exact `Display Name <email@example.com>` format.
+- `NEXTAUTH_URL` must exactly match the environment where auth callbacks run. A wrong value here can break magic-link callbacks even when email delivery succeeds.
+- The members portal is considered fully configured only when all six variables above are present and valid on the server.
+
 Staging verification setup:
 
 1. Set all required environment variables in the staging environment.
-2. Confirm `AUTH_EMAIL_FROM` is a verified sender in Resend.
-3. Run `pnpm prisma:generate`.
-4. Run `pnpm prisma:push` against the staging Postgres database.
-5. Confirm the allowlist file at `src/data/members/active-members.md` contains the staging tester emails.
-6. Deploy or start the app with the same env vars available to the server runtime.
+2. Set `NEXTAUTH_URL` to the exact staging URL that members will use.
+3. Confirm `AUTH_EMAIL_FROM` is a verified sender in Resend.
+4. Run `pnpm prisma:generate`.
+5. Run `pnpm prisma:push` against the staging Postgres database.
+6. Confirm the allowlist file at `src/data/members/active-members.md` contains the staging tester emails.
+7. Deploy or start the app with the same env vars available to the server runtime.
+
+Production notes:
+
+- Use the production database and production Resend sender/domain separately from staging.
+- Set `NEXTAUTH_URL` to the final production site URL before testing magic links.
+- Rotate `AUTH_SECRET`, Resend keys, and Blob tokens through your secret manager or Vercel project settings, not in the repo.
 
 Members portal notes:
 
@@ -195,6 +212,13 @@ Use this checklist for a real staging verification run:
 - Postgres rows for `User`, `ExchangePost`, `ExchangeReply`, `ExchangeTransaction`, and `PointLedger`.
 - Blob objects under the `members/exchange/` prefix for uploaded post images.
 - Server logs for `[members]` and `[members-auth]` events if auth, mutation, upload, or points-award failures occur.
+
+7. Environment checks
+- Set all six required members-portal variables in Vercel for the target environment.
+- Verify the app can connect to Postgres before testing auth flows.
+- Verify magic-link email delivery from Resend.
+- Verify the callback/auth flow completes against the exact `NEXTAUTH_URL` for that environment.
+- Verify Blob upload succeeds for a top-level member post image.
 
 ## Known manual verification limits
 
