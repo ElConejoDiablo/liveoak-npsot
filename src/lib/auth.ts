@@ -12,6 +12,10 @@ import {
   normalizeMemberEmail,
   type ActiveMember,
 } from "@/lib/members/allowlist";
+import {
+  logMembersPortalAuthEvent,
+  logMembersPortalEvent,
+} from "@/lib/members/log";
 import { prisma } from "@/lib/db";
 
 export function isMembersPortalConfigured() {
@@ -62,43 +66,58 @@ async function sendMagicLinkEmail({
   url: string;
   provider: { from?: string };
 }) {
-  const resend = new Resend(getRequiredEnv("AUTH_RESEND_API_KEY"));
-  const siteName = "Live Oak Chapter members portal";
+  try {
+    const resend = new Resend(getRequiredEnv("AUTH_RESEND_API_KEY"));
+    const siteName = "Live Oak Chapter members portal";
 
-  await resend.emails.send({
-    from: provider.from ?? getRequiredEnv("AUTH_EMAIL_FROM"),
-    to: identifier,
-    subject: `${siteName} sign-in link`,
-    text: [
-      `Use this secure sign-in link to access the ${siteName}:`,
-      url,
-      "",
-      "If you did not request this email, you can safely ignore it.",
-    ].join("\n"),
-    html: `
-      <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #223226;">
-        <h1 style="font-size: 22px; margin-bottom: 16px;">Live Oak Chapter members portal</h1>
-        <p>Use the secure link below to sign in:</p>
-        <p style="margin: 24px 0;">
-          <a
-            href="${url}"
-            style="display: inline-block; padding: 12px 20px; border-radius: 999px; background: #2f5d3a; color: #ffffff; text-decoration: none; font-weight: 700;"
-          >
-            Sign in
-          </a>
-        </p>
-        <p>If the button does not work, copy and paste this URL into your browser:</p>
-        <p style="word-break: break-all;">${url}</p>
-        <p>If you did not request this email, you can safely ignore it.</p>
-      </div>
-    `,
-  });
+    await resend.emails.send({
+      from: provider.from ?? getRequiredEnv("AUTH_EMAIL_FROM"),
+      to: identifier,
+      subject: `${siteName} sign-in link`,
+      text: [
+        `Use this secure sign-in link to access the ${siteName}:`,
+        url,
+        "",
+        "If you did not request this email, you can safely ignore it.",
+      ].join("\n"),
+      html: `
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #223226;">
+          <h1 style="font-size: 22px; margin-bottom: 16px;">Live Oak Chapter members portal</h1>
+          <p>Use the secure link below to sign in:</p>
+          <p style="margin: 24px 0;">
+            <a
+              href="${url}"
+              style="display: inline-block; padding: 12px 20px; border-radius: 999px; background: #2f5d3a; color: #ffffff; text-decoration: none; font-weight: 700;"
+            >
+              Sign in
+            </a>
+          </p>
+          <p>If the button does not work, copy and paste this URL into your browser:</p>
+          <p style="word-break: break-all;">${url}</p>
+          <p>If you did not request this email, you can safely ignore it.</p>
+        </div>
+      `,
+    });
+  } catch (error) {
+    logMembersPortalAuthEvent({
+      event: "magic-link-send-failed",
+      email: identifier,
+      details: {
+        error: error instanceof Error ? error.message : "unknown-error",
+      },
+    });
+    throw error;
+  }
 }
 
 async function syncAllowlistedUser(email: string): Promise<ActiveMember | null> {
   const member = await getMemberByEmail(email);
 
   if (!member) {
+    logMembersPortalAuthEvent({
+      event: "allowlist-sync-miss",
+      email,
+    });
     return null;
   }
 
@@ -159,11 +178,25 @@ export const authOptions: NextAuthOptions = {
       const allowed = await canAccessMembersPortalEmail(candidate);
 
       if (!allowed) {
+        logMembersPortalAuthEvent({
+          event: "sign-in-denied",
+          email: candidate,
+          details: {
+            verificationRequest: Boolean(email?.verificationRequest),
+          },
+        });
         return false;
       }
 
       if (!email?.verificationRequest) {
-        await syncAllowlistedUser(candidate);
+        const member = await syncAllowlistedUser(candidate);
+
+        if (!member) {
+          logMembersPortalEvent("allowlisted-user-sync-failed-after-sign-in", {
+            email: candidate ? "[masked]" : undefined,
+          });
+          return false;
+        }
       }
 
       return true;
@@ -209,6 +242,9 @@ export async function getCurrentMemberContext() {
   });
 
   if (!user) {
+    logMembersPortalEvent("member-context-user-missing", {
+      email: sessionEmail ? "[masked]" : undefined,
+    });
     return null;
   }
 

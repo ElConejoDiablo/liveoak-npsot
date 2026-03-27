@@ -119,6 +119,15 @@ pnpm prisma:push
 pnpm dev
 ```
 
+Staging verification setup:
+
+1. Set all required environment variables in the staging environment.
+2. Confirm `AUTH_EMAIL_FROM` is a verified sender in Resend.
+3. Run `pnpm prisma:generate`.
+4. Run `pnpm prisma:push` against the staging Postgres database.
+5. Confirm the allowlist file at `src/data/members/active-members.md` contains the staging tester emails.
+6. Deploy or start the app with the same env vars available to the server runtime.
+
 Members portal notes:
 
 - The allowlist source of truth is `src/data/members/active-members.md`.
@@ -144,6 +153,57 @@ Current production-readiness notes:
 - The members portal still needs real Postgres, Resend, and Vercel Blob credentials for full end-to-end verification.
 - Protected member document metadata is ready, but real internal files still need to be supplied by the chapter.
 - This MVP does not yet include moderation tools, admin dashboards, or member content editing/deletion flows.
+
+## Members staging checklist
+
+Use this checklist for a real staging verification run:
+
+1. Auth and access
+- Visit `/members` while signed out and confirm it redirects to `/members/sign-in`.
+- Request a magic link with an allowlisted email and confirm the sign-in email is delivered.
+- Request a magic link with a non-allowlisted email and confirm the UI stays generic and does not reveal roster membership.
+- Complete a magic-link sign-in with an allowlisted email and confirm `/members` loads successfully.
+
+2. Database and allowlist sync
+- Confirm a matching `User` row exists in Postgres after successful sign-in.
+- Confirm the signed-in user has the expected `role` from `src/data/members/active-members.md`.
+- Confirm signed-out access to `/members`, `/members/documents`, `/members/exchange`, and `/members/exchange/[postId]` is blocked server-side.
+
+3. Documents
+- Confirm `/members/documents` renders for an authenticated allowlisted member.
+- Confirm document metadata shows correctly and links resolve as expected for any real internal files added for staging.
+
+4. Exchange board
+- Create a new member post without images.
+- Create a new member post with 1 or more images and confirm the images render on the detail page.
+- Confirm invalid file types and oversize files fail with safe user-facing messages.
+- Confirm the new post appears on `/members/exchange` and `/members`.
+- Add a reply from a second allowlisted member.
+- Confirm a stale or invalid post ID fails safely and does not expose internal errors.
+
+5. Transaction confirmation and points
+- As the post owner, select a valid replying member as the counterpart.
+- Confirm the counterpart selection updates the post status to `pending`.
+- Confirm once as the owner and verify the interaction remains incomplete.
+- Confirm once as the counterpart and verify the interaction becomes `completed`.
+- Confirm both users receive exactly 1 point.
+- Repeat the confirmation submission and verify no extra points are awarded.
+- Change the counterpart before completion and verify stale confirmations are cleared.
+
+6. What to inspect during staging
+- Resend delivery logs for magic-link delivery success/failure.
+- Postgres rows for `User`, `ExchangePost`, `ExchangeReply`, `ExchangeTransaction`, and `PointLedger`.
+- Blob objects under the `members/exchange/` prefix for uploaded post images.
+- Server logs for `[members]` and `[members-auth]` events if auth, mutation, upload, or points-award failures occur.
+
+## Known manual verification limits
+
+These still require a real staging environment with external services:
+
+- live magic-link email delivery and callback handling
+- real Postgres writes and persistence checks
+- real Vercel Blob upload and retrieval behavior
+- full multi-user confirmation and points verification across separate member accounts
 
 ## Included platform/SEO basics
 

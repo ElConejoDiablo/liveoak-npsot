@@ -1,6 +1,7 @@
 import { PointLedgerReason, Prisma } from "@prisma/client";
 
 import { prisma } from "@/lib/db";
+import { logMembersPortalEvent } from "@/lib/members/log";
 
 export function shouldAwardCompletedInteractionPoints(input: {
   ownerConfirmedAt: Date | null;
@@ -26,6 +27,9 @@ export async function awardCompletedInteractionPoints(input: {
     });
 
     if (!transaction) {
+      logMembersPortalEvent("points-award-transaction-missing", {
+        transactionId: input.transactionId,
+      });
       throw new Error("Transaction not found");
     }
 
@@ -63,6 +67,9 @@ export async function awardCompletedInteractionPoints(input: {
         error instanceof Prisma.PrismaClientKnownRequestError &&
         error.code === "P2002"
       ) {
+        logMembersPortalEvent("points-award-duplicate-ledger-guard", {
+          transactionId: input.transactionId,
+        });
         await tx.exchangeTransaction.update({
           where: { id: input.transactionId },
           data: {
@@ -73,6 +80,10 @@ export async function awardCompletedInteractionPoints(input: {
         return;
       }
 
+      logMembersPortalEvent("points-award-ledger-write-failed", {
+        transactionId: input.transactionId,
+        error: error instanceof Error ? error.message : "unknown-error",
+      });
       throw error;
     }
 

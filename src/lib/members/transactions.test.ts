@@ -72,6 +72,42 @@ test("a completed transaction cannot be confirmed again", () => {
   });
 });
 
+test("a transaction without a selected counterpart is not ready for confirmation", () => {
+  const result = getTransactionConfirmationUpdate({
+    actorUserId: "owner-1",
+    ownerUserId: "owner-1",
+    counterpartUserId: null,
+    transaction: {
+      ownerConfirmedAt: null,
+      counterpartConfirmedAt: null,
+      pointsAwardedAt: null,
+    },
+  });
+
+  assert.deepEqual(result, {
+    ok: false,
+    message: "This interaction is not ready for confirmation yet.",
+  });
+});
+
+test("repeat submission after the same member already confirmed is denied", () => {
+  const result = getTransactionConfirmationUpdate({
+    actorUserId: "owner-1",
+    ownerUserId: "owner-1",
+    counterpartUserId: "member-2",
+    transaction: {
+      ownerConfirmedAt: new Date("2026-03-24T10:00:00.000Z"),
+      counterpartConfirmedAt: null,
+      pointsAwardedAt: null,
+    },
+  });
+
+  assert.deepEqual(result, {
+    ok: false,
+    message: "You are not allowed to confirm this interaction.",
+  });
+});
+
 test("unrelated members cannot confirm another member's interaction", () => {
   const result = getTransactionConfirmationUpdate({
     actorUserId: "outsider",

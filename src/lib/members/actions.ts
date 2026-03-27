@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 
 import { requireMemberActionContext } from "@/lib/auth";
 import { prisma } from "@/lib/db";
+import { logMembersPortalEvent } from "@/lib/members/log";
 import { awardCompletedInteractionPoints } from "@/lib/members/points";
 import {
   getCounterpartSelectionUpdate,
@@ -27,6 +28,10 @@ const ALLOWED_IMAGE_TYPES = new Set([
   "image/webp",
   "image/gif",
 ]);
+const GENERIC_MEMBER_ACTION_ERROR =
+  "That request could not be completed right now. Please try again.";
+const GENERIC_UPLOAD_ERROR =
+  "Images could not be uploaded right now. Please try again in a moment.";
 
 function errorState(message: string): MemberActionState {
   return { status: "error", message };
@@ -46,6 +51,29 @@ function normalizeTextField(value: FormDataEntryValue | null) {
   }
 
   return value.trim();
+}
+
+function getSafeActionErrorMessage(error: unknown) {
+  if (!(error instanceof Error)) {
+    return GENERIC_MEMBER_ACTION_ERROR;
+  }
+
+  if (
+    error.message === "Only JPG, PNG, WEBP, and GIF images are allowed." ||
+    error.message === "Each image must be 5MB or smaller." ||
+    error.message === "Image uploads are not configured on this environment."
+  ) {
+    return error.message;
+  }
+
+  if (
+    error.message === "Unauthorized member action" ||
+    error.message === "Transaction not found"
+  ) {
+    return GENERIC_MEMBER_ACTION_ERROR;
+  }
+
+  return GENERIC_UPLOAD_ERROR;
 }
 
 async function uploadPostImages(files: File[], authorId: string) {
@@ -95,41 +123,40 @@ export async function createExchangePostAction(
   _previousState: MemberActionState,
   formData: FormData,
 ): Promise<MemberActionState> {
-  const { user } = await requireMemberActionContext();
-
-  const title = normalizeTextField(formData.get("title"));
-  const description = normalizeTextField(formData.get("description"));
-  const categoryValue = normalizeTextField(formData.get("category"));
-  const county = normalizeTextField(formData.get("county")) || null;
-  const availabilityNotes =
-    normalizeTextField(formData.get("availabilityNotes")) || null;
-  const swapPreference =
-    normalizeTextField(formData.get("swapPreference")) || null;
-
-  if (!title || title.length < 4) {
-    return errorState("Add a short, clear title so members know what is available or needed.");
-  }
-
-  if (!description || description.length < 12) {
-    return errorState("Add a little more detail so other members can respond usefully.");
-  }
-
-  if (!isValidCategory(categoryValue)) {
-    return errorState("Choose one of the available exchange categories.");
-  }
-
-  const imageFiles = formData
-    .getAll("images")
-    .filter(
-      (entry): entry is File =>
-        entry instanceof File && entry.size > 0 && entry.name.length > 0,
-    );
-
-  if (imageFiles.length > MAX_POST_IMAGES) {
-    return errorState(`You can upload up to ${MAX_POST_IMAGES} images per post.`);
-  }
-
   try {
+    const { user } = await requireMemberActionContext();
+    const title = normalizeTextField(formData.get("title"));
+    const description = normalizeTextField(formData.get("description"));
+    const categoryValue = normalizeTextField(formData.get("category"));
+    const county = normalizeTextField(formData.get("county")) || null;
+    const availabilityNotes =
+      normalizeTextField(formData.get("availabilityNotes")) || null;
+    const swapPreference =
+      normalizeTextField(formData.get("swapPreference")) || null;
+
+    if (!title || title.length < 4) {
+      return errorState("Add a short, clear title so members know what is available or needed.");
+    }
+
+    if (!description || description.length < 12) {
+      return errorState("Add a little more detail so other members can respond usefully.");
+    }
+
+    if (!isValidCategory(categoryValue)) {
+      return errorState("Choose one of the available exchange categories.");
+    }
+
+    const imageFiles = formData
+      .getAll("images")
+      .filter(
+        (entry): entry is File =>
+          entry instanceof File && entry.size > 0 && entry.name.length > 0,
+      );
+
+    if (imageFiles.length > MAX_POST_IMAGES) {
+      return errorState(`You can upload up to ${MAX_POST_IMAGES} images per post.`);
+    }
+
     const uploadedImages = await uploadPostImages(imageFiles, user.id);
 
     const post = await prisma.exchangePost.create({
@@ -151,12 +178,10 @@ export async function createExchangePostAction(
     revalidatePath("/members/exchange");
     redirect(`/members/exchange/${post.id}` as Route);
   } catch (error) {
-    const message =
-      error instanceof Error
-        ? error.message
-        : "The post could not be created right now.";
-
-    return errorState(message);
+    logMembersPortalEvent("create-exchange-post-failed", {
+      error: error instanceof Error ? error.message : "unknown-error",
+    });
+    return errorState(getSafeActionErrorMessage(error));
   }
 }
 
@@ -164,28 +189,48 @@ export async function createExchangeReplyAction(
   _previousState: MemberActionState,
   formData: FormData,
 ): Promise<MemberActionState> {
-  const { user } = await requireMemberActionContext();
-  const postId = normalizeTextField(formData.get("postId"));
-  const body = normalizeTextField(formData.get("body"));
+  try {
+    const { user } = await requireMemberActionContext();
+    const postId = normalizeTextField(formData.get("postId"));
+    const body = normalizeTextField(formData.get("body"));
 
-  if (!postId) {
-    return errorState("Missing post information.");
+    if (!postId) {
+      return errorState("Missing post information.");
+    }
+
+    if (!body || body.length < 3) {
+      return errorState("Write a short reply so the post owner knows how to follow up.");
+    }
+
+    const post = await prisma.exchangePost.findUnique({
+      where: { id: postId },
+      select: { id: true, status: true },
+    });
+
+    if (!post) {
+      return errorState("This member post is no longer available.");
+    }
+
+    if (post.status === "closed") {
+      return errorState("This member post is closed to new replies.");
+    }
+
+    await prisma.exchangeReply.create({
+      data: {
+        postId,
+        authorId: user.id,
+        body,
+      },
+    });
+
+    revalidatePath(`/members/exchange/${postId}`);
+    return successState("Reply posted.");
+  } catch (error) {
+    logMembersPortalEvent("create-exchange-reply-failed", {
+      error: error instanceof Error ? error.message : "unknown-error",
+    });
+    return errorState(GENERIC_MEMBER_ACTION_ERROR);
   }
-
-  if (!body || body.length < 3) {
-    return errorState("Write a short reply so the post owner knows how to follow up.");
-  }
-
-  await prisma.exchangeReply.create({
-    data: {
-      postId,
-      authorId: user.id,
-      body,
-    },
-  });
-
-  revalidatePath(`/members/exchange/${postId}`);
-  return successState("Reply posted.");
 }
 
 export async function selectCounterpartAction(
@@ -249,7 +294,14 @@ export async function selectCounterpartAction(
     revalidatePath(`/members/exchange/${postId}`);
     revalidatePath("/members/exchange");
     return successState("Interaction participant saved.");
-  } catch {
+  } catch (error) {
+    logMembersPortalEvent("select-counterpart-failed", {
+      error: error instanceof Error ? error.message : "unknown-error",
+      postId:
+        typeof formData.get("postId") === "string"
+          ? normalizeTextField(formData.get("postId"))
+          : undefined,
+    });
     return errorState("That interaction could not be updated right now.");
   }
 }
@@ -313,7 +365,14 @@ export async function confirmTransactionAction(
         ? "Both confirmations are in. Points have been awarded."
         : "Your confirmation has been recorded.",
     );
-  } catch {
+  } catch (error) {
+    logMembersPortalEvent("confirm-transaction-failed", {
+      error: error instanceof Error ? error.message : "unknown-error",
+      postId:
+        typeof formData.get("postId") === "string"
+          ? normalizeTextField(formData.get("postId"))
+          : undefined,
+    });
     return errorState("That confirmation could not be saved right now.");
   }
 }
