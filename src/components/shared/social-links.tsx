@@ -11,6 +11,8 @@ import { cn } from "@/lib/utils";
 type SocialLinksProps = {
   className?: string;
   stacked?: boolean;
+  includeEmail?: boolean;
+  compact?: boolean;
 };
 
 const links = [
@@ -36,7 +38,16 @@ const links = [
   },
 ];
 
-export function SocialLinks({ className, stacked = false }: SocialLinksProps) {
+export function SocialLinks({
+  className,
+  stacked = false,
+  includeEmail = true,
+  compact = false,
+}: SocialLinksProps) {
+  const visibleLinks = includeEmail
+    ? links
+    : links.filter((link) => link.label !== "Email");
+
   return (
     <ul
       className={cn(
@@ -46,7 +57,7 @@ export function SocialLinks({ className, stacked = false }: SocialLinksProps) {
       )}
       aria-label="Chapter social links"
     >
-      {links.map(({ label, href, icon: Icon }) => (
+      {visibleLinks.map(({ label, href, icon: Icon }) => (
         <li key={label}>
           <a
             href={href}
@@ -54,6 +65,7 @@ export function SocialLinks({ className, stacked = false }: SocialLinksProps) {
             rel={href.startsWith("http") ? "noreferrer" : undefined}
             className={cn(
               "inline-flex min-h-11 items-center gap-2 rounded-full border border-primary/15 bg-white/70 px-4 py-2 text-sm font-medium text-foreground transition hover:border-primary/30 hover:bg-white",
+              compact && "min-h-9 px-3 py-1.5 text-xs",
               stacked && "w-full justify-between rounded-2xl px-4 py-3",
             )}
             aria-label={label === "Email" ? `Email ${siteConfig.contactEmail}` : label}

@@ -175,24 +175,34 @@ export const secondaryNavigation: NavigationItem[] = [
 
 export const footerLinkGroups = [
   {
-    title: "Explore",
-    links: primaryNavigation,
+    title: "Start here",
+    links: [
+      { href: "/about", label: "About" },
+      { href: "/events", label: "Events" },
+      { href: "/news", label: "Articles" },
+      { href: "/resources", label: "Resources" },
+    ],
+  },
+  {
+    title: "Get involved",
+    links: [
+      { href: "/volunteer", label: "Volunteer" },
+      { href: "/members", label: "Members" },
+      { href: "/contact", label: "Contact" },
+      { href: siteConfig.npsot.joinUrl, label: "Join NPSOT" },
+    ],
   },
   {
     title: "Chapter",
     links: [
       { href: "/leadership", label: "Leadership" },
       { href: "/documents", label: "Documents" },
-      { href: "/members", label: "Members" },
-      { href: "/contact", label: "Contact" },
-      { href: siteConfig.contactUrl, label: "Email the Chapter" },
     ],
   },
   {
-    title: "NPSOT",
+    title: "Statewide",
     links: [
       { href: siteConfig.npsot.homeUrl, label: "NPSOT.org" },
-      { href: siteConfig.npsot.joinUrl, label: "Join or Renew" },
       { href: siteConfig.npsot.startGardenUrl, label: "Start a Native Garden" },
       {
         href: siteConfig.npsot.plantDatabaseUrl,
