@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Menu, Sprout } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 import { buttonVariants } from "@/components/ui/button-styles";
 import { Button } from "@/components/ui/button";
@@ -30,6 +31,19 @@ function isActive(pathname: string, href: string) {
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const { status } = useSession();
+  const memberSessionActive = status === "authenticated";
+  const sessionResolved = status !== "loading";
+  const membersHref = memberSessionActive ? "/members" : "/members/sign-in";
+  const desktopNavigation = [
+    ...primaryNavigation.slice(0, primaryNavigation.length - 1),
+    { href: membersHref, label: "Members" },
+    primaryNavigation[primaryNavigation.length - 1],
+  ];
+  const mobileNavigation = [
+    ...extendedNavigation.filter((item) => item.href !== "/members"),
+    { href: membersHref, label: "Members" },
+  ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-primary/10 bg-[rgba(250,245,236,0.92)] backdrop-blur-md">
@@ -47,8 +61,11 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden flex-1 items-center justify-center gap-0.5 lg:flex" aria-label="Primary">
-          {primaryNavigation.map((item) => {
-            const active = isActive(pathname, item.href);
+          {desktopNavigation.map((item) => {
+            const active =
+              item.label === "Members"
+                ? pathname.startsWith("/members")
+                : isActive(pathname, item.href);
             const desktopLabel = item.href === "/news" ? "Blog" : item.label;
 
             return (
@@ -68,15 +85,28 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
-          <SmartLink
-            href={siteConfig.joinUrl}
-            className={cn(
-              buttonVariants({ variant: "outline", size: "lg" }),
-              "h-auto rounded-full border-primary/15 bg-white px-4 py-2.5 text-sm",
-            )}
-          >
-            Join NPSOT
-          </SmartLink>
+          {sessionResolved && memberSessionActive ? (
+            <SmartLink
+              href="/members"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "h-auto rounded-full border-primary/15 bg-white px-4 py-2.5 text-sm",
+              )}
+            >
+              Members Portal
+            </SmartLink>
+          ) : null}
+          {sessionResolved && !memberSessionActive ? (
+            <SmartLink
+              href={siteConfig.joinUrl}
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "h-auto rounded-full border-primary/15 bg-white px-4 py-2.5 text-sm",
+              )}
+            >
+              Join NPSOT
+            </SmartLink>
+          ) : null}
           <SmartLink
             href="/events"
             className={cn(
@@ -117,8 +147,11 @@ export function SiteHeader() {
               </SheetHeader>
 
               <nav className="flex flex-1 flex-col gap-2 p-4" aria-label="Mobile">
-                {extendedNavigation.map((item) => {
-                  const active = isActive(pathname, item.href);
+                {mobileNavigation.map((item) => {
+                  const active =
+                    item.label === "Members"
+                      ? pathname.startsWith("/members")
+                      : isActive(pathname, item.href);
 
                   return (
                     <SmartLink
@@ -136,16 +169,30 @@ export function SiteHeader() {
               </nav>
 
               <div className="space-y-3 border-t border-primary/10 p-4">
-                <SmartLink
-                  href={siteConfig.joinUrl}
-                  className={cn(
-                    buttonVariants({ variant: "default", size: "lg" }),
-                    "flex h-auto w-full items-center justify-center rounded-full px-4 py-3",
-                  )}
-                >
-                  <Sprout className="mr-2 h-4 w-4" />
-                  Join NPSOT
-                </SmartLink>
+                {sessionResolved && memberSessionActive ? (
+                  <SmartLink
+                    href="/members"
+                    className={cn(
+                      buttonVariants({ variant: "default", size: "lg" }),
+                      "flex h-auto w-full items-center justify-center rounded-full px-4 py-3",
+                    )}
+                  >
+                    <Sprout className="mr-2 h-4 w-4" />
+                    Members Portal
+                  </SmartLink>
+                ) : null}
+                {sessionResolved && !memberSessionActive ? (
+                  <SmartLink
+                    href={siteConfig.joinUrl}
+                    className={cn(
+                      buttonVariants({ variant: "default", size: "lg" }),
+                      "flex h-auto w-full items-center justify-center rounded-full px-4 py-3",
+                    )}
+                  >
+                    <Sprout className="mr-2 h-4 w-4" />
+                    Join NPSOT
+                  </SmartLink>
+                ) : null}
                 <SmartLink
                   href={siteConfig.contactUrl}
                   className={cn(

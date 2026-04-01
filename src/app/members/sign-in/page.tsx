@@ -3,9 +3,13 @@ import type { Route } from "next";
 import { redirect } from "next/navigation";
 
 import { MemberSignInForm } from "@/components/members/member-signin-form";
+import { SmartLink } from "@/components/shared/smart-link";
 import { Container } from "@/components/shared/container";
+import { buttonVariants } from "@/components/ui/button-styles";
 import { auth, isMembersPortalConfigured } from "@/lib/auth";
 import { createMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/data/site";
+import { cn } from "@/lib/utils";
 
 export const metadata = createMetadata({
   title: "Member Sign In",
@@ -49,6 +53,38 @@ export default async function MemberSignInPage() {
           Member access covers the protected documents area, member exchange board,
           and other chapter-only resources. If you need help with access, contact
           the chapter officers directly.
+        </div>
+        <div className="mt-5 rounded-[1.4rem] border border-primary/10 bg-[#F5F0E1] p-5">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/72">
+            Not a member yet?
+          </p>
+          <h2 className="mt-2 font-heading text-2xl text-foreground">
+            Join NPSOT and connect with the Live Oak Chapter
+          </h2>
+          <p className="mt-3 text-sm leading-7 text-foreground/72">
+            Membership comes through NPSOT. If you are new to the chapter, join first,
+            then contact the chapter so your member email can be added for portal access.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <SmartLink
+              href={siteConfig.joinUrl}
+              className={cn(
+                buttonVariants({ variant: "default", size: "lg" }),
+                "h-11 rounded-full px-5",
+              )}
+            >
+              Join NPSOT
+            </SmartLink>
+            <SmartLink
+              href={siteConfig.contactUrl}
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "h-11 rounded-full border-primary/15 bg-white/85 px-5",
+              )}
+            >
+              Contact the chapter
+            </SmartLink>
+          </div>
         </div>
         {!membersPortalConfigured ? (
           <div className="mt-5 rounded-[1.4rem] border border-amber-300/40 bg-amber-50 p-5 text-sm leading-7 text-amber-950">
