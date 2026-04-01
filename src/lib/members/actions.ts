@@ -5,6 +5,7 @@ import { put } from "@vercel/blob";
 import type { Route } from "next";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
 
 import { requireMemberActionContext } from "@/lib/auth";
 import { prisma } from "@/lib/db";
@@ -175,6 +176,10 @@ export async function createExchangePostAction(
     revalidatePath("/members/exchange");
     redirect(`/members/exchange/${post.id}` as Route);
   } catch (error) {
+    if (isRedirectError(error)) {
+      throw error;
+    }
+
     logMembersPortalEvent("create-exchange-post-failed", {
       error: error instanceof Error ? error.message : "unknown-error",
     });
