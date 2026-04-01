@@ -1,6 +1,6 @@
 "use server";
 
-import { ExchangeCategory } from "@prisma/client";
+import { ExchangeCategory, ExchangeImageVisibility } from "@prisma/client";
 import { put } from "@vercel/blob";
 import type { Route } from "next";
 import { revalidatePath } from "next/cache";
@@ -47,6 +47,14 @@ function isValidCategory(value: string): value is ExchangeCategory {
   return Object.values(ExchangeCategory).includes(value as ExchangeCategory);
 }
 
+function isValidImageVisibility(
+  value: string,
+): value is ExchangeImageVisibility {
+  return Object.values(ExchangeImageVisibility).includes(
+    value as ExchangeImageVisibility,
+  );
+}
+
 function normalizeTextField(value: FormDataEntryValue | null) {
   if (typeof value !== "string") {
     return "";
@@ -85,7 +93,12 @@ async function uploadPostImages(files: File[], authorId: string) {
 
   const token = requireServerEnv("BLOB_READ_WRITE_TOKEN");
 
-  const uploadedImages: { blobUrl: string; blobPath: string; sortOrder: number }[] = [];
+  const uploadedImages: {
+    blobUrl: string;
+    blobPath: string;
+    visibility: ExchangeImageVisibility;
+    sortOrder: number;
+  }[] = [];
 
   for (const [index, file] of files.entries()) {
     if (!ALLOWED_IMAGE_TYPES.has(file.type)) {
@@ -101,7 +114,7 @@ async function uploadPostImages(files: File[], authorId: string) {
       `members/exchange/${authorId}/${Date.now()}-${index}-${safeName}`,
       file,
       {
-        access: "public",
+        access: "private",
         token,
         addRandomSuffix: true,
       },
@@ -110,6 +123,7 @@ async function uploadPostImages(files: File[], authorId: string) {
     uploadedImages.push({
       blobUrl: blob.url,
       blobPath: blob.pathname,
+      visibility: ExchangeImageVisibility.member_only,
       sortOrder: index,
     });
   }
@@ -185,6 +199,35 @@ export async function createExchangePostAction(
     });
     return errorState(getSafeActionErrorMessage(error));
   }
+}
+
+export async function updateExchangeImageVisibilityAction(
+  formData: FormData,
+): Promise<void> {
+  const { user } = await requireMemberActionContext();
+
+  if (user.role !== "admin") {
+    throw new Error("Admin privileges required");
+  }
+
+  const imageId = normalizeTextField(formData.get("imageId"));
+  const visibilityValue = normalizeTextField(formData.get("visibility"));
+  const returnTo = normalizeTextField(formData.get("returnTo"));
+
+  if (!imageId || !isValidImageVisibility(visibilityValue) || !returnTo) {
+    throw new Error("Invalid image visibility update");
+  }
+
+  await prisma.exchangePostImage.update({
+    where: { id: imageId },
+    data: {
+      visibility: visibilityValue,
+    },
+  });
+
+  revalidatePath(returnTo);
+  revalidatePath("/members/exchange");
+  redirect(returnTo as Route);
 }
 
 export async function createExchangeReplyAction(

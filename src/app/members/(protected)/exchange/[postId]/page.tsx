@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { ExchangeImageAccessCard } from "@/components/members/exchange-image-access-card";
 import { ExchangeReplyForm } from "@/components/members/exchange-reply-form";
 import { TransactionPanel } from "@/components/members/transaction-panel";
 import { createMetadata } from "@/lib/metadata";
@@ -8,6 +9,7 @@ import {
   exchangeCategoryLabels,
   exchangeStatusLabels,
   getDistinctReplyAuthors,
+  getExchangeImageUrl,
   getExchangePostById,
   type ExchangePostRecord,
 } from "@/lib/members/exchange";
@@ -67,6 +69,8 @@ export default async function ExchangePostDetailPage({
 
   const replyAuthors = getDistinctReplyAuthors(post);
   const canConfirm = canCurrentMemberConfirm(post, user.id);
+  const canManageImageVisibility = user.role === "admin";
+  const returnTo = `/members/exchange/${post.id}`;
 
   return (
     <div className="space-y-8">
@@ -123,9 +127,15 @@ export default async function ExchangePostDetailPage({
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={image.blobUrl}
+                src={getExchangeImageUrl(image.id)}
                 alt={post.title}
                 className="aspect-[4/3] w-full object-cover"
+              />
+              <ExchangeImageAccessCard
+                imageId={image.id}
+                visibility={image.visibility}
+                returnTo={returnTo}
+                canManageVisibility={canManageImageVisibility}
               />
             </div>
           ))}

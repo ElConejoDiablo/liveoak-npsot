@@ -1,5 +1,6 @@
 import {
   ExchangeCategory,
+  ExchangeImageVisibility,
   ExchangePostStatus,
   type ExchangePost,
   type ExchangeReply,
@@ -26,9 +27,19 @@ export const exchangeStatusLabels: Record<ExchangePostStatus, string> = {
   closed: "Closed",
 };
 
+export const exchangeImageVisibilityLabels: Record<ExchangeImageVisibility, string> = {
+  member_only: "Members only",
+  public_teaser: "Public teaser",
+};
+
 export type ExchangePostRecord = ExchangePost & {
   author: Pick<User, "id" | "name" | "email" | "pointsTotal">;
-  images: { id: string; blobUrl: string; sortOrder: number }[];
+  images: {
+    id: string;
+    blobUrl: string;
+    sortOrder: number;
+    visibility: ExchangeImageVisibility;
+  }[];
   replies: (ExchangeReply & {
     author: Pick<User, "id" | "name" | "email" | "pointsTotal">;
   })[];
@@ -53,7 +64,7 @@ export async function getExchangePosts(filters: ExchangeFilters = {}) {
         select: { id: true, name: true, email: true, pointsTotal: true },
       },
       images: {
-        select: { id: true, blobUrl: true, sortOrder: true },
+        select: { id: true, blobUrl: true, sortOrder: true, visibility: true },
         orderBy: { sortOrder: "asc" },
       },
       replies: {
@@ -84,7 +95,7 @@ export async function getExchangePostById(postId: string) {
         select: { id: true, name: true, email: true, pointsTotal: true },
       },
       images: {
-        select: { id: true, blobUrl: true, sortOrder: true },
+        select: { id: true, blobUrl: true, sortOrder: true, visibility: true },
         orderBy: { sortOrder: "asc" },
       },
       replies: {
@@ -123,4 +134,8 @@ export function getDistinctReplyAuthors(post: ExchangePostRecord) {
       return true;
     })
     .map((reply) => reply.author);
+}
+
+export function getExchangeImageUrl(imageId: string) {
+  return `/api/exchange-images/${imageId}`;
 }

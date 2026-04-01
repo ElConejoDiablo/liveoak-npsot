@@ -140,6 +140,9 @@ export function CreateExchangePostForm({
         <p className="mt-2 text-sm leading-6 text-foreground/66">
           JPG, PNG, WEBP, or GIF. Keep each image at 5MB or less.
         </p>
+        <p className="mt-2 text-sm leading-6 text-foreground/66">
+          Uploaded images stay inside the members portal unless an admin later marks one as a public teaser.
+        </p>
         {previews.length ? (
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {previews.map((preview) => (

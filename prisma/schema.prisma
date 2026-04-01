@@ -29,6 +29,11 @@ enum ExchangePostStatus {
   closed
 }
 
+enum ExchangeImageVisibility {
+  member_only
+  public_teaser
+}
+
 enum PointLedgerReason {
   completed_interaction
 }
@@ -107,13 +112,14 @@ model ExchangePost {
 }
 
 model ExchangePostImage {
-  id        String       @id @default(cuid())
+  id         String                  @id @default(cuid())
   postId     String
-  post      ExchangePost @relation(fields: [postId], references: [id], onDelete: Cascade)
-  blobUrl   String
-  blobPath  String
-  sortOrder Int          @default(0)
-  createdAt DateTime     @default(now())
+  post       ExchangePost            @relation(fields: [postId], references: [id], onDelete: Cascade)
+  blobUrl    String
+  blobPath   String
+  visibility ExchangeImageVisibility @default(member_only)
+  sortOrder  Int                     @default(0)
+  createdAt  DateTime                @default(now())
 
   @@index([postId, sortOrder])
 }

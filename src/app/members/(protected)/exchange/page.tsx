@@ -7,6 +7,7 @@ import { buttonVariants } from "@/components/ui/button-styles";
 import {
   exchangeCategoryLabels,
   exchangeStatusLabels,
+  getExchangeImageUrl,
   getExchangePosts,
 } from "@/lib/members/exchange";
 import { createMetadata } from "@/lib/metadata";
@@ -139,7 +140,7 @@ export default async function MemberExchangePage({ searchParams }: ExchangePageP
               {post.images[0] ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
-                  src={post.images[0].blobUrl}
+                  src={getExchangeImageUrl(post.images[0].id)}
                   alt={post.title}
                   className="aspect-[16/9] w-full object-cover"
                 />

@@ -110,6 +110,7 @@ Required environment variables:
   Use `http://localhost:3000` locally and the exact deployed `https://...` URL in staging and production.
 - `BLOB_READ_WRITE_TOKEN`
   Vercel Blob token used for top-level member post image uploads.
+  Uploads are stored privately by default and served through the app so only signed-in members can view them unless an admin promotes an image to a public teaser.
 
 Recommended setup flow:
 
@@ -224,6 +225,8 @@ Use this checklist for a real staging verification run:
 - Verify magic-link email delivery from Resend.
 - Verify the callback/auth flow completes against the exact `NEXTAUTH_URL` for that environment.
 - Verify Blob upload succeeds for a top-level member post image.
+- Verify member-only image URLs return `404` when signed out and `200` when signed in.
+- Verify admin teaser toggles expose only the intended image URL publicly.
 
 ## Known manual verification limits
 
@@ -248,3 +251,4 @@ These still require a real staging environment with external services:
 - Blog content is file-based and intentionally lightweight.
 - Some member document entries are structured placeholders until real member files are supplied.
 - Top-level member post image uploads use Vercel Blob and require `BLOB_READ_WRITE_TOKEN`.
+- Member exchange images are private by default. Admins can promote an individual image to a public teaser link without making the rest of the post public.
