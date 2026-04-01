@@ -40,11 +40,12 @@ export default async function MemberSignInPage() {
           Members portal
         </p>
         <h1 className="mt-3 font-heading text-4xl text-foreground sm:text-5xl">
-          Secure sign-in for active chapter members
+          Sign in to the members portal
         </h1>
         <p className="mt-4 text-lg leading-8 text-foreground/72">
-          Use your member email address to request a magic link. Access is limited
-          to active chapter members approved through the server-side allowlist.
+          Use the email address connected with your chapter access to request a
+          magic link. If you are a current member and need help signing in, the
+          chapter can help you get settled.
         </p>
         <div className="mt-8">
           <MemberSignInForm />
@@ -62,8 +63,9 @@ export default async function MemberSignInPage() {
             Join NPSOT and connect with the Live Oak Chapter
           </h2>
           <p className="mt-3 text-sm leading-7 text-foreground/72">
-            Membership comes through NPSOT. If you are new to the chapter, join first,
-            then contact the chapter so your member email can be added for portal access.
+            Membership comes through NPSOT. If you are new to the chapter, join
+            first, then contact the chapter so your member email can be connected
+            with portal access.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <SmartLink

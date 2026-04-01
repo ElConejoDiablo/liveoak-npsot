@@ -34,6 +34,7 @@ export function SiteHeader() {
   const { status } = useSession();
   const memberSessionActive = status === "authenticated";
   const sessionResolved = status !== "loading";
+  const showJoinCta = sessionResolved && !memberSessionActive;
   const membersHref = memberSessionActive ? "/members" : "/members/sign-in";
   const desktopNavigation = [
     ...primaryNavigation.slice(0, primaryNavigation.length - 1),
@@ -85,18 +86,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
-          {sessionResolved && memberSessionActive ? (
-            <SmartLink
-              href="/members"
-              className={cn(
-                buttonVariants({ variant: "outline", size: "lg" }),
-                "h-auto rounded-full border-primary/15 bg-white px-4 py-2.5 text-sm",
-              )}
-            >
-              Members Portal
-            </SmartLink>
-          ) : null}
-          {sessionResolved && !memberSessionActive ? (
+          {showJoinCta ? (
             <SmartLink
               href={siteConfig.joinUrl}
               className={cn(
@@ -169,19 +159,7 @@ export function SiteHeader() {
               </nav>
 
               <div className="space-y-3 border-t border-primary/10 p-4">
-                {sessionResolved && memberSessionActive ? (
-                  <SmartLink
-                    href="/members"
-                    className={cn(
-                      buttonVariants({ variant: "default", size: "lg" }),
-                      "flex h-auto w-full items-center justify-center rounded-full px-4 py-3",
-                    )}
-                  >
-                    <Sprout className="mr-2 h-4 w-4" />
-                    Members Portal
-                  </SmartLink>
-                ) : null}
-                {sessionResolved && !memberSessionActive ? (
+                {showJoinCta ? (
                   <SmartLink
                     href={siteConfig.joinUrl}
                     className={cn(
