@@ -24,7 +24,13 @@ export default function DocumentsPage() {
         title="A usable home for chapter governance, handouts, flyers, and member resources"
         description="This page gives the chapter a dependable place to publish materials as they become available, while still presenting a clear structure before every file is posted."
         serviceArea={siteConfig.serviceAreaLabel}
-        variant="savanna"
+        layout="compact"
+        highlightsTitle="Organized for"
+        highlights={[
+          "Governance and meeting materials",
+          "Public handouts and flyers",
+          "Member resources as they are added",
+        ]}
         actions={[
           { href: siteConfig.contactUrl, label: "Ask about chapter files" },
           { href: "/contact", label: "Contact / subscribe", variant: "secondary" },

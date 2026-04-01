@@ -23,6 +23,8 @@ export default function ProgramsPage() {
         description="A chapter site should show not only what the organization believes, but what it actually does. These program areas create that bridge."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="pollinator"
+        visualTitle="Programs that turn local curiosity into practice"
+        visualNote="Education, observation, seed work, outreach, and stewardship all belong in the chapter rhythm."
         actions={[
           { href: "/events", label: "View events" },
           { href: "/volunteer", label: "Find volunteer paths", variant: "secondary" },

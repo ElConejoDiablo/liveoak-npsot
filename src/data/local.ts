@@ -43,11 +43,11 @@ export const homepageActionPaths = [
     label: "View events",
   },
   {
-    title: "Join NPSOT",
+    title: "Explore resources",
     description:
-      "Support statewide native plant work and connect with the local chapter as programming grows.",
-    href: "https://www.npsot.org/join-or-renew-membership/",
-    label: "Join now",
+      "Go straight to starter guidance, chapter documents, and native-plant references without hunting through the site.",
+    href: "/resources",
+    label: "Browse resources",
   },
   {
     title: "Volunteer locally",

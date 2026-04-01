@@ -21,7 +21,13 @@ export default function LeadershipPage() {
         title="Chapter leadership should feel visible, approachable, and easy to contact"
         description="This page gives the chapter a straightforward way to publish officer information now and expand it later with biographies, committees, or board responsibilities if needed."
         serviceArea={siteConfig.serviceAreaLabel}
-        variant="community"
+        layout="compact"
+        highlightsTitle="Here now"
+        highlights={[
+          "Current officers and their roles",
+          "A shared chapter contact path for questions",
+          "Room to add fuller bios later if needed",
+        ]}
         actions={[
           { href: "/contact", label: "Contact the chapter" },
           { href: "/documents", label: "See documents", variant: "secondary" },

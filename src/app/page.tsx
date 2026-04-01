@@ -1,29 +1,16 @@
-import {
-  ArrowRight,
-  Binoculars,
-  BookOpenText,
-  HandHeart,
-  Megaphone,
-  Newspaper,
-  Sprout,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { ArticleCard } from "@/components/cards/article-card";
-import { EventCard } from "@/components/cards/event-card";
 import { buttonVariants } from "@/components/ui/button-styles";
 import { CtaBanner } from "@/components/sections/cta-banner";
-import { ImageFeatureSection } from "@/components/sections/image-feature-section";
 import { SectionShell } from "@/components/sections/section-shell";
 import { Container } from "@/components/shared/container";
 import { EditorialImageSlot } from "@/components/shared/editorial-image-slot";
 import { MotionReveal } from "@/components/shared/motion-reveal";
-import { PlantIllustration } from "@/components/shared/plant-illustration";
 import { SmartLink } from "@/components/shared/smart-link";
 import { NextEventPanel } from "@/components/events/next-event-panel";
-import { eventPageIntro, upcomingEvents } from "@/data/events";
-import { countyHighlights, homepageActionPaths } from "@/data/local";
-import { programAreas, seasonalHighlights } from "@/data/programs";
-import { resourceGroups } from "@/data/resources";
+import { upcomingEvents } from "@/data/events";
+import { homepageActionPaths } from "@/data/local";
 import { siteConfig } from "@/data/site";
 import { getFeaturedPosts, getLatestPost } from "@/lib/blog";
 import { createMetadata } from "@/lib/metadata";
@@ -35,24 +22,13 @@ export const metadata = createMetadata({
   eyebrow: "Live Oak Chapter",
 });
 
-const programIcons = {
-  sprout: Sprout,
-  binoculars: Binoculars,
-  "hand-heart": HandHeart,
-  megaphone: Megaphone,
-  seedling: BookOpenText,
-};
-
 export default async function Home() {
   const [featuredPosts, latestPost] = await Promise.all([
     getFeaturedPosts(3),
     getLatestPost(),
   ]);
   const nextEvent = upcomingEvents[0];
-  const moreReading =
-    latestPost === undefined
-      ? featuredPosts
-      : featuredPosts.filter((post) => post.slug !== latestPost.slug);
+  const highlightedPost = latestPost ?? featuredPosts[0];
 
   return (
     <>
@@ -93,13 +69,13 @@ export default async function Home() {
                 Join NPSOT
               </SmartLink>
               <SmartLink
-                href="/volunteer"
+                href="/resources"
                 className={cn(
                   buttonVariants({ variant: "ghost", size: "lg" }),
                   "h-auto rounded-full px-5 py-3 text-sm text-foreground/78 hover:bg-white/70",
                 )}
               >
-                Volunteer with us
+                Explore resources
               </SmartLink>
             </div>
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
@@ -136,7 +112,7 @@ export default async function Home() {
       <SectionShell
         eyebrow="Alive now"
         title="See what is happening in the chapter right now"
-        intro="Start with the next event, the latest article, or a clear way to join, volunteer, and connect."
+        intro="Start with the next event, the latest article, or a quick route to the page you need."
       >
         <div className="grid gap-5 xl:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
           <MotionReveal>
@@ -144,9 +120,9 @@ export default async function Home() {
           </MotionReveal>
 
           <div className="grid gap-5 lg:grid-cols-2">
-            {latestPost ? (
+            {highlightedPost ? (
               <MotionReveal>
-                <ArticleCard post={latestPost} />
+                <ArticleCard post={highlightedPost} />
               </MotionReveal>
             ) : null}
             <MotionReveal className="rounded-[1.8rem] border border-primary/10 bg-[#F5F0E1] p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]">
@@ -154,7 +130,7 @@ export default async function Home() {
                 Start here
               </p>
               <h2 className="mt-3 font-heading text-3xl leading-tight text-foreground">
-                Clear paths for first-time visitors
+                Quick paths for first-time visitors
               </h2>
               <div className="mt-5 space-y-3">
                 {homepageActionPaths.map((action) => (
@@ -184,8 +160,17 @@ export default async function Home() {
 
       <SectionShell
         eyebrow="Grounded mission"
-        title="A local chapter built to be useful, welcoming, and rooted in place"
-        intro="The chapter exists to help people learn, participate, and care for habitat in ways that make sense in south-central Texas."
+        title="A local chapter built to be useful, welcoming, and easy to navigate"
+        intro="The homepage should quickly explain what this chapter is for, then help visitors move to the page with the details they actually need."
+        actions={
+          <SmartLink
+            href="/about"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
+          >
+            <span>Read more about the chapter</span>
+            <ArrowRight className="h-4 w-4" />
+          </SmartLink>
+        }
       >
         <div className="grid gap-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
           <MotionReveal className="rounded-[2rem] border border-primary/10 bg-[#F5F0E1] p-6 shadow-[0_24px_70px_rgba(39,59,42,0.08)] sm:p-8">
@@ -216,201 +201,6 @@ export default async function Home() {
               </MotionReveal>
             ))}
           </div>
-        </div>
-      </SectionShell>
-
-      <SectionShell
-        id="home-events"
-        eyebrow="Upcoming events"
-        title="Upcoming programming across the chapter region"
-        intro="Browse upcoming meetings, walks, and hands-on learning with the details you need before you go."
-        actions={
-          <SmartLink
-            href="/events"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
-          >
-            <span>Browse the full events page</span>
-            <ArrowRight className="h-4 w-4" />
-          </SmartLink>
-        }
-      >
-        <div className="grid gap-5 lg:grid-cols-2">
-          {upcomingEvents.slice(0, 2).map((event, index) => (
-            <MotionReveal key={event.title} delay={index * 0.05}>
-              <EventCard event={event} />
-            </MotionReveal>
-          ))}
-        </div>
-        <MotionReveal className="mt-5 rounded-[1.5rem] border border-dashed border-primary/20 bg-[#F7F4E8] px-5 py-4 text-sm leading-7 text-foreground/72">
-          {eventPageIntro}
-        </MotionReveal>
-      </SectionShell>
-
-      <SectionShell
-        eyebrow="Programs"
-        title="What the chapter can do in the field, in the community, and over the course of the year"
-        intro="Chapter programs can begin with a first event, a plant question, a volunteer shift, or a field walk that makes the region easier to understand."
-      >
-        <ImageFeatureSection
-          eyebrow="Field-ready and welcoming"
-          title="Programs that turn curiosity into practice"
-          description="Chapter activities can bring together education, outdoor observation, stewardship, and beginner-friendly entry points that make local native plants easier to know."
-          bullets={[
-            "Public programs that feel useful to new gardeners and longtime members alike",
-            "Field walks and plant observation that translate ecology into direct experience",
-            "Seasonal seed, pollinator, and habitat topics tied to what is happening locally",
-          ]}
-          variant="pollinator"
-        />
-
-        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
-          {programAreas.map((area, index) => {
-            const Icon = programIcons[area.icon];
-
-            return (
-              <MotionReveal
-                key={area.title}
-                delay={index * 0.04}
-                className="rounded-[1.6rem] border border-primary/10 bg-white/78 p-5 shadow-[0_18px_60px_rgba(37,58,40,0.08)]"
-              >
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary/8 text-primary">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <h3 className="mt-4 font-heading text-2xl leading-tight text-foreground">
-                  {area.title}
-                </h3>
-                <p className="mt-3 text-base leading-7 text-foreground/72">
-                  {area.description}
-                </p>
-              </MotionReveal>
-            );
-          })}
-        </div>
-      </SectionShell>
-
-      <SectionShell
-        eyebrow="Seasonal focus"
-        title="What matters this season for seeds, pollinators, and field observation"
-        intro="Seasonal notes help connect chapter learning to what is happening outdoors right now."
-      >
-        <div className="grid gap-5 lg:grid-cols-3">
-          {seasonalHighlights.map((highlight, index) => (
-            <MotionReveal
-              key={highlight.title}
-              delay={index * 0.05}
-              className="overflow-hidden rounded-[1.8rem] border border-primary/10 bg-white/80 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
-            >
-              <PlantIllustration
-                variant={highlight.artVariant}
-                className="aspect-[4/3] rounded-none border-0 shadow-none"
-              />
-              <div className="p-5 sm:p-6">
-                <div className="text-sm font-semibold uppercase tracking-[0.22em] text-primary/74">
-                  {highlight.season}
-                </div>
-                <h3 className="mt-3 font-heading text-2xl leading-tight text-foreground">
-                  {highlight.title}
-                </h3>
-                <p className="mt-3 text-base leading-7 text-foreground/72">
-                  {highlight.description}
-                </p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {highlight.plants.map((plant) => (
-                    <span
-                      key={plant}
-                      className="rounded-full border border-primary/10 bg-primary/6 px-3 py-1 text-xs font-medium text-foreground/72"
-                    >
-                      {plant}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </MotionReveal>
-          ))}
-        </div>
-      </SectionShell>
-
-      <SectionShell
-        eyebrow="Across the chapter region"
-        title="Useful local context for Fayette, Colorado, and Lavaca Counties"
-        intro="These county notes keep the chapter grounded in the places it serves."
-      >
-        <div className="grid gap-5 lg:grid-cols-3">
-          {countyHighlights.map((highlight, index) => (
-            <MotionReveal
-              key={highlight.county}
-              delay={index * 0.05}
-              className="rounded-[1.8rem] border border-primary/10 bg-white/80 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
-            >
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary/72">
-                {highlight.county}
-              </p>
-              <p className="mt-4 text-base leading-7 text-foreground/74">
-                {highlight.landscape}
-              </p>
-              <p className="mt-4 text-base leading-7 text-foreground/74">
-                {highlight.starterFocus}
-              </p>
-              <SmartLink
-                href={highlight.link.href}
-                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
-              >
-                <span>{highlight.link.label}</span>
-                <ArrowRight className="h-4 w-4" />
-              </SmartLink>
-            </MotionReveal>
-          ))}
-        </div>
-      </SectionShell>
-
-      <SectionShell
-        eyebrow="Latest articles"
-        title="Recent reading from the chapter"
-        intro="Field guides, seasonal notes, habitat articles, and chapter updates help visitors keep learning between events."
-        actions={
-          <SmartLink
-            href="/news"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
-          >
-            <span>Read articles</span>
-            <Newspaper className="h-4 w-4" />
-          </SmartLink>
-        }
-      >
-        <div className="grid gap-5 lg:grid-cols-3">
-          {(moreReading.length ? moreReading : featuredPosts).slice(0, 3).map((post, index) => (
-            <MotionReveal key={post.slug} delay={index * 0.05}>
-              <ArticleCard post={post} />
-            </MotionReveal>
-          ))}
-        </div>
-      </SectionShell>
-
-      <SectionShell
-        eyebrow="Resources"
-        title="Connect local chapter activity to deeper native-plant resources"
-        intro="Use these resources to move between local chapter activity and dependable statewide guidance."
-      >
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {resourceGroups[0].links.map((link, index) => (
-            <MotionReveal key={link.title} delay={index * 0.04}>
-              <SmartLink
-                href={link.href}
-                className="group flex h-full flex-col rounded-[1.6rem] border border-primary/10 bg-white/78 p-5 shadow-[0_18px_60px_rgba(39,59,42,0.08)] transition hover:-translate-y-0.5"
-              >
-                <h3 className="font-heading text-2xl leading-tight text-foreground">
-                  {link.title}
-                </h3>
-                <p className="mt-3 flex-1 text-base leading-7 text-foreground/72">
-                  {link.description}
-                </p>
-                <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
-                  <span>Open resource</span>
-                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-                </div>
-              </SmartLink>
-            </MotionReveal>
-          ))}
         </div>
       </SectionShell>
 

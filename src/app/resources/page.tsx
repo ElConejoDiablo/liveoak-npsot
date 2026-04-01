@@ -22,7 +22,13 @@ export default function ResourcesPage() {
         title="Useful links for getting started, going deeper, and staying connected"
         description="A practical chapter site should make it easy to move between local activity, statewide NPSOT resources, and educational references that help people keep learning."
         serviceArea={siteConfig.serviceAreaLabel}
-        variant="bluebonnet"
+        layout="utility"
+        highlightsTitle="Start with"
+        highlights={[
+          "Search the full resource library",
+          "Beginner guidance and official NPSOT links",
+          "Chapter documents, newsletter signup, and email paths",
+        ]}
         actions={[
           { href: siteConfig.npsot.homeUrl, label: "Visit NPSOT.org" },
           { href: "/documents", label: "View documents page", variant: "secondary" },

@@ -153,8 +153,22 @@ export const primaryNavigation: NavigationItem[] = [
   { href: "/contact", label: "Contact" },
 ];
 
-export const extendedNavigation: NavigationItem[] = [
-  ...primaryNavigation,
+export const headerNavigation: NavigationItem[] = [
+  { href: "/about", label: "About" },
+  { href: "/events", label: "Events" },
+  { href: "/news", label: "Articles" },
+  { href: "/resources", label: "Resources" },
+];
+
+export const mobilePrimaryNavigation: NavigationItem[] = [
+  { href: "/", label: "Home" },
+  ...headerNavigation,
+  { href: "/contact", label: "Contact" },
+];
+
+export const secondaryNavigation: NavigationItem[] = [
+  { href: "/programs", label: "Programs" },
+  { href: "/volunteer", label: "Volunteer" },
   { href: "/leadership", label: "Leadership" },
   { href: "/documents", label: "Documents" },
 ];

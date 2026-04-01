@@ -1,11 +1,12 @@
-import { BoardMemberCard } from "@/components/cards/board-member-card";
+import { ArrowRight } from "lucide-react";
+
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionShell } from "@/components/sections/section-shell";
 import { Container } from "@/components/shared/container";
 import { MotionReveal } from "@/components/shared/motion-reveal";
+import { SmartLink } from "@/components/shared/smart-link";
 import { siteConfig } from "@/data/site";
-import { volunteerPaths } from "@/data/programs";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
@@ -17,6 +18,30 @@ export const metadata = createMetadata({
 });
 
 export default function AboutPage() {
+  const participationPaths = [
+    {
+      title: "Attend an event",
+      description:
+        "Start with a meeting, walk, or seasonal program to see the chapter in action and get a feel for the community.",
+      href: "/events",
+      label: "Browse events",
+    },
+    {
+      title: "Volunteer locally",
+      description:
+        "If you want to help with outreach, hospitality, stewardship, or chapter support, the volunteer page shows the clearest entry points.",
+      href: "/volunteer",
+      label: "See volunteer paths",
+    },
+    {
+      title: "Reach out or join",
+      description:
+        "Use the contact page for questions and introductions, or join NPSOT when you are ready to connect more deeply with the chapter.",
+      href: "/contact",
+      label: "Contact the chapter",
+    },
+  ] as const;
+
   return (
     <>
       <PageHero
@@ -25,6 +50,8 @@ export default function AboutPage() {
         description="The Live Oak Chapter exists to help native plants feel relevant, understandable, and actionable in everyday life. The chapter serves Fayette, Colorado, and Lavaca Counties with programs, outreach, and opportunities to learn alongside neighbors."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="savanna"
+        visualTitle="Learning together across the chapter region"
+        visualNote="Programs, conversations, and local stewardship help this chapter feel grounded in everyday life."
         actions={[
           { href: "/events", label: "View events" },
           { href: "/leadership", label: "Meet leadership", variant: "secondary" },
@@ -84,11 +111,11 @@ export default function AboutPage() {
 
       <SectionShell
         eyebrow="How to participate"
-        title="There are multiple ways to join in, even if you are just getting started"
-        intro="A healthy chapter makes room for people with different levels of time, knowledge, and confidence."
+        title="Choose the next step that fits your time, interest, and confidence"
+        intro="This page should help you orient quickly, then send you to the page built for the task you actually want to do."
       >
         <div className="grid gap-4 md:grid-cols-3">
-          {volunteerPaths.map((path, index) => (
+          {participationPaths.map((path, index) => (
             <MotionReveal
               key={path.title}
               delay={index * 0.05}
@@ -100,14 +127,13 @@ export default function AboutPage() {
               <p className="mt-3 text-base leading-7 text-foreground/72">
                 {path.description}
               </p>
-              <ul className="mt-5 space-y-2 text-sm leading-7 text-foreground/68">
-                {path.examples.map((example) => (
-                  <li key={example} className="flex gap-2">
-                    <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/65" />
-                    <span>{example}</span>
-                  </li>
-                ))}
-              </ul>
+              <SmartLink
+                href={path.href}
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+              >
+                <span>{path.label}</span>
+                <ArrowRight className="h-4 w-4" />
+              </SmartLink>
             </MotionReveal>
           ))}
         </div>
@@ -126,15 +152,52 @@ export default function AboutPage() {
 
       <SectionShell
         eyebrow="Leadership snapshot"
-        title="Current chapter leadership"
-        intro="Meet the chapter officers helping guide local programs, communication, and chapter stewardship."
+        title="A quick look at the team guiding chapter activity"
+        intro="About only needs a quick snapshot here. The dedicated leadership page can carry the fuller bios and contact context."
+        actions={
+          <SmartLink
+            href="/leadership"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
+          >
+            <span>Meet the full leadership team</span>
+            <ArrowRight className="h-4 w-4" />
+          </SmartLink>
+        }
       >
-        <div className="grid gap-5 lg:grid-cols-3">
-          {siteConfig.leadership.map((member, index) => (
-            <MotionReveal key={member.role} delay={index * 0.05}>
-              <BoardMemberCard member={member} />
-            </MotionReveal>
-          ))}
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+          <MotionReveal className="rounded-[1.8rem] border border-primary/10 bg-[#F5F0E1] p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)] sm:p-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary/72">
+              Leadership overview
+            </p>
+            <h3 className="mt-4 font-heading text-3xl leading-tight text-foreground">
+              A small officer team keeps the chapter welcoming, organized, and moving forward.
+            </h3>
+            <p className="mt-4 text-base leading-7 text-foreground/74">
+              Chapter leadership helps guide programs, communication, partnerships,
+              and the dependable behind-the-scenes work that makes local
+              participation easier.
+            </p>
+          </MotionReveal>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {siteConfig.leadership.map((member, index) => (
+              <MotionReveal
+                key={member.role}
+                delay={index * 0.05}
+                className="rounded-[1.7rem] border border-primary/10 bg-white/78 p-5 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
+              >
+                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary/72">
+                  {member.role}
+                </p>
+                <h3 className="mt-3 font-heading text-2xl leading-tight text-foreground">
+                  {member.name}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-foreground/72">
+                  {member.focus}
+                </p>
+              </MotionReveal>
+            ))}
+          </div>
         </div>
       </SectionShell>
 

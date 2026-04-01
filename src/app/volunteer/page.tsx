@@ -23,6 +23,8 @@ export default function VolunteerPage() {
         description="Volunteering does not need to mean taking on everything. It can mean helping with hospitality, events, outreach, writing, plant questions, or the practical tasks that make a chapter dependable."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="community"
+        visualTitle="Practical help keeps the chapter alive"
+        visualNote="Hospitality, outreach, stewardship, and everyday support all make room for more people to participate."
         actions={[
           { href: siteConfig.contactUrl, label: "Tell us how you'd like to help" },
           { href: siteConfig.joinUrl, label: "Join NPSOT", variant: "secondary" },

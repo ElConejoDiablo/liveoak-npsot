@@ -28,7 +28,13 @@ export default function ContactPage() {
         title="Reach the chapter with one simple form or a direct email"
         description="Use the chapter contact form for event questions, volunteer interest, membership follow-up, native plant questions, and requests to receive chapter updates."
         serviceArea={siteConfig.serviceAreaLabel}
-        variant="pollinator"
+        layout="utility"
+        highlightsTitle="Quick options"
+        highlights={[
+          "Use the form for questions, introductions, and follow-up",
+          "Email the chapter directly if that is easier",
+          "Check events if you want the fastest way to get involved",
+        ]}
         actions={[
           { href: siteConfig.contactUrl, label: "Email the chapter" },
           { href: "/events", label: "View events", variant: "secondary" },

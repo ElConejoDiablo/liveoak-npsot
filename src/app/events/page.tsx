@@ -32,7 +32,13 @@ export default function EventsPage() {
         title="Meetings, walks, and seasonal gatherings built to feel approachable"
         description="Use the chapter calendar to find meetings, walks, talks, and seasonal programming across the Live Oak Chapter service area."
         serviceArea={siteConfig.serviceAreaLabel}
-        variant="community"
+        layout="utility"
+        highlightsTitle="Quick scan"
+        highlights={[
+          "Start with the next event at the top of the page",
+          "Filter the full list by event type",
+          "Check visitor notes before attending for the first time",
+        ]}
         actions={[
           { href: siteConfig.contactUrl, label: "Ask about upcoming events" },
           { href: "/volunteer", label: "Volunteer with us", variant: "secondary" },

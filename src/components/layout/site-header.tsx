@@ -18,7 +18,12 @@ import {
 import { Container } from "@/components/shared/container";
 import { SiteLogo } from "@/components/icons/site-logo";
 import { SmartLink } from "@/components/shared/smart-link";
-import { extendedNavigation, primaryNavigation, siteConfig } from "@/data/site";
+import {
+  headerNavigation,
+  mobilePrimaryNavigation,
+  secondaryNavigation,
+  siteConfig,
+} from "@/data/site";
 import { cn } from "@/lib/utils";
 
 function isActive(pathname: string, href: string) {
@@ -36,15 +41,6 @@ export function SiteHeader() {
   const sessionResolved = status !== "loading";
   const showJoinCta = sessionResolved && !memberSessionActive;
   const membersHref = memberSessionActive ? "/members" : "/members/sign-in";
-  const desktopNavigation = [
-    ...primaryNavigation.slice(0, primaryNavigation.length - 1),
-    { href: membersHref, label: "Members" },
-    primaryNavigation[primaryNavigation.length - 1],
-  ];
-  const mobileNavigation = [
-    ...extendedNavigation.filter((item) => item.href !== "/members"),
-    { href: membersHref, label: "Members" },
-  ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-primary/10 bg-[rgba(250,245,236,0.92)] backdrop-blur-md">
@@ -62,12 +58,8 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden flex-1 items-center justify-center gap-0.5 lg:flex" aria-label="Primary">
-          {desktopNavigation.map((item) => {
-            const active =
-              item.label === "Members"
-                ? pathname.startsWith("/members")
-                : isActive(pathname, item.href);
-
+          {headerNavigation.map((item) => {
+            const active = isActive(pathname, item.href);
             return (
               <SmartLink
                 key={item.href}
@@ -85,6 +77,12 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
+          <SmartLink
+            href={membersHref}
+            className="rounded-full px-3 py-2 text-sm font-medium text-foreground/74 transition hover:bg-white hover:text-foreground"
+          >
+            Members
+          </SmartLink>
           {showJoinCta ? (
             <SmartLink
               href={siteConfig.joinUrl}
@@ -136,28 +134,65 @@ export function SiteHeader() {
               </SheetHeader>
 
               <nav className="flex flex-1 flex-col gap-2 p-4" aria-label="Mobile">
-                {mobileNavigation.map((item) => {
-                  const active =
-                    item.label === "Members"
-                      ? pathname.startsWith("/members")
-                      : isActive(pathname, item.href);
+                <div>
+                  <p className="px-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary/60">
+                    Start here
+                  </p>
+                  <div className="mt-3 flex flex-col gap-2">
+                    {mobilePrimaryNavigation.map((item) => {
+                      const active = isActive(pathname, item.href);
 
-                  return (
-                    <SmartLink
-                      key={item.href}
-                      href={item.href}
-                      className={cn(
-                        "rounded-2xl border border-transparent bg-white/70 px-4 py-3 text-base font-medium text-foreground/78 transition hover:border-primary/10 hover:bg-white",
-                        active && "border-primary/10 bg-white text-foreground",
-                      )}
-                    >
-                      {item.label}
-                    </SmartLink>
-                  );
-                })}
+                      return (
+                        <SmartLink
+                          key={item.href}
+                          href={item.href}
+                          className={cn(
+                            "rounded-2xl border border-transparent bg-white/70 px-4 py-3 text-base font-medium text-foreground/78 transition hover:border-primary/10 hover:bg-white",
+                            active && "border-primary/10 bg-white text-foreground",
+                          )}
+                        >
+                          {item.label}
+                        </SmartLink>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="pt-3">
+                  <p className="px-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary/60">
+                    More chapter links
+                  </p>
+                  <div className="mt-3 flex flex-col gap-2">
+                    {secondaryNavigation.map((item) => {
+                      const active = isActive(pathname, item.href);
+
+                      return (
+                        <SmartLink
+                          key={item.href}
+                          href={item.href}
+                          className={cn(
+                            "rounded-2xl border border-transparent bg-white/70 px-4 py-3 text-base font-medium text-foreground/78 transition hover:border-primary/10 hover:bg-white",
+                            active && "border-primary/10 bg-white text-foreground",
+                          )}
+                        >
+                          {item.label}
+                        </SmartLink>
+                      );
+                    })}
+                  </div>
+                </div>
               </nav>
 
               <div className="space-y-3 border-t border-primary/10 p-4">
+                <SmartLink
+                  href={membersHref}
+                  className={cn(
+                    buttonVariants({ variant: "outline", size: "lg" }),
+                    "flex h-auto w-full items-center justify-center rounded-full border-primary/15 bg-white px-4 py-3",
+                  )}
+                >
+                  Members
+                </SmartLink>
                 {showJoinCta ? (
                   <SmartLink
                     href={siteConfig.joinUrl}
