@@ -71,7 +71,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           href="/news"
           className="text-sm font-semibold text-primary underline decoration-primary/30 underline-offset-4"
         >
-          Back to news
+          Back to articles
         </SmartLink>
 
         <div className="mt-6 max-w-4xl">

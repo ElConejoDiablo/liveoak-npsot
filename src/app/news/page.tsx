@@ -11,11 +11,11 @@ import { getAllCategories, getAllTags, getPostSummaries } from "@/lib/blog";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "News and Blog",
+  title: "Articles",
   description:
     "Read chapter updates, field notes, and practical native-plant articles for Fayette, Colorado, and Lavaca Counties.",
   path: "/news",
-  eyebrow: "News and Blog",
+  eyebrow: "Articles",
 });
 
 export default async function NewsPage() {
@@ -30,7 +30,7 @@ export default async function NewsPage() {
   return (
     <>
       <PageHero
-        eyebrow="News and blog"
+        eyebrow="Articles"
         title="Local articles, chapter updates, and practical guidance that reward a return visit"
         description="Regional reading for beginners, gardeners, volunteers, and anyone paying closer attention to native plants in Fayette, Colorado, and Lavaca Counties."
         serviceArea={siteConfig.serviceAreaLabel}

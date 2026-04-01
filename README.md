@@ -10,7 +10,7 @@ Production-ready chapter website for the Live Oak Chapter of the Native Plant So
 - shadcn/ui primitives
 - lucide-react icons
 - Framer Motion for restrained entrance motion
-- Markdown-based local blog content
+- Markdown-based local article content
 - Auth.js email magic-link authentication for the members portal
 - Prisma + Postgres for protected member exchange data
 - Vercel Blob for member post images
@@ -56,7 +56,7 @@ Chapter content is centralized in a small set of files:
 - `src/data/members/active-members.md`
   Server-only allowlist used for members portal access checks.
 - `src/content/posts/*.md`
-  Blog/news posts with frontmatter metadata and Markdown content.
+  Chapter articles with frontmatter metadata and Markdown content.
 - `prisma/schema.prisma`
   Members portal database schema for auth, exchange posts, replies, transactions, and points.
 
@@ -68,7 +68,7 @@ src/
   components/          Layout, section, card, and shared UI building blocks
   content/posts/       Markdown articles
   data/                Editable chapter/site data
-  lib/                 Blog parsing, metadata helpers, formatting utilities
+  lib/                 Article parsing, metadata helpers, formatting utilities
   lib/members/         Server-only allowlist and members portal utilities
 prisma/
   schema.prisma        Prisma schema for auth and members portal data
@@ -248,7 +248,7 @@ These still require a real staging environment with external services:
 
 ## Notes
 
-- Blog content is file-based and intentionally lightweight.
+- Article content is file-based and intentionally lightweight.
 - Some member document entries are structured placeholders until real member files are supplied.
 - Top-level member post image uploads use Vercel Blob and require `BLOB_READ_WRITE_TOKEN`.
 - Member exchange images are private by default. Admins can promote an individual image to a public teaser link without making the rest of the post public.

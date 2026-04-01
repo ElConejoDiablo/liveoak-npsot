@@ -41,8 +41,8 @@ export function SiteFooter() {
                 {siteConfig.contactEmail}
               </a>
               <p className="mt-2 text-sm leading-6 text-foreground/64">
-                Chapter email for questions, introductions, and newsletter
-                requests.
+                Chapter email for questions, introductions, and requests for
+                chapter updates.
               </p>
               <SocialLinks className="mt-5" />
             </div>

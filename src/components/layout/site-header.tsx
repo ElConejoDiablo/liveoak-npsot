@@ -67,7 +67,6 @@ export function SiteHeader() {
               item.label === "Members"
                 ? pathname.startsWith("/members")
                 : isActive(pathname, item.href);
-            const desktopLabel = item.href === "/news" ? "Blog" : item.label;
 
             return (
               <SmartLink
@@ -79,7 +78,7 @@ export function SiteHeader() {
                 )}
                 aria-current={active ? "page" : undefined}
               >
-                {desktopLabel}
+                {item.label}
               </SmartLink>
             );
           })}

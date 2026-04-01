@@ -364,7 +364,7 @@ export default async function Home() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="Latest news"
+        eyebrow="Latest articles"
         title="Recent reading from the chapter"
         intro="Field guides, seasonal notes, habitat articles, and chapter updates help visitors keep learning between events."
         actions={
@@ -372,7 +372,7 @@ export default async function Home() {
             href="/news"
             className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
           >
-            <span>Read the blog</span>
+            <span>Read articles</span>
             <Newspaper className="h-4 w-4" />
           </SmartLink>
         }

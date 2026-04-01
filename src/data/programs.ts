@@ -122,7 +122,7 @@ export const volunteerPaths: VolunteerPath[] = [
     description:
       "Volunteers can contribute writing, photography, plant knowledge, outreach help, or practical logistics without needing a huge time commitment.",
     examples: [
-      "Blog or newsletter support",
+      "Articles or newsletter support",
       "Plant ID assistance",
       "Photography",
       "Outreach materials",
@@ -140,4 +140,3 @@ export const volunteerPaths: VolunteerPath[] = [
     ],
   },
 ];
-
