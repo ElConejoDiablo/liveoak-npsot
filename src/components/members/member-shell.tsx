@@ -1,4 +1,4 @@
-import { FileText, LayoutGrid, LogOut, Sprout } from "lucide-react";
+import { FileText, LayoutGrid, Sprout } from "lucide-react";
 
 import { Container } from "@/components/shared/container";
 import { SmartLink } from "@/components/shared/smart-link";
@@ -83,7 +83,7 @@ export function MemberShell({
               </div>
 
               <div className="self-start">
-                <MemberSignOutButton className="rounded-full" icon={LogOut} />
+                <MemberSignOutButton className="rounded-full" />
               </div>
             </div>
           </div>

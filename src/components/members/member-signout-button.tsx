@@ -1,6 +1,6 @@
 "use client";
 
-import type { LucideIcon } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { signOut } from "next-auth/react";
 
 import { buttonVariants } from "@/components/ui/button-styles";
@@ -8,13 +8,9 @@ import { cn } from "@/lib/utils";
 
 type MemberSignOutButtonProps = {
   className?: string;
-  icon?: LucideIcon;
 };
 
-export function MemberSignOutButton({
-  className,
-  icon: Icon,
-}: MemberSignOutButtonProps) {
+export function MemberSignOutButton({ className }: MemberSignOutButtonProps) {
   return (
     <button
       type="button"
@@ -25,7 +21,7 @@ export function MemberSignOutButton({
         className,
       )}
     >
-      {Icon ? <Icon className="mr-2 h-4 w-4" /> : null}
+      <LogOut className="mr-2 h-4 w-4" />
       Sign out
     </button>
   );
