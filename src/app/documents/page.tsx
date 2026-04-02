@@ -33,7 +33,7 @@ export default function DocumentsPage() {
         ]}
         actions={[
           { href: siteConfig.contactUrl, label: "Ask about chapter files" },
-          { href: "/contact", label: "Contact / subscribe", variant: "secondary" },
+          { href: "/contact", label: "Contact the chapter", variant: "secondary" },
         ]}
       />
 
@@ -61,10 +61,7 @@ export default function DocumentsPage() {
                     key={item.title}
                     className="rounded-[1.2rem] border border-primary/10 bg-[#F7F4E8] p-4"
                   >
-                    <div className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/72">
-                      {item.status}
-                    </div>
-                    <h3 className="mt-2 font-heading text-xl text-foreground">
+                    <h3 className="font-heading text-xl text-foreground">
                       {item.title}
                     </h3>
                     <p className="mt-2 text-sm leading-7 text-foreground/68">
@@ -85,7 +82,7 @@ export default function DocumentsPage() {
         <EmptyStatePanel
           title="More chapter files will be added here over time"
           description={documentsEmptyState}
-          action={{ href: siteConfig.contactUrl, label: "Request information by email" }}
+          action={{ href: siteConfig.contactUrl, label: "Email the chapter" }}
         />
       </div>
     </>

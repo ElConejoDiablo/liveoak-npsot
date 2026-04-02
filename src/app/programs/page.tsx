@@ -90,7 +90,7 @@ export default function ProgramsPage() {
           eyebrow="Build momentum"
           title="Use the chapter site to convert interest into participation"
           description="Programs work best when visitors can move directly from inspiration to a next step, whether that means attending a talk, volunteering, or joining NPSOT."
-          primaryAction={{ href: "/contact", label: "Contact / subscribe" }}
+          primaryAction={{ href: "/contact", label: "Contact the chapter" }}
           secondaryAction={{ href: siteConfig.joinUrl, label: "Join NPSOT" }}
           variant="community"
         />

@@ -85,7 +85,7 @@ export default function VolunteerPage() {
           eyebrow="Take the next step"
           title="Reach out, join the chapter, or ask where help is needed most"
           description="A simple email is enough to let the chapter know where you would like to help."
-          primaryAction={{ href: "/contact", label: "Contact / subscribe" }}
+          primaryAction={{ href: "/contact", label: "Contact the chapter" }}
           secondaryAction={{ href: siteConfig.contactUrl, label: "Email volunteer interest" }}
           variant="savanna"
         />

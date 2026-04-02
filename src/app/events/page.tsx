@@ -97,7 +97,7 @@ export default function EventsPage() {
           eyebrow="Stay connected"
           title="Use the chapter email for current event details and chapter updates"
           description="The chapter inbox is the simplest way to ask about upcoming programs, receive current event details, and stay connected between gatherings."
-          primaryAction={{ href: "/contact", label: "Contact / subscribe" }}
+          primaryAction={{ href: "/contact", label: "Contact the chapter" }}
           secondaryAction={{ href: siteConfig.contactUrl, label: "Email now" }}
           variant="savanna"
         />

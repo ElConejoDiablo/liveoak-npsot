@@ -29,7 +29,7 @@ export default function ContactPage() {
         description="Use the chapter contact form for event questions, volunteer interest, membership follow-up, native plant questions, and requests to receive chapter updates."
         serviceArea={siteConfig.serviceAreaLabel}
         layout="utility"
-        highlightsTitle="Quick options"
+        highlightsTitle="Ways to reach us"
         highlights={[
           "Use the form for questions, introductions, and follow-up",
           "Email the chapter directly if that is easier",
@@ -115,10 +115,7 @@ export default function ContactPage() {
             </p>
           </div>
           <div className="rounded-[1.6rem] border border-white/12 bg-white/10 p-5">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white/72">
-              Best next steps
-            </p>
-            <div className="mt-4 flex flex-col gap-3">
+            <div className="flex flex-col gap-3">
               <SmartLink
                 href="/events"
                 className={cn(

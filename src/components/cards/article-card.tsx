@@ -28,9 +28,7 @@ export function ArticleCard({ post, variant = "default" }: ArticleCardProps) {
       </SmartLink>
       <div className="p-5 sm:p-6">
         <div className="flex flex-wrap items-center gap-3 text-sm text-foreground/62">
-          <span className="rounded-full border border-primary/10 bg-primary/6 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-primary/84">
-            {post.category}
-          </span>
+          <span className="font-medium text-primary/84">{post.category}</span>
           <span>{formatShortDate(post.date)}</span>
           <span className="h-1 w-1 rounded-full bg-foreground/24" />
           <span className="inline-flex items-center gap-1.5">
@@ -40,9 +38,7 @@ export function ArticleCard({ post, variant = "default" }: ArticleCardProps) {
           {post.sample ? (
             <>
               <span className="h-1 w-1 rounded-full bg-foreground/24" />
-              <span className="rounded-full bg-[#EBCF87]/35 px-2 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-[#765724]">
-                Sample recap
-              </span>
+              <span>Sample article</span>
             </>
           ) : null}
         </div>
@@ -57,28 +53,6 @@ export function ArticleCard({ post, variant = "default" }: ArticleCardProps) {
         >
           {post.excerpt}
         </p>
-        {post.counties?.length ? (
-          <div className="mt-4 flex flex-wrap gap-2">
-            {post.counties.map((county) => (
-              <span
-                key={county}
-                className="rounded-full border border-primary/10 bg-[#F7F4E8] px-3 py-1 text-xs font-medium text-foreground/72"
-              >
-                {county}
-              </span>
-            ))}
-          </div>
-        ) : null}
-        <div className="mt-5 flex flex-wrap gap-2">
-          {post.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full border border-primary/10 bg-primary/6 px-3 py-1 text-xs font-medium text-foreground/72"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
         <SmartLink
           href={`/news/${post.slug}`}
           className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary"

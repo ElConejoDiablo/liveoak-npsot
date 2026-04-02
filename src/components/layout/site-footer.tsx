@@ -1,15 +1,13 @@
 "use client";
 
-import { ArrowUpRight, LockKeyhole } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-import { footerLinkGroups, siteConfig, type FooterLink } from "@/data/site";
+import { footerLinkGroups, siteConfig } from "@/data/site";
 
 import { Container } from "@/components/shared/container";
 import { SiteLogo } from "@/components/icons/site-logo";
 import { SmartLink } from "@/components/shared/smart-link";
 import { SocialLinks } from "@/components/shared/social-links";
-import { cn } from "@/lib/utils";
 
 function isActive(pathname: string, href: string) {
   if (!href.startsWith("/")) {
@@ -26,19 +24,6 @@ function isActive(pathname: string, href: string) {
 
   return pathname === href || pathname.startsWith(`${href}/`);
 }
-
-function getLinkBadge(link: FooterLink) {
-  if (link.kind === "members") {
-    return "Sign in";
-  }
-
-  if (link.kind === "external") {
-    return "External";
-  }
-
-  return null;
-}
-
 export function SiteFooter() {
   const pathname = usePathname();
 
@@ -86,7 +71,6 @@ export function SiteFooter() {
                 </h2>
                 <ul className="mt-4 space-y-3">
                   {group.links.map((link) => {
-                    const badge = getLinkBadge(link);
                     const active = isActive(pathname, link.href);
 
                     return (
@@ -94,33 +78,16 @@ export function SiteFooter() {
                         {active ? (
                           <span
                             aria-current="page"
-                            className="inline-flex items-center gap-2 rounded-full bg-white/78 px-3 py-1.5 text-sm font-medium text-foreground shadow-sm"
+                            className="text-sm font-semibold leading-6 text-foreground"
                           >
-                            <span>{link.label}</span>
-                            <span className="rounded-full bg-primary/8 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary/72">
-                              Current page
-                            </span>
+                            {link.label}
                           </span>
                         ) : (
                           <SmartLink
                             href={link.href}
-                            className={cn(
-                              "inline-flex items-center gap-2 text-sm leading-6 text-foreground/70 transition hover:text-primary",
-                              link.kind === "external" && "font-medium",
-                            )}
+                            className="text-sm leading-6 text-foreground/70 transition hover:text-primary"
                           >
-                            <span>{link.label}</span>
-                            {badge ? (
-                              <span className="rounded-full border border-primary/10 bg-white/78 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary/72">
-                                {badge}
-                              </span>
-                            ) : null}
-                            {link.kind === "members" ? (
-                              <LockKeyhole className="h-3.5 w-3.5 text-primary/60" />
-                            ) : null}
-                            {link.kind === "external" ? (
-                              <ArrowUpRight className="h-3.5 w-3.5 text-primary/60" />
-                            ) : null}
+                            {link.label}
                           </SmartLink>
                         )}
                       </li>

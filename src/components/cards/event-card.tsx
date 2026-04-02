@@ -21,11 +21,7 @@ export function EventCard({ event, showLink = true }: EventCardProps) {
         </span>
       </div>
       <div>
-        <div className="mb-3 flex flex-wrap gap-2">
-          <span className="rounded-full bg-primary/8 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary/78">
-            {event.type}
-          </span>
-        </div>
+        <p className="mb-3 text-sm font-semibold text-primary/78">{event.type}</p>
         <h3 className="font-heading text-2xl leading-tight text-foreground">
           {event.title}
         </h3>

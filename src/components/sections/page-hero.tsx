@@ -91,16 +91,17 @@ export function PageHero({
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary/68">
                   {highlightsTitle}
                 </p>
-                <div className="mt-4 flex flex-wrap gap-3">
+                <ul className="mt-4 space-y-2">
                   {highlights.map((highlight) => (
-                    <span
+                    <li
                       key={highlight}
-                      className="rounded-full border border-primary/10 bg-white/70 px-4 py-2 text-sm text-foreground/74"
+                      className="flex gap-2 text-sm leading-6 text-foreground/74"
                     >
-                      {highlight}
-                    </span>
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/65" />
+                      <span>{highlight}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             ) : null}
           </MotionReveal>

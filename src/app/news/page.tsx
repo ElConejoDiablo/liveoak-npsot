@@ -1,10 +1,7 @@
-import { ArrowRight, Hash, Newspaper } from "lucide-react";
-
 import { ArticleCard } from "@/components/cards/article-card";
 import { NewsBrowser } from "@/components/news/news-browser";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionShell } from "@/components/sections/section-shell";
-import { SmartLink } from "@/components/shared/smart-link";
 import { MotionReveal } from "@/components/shared/motion-reveal";
 import { siteConfig } from "@/data/site";
 import { getAllCategories, getAllTags, getPostSummaries } from "@/lib/blog";
@@ -48,64 +45,26 @@ export default async function NewsPage() {
         title="Featured reading from the chapter"
         intro="Start here for seasonal guidance, chapter updates, and practical native-plant reading rooted in the Live Oak Chapter region."
       >
-        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(300px,0.72fr)]">
           <MotionReveal>
             <ArticleCard post={featuredPost} variant="featured" />
           </MotionReveal>
-          <div className="grid gap-4">
-            <MotionReveal className="rounded-[1.7rem] border border-primary/10 bg-white/78 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]">
-              <div className="flex items-center gap-3">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary/8 text-primary">
-                  <Newspaper className="h-5 w-5" />
-                </div>
-                <div>
-                  <h2 className="font-heading text-2xl text-foreground">
-                    Browse by category
-                  </h2>
-                  <p className="mt-1 text-sm leading-6 text-foreground/68">
-                    Quick entry points for local reading.
-                  </p>
-                </div>
-              </div>
-              <div className="mt-5 flex flex-wrap gap-3">
-                {categories.map((category) => (
-                  <span
-                    key={category}
-                    className="rounded-full border border-primary/10 bg-[#F7F4E8] px-4 py-2 text-sm font-medium text-foreground/76"
-                  >
-                    {category}
-                  </span>
-                ))}
-              </div>
-            </MotionReveal>
-
-            <MotionReveal
-              delay={0.05}
-              className="rounded-[1.7rem] border border-primary/10 bg-[#F5F0E1] p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
-            >
-              <h2 className="font-heading text-2xl text-foreground">
-                Popular tags
-              </h2>
-              <div className="mt-5 flex flex-wrap gap-3">
-                {tags.map((tag) => (
-                  <div
-                    key={tag}
-                    className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white/75 px-4 py-2 text-sm font-medium text-foreground/76"
-                  >
-                    <Hash className="h-4 w-4 text-primary/75" />
-                    <span>{tag}</span>
-                  </div>
-                ))}
-              </div>
-              <SmartLink
-                href="/events"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary"
-              >
-                <span>Pair articles with upcoming events</span>
-                <ArrowRight className="h-4 w-4" />
-              </SmartLink>
-            </MotionReveal>
-          </div>
+          <MotionReveal
+            delay={0.05}
+            className="rounded-[1.7rem] border border-primary/10 bg-[#F5F0E1] p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
+          >
+            <h2 className="font-heading text-2xl text-foreground">
+              Browse the archive below
+            </h2>
+            <p className="mt-3 text-base leading-7 text-foreground/72">
+              The full article browser below is the best place to narrow by topic,
+              category, or keyword without wading through decorative tag clouds.
+            </p>
+            <p className="mt-5 text-sm leading-7 text-foreground/64">
+              {categories.length} categories and {tags.length} recurring topics
+              are available in the filters.
+            </p>
+          </MotionReveal>
         </div>
       </SectionShell>
 

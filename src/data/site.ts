@@ -4,13 +4,9 @@ export type NavigationItem = {
   description?: string;
 };
 
-export type FooterLink = NavigationItem & {
-  kind?: "page" | "members" | "external";
-};
-
 export type FooterLinkGroup = {
   title: string;
-  links: FooterLink[];
+  links: NavigationItem[];
 };
 
 export type LeadershipMember = {
@@ -199,13 +195,11 @@ export const footerLinkGroups: FooterLinkGroup[] = [
       { href: "/volunteer", label: "Volunteer" },
       {
         href: "/members/sign-in",
-        label: "Members portal",
-        kind: "members",
+        label: "Member sign in",
       },
       {
         href: siteConfig.npsot.joinUrl,
         label: "Join NPSOT",
-        kind: "external",
       },
     ],
   },
@@ -222,17 +216,14 @@ export const footerLinkGroups: FooterLinkGroup[] = [
       {
         href: siteConfig.npsot.homeUrl,
         label: "NPSOT.org",
-        kind: "external",
       },
       {
         href: siteConfig.npsot.startGardenUrl,
         label: "Start a Native Garden",
-        kind: "external",
       },
       {
         href: siteConfig.npsot.plantDatabaseUrl,
         label: "Native Plant Database",
-        kind: "external",
       },
     ],
   },
