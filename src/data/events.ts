@@ -79,6 +79,17 @@ export type PastEventMinutesLink = {
   status: "Members only";
 };
 
+/**
+ * Past-event entries are intentionally flexible because real recap material
+ * often arrives in pieces. Keep `startDateTime` present for sorting.
+ *
+ * Authoring notes:
+ * - If only the calendar date is known, set `startDateTime` to local midnight
+ *   and add a human-facing `dateLabel`.
+ * - Add `endDateTime` only when the public event time is verified.
+ * - Keep `meetingMinutes.href` inside the existing `/members` area.
+ * - Omit optional fields rather than guessing.
+ */
 export type PastEventItem = {
   id: string;
   title: string;
@@ -98,6 +109,39 @@ export type PastEventItem = {
   supplementalLinks?: PastEventResource[];
   meetingMinutes?: PastEventMinutesLink;
 };
+
+type PastEventDraft = Omit<PastEventItem, "sourceLabel" | "supplementalLinks"> & {
+  supplementalLinks?: PastEventResource[];
+};
+
+function createPastEventResource(resource: PastEventResource): PastEventResource {
+  return resource;
+}
+
+function createPastEventMinutesLink(
+  minutes: PastEventMinutesLink,
+): PastEventMinutesLink {
+  if (!minutes.href.startsWith("/members")) {
+    throw new Error(
+      `Past event minutes must stay in the members area. Received: ${minutes.href}`,
+    );
+  }
+
+  return minutes;
+}
+
+function createPastEvent(event: PastEventDraft): PastEventItem {
+  return {
+    ...event,
+    sourceLabel: "Live Oak Chapter",
+    supplementalLinks: event.supplementalLinks?.length
+      ? event.supplementalLinks.map(createPastEventResource)
+      : undefined,
+    meetingMinutes: event.meetingMinutes
+      ? createPastEventMinutesLink(event.meetingMinutes)
+      : undefined,
+  };
+}
 
 function sortByStart<T extends { startDateTime: string }>(items: T[]) {
   return [...items].sort((left, right) =>
@@ -317,12 +361,11 @@ export const statewideEvents: StatewideEventItem[] = [
 ];
 
 export const pastEvents: PastEventItem[] = [
-  {
+  createPastEvent({
     id: "early-spring-chapter-gathering-2026",
     title: "Early spring chapter gathering",
     startDateTime: "2026-03-14T00:00:00-05:00",
     dateLabel: "March 14, 2026",
-    sourceLabel: "Live Oak Chapter",
     summary:
       "The chapter's early spring gathering drew a strong regional turnout, practical questions, and early momentum for local native-plant learning.",
     description:
@@ -334,7 +377,7 @@ export const pastEvents: PastEventItem[] = [
       href: "/members/documents",
       status: "Members only",
     },
-  },
+  }),
 ];
 
 export const statewideEventDestinations = [
