@@ -12,20 +12,34 @@ type PastEventCardProps = {
 };
 
 export function PastEventCard({ event }: PastEventCardProps) {
-  const image = publicImagery[event.image];
+  const image = event.image ? publicImagery[event.image] : null;
+  const locationLines = [event.locationName, event.city, event.county].filter(Boolean);
+  const formattedDate = event.dateLabel
+    ? event.dateLabel
+    : event.endDateTime
+      ? formatDateRange(event.startDateTime, event.endDateTime)
+      : formatDateRange(event.startDateTime, event.startDateTime);
 
   return (
     <article className="overflow-hidden rounded-[2rem] border border-primary/10 bg-white/84 shadow-[0_22px_80px_rgba(37,58,40,0.08)]">
-      <div className="grid gap-0 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
-        <div className="relative min-h-[18rem] overflow-hidden bg-[#E8E1C7]">
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 42vw"
-            className="object-cover"
-          />
-        </div>
+      <div
+        className={
+          image
+            ? "grid gap-0 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]"
+            : "grid gap-0"
+        }
+      >
+        {image ? (
+          <div className="relative min-h-[18rem] overflow-hidden bg-[#E8E1C7]">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 42vw"
+              className="object-cover"
+            />
+          </div>
+        ) : null}
 
         <div className="p-6 sm:p-8">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary/72">
@@ -44,17 +58,21 @@ export function PastEventCard({ event }: PastEventCardProps) {
           <dl className="mt-6 grid gap-3 text-sm text-foreground/74 sm:grid-cols-2">
             <div className="flex gap-2.5">
               <CalendarDays className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              <dd>{formatDateRange(event.startDateTime, event.endDateTime)}</dd>
+              <dd>{formattedDate}</dd>
             </div>
-            <div className="flex gap-2.5">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              <dd>
-                {event.locationName}
-                <span className="block text-xs uppercase tracking-[0.16em] text-foreground/56">
-                  {event.city} · {event.county}
-                </span>
-              </dd>
-            </div>
+            {locationLines.length ? (
+              <div className="flex gap-2.5">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <dd>
+                  {event.locationName ? <span>{event.locationName}</span> : null}
+                  {event.city || event.county ? (
+                    <span className="block text-xs uppercase tracking-[0.16em] text-foreground/56">
+                      {[event.city, event.county].filter(Boolean).join(" · ")}
+                    </span>
+                  ) : null}
+                </dd>
+              </div>
+            ) : null}
             {event.speakerName ? (
               <div className="flex gap-2.5 sm:col-span-2">
                 <Mic className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
@@ -119,7 +137,7 @@ export function PastEventCard({ event }: PastEventCardProps) {
                     href={event.meetingMinutes.href}
                     className="mt-3 inline-flex text-sm font-semibold text-primary"
                   >
-                    Member sign in
+                    Open members portal
                   </SmartLink>
                 </div>
               </div>

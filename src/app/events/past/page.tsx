@@ -1,4 +1,4 @@
-import { ArrowRight, PlayCircle } from "lucide-react";
+import { ArrowRight, Lock } from "lucide-react";
 
 import { PastEventCard } from "@/components/events/past-event-card";
 import { SectionShell } from "@/components/sections/section-shell";
@@ -10,7 +10,6 @@ import {
   pastEventsEmptyState,
   pastEventsIntro,
 } from "@/data/events";
-import { siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
@@ -69,30 +68,11 @@ export default function PastEventsPage() {
 
       <SectionShell
         eyebrow="More follow-up"
-        title="Look for recordings and chapter news"
-        intro="When a meeting produces a public recording or follow-up story, those links will usually live on the chapter YouTube page or in the article archive."
+        title="Look for recaps and follow-up materials"
+        intro="Public recap stories live in the article archive. Protected minutes and member-only handouts stay inside the members portal."
       >
         <div className="grid gap-5 md:grid-cols-2">
           <MotionReveal className="rounded-[1.8rem] border border-primary/10 bg-white/82 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]">
-            <h2 className="font-heading text-2xl text-foreground">
-              Chapter YouTube
-            </h2>
-            <p className="mt-3 text-base leading-7 text-foreground/72">
-              Watch for posted recordings, short videos, and future event highlights.
-            </p>
-            <SmartLink
-              href={siteConfig.social.youtube}
-              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
-            >
-              <PlayCircle className="h-4 w-4" />
-              <span>Open YouTube</span>
-            </SmartLink>
-          </MotionReveal>
-
-          <MotionReveal
-            delay={0.05}
-            className="rounded-[1.8rem] border border-primary/10 bg-white/82 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
-          >
             <h2 className="font-heading text-2xl text-foreground">
               Chapter articles
             </h2>
@@ -105,6 +85,25 @@ export default function PastEventsPage() {
             >
               <span>Open articles</span>
               <ArrowRight className="h-4 w-4" />
+            </SmartLink>
+          </MotionReveal>
+
+          <MotionReveal
+            delay={0.05}
+            className="rounded-[1.8rem] border border-primary/10 bg-white/82 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
+          >
+            <h2 className="font-heading text-2xl text-foreground">
+              Members portal documents
+            </h2>
+            <p className="mt-3 text-base leading-7 text-foreground/72">
+              Approved meeting minutes and member-only follow-up materials stay behind the existing sign-in flow.
+            </p>
+            <SmartLink
+              href="/members/documents"
+              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+            >
+              <Lock className="h-4 w-4" />
+              <span>Open members portal</span>
             </SmartLink>
           </MotionReveal>
         </div>

@@ -83,15 +83,16 @@ export type PastEventItem = {
   id: string;
   title: string;
   startDateTime: string;
-  endDateTime: string;
+  endDateTime?: string;
+  dateLabel?: string;
   summary: string;
   description: string;
   sourceLabel: "Live Oak Chapter";
-  locationName: string;
-  city: string;
-  county: string;
+  locationName?: string;
+  city?: string;
+  county?: string;
   speakerName?: string;
-  image: PublicImageryKey;
+  image?: PublicImageryKey;
   recapUrl?: string;
   youtubeUrl?: string;
   supplementalLinks?: PastEventResource[];
@@ -319,12 +320,9 @@ export const pastEvents: PastEventItem[] = [
   {
     id: "early-spring-chapter-gathering-2026",
     title: "Early spring chapter gathering",
-    startDateTime: "2026-03-14T18:30:00-05:00",
-    endDateTime: "2026-03-14T20:00:00-05:00",
+    startDateTime: "2026-03-14T00:00:00-05:00",
+    dateLabel: "March 14, 2026",
     sourceLabel: "Live Oak Chapter",
-    locationName: "Schulenburg gathering room",
-    city: "Schulenburg, Texas",
-    county: "Fayette County",
     summary:
       "The chapter's early spring gathering drew a strong regional turnout, practical questions, and early momentum for local native-plant learning.",
     description:
@@ -332,8 +330,8 @@ export const pastEvents: PastEventItem[] = [
     image: "community",
     recapUrl: "/news/early-community-turnout-builds-momentum-for-the-live-oak-chapter",
     meetingMinutes: {
-      label: "Approved meeting minutes",
-      href: "/members/sign-in",
+      label: "March 2026 meeting minutes",
+      href: "/members/documents",
       status: "Members only",
     },
   },
