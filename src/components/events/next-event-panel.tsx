@@ -1,11 +1,11 @@
 import { CalendarDays, MapPin } from "lucide-react";
 
-import type { EventItem } from "@/data/events";
+import type { ChapterEventItem } from "@/data/events";
 import { formatDateRange } from "@/lib/format";
 import { SmartLink } from "@/components/shared/smart-link";
 
 type NextEventPanelProps = {
-  event?: EventItem;
+  event?: ChapterEventItem;
 };
 
 export function NextEventPanel({ event }: NextEventPanelProps) {

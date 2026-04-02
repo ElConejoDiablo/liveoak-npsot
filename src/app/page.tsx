@@ -9,7 +9,7 @@ import { EditorialImageSlot } from "@/components/shared/editorial-image-slot";
 import { MotionReveal } from "@/components/shared/motion-reveal";
 import { SmartLink } from "@/components/shared/smart-link";
 import { NextEventPanel } from "@/components/events/next-event-panel";
-import { upcomingEvents } from "@/data/events";
+import { getNextChapterMeeting } from "@/data/events";
 import { homepageActionPaths } from "@/data/local";
 import { siteConfig } from "@/data/site";
 import { getFeaturedPosts, getLatestPost } from "@/lib/blog";
@@ -27,7 +27,7 @@ export default async function Home() {
     getFeaturedPosts(3),
     getLatestPost(),
   ]);
-  const nextEvent = upcomingEvents[0];
+  const nextEvent = getNextChapterMeeting();
   const highlightedPost = latestPost ?? featuredPosts[0];
 
   return (

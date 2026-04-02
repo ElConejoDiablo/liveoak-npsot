@@ -41,6 +41,9 @@ export const siteConfig = {
   },
   npsot: {
     homeUrl: "https://www.npsot.org/",
+    calendarUrl: "https://www.npsot.org/calendar/",
+    virtualEventsUrl: "https://www.npsot.org/virtual-events/",
+    symposiumUrl: "https://www.npsot.org/our-work/symposium/symposium-overview/",
     joinUrl: "https://www.npsot.org/join-or-renew-membership/",
     startGardenUrl: "https://www.npsot.org/resources/start-a-native-garden/",
     plantDatabaseUrl:

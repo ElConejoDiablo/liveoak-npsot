@@ -1,107 +1,153 @@
-import { NextEventPanel } from "@/components/events/next-event-panel";
-import { EventsBrowser } from "@/components/events/events-browser";
-import { CtaBanner } from "@/components/sections/cta-banner";
-import { PageHero } from "@/components/sections/page-hero";
+import { ArrowRight } from "lucide-react";
+
+import { EventsCalendarPreview } from "@/components/events/events-calendar-preview";
+import { EventListCard } from "@/components/events/event-list-card";
+import { NextChapterMeetingHero } from "@/components/events/next-chapter-meeting-hero";
+import { PastEventCard } from "@/components/events/past-event-card";
 import { SectionShell } from "@/components/sections/section-shell";
 import { MotionReveal } from "@/components/shared/motion-reveal";
+import { SmartLink } from "@/components/shared/smart-link";
+import { buttonVariants } from "@/components/ui/button-styles";
 import {
-  eventPageIntro,
-  eventTypes,
-  eventsEmptyState,
-  participationNotes,
-  upcomingEvents,
+  getNextChapterMeeting,
+  getPastEvents,
+  getUpcomingEvents,
+  statewideEventDestinations,
 } from "@/data/events";
-import { siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
+import { cn } from "@/lib/utils";
 
 export const metadata = createMetadata({
-  title: "Events and Calendar",
+  title: "Events",
   description:
-    "Browse upcoming chapter meetings, plant walks, talks, workshops, and volunteer days for the Live Oak Chapter.",
+    "See the next Live Oak Chapter meeting, browse upcoming chapter and selected statewide NPSOT events, and explore the calendar.",
   path: "/events",
-  eyebrow: "Events and Calendar",
+  eyebrow: "Events",
 });
 
+export const revalidate = 3600;
+
 export default function EventsPage() {
-  const nextEvent = upcomingEvents[0];
+  const nextMeeting = getNextChapterMeeting();
+  const upcomingEvents = getUpcomingEvents();
+  const upcomingPreview = upcomingEvents.slice(0, 4);
+  const latestPastEvent = getPastEvents()[0];
 
   return (
     <>
-      <PageHero
-        eyebrow="Events and calendar"
-        title="Meetings, walks, and seasonal gatherings across the chapter region"
-        description="Use the chapter calendar to find meetings, walks, talks, workshops, and volunteer days across Fayette, Colorado, and Lavaca Counties."
-        serviceArea={siteConfig.serviceAreaLabel}
-        layout="utility"
-        highlightsTitle="At a glance"
-        highlights={[
-          "Next featured event and current calendar",
-          "Type filters for meetings, walks, talks, and volunteer days",
-          "Visitor notes for location, weather, and accessibility",
-        ]}
-        actions={[
-          { href: siteConfig.contactUrl, label: "Ask about events" },
-          { href: "/volunteer", label: "Volunteer with us", variant: "secondary" },
-        ]}
-      />
+      <NextChapterMeetingHero event={nextMeeting} />
 
       <SectionShell
-        eyebrow="Calendar overview"
-        title="Upcoming chapter events at a glance"
-        intro={eventPageIntro}
+        eyebrow="Events hub"
+        title="See what is coming up and how it lands on the calendar"
+        intro="Start with chapter dates close to home, then keep an eye on selected statewide NPSOT events that may be worth the drive or the Zoom link."
       >
-        <MotionReveal>
-          <NextEventPanel event={nextEvent} />
-        </MotionReveal>
-      </SectionShell>
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+          <MotionReveal className="rounded-[2rem] border border-primary/10 bg-white/84 p-6 shadow-[0_22px_80px_rgba(37,58,40,0.08)] sm:p-7">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/72">
+                  Upcoming events
+                </p>
+                <h2 className="mt-2 font-heading text-3xl text-foreground">
+                  Chapter dates plus selected statewide events
+                </h2>
+              </div>
+              <SmartLink
+                href="/events/upcoming"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
+              >
+                <span>View upcoming events</span>
+                <ArrowRight className="h-4 w-4" />
+              </SmartLink>
+            </div>
 
-      <SectionShell
-        eyebrow="Upcoming"
-        title="Upcoming events"
-        intro="Filter by event type to find meetings, walks, talks, workshops, and volunteer days."
-      >
-        {upcomingEvents.length ? (
-          <EventsBrowser events={upcomingEvents} eventTypes={eventTypes} />
-        ) : (
-          <MotionReveal className="rounded-[1.7rem] border border-dashed border-primary/20 bg-[#F7F4E8] p-6">
-            <h3 className="font-heading text-2xl text-foreground">
-              {eventsEmptyState.title}
-            </h3>
-            <p className="mt-3 text-base leading-7 text-foreground/72">
-              {eventsEmptyState.description}
+            <p className="mt-4 text-base leading-7 text-foreground/72">
+              Local meetings, walks, talks, and workshops stay in the same stream as
+              a small set of statewide webinars, field trips, and chapter programs.
             </p>
+
+            <div className="mt-6 space-y-4">
+              {upcomingPreview.map((event) => (
+                <EventListCard key={event.id} event={event} compact />
+              ))}
+            </div>
           </MotionReveal>
-        )}
+
+          <MotionReveal delay={0.08}>
+            <div className="space-y-6">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/72">
+                    Calendar
+                  </p>
+                  <h2 className="mt-2 font-heading text-3xl text-foreground">
+                    Month at a glance
+                  </h2>
+                </div>
+                <SmartLink
+                  href="/events/calendar"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                >
+                  <span>Open calendar</span>
+                  <ArrowRight className="h-4 w-4" />
+                </SmartLink>
+              </div>
+
+              <EventsCalendarPreview events={upcomingEvents.slice(0, 6)} />
+            </div>
+          </MotionReveal>
+        </div>
       </SectionShell>
 
       <SectionShell
-        eyebrow="Participation notes"
-        title="Helpful expectations for visitors"
-        intro="A little advance information can make planning easier, especially for first visits."
+        eyebrow="Across NPSOT"
+        title="Statewide event sources worth checking"
+        intro="When a chapter event calendar is quiet, these official NPSOT pages help fill in virtual programs, statewide dates, and annual symposium news."
       >
-        <div className="grid gap-4 md:grid-cols-3">
-          {participationNotes.map((note, index) => (
+        <div className="grid gap-5 md:grid-cols-3">
+          {statewideEventDestinations.map((destination, index) => (
             <MotionReveal
-              key={note}
+              key={destination.href}
               delay={index * 0.05}
-              className="rounded-[1.6rem] border border-primary/10 bg-white/78 p-5 text-base leading-7 text-foreground/74 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
+              className="rounded-[1.8rem] border border-primary/10 bg-white/82 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
             >
-              {note}
+              <h3 className="font-heading text-2xl text-foreground">
+                {destination.title}
+              </h3>
+              <p className="mt-3 text-base leading-7 text-foreground/72">
+                {destination.description}
+              </p>
+              <SmartLink
+                href={destination.href}
+                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+              >
+                <span>Open source</span>
+                <ArrowRight className="h-4 w-4" />
+              </SmartLink>
             </MotionReveal>
           ))}
         </div>
       </SectionShell>
 
-      <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
-        <CtaBanner
-          eyebrow="Stay connected"
-          title="Contact the chapter for current event details and updates"
-          description="Reach out if you need the latest location details, weather updates, or information about upcoming events."
-          primaryAction={{ href: "/contact", label: "Contact the chapter" }}
-          secondaryAction={{ href: siteConfig.contactUrl, label: "Email the chapter" }}
-          variant="savanna"
-        />
-      </div>
+      <SectionShell
+        eyebrow="Past events"
+        title="Recaps, materials, and chapter follow-up"
+        intro="Past chapter gatherings can hold recap stories, recordings, public materials, and protected meeting minutes when they are available."
+        actions={
+          <SmartLink
+            href="/events/past"
+            className={cn(
+              buttonVariants({ variant: "outline", size: "lg" }),
+              "h-11 rounded-full border-primary/15 bg-white/84 px-5",
+            )}
+          >
+            Browse past events
+          </SmartLink>
+        }
+      >
+        {latestPastEvent ? <PastEventCard event={latestPastEvent} /> : null}
+      </SectionShell>
     </>
   );
 }

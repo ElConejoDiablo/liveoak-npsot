@@ -4,7 +4,11 @@ import { notFound } from "next/navigation";
 import { SectionShell } from "@/components/sections/section-shell";
 import { Container } from "@/components/shared/container";
 import { SmartLink } from "@/components/shared/smart-link";
-import { allEvents, upcomingEvents } from "@/data/events";
+import {
+  chapterEvents,
+  getChapterEventBySlug,
+  getOtherUpcomingChapterEvents,
+} from "@/data/events";
 import { siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 import { formatFullDate, formatTimeRange } from "@/lib/format";
@@ -16,12 +20,14 @@ type EventPageProps = {
 };
 
 export async function generateStaticParams() {
-  return allEvents.map((event) => ({ slug: event.slug }));
+  return chapterEvents.map((event) => ({ slug: event.slug }));
 }
+
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: EventPageProps) {
   const { slug } = await params;
-  const event = allEvents.find((item) => item.slug === slug);
+  const event = getChapterEventBySlug(slug);
 
   if (!event) {
     return createMetadata({
@@ -42,22 +48,22 @@ export async function generateMetadata({ params }: EventPageProps) {
 
 export default async function EventDetailPage({ params }: EventPageProps) {
   const { slug } = await params;
-  const event = allEvents.find((item) => item.slug === slug);
+  const event = getChapterEventBySlug(slug);
 
   if (!event) {
     notFound();
   }
 
-  const otherUpcoming = upcomingEvents.filter((item) => item.slug !== event.slug).slice(0, 2);
+  const otherUpcoming = getOtherUpcomingChapterEvents(event.slug).slice(0, 2);
 
   return (
     <>
       <Container className="py-10 sm:py-14">
         <SmartLink
-          href="/events"
+          href="/events/upcoming"
           className="text-sm font-semibold text-primary underline decoration-primary/30 underline-offset-4"
         >
-          Back to events
+          Back to upcoming events
         </SmartLink>
 
         <div className="mt-6 max-w-4xl">
@@ -167,9 +173,9 @@ export default async function EventDetailPage({ params }: EventPageProps) {
 
       {otherUpcoming.length ? (
         <SectionShell
-          eyebrow="More upcoming events"
-          title="More events on the chapter calendar"
-          intro="See what else is coming up with the chapter."
+          eyebrow="More chapter events"
+          title="More coming up with the Live Oak Chapter"
+          intro="Keep going with the next local dates on the chapter calendar."
         >
           <div className="grid gap-4 md:grid-cols-2">
             {otherUpcoming.map((item) => (

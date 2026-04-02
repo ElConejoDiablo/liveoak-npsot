@@ -32,7 +32,7 @@ function formatParts(
   }).formatToParts(new Date(value));
 }
 
-function getZonedDayKey(value: string) {
+export function getChapterDayKey(value: string) {
   const parts = formatParts(value, {
     year: "numeric",
     month: "2-digit",
@@ -110,7 +110,7 @@ export function formatTimeRange(startDate: string, endDate: string) {
 }
 
 export function formatDateRange(startDate: string, endDate: string) {
-  const sameDay = getZonedDayKey(startDate) === getZonedDayKey(endDate);
+  const sameDay = getChapterDayKey(startDate) === getChapterDayKey(endDate);
 
   if (sameDay) {
     return `${formatFullDate(startDate)} · ${formatTime(startDate)} to ${formatTime(endDate)}`;
