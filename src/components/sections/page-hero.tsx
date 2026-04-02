@@ -5,6 +5,7 @@ import { Container } from "@/components/shared/container";
 import { EditorialImageSlot } from "@/components/shared/editorial-image-slot";
 import { MotionReveal } from "@/components/shared/motion-reveal";
 import { SmartLink } from "@/components/shared/smart-link";
+import type { PublicImageryKey } from "@/data/public-imagery";
 import { cn } from "@/lib/utils";
 
 type HeroAction = {
@@ -18,13 +19,14 @@ type PageHeroProps = {
   title: string;
   description: string;
   serviceArea: string;
-  variant?: "savanna" | "bluebonnet" | "pollinator" | "monarch" | "community";
+  variant?: PublicImageryKey;
   layout?: "feature" | "utility" | "compact";
   actions?: HeroAction[];
   highlights?: string[];
   highlightsTitle?: string;
   visualTitle?: string;
   visualNote?: string;
+  showCompactVisual?: boolean;
 };
 
 export function PageHero({
@@ -39,6 +41,7 @@ export function PageHero({
   highlightsTitle = "On this page",
   visualTitle,
   visualNote,
+  showCompactVisual = false,
 }: PageHeroProps) {
   const showHighlights = highlights.length > 0;
   const imageTitle = visualTitle ?? serviceArea;
@@ -71,40 +74,58 @@ export function PageHero({
       <section className="relative overflow-hidden border-b border-primary/10 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.88),rgba(242,233,214,0.82)_45%,rgba(228,218,195,0.96)_100%)] py-12 sm:py-14">
         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(245,239,225,0.72),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(95,117,79,0.08),transparent_30%)]" />
         <Container className="relative">
-          <MotionReveal className="max-w-4xl">
-            <div className="mb-4 text-sm font-semibold uppercase tracking-[0.26em] text-primary/75">
-              {eyebrow}
-            </div>
-            <h1 className="max-w-4xl font-heading text-4xl leading-tight text-foreground sm:text-5xl lg:text-[3.6rem]">
-              {title}
-            </h1>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-foreground/76">
-              {description}
-            </p>
-            <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground/72">
-              <MapPin className="h-4 w-4 text-primary" />
-              <span>{serviceArea}</span>
-            </div>
-            {actionLinks}
-            {showHighlights ? (
-              <div className="mt-8 border-t border-primary/10 pt-5">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary/68">
-                  {highlightsTitle}
-                </p>
-                <ul className="mt-4 space-y-2">
-                  {highlights.map((highlight) => (
-                    <li
-                      key={highlight}
-                      className="flex gap-2 text-sm leading-6 text-foreground/74"
-                    >
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/65" />
-                      <span>{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
+          <div
+            className={cn(
+              "grid gap-8",
+              showCompactVisual && "lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.72fr)] lg:items-center",
+            )}
+          >
+            <MotionReveal className="max-w-4xl">
+              <div className="mb-4 text-sm font-semibold uppercase tracking-[0.26em] text-primary/75">
+                {eyebrow}
               </div>
+              <h1 className="max-w-4xl font-heading text-4xl leading-tight text-foreground sm:text-5xl lg:text-[3.6rem]">
+                {title}
+              </h1>
+              <p className="mt-5 max-w-3xl text-lg leading-8 text-foreground/76">
+                {description}
+              </p>
+              <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground/72">
+                <MapPin className="h-4 w-4 text-primary" />
+                <span>{serviceArea}</span>
+              </div>
+              {actionLinks}
+              {showHighlights ? (
+                <div className="mt-8 border-t border-primary/10 pt-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary/68">
+                    {highlightsTitle}
+                  </p>
+                  <ul className="mt-4 space-y-2">
+                    {highlights.map((highlight) => (
+                      <li
+                        key={highlight}
+                        className="flex gap-2 text-sm leading-6 text-foreground/74"
+                      >
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/65" />
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+            </MotionReveal>
+            {showCompactVisual ? (
+              <MotionReveal delay={0.08}>
+                <EditorialImageSlot
+                  variant={variant}
+                  title={imageTitle}
+                  note={imageNote}
+                  compact
+                  className="mx-auto w-full max-w-xl lg:justify-self-end"
+                />
+              </MotionReveal>
             ) : null}
-          </MotionReveal>
+          </div>
         </Container>
       </section>
     );

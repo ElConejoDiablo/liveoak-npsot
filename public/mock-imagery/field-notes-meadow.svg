@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Field notes meadow</title>
+  <desc id="desc">A quiet meadow scene with layered grasses, wildflowers, and a field notebook set into the foreground.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#e8dfca"/>
+      <stop offset="46%" stop-color="#e4d1aa"/>
+      <stop offset="100%" stop-color="#8a845f"/>
+    </linearGradient>
+    <filter id="blur-soft">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.86" numOctaves="2" seed="14"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.12"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1200" fill="url(#sky)"/>
+  <circle cx="1282" cy="188" r="118" fill="#e6b663" opacity="0.92"/>
+  <ellipse cx="1116" cy="184" rx="340" ry="108" fill="#fff5e3" opacity="0.24" filter="url(#blur-soft)"/>
+
+  <path d="M0 634 C220 578 456 588 714 652 C954 710 1188 720 1600 636 V1200 H0 Z" fill="#b6a97d"/>
+  <path d="M0 754 C214 718 470 744 768 818 C1022 882 1278 892 1600 812 V1200 H0 Z" fill="#758054"/>
+  <path d="M0 870 C278 852 538 904 850 986 C1080 1048 1322 1060 1600 976 V1200 H0 Z" fill="#33483a"/>
+
+  <g opacity="0.88">
+    <path d="M184 1090 C210 980 214 872 202 736" stroke="#55663d" stroke-width="8" stroke-linecap="round"/>
+    <path d="M244 1110 C272 990 284 888 278 756" stroke="#4a5f39" stroke-width="7" stroke-linecap="round"/>
+    <path d="M1318 1088 C1312 970 1320 864 1338 744" stroke="#52633a" stroke-width="8" stroke-linecap="round"/>
+    <path d="M1392 1100 C1390 986 1402 884 1426 770" stroke="#475836" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <g opacity="0.94">
+    <ellipse cx="480" cy="910" rx="34" ry="18" fill="#d2694d"/>
+    <ellipse cx="526" cy="866" rx="32" ry="18" fill="#d77658"/>
+    <ellipse cx="570" cy="914" rx="30" ry="17" fill="#d2694d"/>
+    <ellipse cx="1048" cy="904" rx="34" ry="18" fill="#e0b846"/>
+    <ellipse cx="1088" cy="860" rx="30" ry="17" fill="#ddb143"/>
+    <ellipse cx="1128" cy="914" rx="28" ry="16" fill="#d9ad41"/>
+  </g>
+
+  <g transform="translate(680 770) rotate(-5)">
+    <rect x="0" y="0" width="296" height="212" rx="24" fill="#f6f0e5" opacity="0.95"/>
+    <rect x="18" y="18" width="260" height="176" rx="18" fill="#fdf9f0"/>
+    <path d="M54 66 H220" stroke="#c6bfae" stroke-width="10" stroke-linecap="round"/>
+    <path d="M54 98 H232" stroke="#cec7b6" stroke-width="8" stroke-linecap="round"/>
+    <path d="M54 130 H198" stroke="#cec7b6" stroke-width="8" stroke-linecap="round"/>
+    <path d="M54 162 H176" stroke="#cec7b6" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="240" cy="58" r="18" fill="#6e8055"/>
+    <path d="M236 74 C222 106 218 132 218 162" stroke="#56673f" stroke-width="8" stroke-linecap="round"/>
+    <ellipse cx="226" cy="98" rx="20" ry="12" fill="#788a60"/>
+    <ellipse cx="252" cy="112" rx="16" ry="10" fill="#7d8f66"/>
+  </g>
+
+  <rect width="1600" height="1200" fill="#f7f1e5" opacity="0.14" filter="url(#grain)"/>
+</svg>

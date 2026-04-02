@@ -1,7 +1,14 @@
 import type { CoverTheme } from "@/lib/blog";
 
+export type PublicImageryKey =
+  | CoverTheme
+  | "fieldnotes"
+  | "learning"
+  | "stewardship"
+  | "documents";
+
 export const publicImagery: Record<
-  CoverTheme,
+  PublicImageryKey,
   {
     src: string;
     alt: string;
@@ -26,5 +33,21 @@ export const publicImagery: Record<
   community: {
     src: "/mock-imagery/chapter-gathering.svg",
     alt: "Chapter volunteers and visitors gathered in a native planting space.",
+  },
+  fieldnotes: {
+    src: "/mock-imagery/field-notes-meadow.svg",
+    alt: "Layered meadow grasses, wildflowers, and field notes gathered from south-central Texas landscapes.",
+  },
+  learning: {
+    src: "/mock-imagery/chapter-learning.svg",
+    alt: "A chapter learning gathering with a speaker, listeners, and native-plant discussion under live oaks.",
+  },
+  stewardship: {
+    src: "/mock-imagery/stewardship-workday.svg",
+    alt: "A stewardship workday with volunteers tending native planting beds and prairie edges.",
+  },
+  documents: {
+    src: "/mock-imagery/document-table.svg",
+    alt: "Chapter handouts, notes, and plant references arranged on a tabletop.",
   },
 };

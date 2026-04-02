@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Document table</title>
+  <desc id="desc">A tabletop composition with chapter handouts, meeting notes, and plant references.</desc>
+  <defs>
+    <linearGradient id="surface" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#e8dfcd"/>
+      <stop offset="100%" stop-color="#bda983"/>
+    </linearGradient>
+    <filter id="blur-soft">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="2" seed="12"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.12"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1200" fill="url(#surface)"/>
+  <ellipse cx="1128" cy="188" rx="320" ry="112" fill="#fff6e6" opacity="0.24" filter="url(#blur-soft)"/>
+  <circle cx="1280" cy="196" r="112" fill="#e5b15f" opacity="0.88"/>
+
+  <rect x="188" y="208" width="468" height="620" rx="34" fill="#fbf7ef" opacity="0.96"/>
+  <rect x="218" y="242" width="408" height="548" rx="26" fill="#fdfaf2"/>
+  <path d="M278 328 H560" stroke="#c8c1b1" stroke-width="12" stroke-linecap="round"/>
+  <path d="M278 392 H570" stroke="#d0c9b8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M278 454 H536" stroke="#d0c9b8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M278 516 H518" stroke="#d0c9b8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M278 578 H552" stroke="#d0c9b8" stroke-width="10" stroke-linecap="round"/>
+  <path d="M278 640 H468" stroke="#d0c9b8" stroke-width="10" stroke-linecap="round"/>
+
+  <rect x="820" y="260" width="500" height="376" rx="32" fill="#f6f0e5" opacity="0.96" transform="rotate(6 1070 448)"/>
+  <rect x="848" y="292" width="444" height="314" rx="26" fill="#fbf7ee" transform="rotate(6 1070 448)"/>
+  <path d="M930 392 H1186" stroke="#c7bead" stroke-width="11" stroke-linecap="round" transform="rotate(6 930 392)"/>
+  <path d="M924 454 H1200" stroke="#cec6b5" stroke-width="9" stroke-linecap="round" transform="rotate(6 924 454)"/>
+  <path d="M918 516 H1158" stroke="#cec6b5" stroke-width="9" stroke-linecap="round" transform="rotate(6 918 516)"/>
+
+  <g opacity="0.95">
+    <ellipse cx="1076" cy="882" rx="188" ry="94" fill="#efe7d6"/>
+    <path d="M1010 944 C1000 888 998 842 1012 786" stroke="#50603b" stroke-width="12" stroke-linecap="round"/>
+    <path d="M1086 938 C1088 888 1098 844 1120 790" stroke="#56653e" stroke-width="11" stroke-linecap="round"/>
+    <path d="M1156 946 C1170 894 1186 848 1218 794" stroke="#475735" stroke-width="10" stroke-linecap="round"/>
+    <ellipse cx="1008" cy="800" rx="46" ry="24" fill="#718456"/>
+    <ellipse cx="1118" cy="792" rx="44" ry="22" fill="#d4b44e"/>
+    <ellipse cx="1216" cy="798" rx="42" ry="22" fill="#d17350"/>
+  </g>
+
+  <rect width="1600" height="1200" fill="#f7f1e5" opacity="0.14" filter="url(#grain)"/>
+</svg>

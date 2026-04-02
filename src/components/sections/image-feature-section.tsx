@@ -2,6 +2,7 @@ import { CheckCircle2 } from "lucide-react";
 
 import { EditorialImageSlot } from "@/components/shared/editorial-image-slot";
 import { MotionReveal } from "@/components/shared/motion-reveal";
+import type { PublicImageryKey } from "@/data/public-imagery";
 import { cn } from "@/lib/utils";
 
 type ImageFeatureSectionProps = {
@@ -9,7 +10,7 @@ type ImageFeatureSectionProps = {
   title: string;
   description: string;
   bullets: string[];
-  variant: "savanna" | "bluebonnet" | "pollinator" | "monarch" | "community";
+  variant: PublicImageryKey;
   reverse?: boolean;
 };
 
@@ -53,6 +54,7 @@ export function ImageFeatureSection({
           title={title}
           note={description}
           compact
+          showText={false}
           className="w-full"
         />
       </MotionReveal>

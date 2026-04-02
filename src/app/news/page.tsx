@@ -31,9 +31,9 @@ export default async function NewsPage() {
         title="Field notes, local stories, and native-plant articles"
         description="Seasonal reading for beginners, gardeners, volunteers, and anyone paying closer attention to native plants in Fayette, Colorado, and Lavaca Counties."
         serviceArea={siteConfig.serviceAreaLabel}
-        variant="monarch"
-        visualTitle="Seasonal notes, field guides, and chapter stories"
-        visualNote="Find seasonal guidance, local stories, and field observations to revisit through the year."
+        variant="fieldnotes"
+        visualTitle="Seasonal notes, field guides, and local reading"
+        visualNote="Field observations, seasonal context, and practical native-plant reading gathered across the chapter region."
         actions={[
           { href: "/events", label: "View events" },
           { href: "/contact", label: "Share a question", variant: "secondary" },

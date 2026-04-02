@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Chapter learning</title>
+  <desc id="desc">A chapter learning scene under oaks with a speaker, listeners, and native grass edges.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#e8dfca"/>
+      <stop offset="48%" stop-color="#e1cfab"/>
+      <stop offset="100%" stop-color="#8d8660"/>
+    </linearGradient>
+    <filter id="blur-soft">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.88" numOctaves="2" seed="31"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.12"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1200" fill="url(#sky)"/>
+  <circle cx="1284" cy="190" r="112" fill="#e8b35c" opacity="0.92"/>
+  <ellipse cx="1102" cy="188" rx="348" ry="104" fill="#fff6e4" opacity="0.24" filter="url(#blur-soft)"/>
+
+  <path d="M0 644 C238 594 470 606 716 672 C952 736 1192 742 1600 664 V1200 H0 Z" fill="#b1a57b"/>
+  <path d="M0 760 C234 730 492 760 790 834 C1034 894 1286 906 1600 834 V1200 H0 Z" fill="#738055"/>
+  <path d="M0 874 C252 860 516 910 860 1000 C1106 1064 1338 1072 1600 1000 V1200 H0 Z" fill="#33493a"/>
+
+  <g opacity="0.95">
+    <path d="M256 918 C230 752 264 580 352 432" stroke="#4e593b" stroke-width="20" stroke-linecap="round"/>
+    <ellipse cx="388" cy="446" rx="144" ry="56" fill="#5e6f47"/>
+    <ellipse cx="310" cy="502" rx="112" ry="42" fill="#576843"/>
+    <ellipse cx="474" cy="520" rx="112" ry="44" fill="#6b7d53"/>
+  </g>
+
+  <g opacity="0.94">
+    <path d="M1182 918 C1160 776 1184 640 1250 522" stroke="#4d583a" stroke-width="16" stroke-linecap="round"/>
+    <ellipse cx="1278" cy="532" rx="120" ry="46" fill="#65754d"/>
+    <ellipse cx="1210" cy="578" rx="92" ry="38" fill="#5d6d48"/>
+    <ellipse cx="1342" cy="592" rx="88" ry="36" fill="#72825a"/>
+  </g>
+
+  <g opacity="0.95">
+    <rect x="664" y="646" width="18" height="220" rx="9" fill="#604b36"/>
+    <rect x="624" y="628" width="112" height="72" rx="10" fill="#f0eadf"/>
+    <rect x="638" y="644" width="84" height="44" rx="8" fill="#e3dbc9"/>
+    <circle cx="590" cy="760" r="20" fill="#d2b08c"/>
+    <path d="M578 784 C566 836 566 884 580 938" stroke="#35493a" stroke-width="18" stroke-linecap="round"/>
+    <circle cx="726" cy="790" r="18" fill="#cfac88"/>
+    <path d="M716 812 C704 858 704 900 718 950" stroke="#445d48" stroke-width="16" stroke-linecap="round"/>
+    <circle cx="808" cy="808" r="18" fill="#d5b491"/>
+    <path d="M798 830 C788 874 788 916 802 964" stroke="#3f5442" stroke-width="16" stroke-linecap="round"/>
+    <circle cx="888" cy="790" r="18" fill="#cfac88"/>
+    <path d="M878 812 C870 860 872 906 888 958" stroke="#435a45" stroke-width="16" stroke-linecap="round"/>
+  </g>
+
+  <rect width="1600" height="1200" fill="#f7f1e5" opacity="0.14" filter="url(#grain)"/>
+</svg>

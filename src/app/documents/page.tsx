@@ -24,13 +24,17 @@ export default function DocumentsPage() {
         title="Chapter documents, handouts, and posted materials"
         description="Look here for bylaws, meeting materials, handouts, flyers, and other chapter files."
         serviceArea={siteConfig.serviceAreaLabel}
+        variant="documents"
         layout="compact"
+        showCompactVisual
         highlightsTitle="Includes"
         highlights={[
           "Governance and meeting materials",
           "Public handouts and flyers",
           "Member resources when available",
         ]}
+        visualTitle="Handouts, notices, and chapter records"
+        visualNote="A growing library for posted files, public handouts, and reference material."
         actions={[
           { href: "/contact", label: "Contact the chapter" },
           { href: siteConfig.contactUrl, label: "Email about documents", variant: "secondary" },
@@ -61,18 +65,20 @@ export default function DocumentsPage() {
                     key={item.title}
                     className="rounded-[1.2rem] border border-primary/10 bg-[#F7F4E8] p-4"
                   >
-                    <h3 className="font-heading text-xl text-foreground">
-                      {item.title}
-                    </h3>
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <h3 className="font-heading text-xl text-foreground">
+                        {item.title}
+                      </h3>
+                      <span className="rounded-full border border-primary/12 bg-white/80 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-primary/72">
+                        {item.status}
+                      </span>
+                    </div>
                     <p className="mt-2 text-sm leading-7 text-foreground/68">
                       {item.description}
                     </p>
                   </li>
                 ))}
               </ul>
-              <p className="mt-5 text-sm leading-7 text-foreground/64">
-                {collection.emptyMessage}
-              </p>
             </MotionReveal>
           ))}
         </div>

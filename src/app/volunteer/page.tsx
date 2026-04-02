@@ -22,9 +22,9 @@ export default function VolunteerPage() {
         title="Volunteer in ways that fit your time and skills"
         description="Helping can mean welcoming visitors, supporting events, sharing plant knowledge, or pitching in with the practical work that keeps the chapter going."
         serviceArea={siteConfig.serviceAreaLabel}
-        variant="community"
-        visualTitle="Everyday help makes a chapter stronger"
-        visualNote="Hospitality, outreach, stewardship, and behind-the-scenes support all matter."
+        variant="stewardship"
+        visualTitle="Hands-on help keeps things moving"
+        visualNote="Hospitality, setup, stewardship, and practical support all help the chapter stay welcoming."
         actions={[
           { href: siteConfig.contactUrl, label: "Tell us how you'd like to help" },
           { href: siteConfig.joinUrl, label: "Join NPSOT", variant: "secondary" },

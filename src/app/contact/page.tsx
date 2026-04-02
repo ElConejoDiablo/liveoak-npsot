@@ -68,8 +68,14 @@ export default function ContactPage() {
               Best for event questions, volunteer interest, chapter introductions,
               and direct email follow-up with the chapter.
             </div>
-            <div className="mt-6">
-              <SocialLinks stacked />
+            <div className="mt-6 border-t border-primary/10 pt-5">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/72">
+                Follow the chapter
+              </p>
+              <p className="mt-2 text-sm leading-6 text-foreground/66">
+                Find updates and public-facing chapter activity on these channels.
+              </p>
+              <SocialLinks className="mt-4" includeEmail={false} compact />
             </div>
           </MotionReveal>
 
