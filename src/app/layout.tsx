@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: buildOgImageUrl({
-          title: "Native plant community for south-central Texas",
+          title: "Native plants for Fayette, Colorado, and Lavaca Counties",
           subtitle: siteConfig.description,
           eyebrow: siteConfig.shortName,
         }),
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       buildOgImageUrl({
-        title: "Native plant community for south-central Texas",
+        title: "Native plants for Fayette, Colorado, and Lavaca Counties",
         subtitle: siteConfig.description,
         eyebrow: siteConfig.shortName,
       }),

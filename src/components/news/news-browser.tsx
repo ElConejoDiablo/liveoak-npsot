@@ -50,7 +50,7 @@ export function NewsBrowser({
       <div className="rounded-[1.8rem] border border-primary/10 bg-[#F5F0E1] p-5 shadow-[0_18px_60px_rgba(39,59,42,0.08)] sm:p-6">
         <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-primary/72">
           <SlidersHorizontal className="h-4 w-4" />
-          Filter and search
+          Filter articles
         </div>
         <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_repeat(2,minmax(180px,0.4fr))]">
           <label className="block">
@@ -101,8 +101,7 @@ export function NewsBrowser({
           </label>
         </div>
         <p className="mt-4 text-sm leading-7 text-foreground/66">
-          {filteredPosts.length} article{filteredPosts.length === 1 ? "" : "s"}{" "}
-          matching the current filters.
+          Showing {filteredPosts.length} article{filteredPosts.length === 1 ? "" : "s"}.
         </p>
       </div>
 
@@ -115,7 +114,7 @@ export function NewsBrowser({
       ) : (
         <div className="rounded-[1.8rem] border border-dashed border-primary/20 bg-[#F7F4E8] p-6">
           <h3 className="font-heading text-2xl text-foreground">
-            No articles match that search yet
+            No articles match that search
           </h3>
           <p className="mt-3 text-base leading-7 text-foreground/72">
             Try a broader keyword or reset the category and tag filters to see

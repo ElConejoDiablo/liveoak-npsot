@@ -24,11 +24,12 @@ export const siteConfig = {
   organization: "Native Plant Society of Texas",
   domain: "liveoak-npsot.org",
   siteUrl: "https://liveoak-npsot.org",
+  timeZone: "America/Chicago",
   contactEmail: "info@liveoak-npsot.org",
   mission:
     "The mission of the Native Plant Society of Texas is to promote conservation, research and utilization of native plants and plant habitats of Texas through education, outreach, and example.",
   description:
-    "The Live Oak Chapter of the Native Plant Society of Texas serves Fayette, Colorado, and Lavaca Counties with welcoming programs, native plant education, field outings, habitat stewardship, and community connection rooted in south-central Texas.",
+    "The Live Oak Chapter of the Native Plant Society of Texas serves Fayette, Colorado, and Lavaca Counties with events, field walks, native plant information, and local connection around south-central Texas landscapes.",
   serviceArea: ["Fayette County", "Colorado County", "Lavaca County"],
   serviceAreaLabel: "Fayette, Colorado, and Lavaca Counties",
   serviceAreaSentence:
@@ -68,54 +69,57 @@ export const siteConfig = {
     {
       role: "President",
       name: "Anthony Haas",
-      bio: "Anthony helps guide the chapter's public presence, chapter priorities, and steady growth as the organization welcomes more native-plant advocates across the region.",
-      focus: "Chapter direction, partnerships, and member engagement",
-      countyConnection: "Serving the chapter across Fayette, Colorado, and Lavaca Counties",
+      bio: "Anthony helps guide chapter events, partnerships, and chapter priorities as the Live Oak Chapter grows across the region.",
+      focus: "Chapter leadership, partnerships, and member engagement",
+      countyConnection:
+        "Serving members and visitors across Fayette, Colorado, and Lavaca Counties",
       participationNote:
-        "A good contact for chapter direction, partnerships, and broader organizational questions.",
+        "A good contact for chapter leadership questions, partnerships, and broader chapter direction.",
     },
     {
       role: "Secretary",
       name: "Morgan Bubela",
-      bio: "Morgan supports communication, meeting coordination, and the clear day-to-day organization that keeps chapter activities accessible and easy to follow.",
+      bio: "Morgan helps keep chapter communication, meeting records, and day-to-day coordination clear and dependable.",
       focus: "Communications, meeting records, and chapter coordination",
-      countyConnection: "Helping connect chapter volunteers and participants across the service area",
+      countyConnection:
+        "Helping keep chapter communication clear across the three-county service area",
       participationNote:
-        "Helps keep chapter communication and participation details clear and easy to follow.",
+        "A good contact for chapter communication and coordination questions.",
     },
     {
       role: "Treasurer",
       name: "Barry Treas",
-      bio: "Barry helps steward the chapter's resources so educational programs, outreach efforts, and volunteer projects can grow on a dependable foundation.",
+      bio: "Barry helps manage the financial side of the chapter so events, outreach, and volunteer work can keep moving.",
       focus: "Financial stewardship and chapter operations",
-      countyConnection: "Supporting practical, sustainable chapter growth across south-central Texas",
+      countyConnection:
+        "Supporting steady chapter operations across Fayette, Colorado, and Lavaca Counties",
       participationNote:
-        "Supports the practical side of chapter sustainability as programming and outreach continue to grow.",
+        "Helps with the practical side of chapter operations and financial stewardship.",
     },
   ] satisfies LeadershipMember[],
   about: {
     overview:
-      "The Live Oak Chapter of the Native Plant Society of Texas serves Fayette, Colorado, and Lavaca Counties with local programming, chapter gatherings, field-based learning, and conservation-minded outreach rooted in south-central Texas.",
+      "The Live Oak Chapter brings together people who care about Texas native plants in Fayette, Colorado, and Lavaca Counties through local events, field learning, and conservation-minded outreach.",
     regionalContext:
-      "This chapter exists to make native plants more understandable and more useful in everyday life, whether someone is starting a home planting, learning pollinator basics, joining a field walk, or looking for a local conservation community.",
+      "The chapter helps people learn which plants belong here, how they support habitat, and how to use them in home landscapes, public spaces, and everyday life.",
     whatWeDo: [
-      "Offer chapter meetings and public programs grounded in Texas native plants and habitat stewardship.",
-      "Organize plant walks, educational talks, and seasonal learning opportunities that connect local observation with practical action.",
+      "Host chapter meetings, talks, and public events focused on Texas native plants and habitat care.",
+      "Offer plant walks and seasonal learning opportunities that connect local observation to practical action.",
       "Support native gardening, pollinator habitat, seed stewardship, and conservation-minded land care through education and example.",
-      "Create welcoming entry points for members, prospective members, and neighbors who want to learn alongside the chapter.",
+      "Welcome members, neighbors, gardeners, and anyone who wants to learn more about native plants close to home.",
     ],
     howToParticipate: [
-      "Attend meetings, walks, and educational programs as they are posted on the chapter calendar.",
-      "Join NPSOT and connect with the Live Oak Chapter as local programming grows.",
-      "Volunteer with chapter hospitality, outreach, educational events, or stewardship activities.",
-      "Use the chapter email to ask questions, share ideas, or express interest in helping.",
+      "Attend a meeting, walk, or public event listed on the chapter calendar.",
+      "Join NPSOT and connect with the Live Oak Chapter.",
+      "Volunteer with chapter events, outreach, hospitality, or stewardship work.",
+      "Contact the chapter with questions, ideas, or interest in helping.",
     ],
   },
   homePillars: [
     {
       title: "Learn native plants with confidence",
       description:
-        "Programs, walks, and practical seasonal guidance that make local ecology easier to understand and apply at home.",
+        "Events, field walks, and seasonal guidance that make local ecology easier to understand and use at home.",
     },
     {
       title: "Build habitat that belongs here",
@@ -125,7 +129,7 @@ export const siteConfig = {
     {
       title: "Meet neighbors doing the work",
       description:
-        "The chapter is meant to be useful and welcoming: a place to ask questions, share knowledge, and get involved.",
+        "A welcoming place to ask questions, share knowledge, and get involved.",
     },
   ],
   chapterStats: [
@@ -135,14 +139,14 @@ export const siteConfig = {
       detail: "Fayette, Colorado, and Lavaca",
     },
     {
-      label: "What you’ll find",
-      value: "Open events",
-      detail: "Meetings, walks, outreach, and volunteer days",
+      label: "What we share",
+      value: "Events and articles",
+      detail: "Meetings, walks, local guidance, and volunteer opportunities",
     },
     {
-      label: "Guiding approach",
-      value: "Local first",
-      detail: "Conservation, education, and practical native-plant use",
+      label: "Chapter focus",
+      value: "Native plants close to home",
+      detail: "Education, habitat care, and practical local knowledge",
     },
   ],
 } as const;
@@ -180,7 +184,7 @@ export const secondaryNavigation: NavigationItem[] = [
 
 export const footerLinkGroups: FooterLinkGroup[] = [
   {
-    title: "Start here",
+    title: "Explore",
     links: [
       { href: "/about", label: "About" },
       { href: "/events", label: "Events" },

@@ -51,14 +51,13 @@ export function ResourceBrowser({ groups }: ResourceBrowserProps) {
             <Input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search guides, chapter links, and reference pages"
+              placeholder="Search NPSOT links, plant guides, and habitat resources"
               className="h-12 rounded-full border-primary/12 bg-white pl-11"
             />
           </div>
         </label>
         <p className="mt-4 text-sm leading-7 text-foreground/66">
-          {resultCount} resource link{resultCount === 1 ? "" : "s"} currently
-          shown.
+          Showing {resultCount} resource link{resultCount === 1 ? "" : "s"}.
         </p>
       </div>
 

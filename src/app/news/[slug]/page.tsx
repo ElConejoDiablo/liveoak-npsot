@@ -145,14 +145,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 Next steps
               </p>
               <h2 className="mt-3 font-heading text-2xl text-foreground">
-                Turn reading into local action
+                Keep going with the chapter
               </h2>
               <div className="mt-5 space-y-3">
                 <SmartLink
                   href="/events"
                   className="flex items-center justify-between rounded-2xl border border-primary/10 bg-white/80 px-4 py-3 text-sm font-semibold text-foreground transition hover:border-primary/20 hover:bg-white"
                 >
-                  <span>Attend an event</span>
+                  <span>View events</span>
                   <ArrowRight className="h-4 w-4 text-primary" />
                 </SmartLink>
                 <SmartLink
@@ -175,12 +175,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             {post.counties?.length ? (
               <div className="rounded-[1.6rem] border border-primary/10 bg-white/78 p-5 shadow-[0_18px_60px_rgba(39,59,42,0.08)]">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary/72">
-                  Local relevance
+                  Across the chapter region
                 </p>
                 <p className="mt-3 text-base leading-7 text-foreground/74">
-                  This article is especially useful for readers across{" "}
-                  {post.counties.join(", ")} and the broader Live Oak Chapter
-                  service area.
+                  This article focuses on {post.counties.join(", ")} and the
+                  broader Live Oak Chapter service area.
                 </p>
               </div>
             ) : null}
@@ -212,8 +211,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <CtaBanner
           eyebrow="Keep going"
           title="Keep learning with the chapter"
-          description="Attend an event, join NPSOT, or reach out to the chapter when you are ready for the next step."
-          primaryAction={{ href: "/events", label: "Attend an event" }}
+          description="Attend an event, join NPSOT, or reach out to the chapter if you would like to stay involved."
+          primaryAction={{ href: "/events", label: "View events" }}
           secondaryAction={{ href: siteConfig.joinUrl, label: "Join NPSOT" }}
           variant="pollinator"
         />

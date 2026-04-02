@@ -51,7 +51,7 @@ export function ImageFeatureSection({
         <EditorialImageSlot
           variant={variant}
           title={title}
-          note="Field observation, plant study, stewardship, and chapter learning all belong in this work."
+          note={description}
           compact
           className="w-full"
         />

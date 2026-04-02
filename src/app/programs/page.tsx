@@ -10,7 +10,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Programs",
   description:
-    "Explore the education, field trips, seed stewardship, outreach, and habitat-focused program areas planned for the Live Oak Chapter.",
+    "Explore chapter meetings, field trips, seed stewardship, outreach, and habitat care across Fayette, Colorado, and Lavaca Counties.",
   path: "/programs",
 });
 
@@ -19,22 +19,22 @@ export default function ProgramsPage() {
     <>
       <PageHero
         eyebrow="Programs"
-        title="Programs that help native plants move from abstract good idea to lived local practice"
-        description="A chapter site should show not only what the organization believes, but what it actually does. These program areas create that bridge."
+        title="Programs that bring native plants into everyday chapter life"
+        description="These are the kinds of chapter activities that help people learn, observe, and care for native plants close to home."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="pollinator"
-        visualTitle="Programs that turn local curiosity into practice"
-        visualNote="Education, observation, seed work, outreach, and stewardship all belong in the chapter rhythm."
+        visualTitle="Learning, stewardship, and local connection"
+        visualNote="Meetings, walks, seed work, outreach, and habitat care all have a place in chapter life."
         actions={[
           { href: "/events", label: "View events" },
-          { href: "/volunteer", label: "Find volunteer paths", variant: "secondary" },
+          { href: "/volunteer", label: "Volunteer with the chapter", variant: "secondary" },
         ]}
       />
 
       <SectionShell
         eyebrow="Program areas"
-        title="Built for learning, observation, stewardship, and outreach"
-        intro="The chapter can grow around a few strong program pillars rather than a scattered collection of one-off activities."
+        title="Learning, stewardship, and outreach"
+        intro="These program areas show how the chapter can support education, field learning, and habitat care through the year."
       >
         <div className="space-y-8">
           {programAreas.map((area, index) => (
@@ -53,8 +53,8 @@ export default function ProgramsPage() {
 
       <SectionShell
         eyebrow="Seasonal rhythm"
-        title="A chapter can feel alive by matching its content to the time of year"
-        intro="Programs become more useful when they follow the season instead of staying generic all year."
+        title="Seasonal highlights across the chapter year"
+        intro="Native plant learning changes with the season, from spring bloom watching to seed work and fall pollinator support."
       >
         <div className="grid gap-4 lg:grid-cols-3">
           {seasonalHighlights.map((highlight, index) => (
@@ -87,9 +87,9 @@ export default function ProgramsPage() {
 
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
         <CtaBanner
-          eyebrow="Build momentum"
-          title="Use the chapter site to convert interest into participation"
-          description="Programs work best when visitors can move directly from inspiration to a next step, whether that means attending a talk, volunteering, or joining NPSOT."
+          eyebrow="Stay involved"
+          title="Join the chapter, attend an event, or ask how to help"
+          description="Attend an event, volunteer, or join NPSOT to stay involved with the chapter."
           primaryAction={{ href: "/contact", label: "Contact the chapter" }}
           secondaryAction={{ href: siteConfig.joinUrl, label: "Join NPSOT" }}
           variant="community"

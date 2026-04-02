@@ -35,12 +35,6 @@ export function ArticleCard({ post, variant = "default" }: ArticleCardProps) {
             <Clock3 className="h-4 w-4 text-primary/75" />
             {post.readingTime} min read
           </span>
-          {post.sample ? (
-            <>
-              <span className="h-1 w-1 rounded-full bg-foreground/24" />
-              <span>Sample article</span>
-            </>
-          ) : null}
         </div>
         <SmartLink
           href={`/news/${post.slug}`}

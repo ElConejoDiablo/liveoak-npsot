@@ -9,7 +9,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Resources",
   description:
-    "Find official NPSOT links, native plant education resources, and habitat references without placeholder content.",
+    "Find official NPSOT links, native plant references, and habitat resources for Fayette, Colorado, and Lavaca Counties.",
   path: "/resources",
   eyebrow: "Resources",
 });
@@ -19,15 +19,15 @@ export default function ResourcesPage() {
     <>
       <PageHero
         eyebrow="Resources"
-        title="Useful links for getting started, going deeper, and staying connected"
-        description="A practical chapter site should make it easy to move between trustworthy statewide resources and the chapter contact page without dead ends or placeholder links."
+        title="Trusted NPSOT links and native-plant references"
+        description="Use these links to join NPSOT, explore native plants, and find Texas habitat resources."
         serviceArea={siteConfig.serviceAreaLabel}
         layout="utility"
-        highlightsTitle="Start with"
+        highlightsTitle="Includes"
         highlights={[
           "Beginner guidance and official NPSOT links",
           "Habitat and plant-identification references",
-          "Use the contact page when you want chapter-specific help",
+          "Contact the chapter if you need local guidance",
         ]}
         actions={[
           { href: siteConfig.npsot.homeUrl, label: "Visit NPSOT.org" },
@@ -37,8 +37,8 @@ export default function ResourcesPage() {
 
       <SectionShell
         eyebrow="Reference library"
-        title="Organized for real next steps, not placeholder content"
-        intro="Use the lightweight search to quickly find membership links, monarch resources, plant databases, and starter guidance."
+        title="Reference links for members, gardeners, and curious visitors"
+        intro="Search for membership links, monarch resources, plant databases, and beginner guidance."
       >
         <ResourceBrowser groups={resourceGroups} />
       </SectionShell>
@@ -46,8 +46,8 @@ export default function ResourcesPage() {
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
         <CtaBanner
           eyebrow="Need something specific?"
-          title="Ask the chapter if you are looking for the right next plant, book, or starting point"
-          description="The chapter inbox is a simple way to request guidance if you are looking for a useful next step."
+          title="Contact the chapter if you need help finding the right resource"
+          description="We can help point you to a plant reference, membership link, or local resource."
           primaryAction={{ href: "/contact", label: "Contact the chapter" }}
           variant="pollinator"
         />

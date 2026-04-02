@@ -1,8 +1,9 @@
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
+import { publicImagery } from "@/data/public-imagery";
 import { buttonVariants } from "@/components/ui/button-styles";
 import { MotionReveal } from "@/components/shared/motion-reveal";
-import { PlantIllustration } from "@/components/shared/plant-illustration";
 import { SmartLink } from "@/components/shared/smart-link";
 import { cn } from "@/lib/utils";
 
@@ -29,6 +30,8 @@ export function CtaBanner({
   secondaryAction,
   variant = "community",
 }: CtaBannerProps) {
+  const image = publicImagery[variant];
+
   return (
     <MotionReveal className="overflow-hidden rounded-[2rem] border border-primary/10 bg-[linear-gradient(135deg,rgba(37,58,40,0.98),rgba(61,87,63,0.95))] text-white shadow-[0_30px_90px_rgba(28,49,35,0.28)]">
       <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-center">
@@ -64,10 +67,16 @@ export function CtaBanner({
             ) : null}
           </div>
         </div>
-        <PlantIllustration
-          variant={variant}
-          className="aspect-[4/3] w-full border-white/12 bg-transparent shadow-none"
-        />
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] border border-white/12 bg-[#213829] shadow-none">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            sizes="(max-width: 1024px) 100vw, 28vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,29,20,0.02),rgba(17,29,20,0.16)_50%,rgba(17,29,20,0.36))]" />
+        </div>
       </div>
     </MotionReveal>
   );

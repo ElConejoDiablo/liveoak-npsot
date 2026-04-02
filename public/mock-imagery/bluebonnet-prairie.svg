@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Bluebonnet prairie</title>
+  <desc id="desc">A spring meadow with bluebonnets, paintbrush, and warm prairie light.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ece6dc"/>
+      <stop offset="45%" stop-color="#eadfbf"/>
+      <stop offset="100%" stop-color="#9f9a6c"/>
+    </linearGradient>
+    <filter id="blur-soft">
+      <feGaussianBlur stdDeviation="20"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="2" seed="9"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.14"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1200" fill="url(#sky)"/>
+  <circle cx="1270" cy="186" r="102" fill="#efc664" opacity="0.9"/>
+  <ellipse cx="1100" cy="172" rx="330" ry="96" fill="#fff7e6" opacity="0.3" filter="url(#blur-soft)"/>
+
+  <path d="M0 646 C178 600 394 590 602 644 C846 708 1168 730 1600 646 V1200 H0 Z" fill="#ada774"/>
+  <path d="M0 742 C280 702 490 722 724 786 C970 854 1242 864 1600 770 V1200 H0 Z" fill="#7e8753"/>
+  <path d="M0 852 C252 826 516 878 760 944 C1016 1014 1276 1024 1600 932 V1200 H0 Z" fill="#3d5138"/>
+
+  <g filter="url(#blur-soft)" opacity="0.88">
+    <ellipse cx="286" cy="900" rx="210" ry="120" fill="#486ea8"/>
+    <ellipse cx="612" cy="932" rx="220" ry="126" fill="#4267a4"/>
+    <ellipse cx="1008" cy="918" rx="250" ry="136" fill="#486ea8"/>
+    <ellipse cx="1380" cy="924" rx="210" ry="118" fill="#4f73ac"/>
+
+    <ellipse cx="382" cy="950" rx="112" ry="92" fill="#dc7248"/>
+    <ellipse cx="840" cy="968" rx="120" ry="88" fill="#d96a42"/>
+    <ellipse cx="1260" cy="952" rx="114" ry="86" fill="#de764d"/>
+  </g>
+
+  <g opacity="0.92">
+    <path d="M246 1086 C232 976 236 876 242 760" stroke="#3d5235" stroke-width="8" stroke-linecap="round"/>
+    <path d="M298 1100 C294 990 300 888 310 770" stroke="#455a39" stroke-width="7" stroke-linecap="round"/>
+    <path d="M726 1098 C710 980 712 886 720 770" stroke="#3f5537" stroke-width="8" stroke-linecap="round"/>
+    <path d="M804 1110 C806 994 816 900 828 780" stroke="#4a5d3c" stroke-width="7" stroke-linecap="round"/>
+    <path d="M1196 1092 C1184 980 1186 892 1196 778" stroke="#425636" stroke-width="8" stroke-linecap="round"/>
+    <path d="M1266 1106 C1274 994 1286 896 1302 782" stroke="#4d613f" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <g opacity="0.55" fill="#f1d58f" filter="url(#blur-soft)">
+    <ellipse cx="266" cy="1048" rx="118" ry="42"/>
+    <ellipse cx="790" cy="1062" rx="140" ry="44"/>
+    <ellipse cx="1266" cy="1052" rx="132" ry="42"/>
+  </g>
+
+  <rect width="1600" height="1200" fill="#faf3e8" opacity="0.14" filter="url(#grain)"/>
+</svg>

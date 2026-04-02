@@ -13,29 +13,29 @@ export type ResourceGroup = {
 
 export const resourceGroups: ResourceGroup[] = [
   {
-    title: "Start with the essentials",
+    title: "NPSOT and getting started",
     description:
-      "These are the practical first stops for learning about the Society, joining, and beginning a native-plant project with regionally useful guidance.",
+      "Use these links to learn about NPSOT, join or renew, and get started with native plants.",
     links: [
       {
         title: "NPSOT home",
         href: "https://www.npsot.org/",
         description:
-          "Explore the statewide organization, chapter network, and current Native Plant Society of Texas programs.",
+          "Visit the statewide Native Plant Society of Texas website.",
         kind: "external",
       },
       {
         title: "Join or renew NPSOT membership",
         href: "https://www.npsot.org/join-or-renew-membership/",
         description:
-          "Use the official membership page to join, renew, or give a gift membership.",
+          "Join NPSOT, renew your membership, or give a gift membership.",
         kind: "external",
       },
       {
         title: "Start a native plant garden",
         href: "https://www.npsot.org/resources/start-a-native-garden/",
         description:
-          "An official NPSOT starting point for people shifting from conventional landscaping toward regional native planting.",
+          "Read NPSOT guidance for starting a native plant garden in Texas.",
         kind: "external",
       },
       {
@@ -48,29 +48,29 @@ export const resourceGroups: ResourceGroup[] = [
     ],
   },
   {
-    title: "Go deeper on habitat and identification",
+    title: "Habitat and plant identification",
     description:
-      "Useful educational references for plant selection, pollinator support, and habitat thinking that extends beyond one planting season.",
+      "Keep learning with trusted references for plant selection, pollinator support, and habitat care.",
     links: [
       {
         title: "Bring Back the Monarchs to Texas",
         href: "https://www.npsot.org/our-work/bring-back-the-monarchs-to-texas/",
         description:
-          "NPSOT's monarch conservation hub with milkweed and habitat resources that complement chapter education.",
+          "Find milkweed, monarch, and habitat information from NPSOT.",
         kind: "external",
       },
       {
         title: "Lady Bird Johnson Wildflower Center plant database",
         href: "https://www.wildflower.org/plants/",
         description:
-          "A widely used Texas native plant reference for browsing species, range, and horticultural notes.",
+          "Look up native plants, range maps, and growing information.",
         kind: "external",
       },
       {
         title: "Texas Parks and Wildlife Wildscapes",
         href: "https://tpwd.texas.gov/wildlife/wildlife-diversity/wildscapes/wildscape-certification/",
         description:
-          "Texas Parks and Wildlife guidance on building habitat with native plants and wildlife needs in mind.",
+          "Explore Texas Parks and Wildlife guidance for planting with wildlife habitat in mind.",
         kind: "external",
       },
     ],

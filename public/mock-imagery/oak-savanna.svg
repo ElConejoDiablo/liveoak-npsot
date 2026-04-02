@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Oak savanna</title>
+  <desc id="desc">A warm south-central Texas landscape with live oaks, native grasses, and evening light.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#efe6cf"/>
+      <stop offset="48%" stop-color="#ecdab8"/>
+      <stop offset="100%" stop-color="#b79d6b"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#9ba06a"/>
+      <stop offset="100%" stop-color="#344634"/>
+    </linearGradient>
+    <filter id="blur-soft">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="17"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.12"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1200" fill="url(#sky)"/>
+  <ellipse cx="1210" cy="220" rx="280" ry="140" fill="#f8efe0" opacity="0.48" filter="url(#blur-soft)"/>
+  <circle cx="1235" cy="206" r="110" fill="#e4bc62" opacity="0.92"/>
+  <ellipse cx="1090" cy="170" rx="300" ry="90" fill="#fff6e6" opacity="0.28" filter="url(#blur-soft)"/>
+
+  <path d="M0 632 C212 560 382 558 560 606 C736 654 978 672 1188 620 C1340 582 1468 570 1600 584 V1200 H0 Z" fill="#b3ab79"/>
+  <path d="M0 738 C196 680 410 696 620 748 C818 796 1086 818 1600 722 V1200 H0 Z" fill="#788255"/>
+  <path d="M0 834 C244 804 458 850 672 924 C910 1002 1214 1014 1600 920 V1200 H0 Z" fill="url(#ground)"/>
+
+  <g opacity="0.95">
+    <path d="M300 900 C276 730 310 560 392 414" stroke="#4d5839" stroke-width="22" stroke-linecap="round"/>
+    <ellipse cx="420" cy="428" rx="154" ry="58" fill="#617148"/>
+    <ellipse cx="335" cy="492" rx="118" ry="46" fill="#596947"/>
+    <ellipse cx="504" cy="504" rx="120" ry="50" fill="#6c7d53"/>
+  </g>
+
+  <g opacity="0.92">
+    <path d="M1132 852 C1110 714 1138 590 1206 488" stroke="#4d5839" stroke-width="18" stroke-linecap="round"/>
+    <ellipse cx="1230" cy="500" rx="126" ry="48" fill="#68774d"/>
+    <ellipse cx="1156" cy="548" rx="96" ry="40" fill="#617048"/>
+    <ellipse cx="1300" cy="564" rx="94" ry="38" fill="#708157"/>
+  </g>
+
+  <g fill="none" stroke-linecap="round">
+    <path d="M162 1000 C188 908 182 838 176 760" stroke="#46553b" stroke-width="8"/>
+    <path d="M214 1030 C232 950 230 866 226 788" stroke="#50613d" stroke-width="8"/>
+    <path d="M258 1038 C274 942 276 872 274 796" stroke="#59683f" stroke-width="7"/>
+    <path d="M1344 1068 C1322 962 1316 892 1314 814" stroke="#46553b" stroke-width="8"/>
+    <path d="M1394 1048 C1378 956 1372 886 1374 806" stroke="#536440" stroke-width="7"/>
+    <path d="M1454 1080 C1442 980 1438 900 1440 822" stroke="#5b6a43" stroke-width="7"/>
+  </g>
+
+  <g opacity="0.62" fill="#d8be78" filter="url(#blur-soft)">
+    <ellipse cx="210" cy="1008" rx="90" ry="24"/>
+    <ellipse cx="1410" cy="1038" rx="104" ry="28"/>
+    <ellipse cx="920" cy="982" rx="172" ry="42"/>
+  </g>
+
+  <rect width="1600" height="1200" fill="#f5efe3" opacity="0.16" filter="url(#grain)"/>
+</svg>

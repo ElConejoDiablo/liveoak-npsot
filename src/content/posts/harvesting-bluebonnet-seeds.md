@@ -1,6 +1,6 @@
 ---
 title: "Harvesting Bluebonnet Seeds"
-excerpt: "Bluebonnet seed saving works best when pods are truly mature, collection is done with permission, and enough seed is left behind for the site to renew itself."
+excerpt: "Bluebonnet seed saving works best when pods are fully mature, collection is done with permission, and plenty of seed is left behind for the stand."
 date: "2026-03-20"
 author: "Live Oak Chapter editorial team"
 category: "Seed Stewardship"
@@ -68,4 +68,4 @@ Choose a sunny location with drainage, keep site disturbance modest, and avoid b
 
 Native seed work is not just about getting more flowers at home. It is also about respecting habitat, genetics, landowners, and the long life of the stand you are visiting. If the patch looks sparse, stressed, heavily visited, or especially significant, enjoy it and leave it alone.
 
-Bluebonnet seed saving is most useful when it is done with care, humility, and enough patience to let the plant finish its cycle.
+Bluebonnet seed saving works best when it is done with care and enough patience to let the plant finish its cycle.

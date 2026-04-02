@@ -44,8 +44,8 @@ export function SiteFooter() {
               </div>
             </div>
             <p className="mt-5 max-w-2xl text-base leading-7 text-foreground/72">
-              Local events, practical native-plant education, and habitat-minded
-              community connection rooted in south-central Texas.
+              Local events, native-plant learning, and community around habitat
+              care across south-central Texas.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-3 text-sm">
               <SmartLink
@@ -57,8 +57,7 @@ export function SiteFooter() {
               <span className="text-foreground/58">{siteConfig.organization}</span>
             </div>
             <p className="mt-3 text-sm leading-6 text-foreground/58">
-              Questions, introductions, and chapter updates all start on the
-              contact page.
+              Questions and requests for updates start on the contact page.
             </p>
             <SocialLinks className="mt-5 gap-2" includeEmail={false} compact />
           </div>
@@ -101,7 +100,7 @@ export function SiteFooter() {
 
         <div className="mt-8 flex flex-col gap-3 border-t border-primary/10 pt-5 text-sm text-foreground/58 sm:flex-row sm:items-center sm:justify-between">
           <p>{siteConfig.serviceAreaSentence}</p>
-          <p>&copy; 2027 Live Oak Chapter - NPSoT</p>
+          <p>&copy; {new Date().getFullYear()} Live Oak Chapter - NPSoT</p>
         </div>
       </Container>
     </footer>

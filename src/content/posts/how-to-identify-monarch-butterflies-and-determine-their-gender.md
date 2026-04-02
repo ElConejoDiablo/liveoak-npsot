@@ -1,6 +1,6 @@
 ---
-title: "How to Identify Monarch Butterflies, Tell Them Apart From Similar Species, and Determine Their Gender"
-excerpt: "Monarch identification gets easier when you know the wing pattern basics, which look-alikes show up in Texas, and the simple field marks that distinguish males from females."
+title: "How to Recognize Monarch Butterflies and Tell Males From Females"
+excerpt: "Monarch identification gets easier when you know the basic wing pattern, the most common look-alikes, and the simple field marks that separate males from females."
 date: "2026-03-18"
 author: "Live Oak Chapter editorial team"
 category: "Wildlife ID"
@@ -73,4 +73,4 @@ The more time you spend watching them in native plantings, the easier they becom
 
 Learning to identify monarchs is not just a fun skill. It helps people pay closer attention to migration, habitat use, and the role native plants play in supporting wildlife. Once people can name what they are seeing, they often become much more invested in protecting it.
 
-That is a strong place for a chapter to begin: not with abstract concern, but with careful looking.
+Careful looking is where that deeper interest begins.

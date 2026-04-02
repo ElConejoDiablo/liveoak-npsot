@@ -27,7 +27,7 @@ export function createMetadata({
     : siteConfig.chapterName;
   const canonicalUrl = new URL(path, siteConfig.siteUrl).toString();
   const ogImageUrl = buildOgImageUrl({
-    title: title ?? "Native plant community for south-central Texas",
+    title: title ?? "Native plants for Fayette, Colorado, and Lavaca Counties",
     subtitle: description,
     eyebrow: eyebrow ?? siteConfig.shortName,
   });

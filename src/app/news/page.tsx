@@ -10,7 +10,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Articles",
   description:
-    "Read chapter updates, field notes, and practical native-plant articles for Fayette, Colorado, and Lavaca Counties.",
+    "Read field notes, local stories, and native-plant articles from the Live Oak Chapter.",
   path: "/news",
   eyebrow: "Articles",
 });
@@ -28,14 +28,14 @@ export default async function NewsPage() {
     <>
       <PageHero
         eyebrow="Articles"
-        title="Local articles, chapter updates, and practical guidance that reward a return visit"
-        description="Regional reading for beginners, gardeners, volunteers, and anyone paying closer attention to native plants in Fayette, Colorado, and Lavaca Counties."
+        title="Field notes, local stories, and native-plant articles"
+        description="Seasonal reading for beginners, gardeners, volunteers, and anyone paying closer attention to native plants in Fayette, Colorado, and Lavaca Counties."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="monarch"
         visualTitle="Seasonal notes, field guides, and chapter stories"
-        visualNote="Use the articles section to revisit practical guidance between events and seasons."
+        visualNote="Find seasonal guidance, local stories, and field observations to revisit through the year."
         actions={[
-          { href: "/events", label: "See chapter events" },
+          { href: "/events", label: "View events" },
           { href: "/contact", label: "Share a question", variant: "secondary" },
         ]}
       />
@@ -43,7 +43,7 @@ export default async function NewsPage() {
       <SectionShell
         eyebrow="Featured article"
         title="Featured reading from the chapter"
-        intro="Start here for seasonal guidance, chapter updates, and practical native-plant reading rooted in the Live Oak Chapter region."
+        intro="Featured seasonal guidance, local stories, and native-plant reading from the Live Oak Chapter."
       >
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(300px,0.72fr)]">
           <MotionReveal>
@@ -57,12 +57,12 @@ export default async function NewsPage() {
               Browse the archive below
             </h2>
             <p className="mt-3 text-base leading-7 text-foreground/72">
-              The full article browser below is the best place to narrow by topic,
-              category, or keyword without wading through decorative tag clouds.
+              Use the article browser below to narrow the list by topic,
+              category, or keyword.
             </p>
             <p className="mt-5 text-sm leading-7 text-foreground/64">
-              {categories.length} categories and {tags.length} recurring topics
-              are available in the filters.
+              Browse {categories.length} categories and {tags.length} recurring
+              topics in the filters.
             </p>
           </MotionReveal>
         </div>
@@ -70,8 +70,8 @@ export default async function NewsPage() {
 
       <SectionShell
         eyebrow="Recent reading"
-        title="Chapter updates and practical field notes"
-        intro="Browse by topic, narrow the list by tag, or search across article titles and local themes."
+        title="Recent articles and field notes"
+        intro="Browse by topic, filter by tag, or search article titles and local themes."
       >
         <NewsBrowser
           posts={remainingPosts}

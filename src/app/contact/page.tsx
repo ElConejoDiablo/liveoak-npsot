@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 export const metadata = createMetadata({
   title: "Contact",
   description:
-    "Contact the Live Oak Chapter through the chapter form, connect on social media, and request chapter updates.",
+    "Contact the Live Oak Chapter through the contact form, social links, or direct email.",
   path: "/contact",
   eyebrow: "Contact",
 });
@@ -26,7 +26,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Reach the chapter with one simple form or a direct email"
-        description="Use the chapter contact form for event questions, volunteer interest, membership follow-up, native plant questions, and requests to receive chapter updates."
+        description="Use the chapter contact form for event questions, volunteer interest, membership follow-up, native plant questions, or requests to hear about upcoming events."
         serviceArea={siteConfig.serviceAreaLabel}
         layout="utility"
         highlightsTitle="Ways to reach us"
@@ -43,8 +43,8 @@ export default function ContactPage() {
 
       <SectionShell
         eyebrow="Get in touch"
-        title="Use the contact form or chapter email for questions, introductions, and collaboration"
-        intro="If you want to ask about events, volunteering, membership, or local native plants, the form below is ready to use and sends directly to the chapter inbox."
+        title="Use the contact form or chapter email"
+        intro="Ask about events, volunteering, membership, or local native plants. Messages go straight to the chapter email."
       >
         <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
           <MotionReveal className="rounded-[1.8rem] border border-primary/10 bg-white/80 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)] sm:p-8">
@@ -83,7 +83,7 @@ export default function ContactPage() {
             <p className="mt-4 text-lg leading-8 text-foreground/74">
               Share your question, ask about an event, introduce yourself, or
               let the chapter know you would like updates about upcoming
-              meetings, walks, talks, and other programming.
+              meetings, walks, talks, and other events.
             </p>
             <div className="mt-6 rounded-[1.4rem] border border-primary/10 bg-white/75 p-5">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/72">
@@ -91,7 +91,7 @@ export default function ContactPage() {
               </p>
               <p className="mt-3 text-base leading-7 text-foreground/72">
                 Use one message for event questions, volunteer interest,
-                native plant questions, or to ask for chapter updates.
+                native plant questions, or to ask about upcoming events.
               </p>
               <div className="mt-5">
                 <ContactForm />
@@ -105,13 +105,13 @@ export default function ContactPage() {
         <div className="grid gap-5 rounded-[1.9rem] border border-primary/10 bg-[linear-gradient(135deg,rgba(33,55,39,0.96),rgba(57,81,58,0.96))] p-6 text-white shadow-[0_28px_90px_rgba(29,48,35,0.26)] sm:p-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.85fr)] lg:items-center">
           <div>
             <h2 className="font-heading text-3xl sm:text-4xl">
-              Welcoming, grounded, and easy to reach
+              Welcoming and easy to reach
             </h2>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-white/78">
               Whether you are new to native plants, looking for a local event,
-              or hoping to help with chapter efforts, the easiest next step is
-              simply to reach out. A short note through the form or by email is
-              always welcome.
+              or hoping to help with chapter efforts, the best way to get in
+              touch is simply to reach out. A short note through the form or by
+              email is always welcome.
             </p>
           </div>
           <div className="rounded-[1.6rem] border border-white/12 bg-white/10 p-5">
@@ -123,7 +123,7 @@ export default function ContactPage() {
                   "h-auto justify-center rounded-full border border-white/14 bg-white/90 px-5 py-3 text-sm text-foreground hover:bg-white",
                 )}
               >
-                View upcoming events
+                View events
               </SmartLink>
               <SmartLink
                 href={siteConfig.contactUrl}

@@ -18,15 +18,15 @@ export default function LeadershipPage() {
     <>
       <PageHero
         eyebrow="Leadership"
-        title="Chapter leadership should feel visible, approachable, and easy to contact"
-        description="This page gives the chapter a straightforward way to publish officer information now and expand it later with biographies, committees, or board responsibilities if needed."
+        title="Meet the chapter officers"
+        description="These are the current officers serving the Live Oak Chapter."
         serviceArea={siteConfig.serviceAreaLabel}
         layout="compact"
-        highlightsTitle="Here now"
+        highlightsTitle="At a glance"
         highlights={[
           "Current officers and their roles",
           "A shared chapter contact path for questions",
-          "Room to add fuller bios later if needed",
+          "Links to chapter documents",
         ]}
         actions={[
           { href: "/contact", label: "Contact the chapter" },
@@ -36,8 +36,8 @@ export default function LeadershipPage() {
 
       <SectionShell
         eyebrow="Current officers"
-        title="Leadership cards are powered by editable site data"
-        intro="Names, roles, and short descriptions can be updated in the central config without redesigning the page."
+        title="Current chapter officers"
+        intro="Meet the current officers of the Live Oak Chapter."
       >
         <div className="grid gap-5 lg:grid-cols-3">
           {siteConfig.leadership.map((member, index) => (
@@ -51,8 +51,8 @@ export default function LeadershipPage() {
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
         <CtaBanner
           eyebrow="Questions for the board?"
-          title="Use the chapter inbox for leadership questions, partnerships, and introductions"
-          description="A shared chapter contact path keeps communication simple while the chapter decides how much board-specific contact detail to publish later."
+          title="Use the chapter contact page for leadership questions and introductions"
+          description="The chapter contact page is the best place for board questions, partnerships, and general introductions."
           primaryAction={{ href: siteConfig.contactUrl, label: "Email the chapter" }}
           secondaryAction={{ href: "/about", label: "Read about the chapter" }}
           variant="pollinator"

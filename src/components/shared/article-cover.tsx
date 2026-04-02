@@ -1,7 +1,8 @@
-import type { CoverTheme } from "@/lib/blog";
-import { cn } from "@/lib/utils";
+import Image from "next/image";
 
-import { PlantIllustration } from "@/components/shared/plant-illustration";
+import type { CoverTheme } from "@/lib/blog";
+import { publicImagery } from "@/data/public-imagery";
+import { cn } from "@/lib/utils";
 
 type ArticleCoverProps = {
   title: string;
@@ -18,9 +19,12 @@ export function ArticleCover({
   category,
   variant,
   counties = [],
+  coverNote,
   compact = false,
   className,
 }: ArticleCoverProps) {
+  const image = publicImagery[variant];
+
   return (
     <div
       className={cn(
@@ -29,11 +33,14 @@ export function ArticleCover({
         className,
       )}
     >
-      <PlantIllustration
-        variant={variant}
-        className="absolute inset-0 h-full w-full rounded-none border-0 shadow-none"
+      <Image
+        src={image.src}
+        alt={coverNote ?? image.alt}
+        fill
+        sizes={compact ? "(max-width: 1024px) 100vw, 32vw" : "(max-width: 1024px) 100vw, 66vw"}
+        className="object-cover"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,29,20,0.08),rgba(17,29,20,0.55))]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,29,20,0.12),rgba(17,29,20,0.56)_64%,rgba(17,29,20,0.74))]" />
       {!compact && counties.length ? (
         <div className="absolute left-4 top-4 inline-flex max-w-[80%] flex-wrap items-center gap-2 sm:left-5 sm:top-5">
           <span className="rounded-full border border-white/15 bg-[rgba(255,255,255,0.14)] px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-white/84">

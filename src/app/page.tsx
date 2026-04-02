@@ -45,7 +45,7 @@ export default async function Home() {
             <p className="mt-6 max-w-2xl text-xl leading-9 text-foreground/76">
               The Live Oak Chapter of the Native Plant Society of Texas connects
               people to native plants, habitat care, and practical regional
-              knowledge through welcoming programs, field walks, and community
+              knowledge through welcoming events, field walks, and community
               outreach.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -56,7 +56,7 @@ export default async function Home() {
                   "h-auto rounded-full px-5 py-3 text-sm",
                 )}
               >
-                <span>View Events</span>
+                <span>View events</span>
                 <ArrowRight className="ml-1 h-4 w-4" />
               </SmartLink>
               <SmartLink
@@ -98,21 +98,20 @@ export default async function Home() {
             </div>
           </MotionReveal>
 
-          <MotionReveal delay={0.08} className="lg:justify-self-end">
-            <EditorialImageSlot
-              variant="savanna"
-              title="Field walks, chapter gatherings, and local habitat stories"
-              note="Prairie edges, oak shade, working lands, and native plant communities all shape the places this chapter serves."
-              className="w-full max-w-2xl"
-            />
-          </MotionReveal>
+          <EditorialImageSlot
+            variant="savanna"
+            title="Field walks, chapter gatherings, and local habitat stories"
+            note="Prairie edges, oak shade, working lands, and native plant communities all shape the places this chapter serves."
+            priority
+            className="w-full max-w-2xl lg:justify-self-end"
+          />
         </Container>
       </section>
 
       <SectionShell
-        eyebrow="Alive now"
-        title="See what is happening in the chapter right now"
-        intro="Start with the next event, the latest article, or a quick route to the page you need."
+        eyebrow="Happening now"
+        title="Upcoming events, recent reading, and quick links"
+        intro="See the next event, read the latest article, or jump straight to a key chapter page."
       >
         <div className="grid gap-5 xl:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
           <MotionReveal>
@@ -127,10 +126,10 @@ export default async function Home() {
             ) : null}
             <MotionReveal className="rounded-[1.8rem] border border-primary/10 bg-[#F5F0E1] p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]">
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary/72">
-                Start here
+                Quick links
               </p>
               <h2 className="mt-3 font-heading text-3xl leading-tight text-foreground">
-                Quick paths for first-time visitors
+                Popular chapter links
               </h2>
               <div className="mt-5 space-y-3">
                 {homepageActionPaths.map((action) => (
@@ -159,9 +158,9 @@ export default async function Home() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="Grounded mission"
-        title="A local chapter built to be useful, welcoming, and easy to navigate"
-        intro="The homepage should quickly explain what this chapter is for, then help visitors move to the page with the details they actually need."
+        eyebrow="About the chapter"
+        title="Native plants, local knowledge, and a welcoming community"
+        intro="The Live Oak Chapter connects people across Fayette, Colorado, and Lavaca Counties through events, field learning, and practical native plant education."
         actions={
           <SmartLink
             href="/about"
@@ -206,9 +205,9 @@ export default async function Home() {
 
       <Container className="pb-20">
         <CtaBanner
-          eyebrow="Get involved"
-          title="Join NPSOT, attend an event, or reach out to the chapter"
-          description="Whether you want to become a member, show up for a program, volunteer locally, or ask a question, the next step should feel easy."
+        eyebrow="Get involved"
+        title="Join NPSOT, attend an event, or reach out to the chapter"
+        description="Whether you want to become a member, attend an event, volunteer locally, or ask a question, it is easy to get involved."
           primaryAction={{ href: siteConfig.joinUrl, label: "Join NPSOT" }}
           secondaryAction={{ href: "/events", label: "View events" }}
           variant="community"

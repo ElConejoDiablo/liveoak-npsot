@@ -167,8 +167,8 @@ export default async function EventDetailPage({ params }: EventPageProps) {
 
       {otherUpcoming.length ? (
         <SectionShell
-          eyebrow="More upcoming programming"
-          title="Additional events on the chapter calendar"
+          eyebrow="More upcoming events"
+          title="More events on the chapter calendar"
           intro="See what else is coming up with the chapter."
         >
           <div className="grid gap-4 md:grid-cols-2">

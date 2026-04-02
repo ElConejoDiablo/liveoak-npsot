@@ -12,7 +12,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "About the Chapter",
   description:
-    "Learn about the Live Oak Chapter, the counties it serves, the chapter mission, and how people can participate.",
+    "Learn about the Live Oak Chapter, the counties it serves, and how to get involved.",
   path: "/about",
   eyebrow: "About the Chapter",
 });
@@ -22,21 +22,21 @@ export default function AboutPage() {
     {
       title: "Attend an event",
       description:
-        "Start with a meeting, walk, or seasonal program to see the chapter in action and get a feel for the community.",
+        "See upcoming meetings, walks, and public events around the chapter.",
       href: "/events",
-      label: "Browse events",
+      label: "View events",
     },
     {
       title: "Volunteer locally",
       description:
-        "If you want to help with outreach, hospitality, stewardship, or chapter support, the volunteer page shows the clearest entry points.",
+        "Help with outreach, hospitality, stewardship, and chapter support.",
       href: "/volunteer",
-      label: "See volunteer paths",
+      label: "See volunteer options",
     },
     {
       title: "Reach out or join",
       description:
-        "Use the contact page for questions and introductions, or join NPSOT when you are ready to connect more deeply with the chapter.",
+        "Contact the chapter with questions, or join NPSOT when you are ready.",
       href: "/contact",
       label: "Contact the chapter",
     },
@@ -46,12 +46,12 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About the chapter"
-        title="A chapter shaped around practical native-plant education and regional participation"
-        description="The Live Oak Chapter exists to help native plants feel relevant, understandable, and actionable in everyday life. The chapter serves Fayette, Colorado, and Lavaca Counties with programs, outreach, and opportunities to learn alongside neighbors."
+        title="A local chapter for people who want to learn about native plants close to home"
+        description="The Live Oak Chapter serves Fayette, Colorado, and Lavaca Counties with events, outreach, and opportunities to learn about native plants alongside neighbors."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="savanna"
         visualTitle="Learning together across the chapter region"
-        visualNote="Programs, conversations, and local stewardship help this chapter feel grounded in everyday life."
+        visualNote="Events, conversations, and local stewardship all help connect people to the landscapes around them."
         actions={[
           { href: "/events", label: "View events" },
           { href: "/leadership", label: "Meet leadership", variant: "secondary" },
@@ -61,7 +61,7 @@ export default function AboutPage() {
       <SectionShell
         eyebrow="Who we serve"
         title="A local chapter for Fayette, Colorado, and Lavaca Counties"
-        intro="The Live Oak Chapter is meant to be useful on the ground: local in scope, welcoming in tone, and rooted in the landscapes, plant communities, and habitat questions that matter across the three-county service area."
+        intro="The chapter is local in scope, welcoming in tone, and rooted in the landscapes, plant communities, and habitat questions that matter across the three-county service area."
       >
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
           <MotionReveal className="rounded-[1.8rem] border border-primary/10 bg-white/78 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)] sm:p-8">
@@ -93,8 +93,8 @@ export default function AboutPage() {
 
       <SectionShell
         eyebrow="What we do"
-        title="Education, field-based learning, and practical chapter participation"
-        intro="The chapter does not exist only to share information. It exists to help people connect that information to local landscapes, seasonal observation, and the work of caring for habitat."
+        title="Events, field learning, and practical native plant education"
+        intro="The chapter helps people connect what they learn to local landscapes, seasonal observation, and the work of caring for habitat."
       >
         <div className="grid gap-4 md:grid-cols-2">
           {siteConfig.about.whatWeDo.map((item, index) => (
@@ -110,9 +110,9 @@ export default function AboutPage() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="How to participate"
-        title="Choose the next step that fits your time, interest, and confidence"
-        intro="This page should help you orient quickly, then send you to the page built for the task you actually want to do."
+        eyebrow="Get involved"
+        title="Find a way to get involved that fits your time and interests"
+        intro="Whether you want to attend an event, volunteer, or get in touch, these are good places to get involved."
       >
         <div className="grid gap-4 md:grid-cols-3">
           {participationPaths.map((path, index) => (
@@ -153,7 +153,7 @@ export default function AboutPage() {
       <SectionShell
         eyebrow="Leadership snapshot"
         title="A quick look at the team guiding chapter activity"
-        intro="About only needs a quick snapshot here. The dedicated leadership page can carry the fuller bios and contact context."
+        intro="Meet the current officers, then visit the leadership page for more details."
         actions={
           <SmartLink
             href="/leadership"
@@ -170,12 +170,11 @@ export default function AboutPage() {
               Leadership overview
             </p>
             <h3 className="mt-4 font-heading text-3xl leading-tight text-foreground">
-              A small officer team keeps the chapter welcoming, organized, and moving forward.
+              A small officer team helps keep the chapter welcoming, organized, and moving forward.
             </h3>
             <p className="mt-4 text-base leading-7 text-foreground/74">
-              Chapter leadership helps guide programs, communication, partnerships,
-              and the dependable behind-the-scenes work that makes local
-              participation easier.
+              Chapter leadership helps guide events, communication, partnerships,
+              and the behind-the-scenes work that keeps the chapter running.
             </p>
           </MotionReveal>
 
@@ -204,8 +203,8 @@ export default function AboutPage() {
       <Container className="pb-20">
         <CtaBanner
           eyebrow="Keep exploring"
-          title="Follow local chapter activity and connect with statewide resources"
-          description="The chapter site is designed to be a useful front door, while still connecting visitors to NPSOT membership, education, and wider native-plant resources."
+          title="Read chapter news and explore statewide resources"
+          description="Find chapter news, NPSOT membership links, and trusted native plant resources."
           primaryAction={{ href: "/resources", label: "Explore resources" }}
           secondaryAction={{ href: siteConfig.npsot.homeUrl, label: "Visit NPSOT.org" }}
           variant="community"

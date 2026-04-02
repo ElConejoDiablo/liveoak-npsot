@@ -7,10 +7,10 @@ export const runtime = "edge";
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const title =
-    searchParams.get("title") ?? "Native plant community for south-central Texas";
+    searchParams.get("title") ?? "Native plants for Fayette, Colorado, and Lavaca Counties";
   const subtitle =
     searchParams.get("subtitle") ??
-    "Serving Fayette, Colorado, and Lavaca Counties through education, outreach, and example.";
+    "Events, field walks, and native plant information from the Live Oak Chapter.";
   const eyebrow = searchParams.get("eyebrow") ?? "Live Oak Chapter";
 
   return new ImageResponse(

@@ -44,7 +44,7 @@ export function PageHero({
   const imageTitle = visualTitle ?? serviceArea;
   const imageNote =
     visualNote ??
-    "Native plants, local landscapes, and chapter gatherings across the Live Oak Chapter region.";
+    "Native plants, local landscapes, and chapter gatherings across Fayette, Colorado, and Lavaca Counties.";
 
   const actionLinks = actions.length ? (
     <div className="mt-8 flex flex-wrap gap-3">
@@ -181,14 +181,13 @@ export function PageHero({
             </div>
             {actionLinks}
           </MotionReveal>
-          <MotionReveal delay={0.1} className="lg:justify-self-end">
-            <EditorialImageSlot
-              variant={variant}
-              title={imageTitle}
-              note={imageNote}
-              className="mx-auto w-full max-w-2xl"
-            />
-          </MotionReveal>
+          <EditorialImageSlot
+            variant={variant}
+            title={imageTitle}
+            note={imageNote}
+            priority
+            className="mx-auto w-full max-w-2xl lg:justify-self-end"
+          />
         </div>
       </Container>
     </section>

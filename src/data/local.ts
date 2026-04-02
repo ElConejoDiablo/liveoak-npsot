@@ -15,7 +15,7 @@ export const countyHighlights = [
     landscape:
       "Roadsides, open lots, and working landscapes often reveal how much habitat value can still be built into ordinary places when native plants are given room.",
     starterFocus:
-      "Begin with practical, durable plants that support pollinators and still look grounded in the local landscape rather than imported from somewhere else.",
+      "Begin with hardy native plants that support pollinators and still fit the local landscape.",
     link: {
       href: "/news/getting-started-with-texas-native-plants-in-fayette-colorado-and-lavaca-counties",
       label: "Read the beginner guide",
@@ -26,7 +26,7 @@ export const countyHighlights = [
     landscape:
       "Farm-to-town transitions, sunny home sites, and community spaces all benefit from plants that belong to the region and can carry ecological value across long seasons.",
     starterFocus:
-      "Seed stewardship, pollinator support, and layered planting structure are especially useful entry points for gardeners and volunteers here.",
+      "Seed stewardship, pollinator support, and layered planting are useful starting points for gardeners and volunteers here.",
     link: {
       href: "/news/plant-of-the-month-frogfruit-for-ground-layer-habitat",
       label: "Explore a useful native plant",
@@ -38,28 +38,28 @@ export const homepageActionPaths = [
   {
     title: "Attend an event",
     description:
-      "See what is coming up next, where it will happen, and how to take part.",
+      "See upcoming meetings, walks, and chapter events.",
     href: "/events",
     label: "View events",
   },
   {
     title: "Explore resources",
     description:
-      "Go straight to starter guidance, chapter documents, and native-plant references without hunting through the site.",
+      "Find membership links, native plant references, and trusted Texas resources.",
     href: "/resources",
     label: "Browse resources",
   },
   {
     title: "Volunteer locally",
     description:
-      "Help with outreach, hospitality, stewardship, education, and chapter support.",
+      "Help with events, outreach, stewardship, and chapter support.",
     href: "/volunteer",
     label: "Volunteer with us",
   },
   {
     title: "Contact the chapter",
     description:
-      "Ask a question, share an idea, or request newsletter updates from the chapter inbox.",
+      "Ask a question or get in touch with the chapter.",
     href: "/contact",
     label: "Get in touch",
   },

@@ -101,7 +101,7 @@ export function SiteHeader() {
               "h-auto rounded-full px-4 py-2.5 text-sm",
             )}
           >
-            View Events
+            View events
           </SmartLink>
         </div>
 
@@ -136,7 +136,7 @@ export function SiteHeader() {
               <nav className="flex flex-1 flex-col gap-2 p-4" aria-label="Mobile">
                 <div>
                   <p className="px-1 text-xs font-semibold uppercase tracking-[0.2em] text-primary/60">
-                    Start here
+                    Main pages
                   </p>
                   <div className="mt-3 flex flex-col gap-2">
                     {mobilePrimaryNavigation.map((item) => {

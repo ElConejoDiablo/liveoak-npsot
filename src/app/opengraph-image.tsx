@@ -91,7 +91,7 @@ export default function OpenGraphImage() {
                   fontWeight: 700,
                 }}
               >
-                Native plant community for south-central Texas
+                Native plants for Fayette, Colorado, and Lavaca Counties
               </div>
               <div
                 style={{
@@ -102,8 +102,8 @@ export default function OpenGraphImage() {
                   opacity: 0.82,
                 }}
               >
-                Serving Fayette, Colorado, and Lavaca Counties through
-                education, outreach, and example.
+                Events, field walks, and native plant information from the
+                Live Oak Chapter.
               </div>
             </div>
           </div>

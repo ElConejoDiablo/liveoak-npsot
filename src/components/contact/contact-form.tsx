@@ -162,7 +162,7 @@ export function ContactForm() {
           required
           rows={7}
           maxLength={3000}
-          placeholder="Share your question, introduction, volunteer interest, or request for chapter updates."
+          placeholder="Share your question, introduction, volunteer interest, or request to hear about upcoming events."
           className="border-primary/12 bg-white"
         />
       </label>
@@ -174,8 +174,8 @@ export function ContactForm() {
           className="mt-1 h-4 w-4 shrink-0 rounded border-primary/20 accent-primary"
         />
         <span>
-          I would also like to hear about chapter updates, meetings, walks, and
-          other upcoming programming by email.
+          I would also like to hear about upcoming events and chapter news by
+          email.
         </span>
       </label>
 

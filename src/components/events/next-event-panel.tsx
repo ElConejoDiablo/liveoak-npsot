@@ -16,11 +16,11 @@ export function NextEventPanel({ event }: NextEventPanelProps) {
           Next event
         </p>
         <h2 className="mt-3 font-heading text-2xl text-foreground">
-          Upcoming chapter programming will appear here
+          Next event details will appear here
         </h2>
         <p className="mt-3 text-base leading-7 text-foreground/72">
-          As dates are confirmed, the next chapter event can be highlighted here
-          for quick scanning from the homepage or events page.
+          When the next chapter event is posted, you will find the date,
+          location, and details here.
         </p>
       </section>
     );

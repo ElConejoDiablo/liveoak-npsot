@@ -21,26 +21,26 @@ export default function DocumentsPage() {
     <>
       <PageHero
         eyebrow="Documents"
-        title="A usable home for chapter governance, handouts, flyers, and member resources"
-        description="This page gives the chapter a dependable place to publish materials as they become available, while still presenting a clear structure before every file is posted."
+        title="Chapter documents, handouts, and posted materials"
+        description="Look here for bylaws, meeting materials, handouts, flyers, and other chapter files."
         serviceArea={siteConfig.serviceAreaLabel}
         layout="compact"
-        highlightsTitle="Organized for"
+        highlightsTitle="Includes"
         highlights={[
           "Governance and meeting materials",
           "Public handouts and flyers",
-          "Member resources as they are added",
+          "Member resources when available",
         ]}
         actions={[
-          { href: siteConfig.contactUrl, label: "Ask about chapter files" },
-          { href: "/contact", label: "Contact the chapter", variant: "secondary" },
+          { href: "/contact", label: "Contact the chapter" },
+          { href: siteConfig.contactUrl, label: "Email about documents", variant: "secondary" },
         ]}
       />
 
       <SectionShell
         eyebrow="Document library"
-        title="Organized around the materials chapter participants actually need"
-        intro="This page is organized around the kinds of files chapter participants commonly look for, from governance documents to handouts and event materials."
+        title="Browse documents by type"
+        intro="Files are grouped by the kinds of materials chapter participants most often look for."
       >
         <div className="grid gap-5 xl:grid-cols-2">
           {documentCollections.map((collection, index) => (
@@ -80,9 +80,9 @@ export default function DocumentsPage() {
 
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
         <EmptyStatePanel
-          title="More chapter files will be added here over time"
+          title="Need a document that is not posted yet?"
           description={documentsEmptyState}
-          action={{ href: siteConfig.contactUrl, label: "Email the chapter" }}
+          action={{ href: "/contact", label: "Contact the chapter" }}
         />
       </div>
     </>

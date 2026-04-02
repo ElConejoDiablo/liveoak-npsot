@@ -19,12 +19,12 @@ export default function VolunteerPage() {
     <>
       <PageHero
         eyebrow="Volunteer and get involved"
-        title="A chapter grows best when participation feels realistic, welcoming, and clearly useful"
-        description="Volunteering does not need to mean taking on everything. It can mean helping with hospitality, events, outreach, writing, plant questions, or the practical tasks that make a chapter dependable."
+        title="Volunteer in ways that fit your time and skills"
+        description="Helping can mean welcoming visitors, supporting events, sharing plant knowledge, or pitching in with the practical work that keeps the chapter going."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="community"
-        visualTitle="Practical help keeps the chapter alive"
-        visualNote="Hospitality, outreach, stewardship, and everyday support all make room for more people to participate."
+        visualTitle="Everyday help makes a chapter stronger"
+        visualNote="Hospitality, outreach, stewardship, and behind-the-scenes support all matter."
         actions={[
           { href: siteConfig.contactUrl, label: "Tell us how you'd like to help" },
           { href: siteConfig.joinUrl, label: "Join NPSOT", variant: "secondary" },
@@ -34,7 +34,7 @@ export default function VolunteerPage() {
       <SectionShell
         eyebrow="Volunteer paths"
         title="Different ways to contribute"
-        intro="A healthy volunteer structure makes room for both steady helpers and people who can only give occasional time."
+        intro="There is room for steady helpers and occasional volunteers."
       >
         <div className="grid gap-4 md:grid-cols-3">
           {volunteerPaths.map((path, index) => (
@@ -64,15 +64,15 @@ export default function VolunteerPage() {
 
       <SectionShell
         eyebrow="Why it matters"
-        title="Volunteer help is part of the chapter's public example"
-        intro="Native plant work becomes more visible and more durable when local people help keep it moving."
+        title="Volunteer help keeps the chapter welcoming and active"
+        intro="Local events and projects run more smoothly when more people can share the work."
       >
         <ImageFeatureSection
           eyebrow="Community stewardship"
-          title="The chapter can stay generous without becoming overbuilt"
-          description="Volunteer structures work best when they are clear, humane, and easy to join. The site helps by showing concrete roles, a contact path, and a tone that invites participation rather than gatekeeping it."
+          title="Clear roles make it easier to help"
+          description="Volunteering works best when people can see where help is needed and step in at a level that fits their time and experience."
           bullets={[
-            "A gentle on-ramp for newcomers who are still learning the basics",
+            "A welcoming place for newcomers who are still learning the basics",
             "Visible chapter needs instead of vague calls for help",
             "Space for practical contributions as well as ecological knowledge",
           ]}
@@ -82,11 +82,11 @@ export default function VolunteerPage() {
 
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
         <CtaBanner
-          eyebrow="Take the next step"
-          title="Reach out, join the chapter, or ask where help is needed most"
-          description="A simple email is enough to let the chapter know where you would like to help."
+          eyebrow="Get involved"
+          title="Reach out if you would like to help"
+          description="A short note is enough to let the chapter know how you would like to get involved."
           primaryAction={{ href: "/contact", label: "Contact the chapter" }}
-          secondaryAction={{ href: siteConfig.contactUrl, label: "Email volunteer interest" }}
+          secondaryAction={{ href: siteConfig.contactUrl, label: "Email about volunteering" }}
           variant="savanna"
         />
       </div>

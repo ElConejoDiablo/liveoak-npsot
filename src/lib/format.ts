@@ -1,27 +1,108 @@
 import { format, parseISO } from "date-fns";
 
+import { siteConfig } from "@/data/site";
+
+const chapterTimeZone = siteConfig.timeZone;
+
+function isDateOnly(value: string) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(value);
+}
+
+function formatDateOnly(value: string, pattern: string) {
+  return format(parseISO(value), pattern);
+}
+
+function formatInChapterTimeZone(
+  value: string,
+  options: Intl.DateTimeFormatOptions,
+) {
+  return new Intl.DateTimeFormat("en-US", {
+    timeZone: chapterTimeZone,
+    ...options,
+  }).format(new Date(value));
+}
+
+function formatParts(
+  value: string,
+  options: Intl.DateTimeFormatOptions,
+) {
+  return new Intl.DateTimeFormat("en-US", {
+    timeZone: chapterTimeZone,
+    ...options,
+  }).formatToParts(new Date(value));
+}
+
+function getZonedDayKey(value: string) {
+  const parts = formatParts(value, {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+
+  const year = parts.find((part) => part.type === "year")?.value ?? "";
+  const month = parts.find((part) => part.type === "month")?.value ?? "";
+  const day = parts.find((part) => part.type === "day")?.value ?? "";
+
+  return `${year}-${month}-${day}`;
+}
+
 export function formatFullDate(date: string) {
-  return format(parseISO(date), "MMMM d, yyyy");
+  if (isDateOnly(date)) {
+    return formatDateOnly(date, "MMMM d, yyyy");
+  }
+
+  return formatInChapterTimeZone(date, {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 }
 
 export function formatMonth(date: string) {
-  return format(parseISO(date), "MMM");
+  if (isDateOnly(date)) {
+    return formatDateOnly(date, "MMM");
+  }
+
+  return formatInChapterTimeZone(date, { month: "short" });
 }
 
 export function formatDay(date: string) {
-  return format(parseISO(date), "d");
+  if (isDateOnly(date)) {
+    return formatDateOnly(date, "d");
+  }
+
+  return formatInChapterTimeZone(date, { day: "numeric" });
 }
 
 export function formatMonthDay(date: string) {
-  return format(parseISO(date), "MMMM d");
+  if (isDateOnly(date)) {
+    return formatDateOnly(date, "MMMM d");
+  }
+
+  return formatInChapterTimeZone(date, {
+    month: "long",
+    day: "numeric",
+  });
 }
 
 export function formatShortDate(date: string) {
-  return format(parseISO(date), "MMM d, yyyy");
+  if (isDateOnly(date)) {
+    return formatDateOnly(date, "MMM d, yyyy");
+  }
+
+  return formatInChapterTimeZone(date, {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
 }
 
 export function formatTime(date: string) {
-  return format(parseISO(date), "h:mm a");
+  return formatInChapterTimeZone(date, {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
 }
 
 export function formatTimeRange(startDate: string, endDate: string) {
@@ -29,13 +110,11 @@ export function formatTimeRange(startDate: string, endDate: string) {
 }
 
 export function formatDateRange(startDate: string, endDate: string) {
-  const start = parseISO(startDate);
-  const end = parseISO(endDate);
-  const sameDay = format(start, "yyyy-MM-dd") === format(end, "yyyy-MM-dd");
+  const sameDay = getZonedDayKey(startDate) === getZonedDayKey(endDate);
 
   if (sameDay) {
-    return `${format(start, "MMMM d, yyyy")} · ${format(start, "h:mm a")} to ${format(end, "h:mm a")}`;
+    return `${formatFullDate(startDate)} · ${formatTime(startDate)} to ${formatTime(endDate)}`;
   }
 
-  return `${format(start, "MMMM d, yyyy h:mm a")} to ${format(end, "MMMM d, yyyy h:mm a")}`;
+  return `${formatFullDate(startDate)} ${formatTime(startDate)} to ${formatFullDate(endDate)} ${formatTime(endDate)}`;
 }

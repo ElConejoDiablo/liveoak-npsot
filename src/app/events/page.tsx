@@ -17,7 +17,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Events and Calendar",
   description:
-    "Browse upcoming chapter meetings, plant walks, talks, and hands-on programming for the Live Oak Chapter.",
+    "Browse upcoming chapter meetings, plant walks, talks, workshops, and volunteer days for the Live Oak Chapter.",
   path: "/events",
   eyebrow: "Events and Calendar",
 });
@@ -29,18 +29,18 @@ export default function EventsPage() {
     <>
       <PageHero
         eyebrow="Events and calendar"
-        title="Meetings, walks, and seasonal gatherings built to feel approachable"
-        description="Use the chapter calendar to find meetings, walks, talks, and seasonal programming across the Live Oak Chapter service area."
+        title="Meetings, walks, and seasonal gatherings across the chapter region"
+        description="Use the chapter calendar to find meetings, walks, talks, workshops, and volunteer days across Fayette, Colorado, and Lavaca Counties."
         serviceArea={siteConfig.serviceAreaLabel}
         layout="utility"
-        highlightsTitle="Quick scan"
+        highlightsTitle="At a glance"
         highlights={[
-          "Start with the next event at the top of the page",
-          "Filter the full list by event type",
-          "Check visitor notes before attending for the first time",
+          "Next featured event and current calendar",
+          "Type filters for meetings, walks, talks, and volunteer days",
+          "Visitor notes for location, weather, and accessibility",
         ]}
         actions={[
-          { href: siteConfig.contactUrl, label: "Ask about upcoming events" },
+          { href: siteConfig.contactUrl, label: "Ask about events" },
           { href: "/volunteer", label: "Volunteer with us", variant: "secondary" },
         ]}
       />
@@ -57,8 +57,8 @@ export default function EventsPage() {
 
       <SectionShell
         eyebrow="Upcoming"
-        title="Upcoming chapter programming"
-        intro="Filter by event type to quickly find meetings, walks, talks, workshops, and volunteer opportunities."
+        title="Upcoming events"
+        intro="Filter by event type to find meetings, walks, talks, workshops, and volunteer days."
       >
         {upcomingEvents.length ? (
           <EventsBrowser events={upcomingEvents} eventTypes={eventTypes} />
@@ -77,7 +77,7 @@ export default function EventsPage() {
       <SectionShell
         eyebrow="Participation notes"
         title="Helpful expectations for visitors"
-        intro="A little advance information helps first-time visitors feel more comfortable attending."
+        intro="A little advance information can make planning easier, especially for first visits."
       >
         <div className="grid gap-4 md:grid-cols-3">
           {participationNotes.map((note, index) => (
@@ -95,10 +95,10 @@ export default function EventsPage() {
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
         <CtaBanner
           eyebrow="Stay connected"
-          title="Use the chapter email for current event details and chapter updates"
-          description="The chapter inbox is the simplest way to ask about upcoming programs, receive current event details, and stay connected between gatherings."
+          title="Contact the chapter for current event details and updates"
+          description="Reach out if you need the latest location details, weather updates, or information about upcoming events."
           primaryAction={{ href: "/contact", label: "Contact the chapter" }}
-          secondaryAction={{ href: siteConfig.contactUrl, label: "Email now" }}
+          secondaryAction={{ href: siteConfig.contactUrl, label: "Email the chapter" }}
           variant="savanna"
         />
       </div>

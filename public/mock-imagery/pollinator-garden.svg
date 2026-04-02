@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Pollinator garden</title>
+  <desc id="desc">A native garden with goldenrod, Turk's cap, and butterflies in late-season light.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#e8dec8"/>
+      <stop offset="46%" stop-color="#e6d1a7"/>
+      <stop offset="100%" stop-color="#8c8258"/>
+    </linearGradient>
+    <filter id="blur-soft">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="21"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.13"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1200" fill="url(#sky)"/>
+  <circle cx="1308" cy="182" r="118" fill="#eeb25a" opacity="0.92"/>
+  <ellipse cx="1134" cy="182" rx="362" ry="112" fill="#fff6e5" opacity="0.22" filter="url(#blur-soft)"/>
+
+  <path d="M0 642 C208 594 414 600 620 656 C852 718 1132 730 1600 640 V1200 H0 Z" fill="#ae9866"/>
+  <path d="M0 756 C214 716 452 742 724 816 C964 880 1246 892 1600 794 V1200 H0 Z" fill="#748152"/>
+  <path d="M0 864 C248 842 528 898 820 976 C1080 1048 1324 1058 1600 970 V1200 H0 Z" fill="#354a37"/>
+
+  <g opacity="0.95">
+    <path d="M286 1088 C290 964 296 850 314 694" stroke="#57663b" stroke-width="10" stroke-linecap="round"/>
+    <path d="M352 1100 C360 982 372 866 394 716" stroke="#4f6037" stroke-width="9" stroke-linecap="round"/>
+    <path d="M1242 1098 C1236 972 1238 856 1252 706" stroke="#53633a" stroke-width="10" stroke-linecap="round"/>
+    <path d="M1312 1086 C1310 968 1314 854 1328 712" stroke="#495a34" stroke-width="8" stroke-linecap="round"/>
+
+    <g fill="#e0b744">
+      <circle cx="296" cy="720" r="16"/>
+      <circle cx="326" cy="760" r="14"/>
+      <circle cx="346" cy="802" r="12"/>
+      <circle cx="1236" cy="734" r="15"/>
+      <circle cx="1268" cy="774" r="14"/>
+      <circle cx="1292" cy="818" r="12"/>
+    </g>
+
+    <g fill="#d46e4e">
+      <ellipse cx="566" cy="856" rx="42" ry="26"/>
+      <ellipse cx="614" cy="804" rx="40" ry="24"/>
+      <ellipse cx="662" cy="860" rx="38" ry="24"/>
+      <ellipse cx="962" cy="872" rx="42" ry="26"/>
+      <ellipse cx="1012" cy="818" rx="40" ry="24"/>
+      <ellipse cx="1062" cy="876" rx="38" ry="24"/>
+    </g>
+  </g>
+
+  <g transform="translate(764 424) scale(1.08)">
+    <path d="M0 0 C-48 -40 -112 -44 -152 -20 C-110 24 -44 28 0 0Z" fill="#ef8b2c" stroke="#2b241d" stroke-width="10"/>
+    <path d="M14 0 C62 -34 126 -38 168 -12 C126 28 62 34 14 0Z" fill="#ef8b2c" stroke="#2b241d" stroke-width="10"/>
+    <path d="M8 -18 V34" stroke="#2b241d" stroke-width="11" stroke-linecap="round"/>
+    <circle cx="-74" cy="-12" r="8" fill="#fff4e0"/>
+    <circle cx="-40" cy="-28" r="7" fill="#fff4e0"/>
+    <circle cx="80" cy="-12" r="8" fill="#fff4e0"/>
+    <circle cx="44" cy="-28" r="7" fill="#fff4e0"/>
+  </g>
+
+  <rect width="1600" height="1200" fill="#f7f1e5" opacity="0.14" filter="url(#grain)"/>
+</svg>

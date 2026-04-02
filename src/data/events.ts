@@ -29,18 +29,18 @@ export type EventItem = {
 };
 
 export const eventPageIntro =
-  "Check this page for upcoming meetings, walks, talks, and hands-on chapter programming across Fayette, Colorado, and Lavaca Counties.";
+  "Find upcoming meetings, walks, talks, and volunteer days across Fayette, Colorado, and Lavaca Counties.";
 
 export const participationNotes = [
-  "Chapter gatherings are intended to be welcoming to newcomers as well as experienced native-plant advocates.",
+  "Chapter events welcome both newcomers and longtime native-plant gardeners.",
   "Outdoor events are easiest when participants bring water, sun protection, sturdy shoes, and weather-appropriate layers.",
-  "Accessibility notes, RSVP details, and weather guidance are listed on each event as they apply.",
+  "Accessibility notes, RSVP details, and weather updates are listed on each event when needed.",
 ];
 
 export const eventsEmptyState = {
-  title: "Upcoming chapter programming will appear here",
+  title: "More chapter events will appear here",
   description:
-    "Additional chapter meetings, walks, and volunteer opportunities will be posted here as they are scheduled.",
+    "New meetings, walks, talks, and volunteer days will be listed here as they are scheduled.",
 };
 
 export const allEvents: EventItem[] = [
@@ -66,8 +66,8 @@ export const allEvents: EventItem[] = [
     accessibilityNotes:
       "Indoor meeting room with seating, restrooms, and nearby parking.",
     details: [
-      "Arrive early for introductions, chapter updates, and native plant conversation.",
-      "The presentation is designed to be useful for both beginners and long-time native-plant advocates.",
+      "Arrive early for introductions, chapter news, and native plant conversation.",
+      "A good fit for both beginners and longtime native-plant gardeners.",
       "Contact the chapter for the latest room and parking details.",
     ],
   },
@@ -77,7 +77,7 @@ export const allEvents: EventItem[] = [
     type: "Plant Walk",
     county: "Fayette County",
     locationName: "Public greenspace near La Grange",
-    locationAddress: "Location shared in chapter updates and by email",
+    locationAddress: "Location shared by the chapter before the walk",
     city: "La Grange, Texas",
     startDateTime: "2026-04-25T09:00:00-05:00",
     endDateTime: "2026-04-25T11:00:00-05:00",
@@ -93,7 +93,7 @@ export const allEvents: EventItem[] = [
     accessibilityNotes:
       "This outing will involve uneven ground.",
     weatherNote:
-      "Outdoor programming may shift in the event of heavy rain or severe weather.",
+      "Outdoor events may shift in the event of heavy rain or severe weather.",
     whatToBring: ["Water", "Hat", "Walking shoes", "Notebook or field guide"],
     details: [
       "Expect a conversational plant walk rather than a fast hike.",
@@ -107,14 +107,14 @@ export const allEvents: EventItem[] = [
     type: "Talk",
     county: "Colorado County",
     locationName: "Community room in Weimar",
-    locationAddress: "Venue shared in chapter updates and by email",
+    locationAddress: "Venue shared by the chapter before the talk",
     city: "Weimar, Texas",
     startDateTime: "2026-05-14T18:30:00-05:00",
     endDateTime: "2026-05-14T20:00:00-05:00",
     description:
       "A practical chapter talk centered on Turk’s cap, American beautyberry, goldenrod, and the kind of planting sequence that supports pollinators across changing seasons.",
     summary:
-      "A regionally grounded evening talk on long-season pollinator value in home landscapes and community plantings.",
+      "An evening talk on plants that help support pollinators from summer into fall.",
     status: "Check back for updates",
     audience:
       "Useful for gardeners, teachers, land stewards, and local residents looking for native plants with ecological value.",
@@ -123,7 +123,7 @@ export const allEvents: EventItem[] = [
     accessibilityNotes:
       "Indoor presentation with seating.",
     details: [
-      "The program will compare bloom timing, structure, and wildlife value across several native plants useful in the chapter service area.",
+      "The program will compare bloom timing, structure, and wildlife value across several native plants well suited to the chapter service area.",
       "Plenty of time is planned for questions and local planting discussion.",
       "Contact the chapter for the latest venue details before attending.",
     ],
@@ -134,7 +134,7 @@ export const allEvents: EventItem[] = [
     type: "Workshop",
     county: "Lavaca County",
     locationName: "Demonstration garden in Hallettsville",
-    locationAddress: "Site shared in chapter updates and by email",
+    locationAddress: "Site shared by the chapter before the workshop",
     city: "Hallettsville, Texas",
     startDateTime: "2026-06-06T08:30:00-05:00",
     endDateTime: "2026-06-06T10:30:00-05:00",
@@ -154,7 +154,7 @@ export const allEvents: EventItem[] = [
     whatToBring: ["Water", "Sun protection", "Notebook", "Work gloves if preferred"],
     details: [
       "The workshop will cover permission, timing, restraint, and basic handling practices for native seed.",
-      "Chapter organizers can build from this format later for seed swaps, workdays, or educational demos.",
+      "Expect practical demonstrations and time for questions about collecting and storing native seed.",
       "Contact the chapter for the latest site details before attending.",
     ],
   },

@@ -21,18 +21,16 @@ export const documentCollections: DocumentCollection[] = [
     description:
       "Core documents that explain how the chapter is organized and how leadership responsibilities are carried out.",
     emptyMessage:
-      "Governance files will be posted here as they are approved for public release.",
+      "This section will list approved governance documents once they are posted.",
     items: [
       {
         title: "Chapter bylaws",
-        description:
-          "A public copy of the chapter bylaws can be added here once the board approves the version for posting.",
+        description: "The chapter's governing document.",
         status: "Check back soon",
       },
       {
         title: "Officer responsibilities overview",
-        description:
-          "A concise guide to chapter leadership roles for volunteers, officers, and chapter planning.",
+        description: "A short guide to chapter leadership roles and responsibilities.",
         status: "Check back soon",
       },
     ],
@@ -42,18 +40,16 @@ export const documentCollections: DocumentCollection[] = [
     description:
       "A place for agendas, approved minutes, annual reports, and presentation materials that chapter participants may want to revisit.",
     emptyMessage:
-      "Meeting materials will appear here as agendas, minutes, and annual summaries are posted.",
+      "This section will list agendas, minutes, and annual summaries once they are posted.",
     items: [
       {
         title: "Meeting minutes archive",
-        description:
-          "Reserved for approved meeting minutes or chapter summaries once regular public records are posted.",
+        description: "Approved meeting minutes and chapter summaries.",
         status: "Check back soon",
       },
       {
         title: "Annual chapter highlights",
-        description:
-          "Annual accomplishments, chapter milestones, and major outreach updates can be shared here.",
+        description: "Annual highlights, chapter milestones, and major outreach updates.",
         status: "Check back soon",
       },
     ],
@@ -63,18 +59,16 @@ export const documentCollections: DocumentCollection[] = [
     description:
       "Quick-reference educational materials that support chapter talks, plant walks, and public outreach.",
     emptyMessage:
-      "Handouts will appear here as the chapter begins sharing recurring educational materials and field references.",
+      "This section will list recurring handouts and field references once they are posted.",
     items: [
       {
         title: "Native plant basics handout",
-        description:
-          "A starter guide for visitors beginning their first native-plant project in Fayette, Colorado, or Lavaca County.",
+        description: "A starter guide for visitors beginning a native-plant project in Fayette, Colorado, or Lavaca County.",
         status: "Check back soon",
       },
       {
         title: "Seasonal seed stewardship notes",
-        description:
-          "A short reference sheet the chapter can publish alongside seed workshops or educational demonstrations.",
+        description: "A short reference sheet for seed workshops and seasonal demonstrations.",
         status: "Check back soon",
       },
     ],
@@ -84,12 +78,11 @@ export const documentCollections: DocumentCollection[] = [
     description:
       "A central place for printable meeting notices, public talk flyers, and shareable event graphics.",
     emptyMessage:
-      "Event flyers can be posted here whenever the chapter begins distributing printable notices for meetings and walks.",
+      "This section will list printable notices for meetings and walks once they are posted.",
     items: [
       {
         title: "Upcoming meeting flyer archive",
-        description:
-          "Downloadable notices for public programs can be shared here.",
+        description: "Downloadable notices for public events.",
         status: "Check back soon",
       },
     ],
@@ -99,18 +92,16 @@ export const documentCollections: DocumentCollection[] = [
     description:
       "Materials that support chapter volunteers, members, and participants beyond individual public events.",
     emptyMessage:
-      "This area is ready for member welcome materials, volunteer guides, and chapter-specific resources as they are created.",
+      "This section will list volunteer guides, member welcome materials, and other chapter resources once they are posted.",
     items: [
       {
         title: "Volunteer welcome packet",
-        description:
-          "A simple guide to common volunteer roles, chapter expectations, and ways to stay in touch.",
+        description: "A simple guide to volunteer roles, chapter expectations, and ways to stay in touch.",
         status: "Check back soon",
       },
       {
         title: "Field outing participation guidance",
-        description:
-          "Outing expectations, safety reminders, or field trip forms can be shared here.",
+        description: "Field outing expectations, safety reminders, and related forms.",
         status: "Check back soon",
       },
     ],
@@ -118,4 +109,4 @@ export const documentCollections: DocumentCollection[] = [
 ];
 
 export const documentsEmptyState =
-  "Check back here for additional chapter files, or contact the chapter if you are looking for something specific.";
+  "Some chapter files have not been posted yet. Contact the chapter if you are looking for something specific.";

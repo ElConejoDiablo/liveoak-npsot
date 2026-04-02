@@ -1,6 +1,6 @@
 ---
 title: "Plant of the Month: Frogfruit for Ground-Layer Habitat"
-excerpt: "Frogfruit is one of the most useful native ground-layer plants for people who want pollinator value, manageable growth, and a landscape that still feels relaxed rather than overworked."
+excerpt: "Frogfruit is a strong native ground-layer plant for people who want pollinator value, manageable growth, and a planting that still feels relaxed."
 date: "2026-03-22"
 author: "Live Oak Chapter editorial team"
 category: "Plant of the Month"
@@ -17,13 +17,13 @@ coverNote: "Suggested future photo: frogfruit blooming low along a path edge or 
 featured: false
 ---
 
-For many beginners, the hardest planting question is not what to put in the spotlight. It is what to use in the lower layer so the space feels alive, useful, and not overly formal. Frogfruit is one of the best answers.
+For many beginners, the hardest planting question is not what to feature. It is what to use in the lower layer so the space feels full, alive, and not too formal. Frogfruit is one of the best answers.
 
 ## Why frogfruit earns attention
 
 Frogfruit stays low, spreads gradually, and produces small flowers that are easy to overlook until pollinators begin using them. Once you start watching, you may notice butterflies, bees, and other insects visiting regularly.
 
-That combination of modest appearance and high ecological value is part of what makes the plant so useful.
+That combination of modest appearance and high ecological value is part of what makes the plant worth noticing.
 
 ## Where it fits well
 

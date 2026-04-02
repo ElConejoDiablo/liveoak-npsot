@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Monarch habitat</title>
+  <desc id="desc">Monarch butterflies crossing native habitat with milkweed, asters, and open sky.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ebe1cb"/>
+      <stop offset="42%" stop-color="#e0cb9e"/>
+      <stop offset="100%" stop-color="#8d8157"/>
+    </linearGradient>
+    <filter id="blur-soft">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.86" numOctaves="2" seed="13"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.14"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1200" fill="url(#sky)"/>
+  <circle cx="1262" cy="208" r="124" fill="#e9a359" opacity="0.94"/>
+  <ellipse cx="1066" cy="180" rx="340" ry="100" fill="#fff5e3" opacity="0.22" filter="url(#blur-soft)"/>
+
+  <path d="M0 650 C238 592 458 602 690 666 C930 732 1194 742 1600 660 V1200 H0 Z" fill="#ae9667"/>
+  <path d="M0 756 C238 724 488 752 760 822 C1006 886 1264 902 1600 806 V1200 H0 Z" fill="#6f7c52"/>
+  <path d="M0 868 C244 846 522 902 818 980 C1084 1050 1328 1060 1600 976 V1200 H0 Z" fill="#314838"/>
+
+  <g opacity="0.96">
+    <path d="M266 1090 C272 972 282 864 302 706" stroke="#56643c" stroke-width="10" stroke-linecap="round"/>
+    <path d="M332 1098 C344 986 360 878 386 730" stroke="#4d5e37" stroke-width="8" stroke-linecap="round"/>
+    <ellipse cx="280" cy="776" rx="42" ry="16" fill="#678050"/>
+    <ellipse cx="334" cy="726" rx="40" ry="16" fill="#678050"/>
+    <circle cx="260" cy="670" r="18" fill="#cd7a8c"/>
+    <circle cx="286" cy="640" r="16" fill="#c7798a"/>
+    <circle cx="346" cy="698" r="15" fill="#cd7a8c"/>
+  </g>
+
+  <g transform="translate(734 472) scale(1.2)">
+    <path d="M0 0 C-42 -34 -98 -38 -134 -18 C-98 20 -40 24 0 0Z" fill="#ee8a2f" stroke="#2b241d" stroke-width="9"/>
+    <path d="M12 0 C54 -30 112 -34 150 -12 C112 24 54 30 12 0Z" fill="#ee8a2f" stroke="#2b241d" stroke-width="9"/>
+    <path d="M8 -16 V30" stroke="#2b241d" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="-64" cy="-12" r="7" fill="#fff4e2"/>
+    <circle cx="-34" cy="-24" r="6" fill="#fff4e2"/>
+    <circle cx="70" cy="-12" r="7" fill="#fff4e2"/>
+    <circle cx="38" cy="-24" r="6" fill="#fff4e2"/>
+  </g>
+
+  <g transform="translate(1018 370) scale(0.74)" opacity="0.86">
+    <path d="M0 0 C-42 -34 -98 -38 -134 -18 C-98 20 -40 24 0 0Z" fill="#ee8a2f" stroke="#2b241d" stroke-width="9"/>
+    <path d="M12 0 C54 -30 112 -34 150 -12 C112 24 54 30 12 0Z" fill="#ee8a2f" stroke="#2b241d" stroke-width="9"/>
+    <path d="M8 -16 V30" stroke="#2b241d" stroke-width="10" stroke-linecap="round"/>
+  </g>
+
+  <rect width="1600" height="1200" fill="#f7f0e4" opacity="0.14" filter="url(#grain)"/>
+</svg>
