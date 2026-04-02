@@ -49,23 +49,23 @@ export default function AboutPage() {
         title="A local chapter for people who want to learn about native plants close to home"
         description="The Live Oak Chapter serves Fayette, Colorado, and Lavaca Counties with events, outreach, and opportunities to learn about native plants alongside neighbors."
         serviceArea={siteConfig.serviceAreaLabel}
-        variant="savanna"
+        variant="aboutchapter"
         visualTitle="Learning together across the chapter region"
-        visualNote="Events, conversations, and local stewardship all help connect people to the landscapes around them."
+        visualNote="Neighbors, field questions, and local plant knowledge all take shape through chapter gatherings close to home."
         actions={[
           { href: "/events", label: "View events" },
-          { href: "/leadership", label: "Meet leadership", variant: "secondary" },
+          { href: "/contact", label: "Contact the chapter", variant: "secondary" },
         ]}
       />
 
       <SectionShell
-        eyebrow="Who we serve"
-        title="A local chapter for Fayette, Colorado, and Lavaca Counties"
-        intro="The chapter is local in scope, welcoming in tone, and rooted in the landscapes, plant communities, and habitat questions that matter across the three-county service area."
+        eyebrow="Local focus"
+        title="What the chapter makes possible close to home"
+        intro="The chapter gives people a nearby place to ask plant questions, learn from neighbors, and stay connected to the landscapes they see every day."
       >
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
           <MotionReveal className="rounded-[1.8rem] border border-primary/10 bg-white/78 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)] sm:p-8">
-            <h2 className="font-heading text-3xl text-foreground">Chapter summary</h2>
+            <h2 className="font-heading text-3xl text-foreground">Why a local chapter matters</h2>
             <p className="mt-4 text-lg leading-8 text-foreground/74">
               {siteConfig.about.overview}
             </p>
@@ -112,7 +112,7 @@ export default function AboutPage() {
       <SectionShell
         eyebrow="Get involved"
         title="Find a way to get involved that fits your time and interests"
-        intro="Whether you want to attend an event, volunteer, or get in touch, these are good places to get involved."
+        intro="Whether you want to attend an event, volunteer, or reach out with a question, these are the clearest local ways to begin."
       >
         <div className="grid gap-4 md:grid-cols-3">
           {participationPaths.map((path, index) => (

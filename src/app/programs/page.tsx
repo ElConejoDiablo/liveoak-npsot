@@ -33,8 +33,8 @@ export default function ProgramsPage() {
 
       <SectionShell
         eyebrow="Program areas"
-        title="Learning, stewardship, and outreach"
-        intro="These program areas show how the chapter can support education, field learning, and habitat care through the year."
+        title="Choose the kind of chapter learning you want"
+        intro="Some activities center on talks and conversation, while others focus on field observation, seed work, outreach, or hands-on habitat care."
       >
         <div className="space-y-8">
           {programAreas.map((area, index) => (

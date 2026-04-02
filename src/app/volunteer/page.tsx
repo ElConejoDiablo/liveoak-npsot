@@ -27,14 +27,14 @@ export default function VolunteerPage() {
         visualNote="Hospitality, setup, stewardship, and practical support all help the chapter stay welcoming."
         actions={[
           { href: siteConfig.contactUrl, label: "Tell us how you'd like to help" },
-          { href: siteConfig.joinUrl, label: "Join NPSOT", variant: "secondary" },
+          { href: "/events", label: "View events", variant: "secondary" },
         ]}
       />
 
       <SectionShell
         eyebrow="Volunteer paths"
-        title="Different ways to contribute"
-        intro="There is room for steady helpers and occasional volunteers."
+        title="Where volunteers help most"
+        intro="Choose the kind of help that fits your time, comfort level, and interests."
       >
         <div className="grid gap-4 md:grid-cols-3">
           {volunteerPaths.map((path, index) => (
@@ -64,8 +64,8 @@ export default function VolunteerPage() {
 
       <SectionShell
         eyebrow="Why it matters"
-        title="Volunteer help keeps the chapter welcoming and active"
-        intro="Local events and projects run more smoothly when more people can share the work."
+        title="Why shared work matters"
+        intro="Local events, outreach tables, and stewardship projects run better when more people can share the work."
       >
         <ImageFeatureSection
           eyebrow="Community stewardship"

@@ -1,0 +1,59 @@
+<svg width="1600" height="1200" viewBox="0 0 1600 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1200" fill="#EDE2C8"/>
+  <rect width="1600" height="1200" fill="url(#sky)"/>
+  <ellipse cx="1220" cy="210" rx="110" ry="110" fill="#E0B352"/>
+  <ellipse cx="1165" cy="165" rx="210" ry="95" fill="#F6EDDA" opacity="0.8"/>
+  <path d="M0 560C178 512 394 478 626 504C836 528 1061 610 1247 588C1406 570 1515 524 1600 496V1200H0V560Z" fill="#B8B08A"/>
+  <path d="M0 675C212 628 412 640 615 692C786 736 981 782 1188 756C1368 734 1496 672 1600 624V1200H0V675Z" fill="#7A8460"/>
+  <path d="M0 820C184 796 374 836 576 892C785 950 1069 988 1327 926C1436 900 1526 858 1600 814V1200H0V820Z" fill="#4A5F47"/>
+  <path d="M0 970C245 930 470 980 744 1048C973 1105 1295 1105 1600 1008V1200H0V970Z" fill="#2D4038"/>
+
+  <g opacity="0.95">
+    <rect x="385" y="700" width="10" height="160" rx="5" fill="#2A2920"/>
+    <ellipse cx="420" cy="710" rx="92" ry="54" fill="#4E684E"/>
+    <ellipse cx="362" cy="732" rx="58" ry="36" fill="#607A58"/>
+  </g>
+
+  <g opacity="0.92">
+    <rect x="1018" y="640" width="9" height="145" rx="4.5" fill="#2A2920"/>
+    <ellipse cx="1048" cy="648" rx="74" ry="44" fill="#4F6950"/>
+    <ellipse cx="998" cy="666" rx="46" ry="30" fill="#62805E"/>
+  </g>
+
+  <g opacity="0.86">
+    <rect x="1198" y="706" width="7" height="118" rx="3.5" fill="#2A2920"/>
+    <ellipse cx="1223" cy="712" rx="52" ry="31" fill="#556D51"/>
+  </g>
+
+  <g opacity="0.72">
+    <rect x="705" y="760" width="72" height="42" rx="8" fill="#F4E8CF"/>
+    <rect x="716" y="772" width="50" height="6" rx="3" fill="#B78B49"/>
+    <rect x="728" y="784" width="28" height="6" rx="3" fill="#A8A18A"/>
+    <rect x="734" y="802" width="14" height="66" rx="7" fill="#7B765E"/>
+  </g>
+
+  <g opacity="0.9">
+    <rect x="536" y="870" width="12" height="122" rx="6" fill="#6E8054"/>
+    <rect x="565" y="848" width="10" height="144" rx="5" fill="#708457"/>
+    <rect x="592" y="882" width="10" height="110" rx="5" fill="#69814F"/>
+    <circle cx="540" cy="860" r="14" fill="#C95C42"/>
+    <circle cx="571" cy="840" r="12" fill="#E3BE57"/>
+    <circle cx="595" cy="874" r="13" fill="#D78256"/>
+  </g>
+
+  <g opacity="0.82">
+    <rect x="850" y="908" width="10" height="98" rx="5" fill="#6C7C4F"/>
+    <rect x="880" y="890" width="9" height="116" rx="4.5" fill="#728759"/>
+    <rect x="908" y="926" width="8" height="80" rx="4" fill="#6A7F52"/>
+    <circle cx="853" cy="900" r="12" fill="#E4C25D"/>
+    <circle cx="883" cy="881" r="11" fill="#C86743"/>
+    <circle cx="912" cy="918" r="10" fill="#D98B57"/>
+  </g>
+
+  <defs>
+    <linearGradient id="sky" x1="800" y1="0" x2="800" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9F3E7"/>
+      <stop offset="1" stop-color="#E6D9BC"/>
+    </linearGradient>
+  </defs>
+</svg>

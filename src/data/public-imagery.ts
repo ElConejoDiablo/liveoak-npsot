@@ -2,10 +2,13 @@ import type { CoverTheme } from "@/lib/blog";
 
 export type PublicImageryKey =
   | CoverTheme
+  | "homelandscape"
+  | "aboutchapter"
   | "fieldnotes"
   | "learning"
   | "stewardship"
-  | "documents";
+  | "documents"
+  | "resourcehub";
 
 export const publicImagery: Record<
   PublicImageryKey,
@@ -34,6 +37,14 @@ export const publicImagery: Record<
     src: "/mock-imagery/chapter-gathering.svg",
     alt: "Chapter volunteers and visitors gathered in a native planting space.",
   },
+  homelandscape: {
+    src: "/mock-imagery/home-landscape.svg",
+    alt: "South-central Texas prairie edges, live oaks, and native planting texture near a chapter gathering space.",
+  },
+  aboutchapter: {
+    src: "/mock-imagery/about-chapter-region.svg",
+    alt: "Neighbors gathering under live oaks with native plants and field notes across the chapter region.",
+  },
   fieldnotes: {
     src: "/mock-imagery/field-notes-meadow.svg",
     alt: "Layered meadow grasses, wildflowers, and field notes gathered from south-central Texas landscapes.",
@@ -49,5 +60,9 @@ export const publicImagery: Record<
   documents: {
     src: "/mock-imagery/document-table.svg",
     alt: "Chapter handouts, notes, and plant references arranged on a tabletop.",
+  },
+  resourcehub: {
+    src: "/mock-imagery/resource-hub.svg",
+    alt: "Field guides, seed heads, and native-plant references arranged for local chapter learning.",
   },
 };

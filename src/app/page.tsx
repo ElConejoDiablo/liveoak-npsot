@@ -60,13 +60,13 @@ export default async function Home() {
                 <ArrowRight className="ml-1 h-4 w-4" />
               </SmartLink>
               <SmartLink
-                href={siteConfig.joinUrl}
+                href="/news"
                 className={cn(
                   buttonVariants({ variant: "outline", size: "lg" }),
                   "h-auto rounded-full border-primary/15 bg-white/85 px-5 py-3 text-sm",
                 )}
               >
-                Join NPSOT
+                Read chapter news
               </SmartLink>
               <SmartLink
                 href="/resources"
@@ -99,9 +99,9 @@ export default async function Home() {
           </MotionReveal>
 
           <EditorialImageSlot
-            variant="savanna"
-            title="Field walks, chapter gatherings, and local habitat stories"
-            note="Prairie edges, oak shade, working lands, and native plant communities all shape the places this chapter serves."
+            variant="homelandscape"
+            title="Prairie edges, live oaks, and chapter gathering places"
+            note="Native grasses, field observations, and local stewardship all shape the landscapes this chapter returns to through the year."
             priority
             className="w-full max-w-2xl lg:justify-self-end"
           />
@@ -110,8 +110,8 @@ export default async function Home() {
 
       <SectionShell
         eyebrow="Happening now"
-        title="Upcoming events, recent reading, and quick links"
-        intro="See the next event, read the latest article, or jump straight to a key chapter page."
+        title="Start with what is happening now"
+        intro="Check the next chapter event, catch up on the latest story, or head straight to a useful local page."
       >
         <div className="grid gap-5 xl:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
           <MotionReveal>
@@ -159,8 +159,8 @@ export default async function Home() {
 
       <SectionShell
         eyebrow="About the chapter"
-        title="Native plants, local knowledge, and a welcoming community"
-        intro="The Live Oak Chapter connects people across Fayette, Colorado, and Lavaca Counties through events, field learning, and practical native plant education."
+        title="A place to learn together, ask questions, and stay close to local landscapes"
+        intro="The chapter gives people a nearby place to learn about native plants, share field observations, and build confidence through events, walks, and practical conversation."
         actions={
           <SmartLink
             href="/about"

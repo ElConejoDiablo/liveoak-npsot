@@ -42,8 +42,8 @@ export default async function NewsPage() {
 
       <SectionShell
         eyebrow="Featured article"
-        title="Featured reading from the chapter"
-        intro="Featured seasonal guidance, local stories, and native-plant reading from the Live Oak Chapter."
+        title="Start with the current feature"
+        intro="Begin with the lead story, then browse the rest of the archive by topic, season, or question."
       >
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(300px,0.72fr)]">
           <MotionReveal>
@@ -54,7 +54,7 @@ export default async function NewsPage() {
             className="rounded-[1.7rem] border border-primary/10 bg-[#F5F0E1] p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
           >
             <h2 className="font-heading text-2xl text-foreground">
-              Browse the archive below
+              Browse by topic below
             </h2>
             <p className="mt-3 text-base leading-7 text-foreground/72">
               Use the article browser below to narrow the list by topic,
