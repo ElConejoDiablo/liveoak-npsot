@@ -5,6 +5,7 @@ import { Container } from "@/components/shared/container";
 import { EditorialImageSlot } from "@/components/shared/editorial-image-slot";
 import { MotionReveal } from "@/components/shared/motion-reveal";
 import { SmartLink } from "@/components/shared/smart-link";
+import { PhotographicHeroBanner } from "@/components/sections/photographic-hero-banner";
 import type { PublicImageryKey } from "@/data/public-imagery";
 import { cn } from "@/lib/utils";
 
@@ -20,7 +21,7 @@ type PageHeroProps = {
   description: string;
   serviceArea: string;
   variant?: PublicImageryKey;
-  layout?: "feature" | "utility" | "compact";
+  layout?: "feature" | "utility" | "compact" | "banner";
   actions?: HeroAction[];
   highlights?: string[];
   highlightsTitle?: string;
@@ -68,6 +69,18 @@ export function PageHero({
       ))}
     </div>
   ) : null;
+
+  if (layout === "banner") {
+    return (
+      <PhotographicHeroBanner
+        variant={variant}
+        title={title}
+        description={description}
+        serviceArea={serviceArea}
+        actions={actions}
+      />
+    );
+  }
 
   if (layout === "compact") {
     return (

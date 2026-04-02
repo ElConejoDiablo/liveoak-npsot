@@ -50,8 +50,7 @@ export default function AboutPage() {
         description="The Live Oak Chapter brings together people across Fayette, Colorado, and Lavaca Counties for events, outreach, and practical native-plant learning rooted in this region."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="aboutchapter"
-        visualTitle="Learning together across the chapter region"
-        visualNote="Neighbors, field questions, and local plant knowledge all take shape through chapter gatherings close to home."
+        layout="banner"
         actions={[
           { href: "/events", label: "View events" },
           { href: "/contact", label: "Contact the chapter", variant: "secondary" },

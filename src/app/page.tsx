@@ -1,11 +1,10 @@
 import { ArrowRight } from "lucide-react";
 
 import { ArticleCard } from "@/components/cards/article-card";
-import { buttonVariants } from "@/components/ui/button-styles";
 import { CtaBanner } from "@/components/sections/cta-banner";
+import { PhotographicHeroBanner } from "@/components/sections/photographic-hero-banner";
 import { SectionShell } from "@/components/sections/section-shell";
 import { Container } from "@/components/shared/container";
-import { EditorialImageSlot } from "@/components/shared/editorial-image-slot";
 import { MotionReveal } from "@/components/shared/motion-reveal";
 import { SmartLink } from "@/components/shared/smart-link";
 import { NextEventPanel } from "@/components/events/next-event-panel";
@@ -14,7 +13,6 @@ import { homepageActionPaths } from "@/data/local";
 import { siteConfig } from "@/data/site";
 import { getFeaturedPosts, getLatestPost } from "@/lib/blog";
 import { createMetadata } from "@/lib/metadata";
-import { cn } from "@/lib/utils";
 
 export const metadata = createMetadata({
   description: siteConfig.description,
@@ -32,81 +30,35 @@ export default async function Home() {
 
   return (
     <>
-      <section className="relative overflow-hidden border-b border-primary/10 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.92),rgba(244,236,220,0.88)_44%,rgba(230,219,194,0.96)_100%)]">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.4),transparent_32%),radial-gradient(circle_at_bottom_left,rgba(63,92,58,0.12),transparent_34%)]" />
-        <Container className="relative grid min-h-[calc(100svh-5rem)] gap-10 py-10 sm:py-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] lg:items-center lg:py-16">
-          <MotionReveal className="max-w-3xl">
-            <div className="inline-flex rounded-full border border-primary/15 bg-white/80 px-4 py-2 text-sm font-semibold uppercase tracking-[0.22em] text-primary/76">
-              Live Oak Chapter
+      <PhotographicHeroBanner
+        variant="homelandscape"
+        title="Native plant community for Fayette, Colorado, and Lavaca Counties."
+        description="The Live Oak Chapter of the Native Plant Society of Texas connects people to native plants, habitat care, and practical regional knowledge through welcoming events, field walks, and community outreach."
+        actions={[
+          { href: "/events", label: "View events" },
+          { href: "/news", label: "Read chapter news", variant: "secondary" },
+          { href: "/resources", label: "Explore resources", variant: "ghost" },
+        ]}
+      >
+        <div className="grid gap-3 sm:max-w-3xl sm:grid-cols-3">
+          {siteConfig.chapterStats.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-[1.45rem] border border-white/14 bg-white/10 p-4 backdrop-blur-sm"
+            >
+              <div className="text-xs font-semibold uppercase tracking-[0.22em] text-[#E7D8A9]">
+                {stat.label}
+              </div>
+              <div className="mt-2 font-heading text-3xl leading-none text-white">
+                {stat.value}
+              </div>
+              <div className="mt-2 text-sm leading-6 text-white/76">
+                {stat.detail}
+              </div>
             </div>
-            <h1 className="mt-6 font-heading text-5xl leading-[0.98] text-foreground sm:text-6xl lg:text-[5.7rem]">
-              Native plant community for Fayette, Colorado, and Lavaca Counties.
-            </h1>
-            <p className="mt-6 max-w-2xl text-xl leading-9 text-foreground/76">
-              The Live Oak Chapter of the Native Plant Society of Texas connects
-              people to native plants, habitat care, and practical regional
-              knowledge through welcoming events, field walks, and community
-              outreach.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <SmartLink
-                href="/events"
-                className={cn(
-                  buttonVariants({ variant: "default", size: "lg" }),
-                  "h-auto rounded-full px-5 py-3 text-sm",
-                )}
-              >
-                <span>View events</span>
-                <ArrowRight className="ml-1 h-4 w-4" />
-              </SmartLink>
-              <SmartLink
-                href="/news"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" }),
-                  "h-auto rounded-full border-primary/15 bg-white/85 px-5 py-3 text-sm",
-                )}
-              >
-                Read chapter news
-              </SmartLink>
-              <SmartLink
-                href="/resources"
-                className={cn(
-                  buttonVariants({ variant: "ghost", size: "lg" }),
-                  "h-auto rounded-full px-5 py-3 text-sm text-foreground/78 hover:bg-white/70",
-                )}
-              >
-                Explore resources
-              </SmartLink>
-            </div>
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
-              {siteConfig.chapterStats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-[1.5rem] border border-primary/10 bg-white/75 p-4 shadow-[0_18px_50px_rgba(39,59,42,0.07)]"
-                >
-                  <div className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/72">
-                    {stat.label}
-                  </div>
-                  <div className="mt-2 font-heading text-3xl text-foreground">
-                    {stat.value}
-                  </div>
-                  <div className="mt-2 text-sm leading-6 text-foreground/66">
-                    {stat.detail}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </MotionReveal>
-
-          <EditorialImageSlot
-            variant="homelandscape"
-            title="Prairie edges, live oaks, and chapter gathering places"
-            note="Native grasses, field observations, and local stewardship all shape the landscapes this chapter returns to through the year."
-            priority
-            className="w-full max-w-2xl lg:justify-self-end"
-          />
-        </Container>
-      </section>
+          ))}
+        </div>
+      </PhotographicHeroBanner>
 
       <SectionShell
         eyebrow="Happening now"

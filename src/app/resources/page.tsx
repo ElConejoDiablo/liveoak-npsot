@@ -50,17 +50,8 @@ export default function ResourcesPage() {
         title="Chapter guidance and trusted native-plant references"
         description="Start with local chapter help, then branch into statewide and Texas references for plants, habitat, and membership."
         serviceArea={siteConfig.serviceAreaLabel}
-        layout="compact"
+        layout="banner"
         variant="resourcehub"
-        showCompactVisual
-        highlightsTitle="In this library"
-        highlights={[
-          "Chapter-friendly starting points for local questions",
-          "Official NPSOT links for membership and statewide guidance",
-          "Plant and habitat references for deeper Texas reading",
-        ]}
-        visualTitle="Field guides, seed heads, and working references"
-        visualNote="A chapter resource page should feel like a local gateway first, with trusted statewide references close at hand."
         actions={[
           { href: "/contact", label: "Ask the chapter" },
           { href: "/events", label: "View events", variant: "secondary" },

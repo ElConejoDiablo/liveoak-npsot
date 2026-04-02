@@ -23,8 +23,7 @@ export default function ProgramsPage() {
         description="These are the kinds of chapter activities that help people learn, observe, and care for native plants close to home."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="learning"
-        visualTitle="Meetings, walks, and shared learning"
-        visualNote="Seasonal talks, field time, and practical guidance help native plants feel closer to home."
+        layout="banner"
         actions={[
           { href: "/events", label: "View events" },
           { href: "/volunteer", label: "Volunteer with the chapter", variant: "secondary" },

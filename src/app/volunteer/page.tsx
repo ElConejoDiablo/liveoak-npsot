@@ -23,8 +23,7 @@ export default function VolunteerPage() {
         description="Helping can mean welcoming visitors, supporting events, sharing plant knowledge, or pitching in with the practical work that keeps the chapter going."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="stewardship"
-        visualTitle="Hands-on help keeps things moving"
-        visualNote="Hospitality, setup, stewardship, and practical support all help the chapter stay welcoming."
+        layout="banner"
         actions={[
           { href: siteConfig.contactUrl, label: "Tell us how you'd like to help" },
           { href: "/events", label: "View events", variant: "secondary" },
