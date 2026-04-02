@@ -46,8 +46,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About the chapter"
-        title="A local chapter for people who want to learn about native plants close to home"
-        description="The Live Oak Chapter serves Fayette, Colorado, and Lavaca Counties with events, outreach, and opportunities to learn about native plants alongside neighbors."
+        title="Native plant learning, local questions, and chapter life close to home"
+        description="The Live Oak Chapter brings together people across Fayette, Colorado, and Lavaca Counties for events, outreach, and practical native-plant learning rooted in this region."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="aboutchapter"
         visualTitle="Learning together across the chapter region"

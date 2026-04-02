@@ -38,6 +38,7 @@ export function ResourceBrowser({ groups }: ResourceBrowserProps) {
     (count, group) => count + group.links.length,
     0,
   );
+  const resultLabel = `Showing ${resultCount} resource ${resultCount === 1 ? "link" : "links"}.`;
 
   return (
     <div className="space-y-6">
@@ -57,7 +58,7 @@ export function ResourceBrowser({ groups }: ResourceBrowserProps) {
           </div>
         </label>
         <p className="mt-4 text-sm leading-7 text-foreground/66">
-          Showing {resultCount} resource link{resultCount === 1 ? "" : "s"}.
+          {resultLabel}
         </p>
       </div>
 
