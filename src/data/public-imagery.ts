@@ -15,6 +15,11 @@ export const publicImagery: Record<
   {
     src: string;
     alt: string;
+    mobileSrc?: string;
+    width?: number;
+    height?: number;
+    mobileWidth?: number;
+    mobileHeight?: number;
   }
 > = {
   savanna: {
@@ -38,31 +43,61 @@ export const publicImagery: Record<
     alt: "Chapter volunteers and visitors gathered in a native planting space.",
   },
   homelandscape: {
-    src: "/mock-imagery/home-landscape.svg",
-    alt: "South-central Texas prairie edges, live oaks, and native planting texture near a chapter gathering space.",
+    src: "/hero-images/liveoak-home-hero-oak-savanna-desktop-2400.webp",
+    mobileSrc: "/hero-images/liveoak-home-hero-oak-savanna-mobile-1200.webp",
+    alt: "Wildflowers and native grasses around a pond in an oak savanna landscape",
+    width: 2400,
+    height: 1125,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
   },
   aboutchapter: {
-    src: "/mock-imagery/about-chapter-region.svg",
-    alt: "Neighbors gathering under live oaks with native plants and field notes across the chapter region.",
+    src: "/hero-images/liveoak-about-hero-chapter-gathering-desktop-2400.webp",
+    mobileSrc: "/hero-images/liveoak-about-hero-chapter-gathering-mobile-1200.webp",
+    alt: "Chapter members and students gathered in a wildflower meadow during a native plant learning walk",
+    width: 2400,
+    height: 1350,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
   },
   fieldnotes: {
-    src: "/mock-imagery/field-notes-meadow.svg",
-    alt: "Layered meadow grasses, wildflowers, and field notes gathered from south-central Texas landscapes.",
+    src: "/hero-images/liveoak-news-hero-field-notes-desktop-2400.webp",
+    mobileSrc: "/hero-images/liveoak-news-hero-field-notes-mobile-1200.webp",
+    alt: "Person photographing a monarch butterfly in a meadow while recording the sighting on a phone",
+    width: 2400,
+    height: 1350,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
   },
   learning: {
-    src: "/mock-imagery/chapter-learning.svg",
-    alt: "A chapter learning gathering with a speaker, listeners, and native-plant discussion under live oaks.",
+    src: "/hero-images/liveoak-programs-hero-native-garden-desktop-2400.webp",
+    mobileSrc: "/hero-images/liveoak-programs-hero-native-garden-mobile-1200.webp",
+    alt: "Small group planting a native Texas garden with flowering plants and blue-eyed grass in a residential yard",
+    width: 2400,
+    height: 1350,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
   },
   stewardship: {
-    src: "/mock-imagery/stewardship-workday.svg",
-    alt: "A stewardship workday with volunteers tending native planting beds and prairie edges.",
+    src: "/hero-images/liveoak-volunteer-hero-stewardship-workday-desktop-2400.webp",
+    mobileSrc: "/hero-images/liveoak-volunteer-hero-stewardship-workday-mobile-1200.webp",
+    alt: "Volunteers planting native grasses together during a habitat restoration workday beneath oak trees",
+    width: 2400,
+    height: 1350,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
   },
   documents: {
     src: "/mock-imagery/document-table.svg",
     alt: "Chapter handouts, notes, and plant references arranged on a tabletop.",
   },
   resourcehub: {
-    src: "/mock-imagery/resource-hub.svg",
-    alt: "Field guides, seed heads, and native-plant references arranged for local chapter learning.",
+    src: "/hero-images/liveoak-resources-hero-local-reference-table-desktop-2400.webp",
+    mobileSrc: "/hero-images/liveoak-resources-hero-local-reference-table-mobile-1200.webp",
+    alt: "Chapter members gathered around a garden table comparing native plant samples, notes, and field guides",
+    width: 2400,
+    height: 1350,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
   },
 };

@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import {
   publicImagery,
   type PublicImageryKey,
@@ -26,7 +24,8 @@ export function EditorialImageSlot({
   className,
 }: EditorialImageSlotProps) {
   const image = publicImagery[variant];
-
+  const desktopWidth = image.width ?? 1600;
+  const desktopHeight = image.height ?? 1280;
   return (
     <div
       className={cn(
@@ -35,19 +34,28 @@ export function EditorialImageSlot({
         className,
       )}
     >
-      <Image
-        src={image.src}
-        alt={image.alt}
-        fill
-        priority={priority}
-        sizes={compact ? "(max-width: 1024px) 100vw, 42vw" : "(max-width: 1024px) 100vw, 46vw"}
-        className="object-cover"
-      />
+      <picture className="absolute inset-0 block h-full w-full">
+        {image.mobileSrc ? (
+          <source
+            media="(max-width: 767px)"
+            srcSet={image.mobileSrc}
+          />
+        ) : null}
+        <img
+          src={image.src}
+          alt={image.alt}
+          width={desktopWidth}
+          height={desktopHeight}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : undefined}
+          className="h-full w-full object-cover"
+        />
+      </picture>
       <div
         className={cn(
           "absolute inset-0",
           showText
-            ? "bg-[linear-gradient(180deg,rgba(20,30,22,0.08),rgba(20,30,22,0.58)_66%,rgba(20,30,22,0.76))]"
+            ? "bg-[linear-gradient(180deg,rgba(20,30,22,0.14),rgba(20,30,22,0.62)_66%,rgba(20,30,22,0.82))]"
             : "bg-[linear-gradient(180deg,rgba(255,255,255,0.01),rgba(20,30,22,0.04)_62%,rgba(20,30,22,0.12))]",
         )}
       />
