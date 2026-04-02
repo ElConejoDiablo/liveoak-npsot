@@ -18,6 +18,7 @@ type PhotographicHeroBannerProps = {
   title: string;
   description: string;
   serviceArea?: string;
+  meta?: React.ReactNode;
   actions?: HeroAction[];
   className?: string;
   minHeightClassName?: string;
@@ -30,6 +31,7 @@ export function PhotographicHeroBanner({
   title,
   description,
   serviceArea,
+  meta,
   actions = [],
   className,
   minHeightClassName = "min-h-[72svh] sm:min-h-[78svh] lg:min-h-[calc(100svh-5rem)]",
@@ -74,6 +76,7 @@ export function PhotographicHeroBanner({
           <h1 className="max-w-3xl font-heading text-[clamp(3rem,8vw,6.3rem)] leading-[0.94] text-white">
             {title}
           </h1>
+          {meta ? <div className="mt-5 max-w-2xl">{meta}</div> : null}
           <p className="mt-5 max-w-2xl text-lg leading-8 text-white/82 sm:text-xl sm:leading-9">
             {description}
           </p>
