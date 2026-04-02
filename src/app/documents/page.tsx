@@ -1,7 +1,10 @@
+import { ArrowRight } from "lucide-react";
+
 import { EmptyStatePanel } from "@/components/shared/empty-state-panel";
 import { PageHero } from "@/components/sections/page-hero";
 import { SectionShell } from "@/components/sections/section-shell";
 import { MotionReveal } from "@/components/shared/motion-reveal";
+import { SmartLink } from "@/components/shared/smart-link";
 import {
   documentCollections,
   documentsEmptyState,
@@ -21,30 +24,30 @@ export default function DocumentsPage() {
     <>
       <PageHero
         eyebrow="Documents"
-        title="Chapter documents, handouts, and posted materials"
-        description="Look here for bylaws, meeting materials, handouts, flyers, and other chapter files."
+        title="Posted chapter materials, recaps, and practical guides"
+        description="This page now highlights what the chapter has already published, while still showing which document types are not posted yet."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="documents"
         layout="compact"
         showCompactVisual
         highlightsTitle="Includes"
         highlights={[
-          "Governance and meeting materials",
-          "Public handouts and flyers",
-          "Member resources when available",
+          "Available now chapter guides and recaps",
+          "Public reference pages maintained by the chapter",
+          "Clear notes on what still is not posted yet",
         ]}
         visualTitle="Handouts, notices, and chapter records"
-        visualNote="A growing library for posted files, public handouts, and reference material."
+        visualNote="A public library for real chapter materials first, with unposted document types clearly marked."
         actions={[
-          { href: "/contact", label: "Contact the chapter" },
-          { href: siteConfig.contactUrl, label: "Email about documents", variant: "secondary" },
+          { href: "/news", label: "Browse chapter materials" },
+          { href: "/contact", label: "Contact the chapter", variant: "secondary" },
         ]}
       />
 
       <SectionShell
         eyebrow="Document library"
-        title="Browse documents by type"
-        intro="Files are grouped by the kinds of materials chapter participants most often look for."
+        title="Browse posted materials by type"
+        intro="Available chapter guides, recaps, and archive pages appear first. Unposted document types stay clearly marked so the page remains honest."
       >
         <div className="grid gap-5 xl:grid-cols-2">
           {documentCollections.map((collection, index) => (
@@ -76,6 +79,20 @@ export default function DocumentsPage() {
                     <p className="mt-2 text-sm leading-7 text-foreground/68">
                       {item.description}
                     </p>
+                    {item.updated ? (
+                      <p className="mt-3 text-xs font-medium uppercase tracking-[0.18em] text-foreground/48">
+                        {item.updated}
+                      </p>
+                    ) : null}
+                    {item.href ? (
+                      <SmartLink
+                        href={item.href}
+                        className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                      >
+                        <span>{item.hrefLabel ?? "Open material"}</span>
+                        <ArrowRight className="h-4 w-4" />
+                      </SmartLink>
+                    ) : null}
                   </li>
                 ))}
               </ul>
