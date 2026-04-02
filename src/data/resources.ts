@@ -75,32 +75,4 @@ export const resourceGroups: ResourceGroup[] = [
       },
     ],
   },
-  {
-    title: "Chapter-specific links",
-    description:
-      "These blocks are ready for real chapter files and sign-up destinations as soon as they are available.",
-    links: [
-      {
-        title: "Chapter documents hub",
-        href: "/documents",
-        description:
-          "Reserved space for bylaws, meeting minutes, volunteer forms, and outreach files.",
-        kind: "internal",
-      },
-      {
-        title: "Request newsletter signup",
-        href: "mailto:info@liveoak-npsot.org?subject=Live%20Oak%20Chapter%20newsletter%20signup",
-        description:
-          "Placeholder signup flow until the chapter connects a dedicated newsletter platform.",
-        kind: "email",
-      },
-      {
-        title: "Email the chapter",
-        href: "mailto:info@liveoak-npsot.org?subject=Hello%20Live%20Oak%20Chapter",
-        description:
-          "Use the chapter inbox for questions, collaboration ideas, and requests for follow-up.",
-        kind: "email",
-      },
-    ],
-  },
 ];

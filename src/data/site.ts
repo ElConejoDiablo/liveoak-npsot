@@ -4,6 +4,15 @@ export type NavigationItem = {
   description?: string;
 };
 
+export type FooterLink = NavigationItem & {
+  kind?: "page" | "members" | "external";
+};
+
+export type FooterLinkGroup = {
+  title: string;
+  links: FooterLink[];
+};
+
 export type LeadershipMember = {
   role: string;
   name: string;
@@ -173,7 +182,7 @@ export const secondaryNavigation: NavigationItem[] = [
   { href: "/documents", label: "Documents" },
 ];
 
-export const footerLinkGroups = [
+export const footerLinkGroups: FooterLinkGroup[] = [
   {
     title: "Start here",
     links: [
@@ -186,10 +195,18 @@ export const footerLinkGroups = [
   {
     title: "Get involved",
     links: [
+      { href: "/programs", label: "Programs" },
       { href: "/volunteer", label: "Volunteer" },
-      { href: "/members", label: "Members" },
-      { href: "/contact", label: "Contact" },
-      { href: siteConfig.npsot.joinUrl, label: "Join NPSOT" },
+      {
+        href: "/members/sign-in",
+        label: "Members portal",
+        kind: "members",
+      },
+      {
+        href: siteConfig.npsot.joinUrl,
+        label: "Join NPSOT",
+        kind: "external",
+      },
     ],
   },
   {
@@ -202,11 +219,20 @@ export const footerLinkGroups = [
   {
     title: "Statewide",
     links: [
-      { href: siteConfig.npsot.homeUrl, label: "NPSOT.org" },
-      { href: siteConfig.npsot.startGardenUrl, label: "Start a Native Garden" },
+      {
+        href: siteConfig.npsot.homeUrl,
+        label: "NPSOT.org",
+        kind: "external",
+      },
+      {
+        href: siteConfig.npsot.startGardenUrl,
+        label: "Start a Native Garden",
+        kind: "external",
+      },
       {
         href: siteConfig.npsot.plantDatabaseUrl,
         label: "Native Plant Database",
+        kind: "external",
       },
     ],
   },

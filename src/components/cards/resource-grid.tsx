@@ -8,6 +8,18 @@ type ResourceGridProps = {
   groups: ResourceGroup[];
 };
 
+function getResourceLabel(kind: ResourceGroup["links"][number]["kind"]) {
+  if (kind === "internal") {
+    return "Chapter page";
+  }
+
+  if (kind === "email") {
+    return "Email action";
+  }
+
+  return "External guide";
+}
+
 export function ResourceGrid({ groups }: ResourceGridProps) {
   return (
     <div className="space-y-8">
@@ -35,6 +47,9 @@ export function ResourceGrid({ groups }: ResourceGridProps) {
                     <ArrowUpRight className="h-5 w-5" />
                   )}
                 </div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/72">
+                  {getResourceLabel(link.kind)}
+                </p>
                 <h4 className="font-heading text-2xl leading-tight text-foreground">
                   {link.title}
                 </h4>
@@ -44,10 +59,10 @@ export function ResourceGrid({ groups }: ResourceGridProps) {
                 <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
                   <span>
                     {link.kind === "internal"
-                      ? "Open page"
+                      ? "Open chapter page"
                       : link.kind === "email"
-                        ? "Send email"
-                        : "Visit resource"}
+                        ? "Start contact"
+                        : "Open resource"}
                   </span>
                   <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
@@ -59,4 +74,3 @@ export function ResourceGrid({ groups }: ResourceGridProps) {
     </div>
   );
 }
-

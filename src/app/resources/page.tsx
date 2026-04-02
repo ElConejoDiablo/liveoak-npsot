@@ -9,7 +9,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Resources",
   description:
-    "Find official NPSOT links, native plant education resources, habitat references, and chapter documents.",
+    "Find official NPSOT links, native plant education resources, and habitat references without placeholder content.",
   path: "/resources",
   eyebrow: "Resources",
 });
@@ -20,25 +20,25 @@ export default function ResourcesPage() {
       <PageHero
         eyebrow="Resources"
         title="Useful links for getting started, going deeper, and staying connected"
-        description="A practical chapter site should make it easy to move between local activity, statewide NPSOT resources, and educational references that help people keep learning."
+        description="A practical chapter site should make it easy to move between trustworthy statewide resources and the chapter contact page without dead ends or placeholder links."
         serviceArea={siteConfig.serviceAreaLabel}
         layout="utility"
         highlightsTitle="Start with"
         highlights={[
-          "Search the full resource library",
           "Beginner guidance and official NPSOT links",
-          "Chapter documents, newsletter signup, and email paths",
+          "Habitat and plant-identification references",
+          "Use the contact page when you want chapter-specific help",
         ]}
         actions={[
           { href: siteConfig.npsot.homeUrl, label: "Visit NPSOT.org" },
-          { href: "/documents", label: "View documents page", variant: "secondary" },
+          { href: "/contact", label: "Ask the chapter", variant: "secondary" },
         ]}
       />
 
       <SectionShell
         eyebrow="Reference library"
-        title="Organized for local chapter visitors, not just link dumping"
-        intro="Use the lightweight search to quickly find membership links, monarch resources, documents, or starter guidance."
+        title="Organized for real next steps, not placeholder content"
+        intro="Use the lightweight search to quickly find membership links, monarch resources, plant databases, and starter guidance."
       >
         <ResourceBrowser groups={resourceGroups} />
       </SectionShell>
@@ -49,7 +49,6 @@ export default function ResourcesPage() {
           title="Ask the chapter if you are looking for the right next plant, book, or starting point"
           description="The chapter inbox is a simple way to request guidance if you are looking for a useful next step."
           primaryAction={{ href: "/contact", label: "Contact the chapter" }}
-          secondaryAction={{ href: siteConfig.contactUrl, label: "Send an email" }}
           variant="pollinator"
         />
       </div>

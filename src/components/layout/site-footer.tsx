@@ -1,11 +1,47 @@
-import { footerLinkGroups, siteConfig } from "@/data/site";
+"use client";
+
+import { ArrowUpRight, LockKeyhole } from "lucide-react";
+import { usePathname } from "next/navigation";
+
+import { footerLinkGroups, siteConfig, type FooterLink } from "@/data/site";
 
 import { Container } from "@/components/shared/container";
 import { SiteLogo } from "@/components/icons/site-logo";
 import { SmartLink } from "@/components/shared/smart-link";
 import { SocialLinks } from "@/components/shared/social-links";
+import { cn } from "@/lib/utils";
+
+function isActive(pathname: string, href: string) {
+  if (!href.startsWith("/")) {
+    return false;
+  }
+
+  if (href === "/") {
+    return pathname === "/";
+  }
+
+  if (href === "/members/sign-in") {
+    return pathname.startsWith("/members");
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+function getLinkBadge(link: FooterLink) {
+  if (link.kind === "members") {
+    return "Sign in";
+  }
+
+  if (link.kind === "external") {
+    return "External";
+  }
+
+  return null;
+}
 
 export function SiteFooter() {
+  const pathname = usePathname();
+
   return (
     <footer className="mt-16 border-t border-primary/10 bg-[linear-gradient(180deg,rgba(246,240,228,0.7),rgba(233,223,201,0.92))]">
       <Container className="py-10 sm:py-12">
@@ -27,17 +63,17 @@ export function SiteFooter() {
               community connection rooted in south-central Texas.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-3 text-sm">
-              <a
-                href={siteConfig.contactUrl}
-                className="inline-flex min-h-10 items-center rounded-full border border-primary/15 bg-white/78 px-4 py-2 font-medium text-foreground underline decoration-primary/30 underline-offset-4 transition hover:bg-white"
+              <SmartLink
+                href="/contact"
+                className="inline-flex min-h-10 items-center rounded-full border border-primary/15 bg-white/78 px-4 py-2 font-medium text-foreground transition hover:bg-white"
               >
-                {siteConfig.contactEmail}
-              </a>
+                Contact
+              </SmartLink>
               <span className="text-foreground/58">{siteConfig.organization}</span>
             </div>
             <p className="mt-3 text-sm leading-6 text-foreground/58">
-              Questions, introductions, and chapter updates all route through the
-              chapter inbox.
+              Questions, introductions, and chapter updates all start on the
+              contact page.
             </p>
             <SocialLinks className="mt-5 gap-2" includeEmail={false} compact />
           </div>
@@ -49,16 +85,47 @@ export function SiteFooter() {
                   {group.title}
                 </h2>
                 <ul className="mt-4 space-y-3">
-                  {group.links.map((link) => (
-                    <li key={link.href}>
-                      <SmartLink
-                        href={link.href}
-                        className="text-sm leading-6 text-foreground/70 transition hover:text-primary"
-                      >
-                        {link.label}
-                      </SmartLink>
-                    </li>
-                  ))}
+                  {group.links.map((link) => {
+                    const badge = getLinkBadge(link);
+                    const active = isActive(pathname, link.href);
+
+                    return (
+                      <li key={link.href}>
+                        {active ? (
+                          <span
+                            aria-current="page"
+                            className="inline-flex items-center gap-2 rounded-full bg-white/78 px-3 py-1.5 text-sm font-medium text-foreground shadow-sm"
+                          >
+                            <span>{link.label}</span>
+                            <span className="rounded-full bg-primary/8 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary/72">
+                              Current page
+                            </span>
+                          </span>
+                        ) : (
+                          <SmartLink
+                            href={link.href}
+                            className={cn(
+                              "inline-flex items-center gap-2 text-sm leading-6 text-foreground/70 transition hover:text-primary",
+                              link.kind === "external" && "font-medium",
+                            )}
+                          >
+                            <span>{link.label}</span>
+                            {badge ? (
+                              <span className="rounded-full border border-primary/10 bg-white/78 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary/72">
+                                {badge}
+                              </span>
+                            ) : null}
+                            {link.kind === "members" ? (
+                              <LockKeyhole className="h-3.5 w-3.5 text-primary/60" />
+                            ) : null}
+                            {link.kind === "external" ? (
+                              <ArrowUpRight className="h-3.5 w-3.5 text-primary/60" />
+                            ) : null}
+                          </SmartLink>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </nav>
             ))}
@@ -67,7 +134,7 @@ export function SiteFooter() {
 
         <div className="mt-8 flex flex-col gap-3 border-t border-primary/10 pt-5 text-sm text-foreground/58 sm:flex-row sm:items-center sm:justify-between">
           <p>{siteConfig.serviceAreaSentence}</p>
-          <p>{siteConfig.organization}</p>
+          <p>&copy; 2027 Live Oak Chapter - NPSoT</p>
         </div>
       </Container>
     </footer>
