@@ -32,13 +32,9 @@ export default async function Home() {
     <>
       <PhotographicHeroBanner
         variant="homelandscape"
-        title="Native plant community for Fayette, Colorado, and Lavaca Counties."
-        description="The Live Oak Chapter of the Native Plant Society of Texas connects people to native plants, habitat care, and practical regional knowledge through welcoming events, field walks, and community outreach."
-        actions={[
-          { href: "/events", label: "View events" },
-          { href: "/news", label: "Read chapter news", variant: "secondary" },
-          { href: "/resources", label: "Explore resources", variant: "ghost" },
-        ]}
+        title="NPSOT - Live Oak Chapter"
+        description="Native plants, local knowledge, and chapter events in the Tri-County Prairie Belt"
+        serviceArea="Serving Fayette, Colorado, and Lavaca Counties"
       >
         <div className="grid gap-3 sm:max-w-3xl sm:grid-cols-3">
           {siteConfig.chapterStats.map((stat) => (
