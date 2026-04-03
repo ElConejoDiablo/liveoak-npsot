@@ -19,7 +19,6 @@ type ArticleCoverProps = {
   variant: CoverTheme;
   imageKey?: PostCoverImageKey;
   counties?: string[];
-  coverNote?: string;
   compact?: boolean;
   className?: string;
 };
@@ -30,7 +29,6 @@ export function ArticleCover({
   variant,
   imageKey,
   counties = [],
-  coverNote,
   compact = false,
   className,
 }: ArticleCoverProps) {
@@ -56,7 +54,7 @@ export function ArticleCover({
         ) : null}
         <img
           src={image.src}
-          alt={coverNote ?? image.alt}
+          alt={image.alt}
           width={desktopWidth}
           height={desktopHeight}
           loading="lazy"

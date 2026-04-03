@@ -116,7 +116,6 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           variant={post.coverTheme}
           imageKey={post.coverImage}
           counties={post.counties}
-          coverNote={post.coverNote}
           className="mt-8"
         />
 

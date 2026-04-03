@@ -23,7 +23,6 @@ export function ArticleCard({ post, variant = "default" }: ArticleCardProps) {
           variant={post.coverTheme}
           imageKey={post.coverImage}
           counties={post.counties}
-          coverNote={post.coverNote}
           compact={!featured}
         />
       </SmartLink>
