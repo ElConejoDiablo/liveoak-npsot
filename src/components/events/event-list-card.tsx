@@ -64,7 +64,7 @@ export function EventListCard({
           <Clock3 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
           <div>
             <dt className="sr-only">Time</dt>
-            <dd>{formatTimeRange(event.startDateTime, event.endDateTime)}</dd>
+            <dd>{event.timeLabel ?? formatTimeRange(event.startDateTime, event.endDateTime)}</dd>
           </div>
         </div>
         <div className="flex gap-2.5">
@@ -72,11 +72,12 @@ export function EventListCard({
           <div>
             <dt className="sr-only">Location</dt>
             <dd>
-              {event.locationName}
-              <span className="block text-xs uppercase tracking-[0.16em] text-foreground/56">
-                {event.city}
-                {event.county ? ` · ${event.county}` : ""}
-              </span>
+              {event.locationLabel ?? event.locationName}
+              {event.city || event.county ? (
+                <span className="block text-xs uppercase tracking-[0.16em] text-foreground/56">
+                  {[event.city, event.county].filter(Boolean).join(" · ")}
+                </span>
+              ) : null}
             </dd>
           </div>
         </div>
@@ -84,12 +85,16 @@ export function EventListCard({
 
       <div className="mt-5 grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
         <div className="space-y-3 text-sm leading-7 text-foreground/72">
-          {event.speakerName ? (
+          {event.speakerName || event.speakerLabel ? (
             <p className="flex gap-2.5">
               <Mic className="mt-1 h-4 w-4 shrink-0 text-primary" />
               <span>
-                <span className="font-semibold text-foreground">Speaker:</span>{" "}
-                {event.speakerName}
+                {event.speakerLabel ?? (
+                  <>
+                    <span className="font-semibold text-foreground">Speaker:</span>{" "}
+                    {event.speakerName}
+                  </>
+                )}
               </span>
             </p>
           ) : null}

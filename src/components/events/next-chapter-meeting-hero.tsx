@@ -27,7 +27,6 @@ export function NextChapterMeetingHero({
     );
   }
 
-  const heroTitle = `${formatMonthDay(event.startDateTime).split(",")[0]} Chapter Meeting`;
   const dateLine = `${formatMonthDay(event.startDateTime)} at ${formatTime(event.startDateTime)}`;
   const addressLine = [event.locationAddress, event.city].filter(Boolean).join(", ");
   const locationLine = [event.locationName, addressLine].filter(Boolean).join(" — ");
@@ -41,7 +40,7 @@ export function NextChapterMeetingHero({
   return (
     <PhotographicHeroBanner
       variant="eventsmeeting"
-      title={heroTitle}
+      title={event.title}
       description={event.summary}
       minHeightClassName="min-h-[58svh] sm:min-h-[64svh] lg:min-h-[calc(100svh-5rem)]"
       overlayClassName="absolute inset-0 bg-[linear-gradient(180deg,rgba(18,25,19,0.26),rgba(18,25,19,0.58)_24%,rgba(18,25,19,0.82)_62%,rgba(18,25,19,0.94)_100%)] lg:bg-[linear-gradient(90deg,rgba(18,25,19,0.9)_0%,rgba(18,25,19,0.84)_34%,rgba(18,25,19,0.58)_58%,rgba(18,25,19,0.28)_80%,rgba(18,25,19,0.18)_100%),linear-gradient(180deg,rgba(18,25,19,0.18),rgba(18,25,19,0.12)_24%,rgba(18,25,19,0.58)_74%,rgba(18,25,19,0.88)_100%)]"
@@ -72,7 +71,8 @@ export function NextChapterMeetingHero({
           <p className="text-sm font-semibold leading-6 text-white/86 sm:text-base sm:leading-7">
             {event.speakerName
               ? `Guest Speaker: ${event.speakerName}`
-              : "Guest Speaker: TBD"}
+              : event.speakerLabel?.replace(/^Speaker:/, "Guest Speaker:")
+                ?? "Guest Speaker: TBD"}
           </p>
         </div>
       }

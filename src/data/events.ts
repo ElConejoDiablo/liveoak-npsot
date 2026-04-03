@@ -34,10 +34,13 @@ type EventSharedFields = {
   summary: string;
   description: string;
   locationName: string;
+  locationLabel?: string;
   locationAddress?: string;
   city: string;
   county?: string;
   speakerName?: string;
+  speakerLabel?: string;
+  timeLabel?: string;
 };
 
 export type ChapterEventItem = EventSharedFields & {
@@ -47,12 +50,12 @@ export type ChapterEventItem = EventSharedFields & {
     label: "Live Oak Chapter";
   };
   county: string;
-  audience: string;
+  audience?: string;
   attendanceNote?: string;
   accessibilityNotes?: string;
   weatherNote?: string;
   whatToBring?: string[];
-  details: string[];
+  details?: string[];
 };
 
 export type StatewideEventItem = EventSharedFields & {
@@ -161,7 +164,7 @@ export const chapterEvents: ChapterEventItem[] = [
   {
     id: "spring-chapter-gathering-native-grasses",
     slug: "spring-chapter-gathering-native-grasses",
-    title: "Spring Chapter Meeting: Native Grasses for Everyday Landscapes",
+    title: "April Chapter Meeting",
     type: "Chapter Meeting",
     delivery: "In person",
     source: {
@@ -189,6 +192,94 @@ export const chapterEvents: ChapterEventItem[] = [
       "The program will focus on native grasses that support both prairie ecology and practical garden planting.",
       "Questions about local conditions, plant choice, and getting started are welcome.",
     ],
+  },
+  {
+    id: "may-chapter-meeting-2026",
+    slug: "may-chapter-meeting-2026",
+    title: "May Chapter Meeting",
+    type: "Chapter Meeting",
+    delivery: "In person",
+    source: {
+      kind: "chapter",
+      label: "Live Oak Chapter",
+    },
+    county: "Fayette, Colorado, and Lavaca Counties",
+    locationName: "TBD",
+    locationLabel: "Location: TBD",
+    city: "",
+    startDateTime: "2026-05-09",
+    summary:
+      "The chapter meets on the second Saturday of every month. Details for the May meeting will be posted when they are confirmed.",
+    description:
+      "The chapter meets on the second Saturday of every month. Details for the May meeting will be posted when they are confirmed.",
+    speakerLabel: "Speaker: TBD",
+    timeLabel: "Time: TBD",
+  },
+  {
+    id: "june-chapter-meeting-2026",
+    slug: "june-chapter-meeting-2026",
+    title: "June Chapter Meeting",
+    type: "Chapter Meeting",
+    delivery: "In person",
+    source: {
+      kind: "chapter",
+      label: "Live Oak Chapter",
+    },
+    county: "Fayette, Colorado, and Lavaca Counties",
+    locationName: "TBD",
+    locationLabel: "Location: TBD",
+    city: "",
+    startDateTime: "2026-06-13",
+    summary:
+      "The chapter meets on the second Saturday of every month. Details for the June meeting will be posted when they are confirmed.",
+    description:
+      "The chapter meets on the second Saturday of every month. Details for the June meeting will be posted when they are confirmed.",
+    speakerLabel: "Speaker: TBD",
+    timeLabel: "Time: TBD",
+  },
+  {
+    id: "july-chapter-meeting-2026",
+    slug: "july-chapter-meeting-2026",
+    title: "July Chapter Meeting",
+    type: "Chapter Meeting",
+    delivery: "In person",
+    source: {
+      kind: "chapter",
+      label: "Live Oak Chapter",
+    },
+    county: "Fayette, Colorado, and Lavaca Counties",
+    locationName: "TBD",
+    locationLabel: "Location: TBD",
+    city: "",
+    startDateTime: "2026-07-11",
+    summary:
+      "The chapter meets on the second Saturday of every month. Details for the July meeting will be posted when they are confirmed.",
+    description:
+      "The chapter meets on the second Saturday of every month. Details for the July meeting will be posted when they are confirmed.",
+    speakerLabel: "Speaker: TBD",
+    timeLabel: "Time: TBD",
+  },
+  {
+    id: "august-chapter-meeting-2026",
+    slug: "august-chapter-meeting-2026",
+    title: "August Chapter Meeting",
+    type: "Chapter Meeting",
+    delivery: "In person",
+    source: {
+      kind: "chapter",
+      label: "Live Oak Chapter",
+    },
+    county: "Fayette, Colorado, and Lavaca Counties",
+    locationName: "TBD",
+    locationLabel: "Location: TBD",
+    city: "",
+    startDateTime: "2026-08-08",
+    summary:
+      "The chapter meets on the second Saturday of every month. Details for the August meeting will be posted when they are confirmed.",
+    description:
+      "The chapter meets on the second Saturday of every month. Details for the August meeting will be posted when they are confirmed.",
+    speakerLabel: "Speaker: TBD",
+    timeLabel: "Time: TBD",
   },
   {
     id: "prairie-edge-plant-walk-la-grange",

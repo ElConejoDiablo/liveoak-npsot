@@ -93,7 +93,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                 <div>
                   <dt className="font-semibold text-foreground">Time</dt>
                   <dd className="mt-1">
-                    {formatTimeRange(event.startDateTime, event.endDateTime)}
+                    {event.timeLabel ?? formatTimeRange(event.startDateTime, event.endDateTime)}
                   </dd>
                 </div>
               </div>
@@ -102,20 +102,22 @@ export default async function EventDetailPage({ params }: EventPageProps) {
                 <div>
                   <dt className="font-semibold text-foreground">Where</dt>
                   <dd className="mt-1">
-                    {event.locationName}
-                    <span className="block">{event.locationAddress}</span>
-                    <span className="block">{event.city}</span>
-                    <span className="block">{event.county}</span>
+                    {event.locationLabel ?? event.locationName}
+                    {event.locationAddress ? <span className="block">{event.locationAddress}</span> : null}
+                    {event.city ? <span className="block">{event.city}</span> : null}
+                    {event.county ? <span className="block">{event.county}</span> : null}
                   </dd>
                 </div>
               </div>
-              <div className="flex gap-3">
-                <UserRound className="mt-1 h-5 w-5 shrink-0 text-primary" />
-                <div>
-                  <dt className="font-semibold text-foreground">Who it’s for</dt>
-                  <dd className="mt-1">{event.audience}</dd>
+              {event.audience ? (
+                <div className="flex gap-3">
+                  <UserRound className="mt-1 h-5 w-5 shrink-0 text-primary" />
+                  <div>
+                    <dt className="font-semibold text-foreground">Who it’s for</dt>
+                    <dd className="mt-1">{event.audience}</dd>
+                  </div>
                 </div>
-              </div>
+              ) : null}
               {event.attendanceNote ? (
                 <div className="flex gap-3">
                   <UserRound className="mt-1 h-5 w-5 shrink-0 text-primary" />
@@ -148,14 +150,20 @@ export default async function EventDetailPage({ params }: EventPageProps) {
 
           <section className="rounded-[1.8rem] border border-primary/10 bg-white/80 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]">
             <h2 className="font-heading text-3xl text-foreground">Event details</h2>
-            <ul className="mt-5 space-y-3 text-base leading-8 text-foreground/74">
-              {event.details.map((detail) => (
-                <li key={detail} className="flex gap-3">
-                  <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/65" />
-                  <span>{detail}</span>
-                </li>
-              ))}
-            </ul>
+            {event.details?.length ? (
+              <ul className="mt-5 space-y-3 text-base leading-8 text-foreground/74">
+                {event.details.map((detail) => (
+                  <li key={detail} className="flex gap-3">
+                    <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/65" />
+                    <span>{detail}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="mt-5 text-base leading-8 text-foreground/74">
+                Meeting details will be added here when they are confirmed.
+              </p>
+            )}
 
             {event.accessibilityNotes ? (
               <div className="mt-8 rounded-[1.4rem] border border-primary/10 bg-[#F7F4E8] p-5">

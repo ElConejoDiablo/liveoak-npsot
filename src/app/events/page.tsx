@@ -38,6 +38,7 @@ export default function EventsPage() {
 
       <SectionShell
         title="Upcoming events and calendar"
+        intro="The chapter meets on the second Saturday of every month."
       >
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
           <MotionReveal className="rounded-[2rem] border border-primary/10 bg-white/84 p-6 shadow-[0_22px_80px_rgba(37,58,40,0.08)] sm:p-7">
