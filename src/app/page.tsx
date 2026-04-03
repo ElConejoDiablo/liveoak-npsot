@@ -35,26 +35,7 @@ export default async function Home() {
         title="NPSOT - Live Oak Chapter"
         description="Native plants, local knowledge, and chapter events in the Tri-County Prairie Belt"
         serviceArea="Serving Fayette, Colorado, and Lavaca Counties"
-      >
-        <div className="grid gap-3 sm:max-w-3xl sm:grid-cols-3">
-          {siteConfig.chapterStats.map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-[1.45rem] border border-white/14 bg-white/10 p-4 backdrop-blur-sm"
-            >
-              <div className="text-xs font-semibold uppercase tracking-[0.22em] text-[#E7D8A9]">
-                {stat.label}
-              </div>
-              <div className="mt-2 font-heading text-3xl leading-none text-white">
-                {stat.value}
-              </div>
-              <div className="mt-2 text-sm leading-6 text-white/76">
-                {stat.detail}
-              </div>
-            </div>
-          ))}
-        </div>
-      </PhotographicHeroBanner>
+      />
 
       <SectionShell
         eyebrow="Happening now"
