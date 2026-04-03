@@ -21,6 +21,7 @@ export function ArticleCard({ post, variant = "default" }: ArticleCardProps) {
           title={post.title}
           category={post.category}
           variant={post.coverTheme}
+          imageKey={post.coverImage}
           counties={post.counties}
           coverNote={post.coverNote}
           compact={!featured}

@@ -9,6 +9,11 @@ import remarkHtml from "remark-html";
 
 const postsDirectory = path.join(process.cwd(), "src/content/posts");
 
+export type PostCoverImageKey =
+  | "newsmonarchid"
+  | "newsbluebonnetseed"
+  | "newsfrogfruithabitat";
+
 export type CoverTheme =
   | "savanna"
   | "bluebonnet"
@@ -25,6 +30,7 @@ type PostFrontmatter = {
   tags: string[];
   counties?: string[];
   coverTheme: CoverTheme;
+  coverImage?: PostCoverImageKey;
   coverNote?: string;
   featured?: boolean;
   sample?: boolean;
@@ -95,6 +101,7 @@ export async function getPostSummaries() {
     tags: post.tags,
     counties: post.counties,
     coverTheme: post.coverTheme,
+    coverImage: post.coverImage,
     coverNote: post.coverNote,
     featured: post.featured,
     sample: post.sample,

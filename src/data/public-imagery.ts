@@ -5,10 +5,14 @@ export type PublicImageryKey =
   | "homelandscape"
   | "aboutchapter"
   | "eventsmeeting"
+  | "eventspastspring"
   | "fieldnotes"
   | "learning"
   | "stewardship"
   | "documents"
+  | "newsmonarchid"
+  | "newsbluebonnetseed"
+  | "newsfrogfruithabitat"
   | "resourcehub";
 
 export const publicImagery: Record<
@@ -112,8 +116,59 @@ export const publicImagery: Record<
     compactObjectPosition: "center center",
   },
   documents: {
-    src: "/mock-imagery/document-table.svg",
-    alt: "Chapter handouts, notes, and plant references arranged on a tabletop.",
+    src: "/hero-images/liveoak-documents-support-handouts-table-desktop-1600.webp",
+    mobileSrc: "/hero-images/liveoak-documents-support-handouts-table-mobile-1200.webp",
+    alt: "Printed chapter handouts, agendas, and plant references arranged on a table for public browsing",
+    width: 1600,
+    height: 1067,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center 42%",
+  },
+  eventspastspring: {
+    src: "/hero-images/liveoak-events-past-spring-gathering-cover-desktop-1600.webp",
+    mobileSrc: "/hero-images/liveoak-events-past-spring-gathering-cover-mobile-1200.webp",
+    alt: "Chapter attendees listening to a speaker during a spring gathering beneath oak trees",
+    width: 1600,
+    height: 1067,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center 52%",
+  },
+  newsmonarchid: {
+    src: "/hero-images/liveoak-news-monarch-id-cover-desktop-1600.webp",
+    mobileSrc: "/hero-images/liveoak-news-monarch-id-cover-mobile-1200.webp",
+    alt: "Monarch butterfly on a purple flower while a field guide and camera are used for identification",
+    width: 1600,
+    height: 1067,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center center",
+  },
+  newsbluebonnetseed: {
+    src: "/hero-images/liveoak-news-bluebonnet-seed-cover-desktop-1600.webp",
+    mobileSrc: "/hero-images/liveoak-news-bluebonnet-seed-cover-mobile-1200.webp",
+    alt: "Hand harvesting dried bluebonnet seed pods with loose seeds visible in a field of bluebonnets",
+    width: 1600,
+    height: 1067,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center center",
+  },
+  newsfrogfruithabitat: {
+    src: "/hero-images/liveoak-news-frogfruit-habitat-cover-desktop-1600.webp",
+    mobileSrc: "/hero-images/liveoak-news-frogfruit-habitat-cover-mobile-1200.webp",
+    alt: "Frogfruit growing as a low native ground layer with small blooms and a bee in a Texas garden",
+    width: 1600,
+    height: 1067,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center center",
   },
   resourcehub: {
     src: "/hero-images/liveoak-resources-hero-local-reference-table-desktop-2400.webp",

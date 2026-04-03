@@ -13,6 +13,7 @@ counties:
   - "Colorado County"
   - "Lavaca County"
 coverTheme: "pollinator"
+coverImage: "newsfrogfruithabitat"
 coverNote: "Suggested future photo: frogfruit blooming low along a path edge or in a mixed planting with pollinators visiting."
 featured: false
 ---

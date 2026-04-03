@@ -13,6 +13,7 @@ counties:
   - "Colorado County"
   - "Lavaca County"
 coverTheme: "bluebonnet"
+coverImage: "newsbluebonnetseed"
 coverNote: "Suggested future photo: mature bluebonnet seed pods in hand, with a paper envelope or bag ready for careful collection."
 featured: true
 ---

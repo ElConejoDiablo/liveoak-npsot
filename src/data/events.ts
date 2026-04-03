@@ -370,7 +370,7 @@ export const pastEvents: PastEventItem[] = [
       "The chapter's early spring gathering drew a strong regional turnout, practical questions, and early momentum for local native-plant learning.",
     description:
       "Visitors came ready to talk about pollinator habitat, plant selection, seed stewardship, and how native plants can feel manageable close to home. The evening worked as both a public introduction and a useful first chapter conversation.",
-    image: "community",
+    image: "eventspastspring",
     recapUrl: "/news/early-community-turnout-builds-momentum-for-the-live-oak-chapter",
     meetingMinutes: {
       label: "March 2026 meeting minutes",

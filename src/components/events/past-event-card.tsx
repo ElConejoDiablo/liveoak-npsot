@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { CalendarDays, Lock, MapPin, Mic, PlayCircle } from "lucide-react";
 
 import type { PastEventItem } from "@/data/events";
@@ -13,6 +12,7 @@ type PastEventCardProps = {
 
 export function PastEventCard({ event }: PastEventCardProps) {
   const image = event.image ? publicImagery[event.image] : null;
+  const objectPosition = image?.supportObjectPosition;
   const locationLines = [event.locationName, event.city, event.county].filter(Boolean);
   const formattedDate = event.dateLabel
     ? event.dateLabel
@@ -31,13 +31,20 @@ export function PastEventCard({ event }: PastEventCardProps) {
       >
         {image ? (
           <div className="relative min-h-[18rem] overflow-hidden bg-[#E8E1C7]">
-            <Image
-              src={image.src}
-              alt={image.alt}
-              fill
-              sizes="(max-width: 1024px) 100vw, 42vw"
-              className="object-cover"
-            />
+            <picture className="absolute inset-0 block h-full w-full">
+              {image.mobileSrc ? (
+                <source media="(max-width: 767px)" srcSet={image.mobileSrc} />
+              ) : null}
+              <img
+                src={image.src}
+                alt={image.alt}
+                width={image.width ?? 1600}
+                height={image.height ?? 1067}
+                loading="lazy"
+                className="h-full w-full object-cover"
+                style={objectPosition ? { objectPosition } : undefined}
+              />
+            </picture>
           </div>
         ) : null}
 

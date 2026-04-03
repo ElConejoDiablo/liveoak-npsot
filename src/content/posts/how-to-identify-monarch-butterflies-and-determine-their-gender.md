@@ -14,6 +14,7 @@ counties:
   - "Colorado County"
   - "Lavaca County"
 coverTheme: "monarch"
+coverImage: "newsmonarchid"
 coverNote: "Suggested future photo: a monarch at rest on a nectar plant, close enough to show wing veins and hindwing spots."
 featured: true
 ---
