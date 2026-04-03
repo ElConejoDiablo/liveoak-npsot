@@ -38,7 +38,7 @@ export function ResourceBrowser({ groups }: ResourceBrowserProps) {
     (count, group) => count + group.links.length,
     0,
   );
-  const resultLabel = `Showing ${resultCount} resource ${resultCount === 1 ? "link" : "links"}.`;
+  const resultLabel = `Showing ${resultCount} ${resultCount === 1 ? "resource link" : "resource links"}.`;
 
   return (
     <div className="space-y-6">
