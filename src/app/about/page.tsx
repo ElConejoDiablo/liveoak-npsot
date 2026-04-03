@@ -21,17 +21,17 @@ export default function AboutPage() {
     {
       title: "Learn native plants locally",
       description:
-        "Field notes, seasonal blooms, and grounded regional knowledge",
+        "Field notes, seasonal blooms, and grounded regional knowledge tied to the landscapes people see every day.",
     },
     {
       title: "Join walks, talks, and chapter events",
       description:
-        "Gatherings that connect people with plants, habitat, and each other",
+        "Meetings, field learning, and public events that connect people with native plants, habitat, and one another.",
     },
     {
-      title: "Support stewardship and outreach",
+      title: "Share practical help and local knowledge",
       description:
-        "Practical work that strengthens native landscapes and local awareness",
+        "Plants, seeds, tools, helping hands, and experience that support native gardening, stewardship, and community learning close to home.",
     },
   ] as const;
 
@@ -52,7 +52,7 @@ export default function AboutPage() {
 
       <SectionShell
         title="What the chapter makes possible close to home"
-        intro="The Live Oak Chapter helps people learn native plants, join local events, and support healthier habitat across Fayette, Colorado, and Lavaca Counties. Whether you are just getting started or already working with native landscapes, the chapter creates practical ways to learn from place and from one another."
+        intro="The Live Oak Chapter helps people learn native plants, join local events, and support healthier habitat across Fayette, Colorado, and Lavaca Counties. It also creates practical ways for people to share plants, seeds, tools, time, and local knowledge rooted in this region's ecosystems."
       >
         <div className="grid gap-4 md:grid-cols-3">
           {chapterCards.map((card, index) => (
@@ -67,27 +67,6 @@ export default function AboutPage() {
               <p className="mt-3 text-base leading-7 text-foreground/72">
                 {card.description}
               </p>
-            </MotionReveal>
-          ))}
-        </div>
-      </SectionShell>
-
-      <SectionShell
-        title="What we do"
-        intro="Chapter activity includes meetings and talks, field walks, seasonal observation, native gardening, stewardship, and public outreach. Some events focus on learning and identification. Others focus on habitat, community, and helping people take the next step with native plants at home and in public spaces."
-      >
-        <div className="grid gap-4 md:grid-cols-3">
-          {[
-            "Meetings and talks that make local native plant learning easier to start and easier to keep going.",
-            "Field walks and seasonal observation that connect what people notice outdoors to plants, habitat, and place.",
-            "Stewardship, gardening, and outreach that turn interest into practical action across the region.",
-          ].map((item, index) => (
-            <MotionReveal
-              key={item}
-              delay={index * 0.05}
-              className="rounded-[1.7rem] border border-primary/10 bg-white/78 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
-            >
-              <p className="text-base leading-8 text-foreground/74">{item}</p>
             </MotionReveal>
           ))}
         </div>
