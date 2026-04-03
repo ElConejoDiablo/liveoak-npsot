@@ -26,6 +26,9 @@ export function EditorialImageSlot({
   const image = publicImagery[variant];
   const desktopWidth = image.width ?? 1600;
   const desktopHeight = image.height ?? 1280;
+  const objectPosition = compact
+    ? image.compactObjectPosition ?? image.supportObjectPosition
+    : image.supportObjectPosition;
   return (
     <div
       className={cn(
@@ -49,6 +52,7 @@ export function EditorialImageSlot({
           loading={priority ? "eager" : "lazy"}
           fetchPriority={priority ? "high" : undefined}
           className="h-full w-full object-cover"
+          style={objectPosition ? { objectPosition } : undefined}
         />
       </picture>
       <div

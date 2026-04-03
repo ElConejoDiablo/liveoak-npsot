@@ -75,7 +75,7 @@ export default function VolunteerPage() {
             "Visible chapter needs instead of vague calls for help",
             "Space for practical contributions as well as ecological knowledge",
           ]}
-          variant="community"
+          variant="stewardship"
         />
       </SectionShell>
 
@@ -86,7 +86,7 @@ export default function VolunteerPage() {
           description="A short note is enough to let the chapter know how you would like to get involved."
           primaryAction={{ href: "/contact", label: "Contact the chapter" }}
           secondaryAction={{ href: siteConfig.contactUrl, label: "Email about volunteering" }}
-          variant="savanna"
+          variant="stewardship"
         />
       </div>
     </>

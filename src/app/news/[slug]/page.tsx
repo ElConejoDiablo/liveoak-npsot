@@ -214,7 +214,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           description="Attend an event, join NPSOT, or reach out to the chapter if you would like to stay involved."
           primaryAction={{ href: "/events", label: "View events" }}
           secondaryAction={{ href: siteConfig.joinUrl, label: "Join NPSOT" }}
-          variant="pollinator"
+          variant="fieldnotes"
         />
       </Container>
     </>

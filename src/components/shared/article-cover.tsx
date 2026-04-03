@@ -4,6 +4,14 @@ import type { CoverTheme } from "@/lib/blog";
 import { publicImagery } from "@/data/public-imagery";
 import { cn } from "@/lib/utils";
 
+const coverThemeImageMap = {
+  savanna: "homelandscape",
+  bluebonnet: "homelandscape",
+  pollinator: "fieldnotes",
+  monarch: "fieldnotes",
+  community: "eventsmeeting",
+} as const;
+
 type ArticleCoverProps = {
   title: string;
   category: string;
@@ -23,7 +31,10 @@ export function ArticleCover({
   compact = false,
   className,
 }: ArticleCoverProps) {
-  const image = publicImagery[variant];
+  const image = publicImagery[coverThemeImageMap[variant]];
+  const objectPosition = compact
+    ? image.compactObjectPosition ?? image.supportObjectPosition
+    : image.supportObjectPosition;
 
   return (
     <div
@@ -39,6 +50,7 @@ export function ArticleCover({
         fill
         sizes={compact ? "(max-width: 1024px) 100vw, 32vw" : "(max-width: 1024px) 100vw, 66vw"}
         className="object-cover"
+        style={objectPosition ? { objectPosition } : undefined}
       />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,29,20,0.12),rgba(17,29,20,0.56)_64%,rgba(17,29,20,0.74))]" />
       {!compact && counties.length ? (

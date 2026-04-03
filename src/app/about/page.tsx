@@ -206,7 +206,7 @@ export default function AboutPage() {
           description="Find chapter news, NPSOT membership links, and trusted native plant resources."
           primaryAction={{ href: "/resources", label: "Explore resources" }}
           secondaryAction={{ href: siteConfig.npsot.homeUrl, label: "Visit NPSOT.org" }}
-          variant="community"
+          variant="resourcehub"
         />
       </Container>
     </>

@@ -21,6 +21,8 @@ export const publicImagery: Record<
     height?: number;
     mobileWidth?: number;
     mobileHeight?: number;
+    supportObjectPosition?: string;
+    compactObjectPosition?: string;
   }
 > = {
   savanna: {
@@ -51,6 +53,8 @@ export const publicImagery: Record<
     height: 1125,
     mobileWidth: 1200,
     mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center 58%",
   },
   aboutchapter: {
     src: "/hero-images/liveoak-about-hero-chapter-gathering-desktop-2400.webp",
@@ -60,6 +64,8 @@ export const publicImagery: Record<
     height: 1350,
     mobileWidth: 1200,
     mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center 42%",
   },
   eventsmeeting: {
     src: "/hero-images/liveoak-events-hero-chapter-meeting-desktop-2400.webp",
@@ -69,6 +75,8 @@ export const publicImagery: Record<
     height: 1350,
     mobileWidth: 1200,
     mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center 56%",
   },
   fieldnotes: {
     src: "/hero-images/liveoak-news-hero-field-notes-desktop-2400.webp",
@@ -78,6 +86,8 @@ export const publicImagery: Record<
     height: 1350,
     mobileWidth: 1200,
     mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center center",
   },
   learning: {
     src: "/hero-images/liveoak-programs-hero-native-garden-desktop-2400.webp",
@@ -87,6 +97,8 @@ export const publicImagery: Record<
     height: 1350,
     mobileWidth: 1200,
     mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center center",
   },
   stewardship: {
     src: "/hero-images/liveoak-volunteer-hero-stewardship-workday-desktop-2400.webp",
@@ -96,6 +108,8 @@ export const publicImagery: Record<
     height: 1350,
     mobileWidth: 1200,
     mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center center",
   },
   documents: {
     src: "/mock-imagery/document-table.svg",
@@ -109,5 +123,7 @@ export const publicImagery: Record<
     height: 1350,
     mobileWidth: 1200,
     mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center 44%",
   },
 };

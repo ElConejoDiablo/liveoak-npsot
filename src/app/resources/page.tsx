@@ -103,7 +103,7 @@ export default function ResourcesPage() {
           title="Contact the chapter if you need help finding the right resource"
           description="We can help point you to a plant reference, membership link, or local resource."
           primaryAction={{ href: "/contact", label: "Contact the chapter" }}
-          variant="pollinator"
+          variant="aboutchapter"
         />
       </div>
     </>

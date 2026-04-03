@@ -1,9 +1,11 @@
+import type { PublicImageryKey } from "@/data/public-imagery";
+
 export type ProgramArea = {
   title: string;
   description: string;
   bullets: string[];
   icon: "sprout" | "binoculars" | "hand-heart" | "megaphone" | "seedling";
-  artVariant: "savanna" | "pollinator" | "bluebonnet" | "community";
+  artVariant: PublicImageryKey;
 };
 
 export type SeasonalHighlight = {
@@ -11,7 +13,7 @@ export type SeasonalHighlight = {
   title: string;
   description: string;
   plants: string[];
-  artVariant: "bluebonnet" | "pollinator" | "monarch" | "community";
+  artVariant: PublicImageryKey;
 };
 
 export type VolunteerPath = {
@@ -31,7 +33,7 @@ export const programAreas: ProgramArea[] = [
       "A steady place to learn about native plants close to home",
     ],
     icon: "sprout",
-    artVariant: "savanna",
+    artVariant: "eventsmeeting",
   },
   {
     title: "Field trips and plant walks",
@@ -43,7 +45,7 @@ export const programAreas: ProgramArea[] = [
       "A natural bridge between indoor learning and seeing plants in the field",
     ],
     icon: "binoculars",
-    artVariant: "pollinator",
+    artVariant: "aboutchapter",
   },
   {
     title: "Seed stewardship and native gardening",
@@ -55,7 +57,7 @@ export const programAreas: ProgramArea[] = [
       "Well suited to workshops, demonstrations, and seasonal guidance",
     ],
     icon: "seedling",
-    artVariant: "bluebonnet",
+    artVariant: "learning",
   },
   {
     title: "Habitat care and volunteer workdays",
@@ -67,7 +69,7 @@ export const programAreas: ProgramArea[] = [
       "A visible way to care for habitat and learn by doing",
     ],
     icon: "hand-heart",
-    artVariant: "community",
+    artVariant: "stewardship",
   },
   {
     title: "Outreach and community events",
@@ -79,7 +81,7 @@ export const programAreas: ProgramArea[] = [
       "A warm public face for native plants in Fayette, Colorado, and Lavaca Counties",
     ],
     icon: "megaphone",
-    artVariant: "savanna",
+    artVariant: "aboutchapter",
   },
 ];
 
@@ -90,7 +92,7 @@ export const seasonalHighlights: SeasonalHighlight[] = [
     description:
       "Spring wildflower enthusiasm often peaks before seed pods are actually mature. The chapter can help people wait, observe, and collect responsibly.",
     plants: ["Bluebonnet", "Prairie verbena", "Indian paintbrush"],
-    artVariant: "bluebonnet",
+    artVariant: "homelandscape",
   },
   {
     season: "Summer to Fall",
@@ -98,7 +100,7 @@ export const seasonalHighlights: SeasonalHighlight[] = [
     description:
       "Turk’s cap, American beautyberry, and goldenrod help stretch nectar, shelter, fruit, and structure across changing seasons for both resident and migrating wildlife.",
     plants: ["Turk’s cap", "American beautyberry", "Goldenrod"],
-    artVariant: "pollinator",
+    artVariant: "fieldnotes",
   },
   {
     season: "Migration season",
@@ -106,7 +108,7 @@ export const seasonalHighlights: SeasonalHighlight[] = [
     description:
       "Families and beginners benefit from practical guidance that helps them distinguish monarchs from similar butterflies and understand what they are seeing.",
     plants: ["Milkweed", "Native asters", "Goldenrod"],
-    artVariant: "monarch",
+    artVariant: "fieldnotes",
   },
 ];
 

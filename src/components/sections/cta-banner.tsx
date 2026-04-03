@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 import { publicImagery } from "@/data/public-imagery";
+import type { PublicImageryKey } from "@/data/public-imagery";
 import { buttonVariants } from "@/components/ui/button-styles";
 import { MotionReveal } from "@/components/shared/motion-reveal";
 import { SmartLink } from "@/components/shared/smart-link";
@@ -19,7 +20,7 @@ type CtaBannerProps = {
     href: string;
     label: string;
   };
-  variant?: "savanna" | "bluebonnet" | "pollinator" | "monarch" | "community";
+  variant?: PublicImageryKey;
 };
 
 export function CtaBanner({
@@ -74,6 +75,11 @@ export function CtaBanner({
             fill
             sizes="(max-width: 1024px) 100vw, 28vw"
             className="object-cover"
+            style={
+              image.supportObjectPosition
+                ? { objectPosition: image.supportObjectPosition }
+                : undefined
+            }
           />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,29,20,0.02),rgba(17,29,20,0.16)_50%,rgba(17,29,20,0.36))]" />
         </div>

@@ -91,7 +91,7 @@ export default function ProgramsPage() {
           description="Attend an event, volunteer, or join NPSOT to stay involved with the chapter."
           primaryAction={{ href: "/contact", label: "Contact the chapter" }}
           secondaryAction={{ href: siteConfig.joinUrl, label: "Join NPSOT" }}
-          variant="community"
+          variant="eventsmeeting"
         />
       </div>
     </>
