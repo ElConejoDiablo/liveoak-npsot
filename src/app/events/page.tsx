@@ -12,7 +12,6 @@ import {
   getNextChapterMeeting,
   getPastEvents,
   getUpcomingEvents,
-  statewideEventDestinations,
 } from "@/data/events";
 import { createMetadata } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
@@ -38,19 +37,14 @@ export default function EventsPage() {
       <NextChapterMeetingHero event={nextMeeting} />
 
       <SectionShell
-        eyebrow="Events hub"
-        title="See what is coming up and how it lands on the calendar"
-        intro="Start with chapter dates close to home, then keep an eye on selected statewide NPSOT events that may be worth the drive or the Zoom link."
+        title="Upcoming events and calendar"
       >
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
           <MotionReveal className="rounded-[2rem] border border-primary/10 bg-white/84 p-6 shadow-[0_22px_80px_rgba(37,58,40,0.08)] sm:p-7">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/72">
-                  Upcoming events
-                </p>
                 <h2 className="mt-2 font-heading text-3xl text-foreground">
-                  Chapter dates plus selected statewide events
+                  Upcoming events
                 </h2>
               </div>
               <SmartLink
@@ -61,11 +55,6 @@ export default function EventsPage() {
                 <ArrowRight className="h-4 w-4" />
               </SmartLink>
             </div>
-
-            <p className="mt-4 text-base leading-7 text-foreground/72">
-              Local meetings, walks, talks, and workshops stay in the same stream as
-              a small set of statewide webinars, field trips, and chapter programs.
-            </p>
 
             <div className="mt-6 space-y-4">
               {upcomingPreview.map((event) => (
@@ -78,11 +67,8 @@ export default function EventsPage() {
             <div className="space-y-6">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/72">
-                    Calendar
-                  </p>
                   <h2 className="mt-2 font-heading text-3xl text-foreground">
-                    Month at a glance
+                    Calendar
                   </h2>
                 </div>
                 <SmartLink
@@ -101,30 +87,17 @@ export default function EventsPage() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="Across NPSOT"
-        title="Statewide event sources worth checking"
-        intro="When a chapter event calendar is quiet, these official NPSOT pages help fill in virtual programs, statewide dates, and annual symposium news."
+        title="All upcoming dates"
+        intro="Chapter events appear alongside a small set of selected statewide NPSOT dates so the full schedule stays practical to scan in one place."
       >
-        <div className="grid gap-5 md:grid-cols-3">
-          {statewideEventDestinations.map((destination, index) => (
+        <div className="space-y-4">
+          {upcomingEvents.map((event, index) => (
             <MotionReveal
-              key={destination.href}
+              key={event.id}
               delay={index * 0.05}
-              className="rounded-[1.8rem] border border-primary/10 bg-white/82 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
+              className="rounded-[1.8rem] border border-transparent"
             >
-              <h3 className="font-heading text-2xl text-foreground">
-                {destination.title}
-              </h3>
-              <p className="mt-3 text-base leading-7 text-foreground/72">
-                {destination.description}
-              </p>
-              <SmartLink
-                href={destination.href}
-                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
-              >
-                <span>Open source</span>
-                <ArrowRight className="h-4 w-4" />
-              </SmartLink>
+              <EventListCard event={event} />
             </MotionReveal>
           ))}
         </div>

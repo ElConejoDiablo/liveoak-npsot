@@ -25,6 +25,7 @@ type PhotographicHeroBannerProps = {
   imageClassName?: string;
   overlayClassName?: string;
   contentClassName?: string;
+  titleClassName?: string;
   descriptionClassName?: string;
   priority?: boolean;
   children?: React.ReactNode;
@@ -42,6 +43,7 @@ export function PhotographicHeroBanner({
   imageClassName,
   overlayClassName,
   contentClassName,
+  titleClassName,
   descriptionClassName,
   priority = true,
   children,
@@ -86,7 +88,12 @@ export function PhotographicHeroBanner({
         )}
       >
         <MotionReveal className={cn("w-full max-w-3xl", contentClassName)}>
-          <h1 className="max-w-3xl font-heading text-[clamp(3rem,8vw,6.3rem)] leading-[0.94] text-white">
+          <h1
+            className={cn(
+              "max-w-3xl font-heading text-[clamp(3rem,8vw,6.3rem)] leading-[0.94] text-white",
+              titleClassName,
+            )}
+          >
             {title}
           </h1>
           {meta ? <div className="mt-5 max-w-2xl">{meta}</div> : null}

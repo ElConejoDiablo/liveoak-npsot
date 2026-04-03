@@ -30,7 +30,7 @@ type EventSharedFields = {
   delivery: EventDelivery;
   source: EventSource;
   startDateTime: string;
-  endDateTime: string;
+  endDateTime?: string;
   summary: string;
   description: string;
   locationName: string;
@@ -169,25 +169,25 @@ export const chapterEvents: ChapterEventItem[] = [
       label: "Live Oak Chapter",
     },
     county: "Fayette County",
-    locationName: "Schulenburg Public Library meeting room",
-    locationAddress: "310 Simpson Street",
-    city: "Schulenburg, Texas",
-    startDateTime: "2026-04-16T18:30:00-05:00",
-    endDateTime: "2026-04-16T20:00:00-05:00",
+    locationName: "B Haus Nursery",
+    locationAddress: "382 FM 2672",
+    city: "Schulenburg, TX 78956",
+    startDateTime: "2026-04-12T09:00:00-05:00",
     description:
-      "An evening chapter meeting on how native grasses support habitat, hold a planting together, and add season-long texture in south-central Texas landscapes.",
+      "Jane Doe will discuss the key native grasses in our area that benefit both prairies and gardens, with time for questions about habitat, planting, and regional fit.",
     summary:
-      "A practical spring chapter meeting on native grasses that belong in home landscapes, shared plantings, and habitat-minded gardens.",
+      "Jane Doe will discuss the key native grasses in our area that benefit both prairies and gardens.",
+    speakerName: "Jane Doe",
     audience:
       "Open to members, prospective members, gardeners, and anyone curious about getting started with Texas natives.",
     attendanceNote:
-      "Contact the chapter if you would like the latest room details before attending.",
+      "Directions are easy to open from the map link on the events page before you head out.",
     accessibilityNotes:
-      "Indoor meeting room with seating, restrooms, and nearby parking.",
+      "Outdoor nursery setting with open-air gathering space and nearby parking.",
     details: [
-      "Arrive a little early for chapter news, introductions, and time to visit before the program starts.",
-      "The presentation will focus on grasses that fit home landscapes without sacrificing wildlife value.",
-      "Questions about local growing conditions and plant selection are welcome.",
+      "Arrive a little early for chapter updates, introductions, and time to settle in before the talk begins.",
+      "The program will focus on native grasses that support both prairie ecology and practical garden planting.",
+      "Questions about local conditions, plant choice, and getting started are welcome.",
     ],
   },
   {

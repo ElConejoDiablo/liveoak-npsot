@@ -105,11 +105,19 @@ export function formatTime(date: string) {
   });
 }
 
-export function formatTimeRange(startDate: string, endDate: string) {
+export function formatTimeRange(startDate: string, endDate?: string) {
+  if (!endDate) {
+    return formatTime(startDate);
+  }
+
   return `${formatTime(startDate)} to ${formatTime(endDate)}`;
 }
 
-export function formatDateRange(startDate: string, endDate: string) {
+export function formatDateRange(startDate: string, endDate?: string) {
+  if (!endDate) {
+    return `${formatFullDate(startDate)} · ${formatTime(startDate)}`;
+  }
+
   const sameDay = getChapterDayKey(startDate) === getChapterDayKey(endDate);
 
   if (sameDay) {
