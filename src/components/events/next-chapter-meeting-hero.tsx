@@ -14,7 +14,7 @@ export function NextChapterMeetingHero({
   if (!event) {
     return (
       <PhotographicHeroBanner
-        variant="learning"
+        variant="eventsmeeting"
         title="Next chapter meeting details coming soon"
         description="The next meeting will appear here with its date, time, location, and speaker details as soon as it is posted."
         actions={[
@@ -31,7 +31,7 @@ export function NextChapterMeetingHero({
 
   return (
     <PhotographicHeroBanner
-      variant="learning"
+      variant="eventsmeeting"
       title={event.title}
       description={event.summary}
       meta={

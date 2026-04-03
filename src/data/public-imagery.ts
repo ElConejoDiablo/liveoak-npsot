@@ -4,6 +4,7 @@ export type PublicImageryKey =
   | CoverTheme
   | "homelandscape"
   | "aboutchapter"
+  | "eventsmeeting"
   | "fieldnotes"
   | "learning"
   | "stewardship"
@@ -55,6 +56,15 @@ export const publicImagery: Record<
     src: "/hero-images/liveoak-about-hero-chapter-gathering-desktop-2400.webp",
     mobileSrc: "/hero-images/liveoak-about-hero-chapter-gathering-mobile-1200.webp",
     alt: "Chapter members and students gathered in a wildflower meadow during a native plant learning walk",
+    width: 2400,
+    height: 1350,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+  },
+  eventsmeeting: {
+    src: "/hero-images/liveoak-events-hero-chapter-meeting-desktop-2400.webp",
+    mobileSrc: "/hero-images/liveoak-events-hero-chapter-meeting-mobile-1200.webp",
+    alt: "Outdoor chapter meeting beneath oak trees with a speaker addressing attendees seated in a native plant landscape",
     width: 2400,
     height: 1350,
     mobileWidth: 1200,
