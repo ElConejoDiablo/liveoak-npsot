@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 import { publicImagery } from "@/data/public-imagery";
@@ -32,6 +31,8 @@ export function CtaBanner({
   variant = "community",
 }: CtaBannerProps) {
   const image = publicImagery[variant];
+  const desktopWidth = image.width ?? 1600;
+  const desktopHeight = image.height ?? 1280;
 
   return (
     <MotionReveal className="overflow-hidden rounded-[2rem] border border-primary/10 bg-[linear-gradient(135deg,rgba(37,58,40,0.98),rgba(61,87,63,0.95))] text-white shadow-[0_30px_90px_rgba(28,49,35,0.28)]">
@@ -69,18 +70,24 @@ export function CtaBanner({
           </div>
         </div>
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] border border-white/12 bg-[#213829] shadow-none">
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 28vw"
-            className="object-cover"
-            style={
-              image.supportObjectPosition
-                ? { objectPosition: image.supportObjectPosition }
-                : undefined
-            }
-          />
+          <picture className="absolute inset-0 block h-full w-full">
+            {image.mobileSrc ? (
+              <source media="(max-width: 767px)" srcSet={image.mobileSrc} />
+            ) : null}
+            <img
+              src={image.src}
+              alt={image.alt}
+              width={desktopWidth}
+              height={desktopHeight}
+              loading="lazy"
+              className="h-full w-full object-cover"
+              style={
+                image.supportObjectPosition
+                  ? { objectPosition: image.supportObjectPosition }
+                  : undefined
+              }
+            />
+          </picture>
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(17,29,20,0.02),rgba(17,29,20,0.16)_50%,rgba(17,29,20,0.36))]" />
         </div>
       </div>

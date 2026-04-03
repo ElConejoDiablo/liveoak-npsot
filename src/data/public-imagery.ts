@@ -18,6 +18,8 @@ export type PublicImageryKey =
   | "programsfieldwalk"
   | "programsseedgarden"
   | "programsoutreach"
+  | "volunteersupportworkday"
+  | "resourcesreferencehelp"
   | "resourcehub";
 
 export const publicImagery: Record<
@@ -223,6 +225,28 @@ export const publicImagery: Record<
     src: "/hero-images/liveoak-programs-outreach-support-desktop-1600.webp",
     mobileSrc: "/hero-images/liveoak-programs-outreach-support-mobile-1200.webp",
     alt: "Chapter members speaking with visitors at a public native plant outreach table",
+    width: 1600,
+    height: 1200,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center center",
+  },
+  volunteersupportworkday: {
+    src: "/hero-images/liveoak-volunteer-support-workday-desktop-1600.webp",
+    mobileSrc: "/hero-images/liveoak-volunteer-support-workday-mobile-1200.webp",
+    alt: "Volunteers planting and clearing habitat together during a chapter workday",
+    width: 1600,
+    height: 1200,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center center",
+  },
+  resourcesreferencehelp: {
+    src: "/hero-images/liveoak-resources-cta-reference-help-desktop-1600.webp",
+    mobileSrc: "/hero-images/liveoak-resources-cta-reference-help-mobile-1200.webp",
+    alt: "Chapter member helping a visitor compare plant guides and reference materials at an outdoor table",
     width: 1600,
     height: 1200,
     mobileWidth: 1200,
