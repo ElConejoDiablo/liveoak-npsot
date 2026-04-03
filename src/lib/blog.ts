@@ -10,6 +10,7 @@ import remarkHtml from "remark-html";
 const postsDirectory = path.join(process.cwd(), "src/content/posts");
 
 export type PostCoverImageKey =
+  | "newsseasonalblooms"
   | "newsmonarchid"
   | "newsbluebonnetseed"
   | "newsfrogfruithabitat";

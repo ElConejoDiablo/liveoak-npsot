@@ -13,6 +13,7 @@ counties:
   - "Colorado County"
   - "Lavaca County"
 coverTheme: "bluebonnet"
+coverImage: "newsseasonalblooms"
 coverNote: "Suggested future photo: a spring roadside or field edge showing mixed native bloom and fresh grass growth in the chapter service area."
 featured: false
 ---

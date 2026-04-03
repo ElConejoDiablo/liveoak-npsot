@@ -10,9 +10,14 @@ export type PublicImageryKey =
   | "learning"
   | "stewardship"
   | "documents"
+  | "newsseasonalblooms"
   | "newsmonarchid"
   | "newsbluebonnetseed"
   | "newsfrogfruithabitat"
+  | "programstalks"
+  | "programsfieldwalk"
+  | "programsseedgarden"
+  | "programsoutreach"
   | "resourcehub";
 
 export const publicImagery: Record<
@@ -137,6 +142,17 @@ export const publicImagery: Record<
     supportObjectPosition: "center center",
     compactObjectPosition: "center 52%",
   },
+  newsseasonalblooms: {
+    src: "/hero-images/liveoak-news-seasonal-blooms-cover-desktop-1600.webp",
+    mobileSrc: "/hero-images/liveoak-news-seasonal-blooms-cover-mobile-1200.webp",
+    alt: "Seasonal native blooms in a Central Texas meadow during field observation",
+    width: 1600,
+    height: 1067,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center center",
+  },
   newsmonarchid: {
     src: "/hero-images/liveoak-news-monarch-id-cover-desktop-1600.webp",
     mobileSrc: "/hero-images/liveoak-news-monarch-id-cover-mobile-1200.webp",
@@ -165,6 +181,50 @@ export const publicImagery: Record<
     alt: "Frogfruit growing as a low native ground layer with small blooms and a bee in a Texas garden",
     width: 1600,
     height: 1067,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center center",
+  },
+  programstalks: {
+    src: "/hero-images/liveoak-programs-talks-support-desktop-1600.webp",
+    mobileSrc: "/hero-images/liveoak-programs-talks-support-mobile-1200.webp",
+    alt: "Chapter speaker addressing attendees during a native plant learning talk",
+    width: 1600,
+    height: 1200,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center center",
+  },
+  programsfieldwalk: {
+    src: "/hero-images/liveoak-programs-field-walk-support-desktop-1600.webp",
+    mobileSrc: "/hero-images/liveoak-programs-field-walk-support-mobile-1200.webp",
+    alt: "Participants observing native plants during a chapter field walk in Central Texas",
+    width: 1600,
+    height: 1200,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center center",
+  },
+  programsseedgarden: {
+    src: "/hero-images/liveoak-programs-seed-garden-support-desktop-1600.webp",
+    mobileSrc: "/hero-images/liveoak-programs-seed-garden-support-mobile-1200.webp",
+    alt: "Hands-on native seed work and gardening during a chapter learning activity",
+    width: 1600,
+    height: 1200,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center center",
+  },
+  programsoutreach: {
+    src: "/hero-images/liveoak-programs-outreach-support-desktop-1600.webp",
+    mobileSrc: "/hero-images/liveoak-programs-outreach-support-mobile-1200.webp",
+    alt: "Chapter members speaking with visitors at a public native plant outreach table",
+    width: 1600,
+    height: 1200,
     mobileWidth: 1200,
     mobileHeight: 1500,
     supportObjectPosition: "center center",

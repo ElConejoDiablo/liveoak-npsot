@@ -33,7 +33,7 @@ export const programAreas: ProgramArea[] = [
       "A steady place to learn about native plants close to home",
     ],
     icon: "sprout",
-    artVariant: "eventsmeeting",
+    artVariant: "programstalks",
   },
   {
     title: "Field trips and plant walks",
@@ -45,7 +45,7 @@ export const programAreas: ProgramArea[] = [
       "A natural bridge between indoor learning and seeing plants in the field",
     ],
     icon: "binoculars",
-    artVariant: "aboutchapter",
+    artVariant: "programsfieldwalk",
   },
   {
     title: "Seed stewardship and native gardening",
@@ -57,7 +57,7 @@ export const programAreas: ProgramArea[] = [
       "Well suited to workshops, demonstrations, and seasonal guidance",
     ],
     icon: "seedling",
-    artVariant: "learning",
+    artVariant: "programsseedgarden",
   },
   {
     title: "Habitat care and volunteer workdays",
@@ -81,7 +81,7 @@ export const programAreas: ProgramArea[] = [
       "A warm public face for native plants in Fayette, Colorado, and Lavaca Counties",
     ],
     icon: "megaphone",
-    artVariant: "aboutchapter",
+    artVariant: "programsoutreach",
   },
 ];
 
