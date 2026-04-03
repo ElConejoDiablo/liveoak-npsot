@@ -13,9 +13,9 @@ export type ResourceGroup = {
 
 export const resourceGroups: ResourceGroup[] = [
   {
-    title: "NPSOT and getting started",
+    title: "NPSOT Statewide Guidance",
     description:
-      "Use these links to learn about NPSOT, join or renew, and get started with native plants.",
+      "Use these statewide links to learn about NPSOT, join or renew, and get started with native plants.",
     links: [
       {
         title: "NPSOT home",

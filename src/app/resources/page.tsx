@@ -18,19 +18,19 @@ export const metadata = createMetadata({
 export default function ResourcesPage() {
   const chapterStartingPoints = [
     {
-      title: "Get help identifying local plants",
+      title: "Identify and Nurture Your Local Plants",
       description:
-        "Use chapter knowledge and trusted references to narrow down what belongs here and how to recognize it.",
+        "Use chapter knowledge and trusted references to narrow down what belongs here, how to recognize it, and how to care for it over time.",
     },
     {
-      title: "Find guidance for gardens and habitat",
+      title: "Find Guidance for Gardens and Habitat",
       description:
         "Learn where to start with native plants, pollinator support, and practical habitat care close to home.",
     },
     {
-      title: "Use statewide resources when they help",
+      title: "Coming Soon - Live Oak Plant and Pollinator ID App",
       description:
-        "Membership links, databases, and official NPSOT guidance are here when you need them.",
+        "A chapter resource is on the way to help people compare local plants, pollinators, and field observations in one place.",
     },
   ] as const;
 
@@ -44,15 +44,11 @@ export default function ResourcesPage() {
         contentClassName="max-w-[38rem]"
         overlayClassName="bg-[linear-gradient(180deg,rgba(18,25,19,0.38),rgba(18,25,19,0.58)_28%,rgba(18,25,19,0.76)_58%,rgba(18,25,19,0.92)_100%)] lg:bg-[linear-gradient(90deg,rgba(18,25,19,0.9)_0%,rgba(18,25,19,0.84)_34%,rgba(18,25,19,0.62)_56%,rgba(18,25,19,0.34)_76%,rgba(18,25,19,0.22)_100%),linear-gradient(180deg,rgba(18,25,19,0.28),rgba(18,25,19,0.16)_28%,rgba(18,25,19,0.54)_80%,rgba(18,25,19,0.84)_100%)]"
         imageClassName="object-[62%_center] sm:object-center"
-        actions={[
-          { href: "/contact", label: "Ask the chapter" },
-          { href: "/events", label: "View events", variant: "secondary" },
-        ]}
       />
 
       <SectionShell
-        eyebrow="Start with the chapter"
-        title="Start with the chapter"
+        eyebrow="Local guidance"
+        title="Your local chapter provides local guidance"
         intro="The chapter can help you identify plants, find trusted references, and point you toward the right next step for native gardening, habitat care, or NPSOT membership."
       >
         <div className="grid gap-4 md:grid-cols-3">
@@ -74,16 +70,16 @@ export default function ResourcesPage() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="Trusted references"
-        title="Trusted reference library"
-        intro="Use the grouped library below for membership links, plant databases, monarch habitat guidance, and other references that support native plants in this region."
+        eyebrow="Plant references and guidance"
+        title="Plant References and Guidance"
+        intro="Use the grouped library below for plant databases, monarch habitat guidance, membership links, and other references that support native plants in this region."
       >
         <ResourceBrowser groups={resourceGroups} />
       </SectionShell>
 
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
         <CtaBanner
-          eyebrow="Need something specific?"
+          eyebrow="Statewide guidance from NPSOT"
           title="Need something specific?"
           description="Contact the chapter if you want help finding the right plant reference, membership link, or local next step."
           primaryAction={{ href: "/contact", label: "Contact the chapter" }}
