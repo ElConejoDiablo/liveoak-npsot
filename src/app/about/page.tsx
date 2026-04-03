@@ -19,19 +19,19 @@ export const metadata = createMetadata({
 export default function AboutPage() {
   const chapterCards = [
     {
-      title: "Learn native plants locally",
+      title: "Learn from people who know this region",
       description:
-        "Field notes, seasonal blooms, and grounded regional knowledge tied to the landscapes people see every day.",
+        "Conversations, observations, and shared experience that help people understand native plants, seasonal change, and the ecosystems of Fayette, Colorado, and Lavaca Counties.",
     },
     {
-      title: "Join walks, talks, and chapter events",
+      title: "Take part in events that strengthen local landscapes",
       description:
-        "Meetings, field learning, and public events that connect people with native plants, habitat, and one another.",
+        "Walks, talks, chapter gatherings, and public events that connect people with native plants, habitat, and the communities they care for.",
     },
     {
-      title: "Share practical help and local knowledge",
+      title: "Share the practical resources that make stewardship possible",
       description:
-        "Plants, seeds, tools, helping hands, and experience that support native gardening, stewardship, and community learning close to home.",
+        "Plants, seeds, tools, time, and helping hands that support native gardening, habitat care, and local restoration close to home.",
     },
   ] as const;
 
