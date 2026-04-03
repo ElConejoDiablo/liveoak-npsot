@@ -6,7 +6,6 @@ import { SectionShell } from "@/components/sections/section-shell";
 import { Container } from "@/components/shared/container";
 import { MotionReveal } from "@/components/shared/motion-reveal";
 import { SmartLink } from "@/components/shared/smart-link";
-import { siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
@@ -18,37 +17,31 @@ export const metadata = createMetadata({
 });
 
 export default function AboutPage() {
-  const participationPaths = [
+  const chapterCards = [
     {
-      title: "Attend an event",
+      title: "Learn native plants locally",
       description:
-        "See upcoming meetings, walks, and public events around the chapter.",
-      href: "/events",
-      label: "View events",
+        "Field notes, seasonal blooms, and grounded regional knowledge",
     },
     {
-      title: "Volunteer locally",
+      title: "Join walks, talks, and chapter events",
       description:
-        "Help with outreach, hospitality, stewardship, and chapter support.",
-      href: "/volunteer",
-      label: "See volunteer options",
+        "Gatherings that connect people with plants, habitat, and each other",
     },
     {
-      title: "Reach out or join",
+      title: "Support stewardship and outreach",
       description:
-        "Contact the chapter with questions, or join NPSOT when you are ready.",
-      href: "/contact",
-      label: "Contact the chapter",
+        "Practical work that strengthens native landscapes and local awareness",
     },
   ] as const;
 
   return (
     <>
       <PageHero
-        eyebrow="About the chapter"
-        title="Native plant learning, local questions, and chapter life close to home"
-        description="The Live Oak Chapter brings together people across Fayette, Colorado, and Lavaca Counties for events, outreach, and practical native-plant learning rooted in this region."
-        serviceArea={siteConfig.serviceAreaLabel}
+        eyebrow="About"
+        title="About the Live Oak Chapter"
+        description="Local native plant learning, chapter gatherings, and practical stewardship in the Tri-County Prairie Belt"
+        serviceArea="Serving Fayette, Colorado, and Lavaca Counties"
         variant="aboutchapter"
         layout="banner"
         actions={[
@@ -58,45 +51,37 @@ export default function AboutPage() {
       />
 
       <SectionShell
-        eyebrow="Local focus"
         title="What the chapter makes possible close to home"
-        intro="The chapter gives people a nearby place to ask plant questions, learn from neighbors, and stay connected to the landscapes they see every day."
+        intro="The Live Oak Chapter helps people learn native plants, join local events, and support healthier habitat across Fayette, Colorado, and Lavaca Counties. Whether you are just getting started or already working with native landscapes, the chapter creates practical ways to learn from place and from one another."
       >
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-          <MotionReveal className="rounded-[1.8rem] border border-primary/10 bg-white/78 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)] sm:p-8">
-            <h2 className="font-heading text-3xl text-foreground">Why a local chapter matters</h2>
-            <p className="mt-4 text-lg leading-8 text-foreground/74">
-              {siteConfig.about.overview}
-            </p>
-            <p className="mt-4 text-lg leading-8 text-foreground/74">
-              {siteConfig.about.regionalContext}
-            </p>
-          </MotionReveal>
-
-          <MotionReveal className="rounded-[1.8rem] border border-primary/10 bg-[#F5F0E1] p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)] sm:p-8">
-            <h2 className="font-heading text-3xl text-foreground">Mission</h2>
-            <p className="mt-4 text-lg leading-8 text-foreground/76">
-              {siteConfig.mission}
-            </p>
-            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.22em] text-primary/72">
-              Service counties
-            </p>
-            <ul className="mt-4 space-y-2 text-base leading-7 text-foreground/74">
-              {siteConfig.serviceArea.map((county) => (
-                <li key={county}>{county}</li>
-              ))}
-            </ul>
-          </MotionReveal>
+        <div className="grid gap-4 md:grid-cols-3">
+          {chapterCards.map((card, index) => (
+            <MotionReveal
+              key={card.title}
+              delay={index * 0.05}
+              className="rounded-[1.7rem] border border-primary/10 bg-white/78 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
+            >
+              <h2 className="font-heading text-2xl leading-tight text-foreground">
+                {card.title}
+              </h2>
+              <p className="mt-3 text-base leading-7 text-foreground/72">
+                {card.description}
+              </p>
+            </MotionReveal>
+          ))}
         </div>
       </SectionShell>
 
       <SectionShell
-        eyebrow="What we do"
-        title="Events, field learning, and practical native plant education"
-        intro="The chapter helps people connect what they learn to local landscapes, seasonal observation, and the work of caring for habitat."
+        title="What we do"
+        intro="Chapter activity includes meetings and talks, field walks, seasonal observation, native gardening, stewardship, and public outreach. Some events focus on learning and identification. Others focus on habitat, community, and helping people take the next step with native plants at home and in public spaces."
       >
-        <div className="grid gap-4 md:grid-cols-2">
-          {siteConfig.about.whatWeDo.map((item, index) => (
+        <div className="grid gap-4 md:grid-cols-3">
+          {[
+            "Meetings and talks that make local native plant learning easier to start and easier to keep going.",
+            "Field walks and seasonal observation that connect what people notice outdoors to plants, habitat, and place.",
+            "Stewardship, gardening, and outreach that turn interest into practical action across the region.",
+          ].map((item, index) => (
             <MotionReveal
               key={item}
               delay={index * 0.05}
@@ -109,103 +94,37 @@ export default function AboutPage() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="Get involved"
-        title="Find a way to get involved that fits your time and interests"
-        intro="Whether you want to attend an event, volunteer, or reach out with a question, these are the clearest local ways to begin."
-      >
-        <div className="grid gap-4 md:grid-cols-3">
-          {participationPaths.map((path, index) => (
-            <MotionReveal
-              key={path.title}
-              delay={index * 0.05}
-              className="rounded-[1.7rem] border border-primary/10 bg-white/78 p-5 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
-            >
-              <h3 className="font-heading text-2xl leading-tight text-foreground">
-                {path.title}
-              </h3>
-              <p className="mt-3 text-base leading-7 text-foreground/72">
-                {path.description}
-              </p>
-              <SmartLink
-                href={path.href}
-                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary"
-              >
-                <span>{path.label}</span>
-                <ArrowRight className="h-4 w-4" />
-              </SmartLink>
-            </MotionReveal>
-          ))}
-        </div>
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
-          {siteConfig.about.howToParticipate.map((item, index) => (
-            <MotionReveal
-              key={item}
-              delay={index * 0.04}
-              className="rounded-[1.5rem] border border-primary/10 bg-[#F7F4E8] p-5 text-base leading-7 text-foreground/74"
-            >
-              {item}
-            </MotionReveal>
-          ))}
-        </div>
-      </SectionShell>
-
-      <SectionShell
-        eyebrow="Leadership snapshot"
-        title="A quick look at the team guiding chapter activity"
-        intro="Meet the current officers, then visit the leadership page for more details."
+        title="Leadership"
+        intro="The chapter is led by local volunteers who help organize gatherings, learning opportunities, and chapter communication across the region."
         actions={
           <SmartLink
             href="/leadership"
             className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
           >
-            <span>Meet the full leadership team</span>
+            <span>Meet the chapter leadership</span>
             <ArrowRight className="h-4 w-4" />
           </SmartLink>
         }
       >
-        <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-          <MotionReveal className="rounded-[1.8rem] border border-primary/10 bg-[#F5F0E1] p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)] sm:p-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary/72">
-              Leadership overview
-            </p>
-            <h3 className="mt-4 font-heading text-3xl leading-tight text-foreground">
-              A small officer team helps keep the chapter welcoming, organized, and moving forward.
-            </h3>
-            <p className="mt-4 text-base leading-7 text-foreground/74">
-              Chapter leadership helps guide events, communication, partnerships,
-              and the behind-the-scenes work that keeps the chapter running.
-            </p>
-          </MotionReveal>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            {siteConfig.leadership.map((member, index) => (
-              <MotionReveal
-                key={member.role}
-                delay={index * 0.05}
-                className="rounded-[1.7rem] border border-primary/10 bg-white/78 p-5 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
-              >
-                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary/72">
-                  {member.role}
-                </p>
-                <h3 className="mt-3 font-heading text-2xl leading-tight text-foreground">
-                  {member.name}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-foreground/72">
-                  {member.focus}
-                </p>
-              </MotionReveal>
-            ))}
-          </div>
-        </div>
+        <MotionReveal className="rounded-[1.8rem] border border-primary/10 bg-[#F5F0E1] p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)] sm:p-8">
+          <h3 className="font-heading text-3xl leading-tight text-foreground">
+            Local volunteers help keep the chapter welcoming, organized, and moving.
+          </h3>
+          <p className="mt-4 max-w-3xl text-base leading-7 text-foreground/74">
+            Leadership supports events, communication, partnerships, and the
+            practical behind-the-scenes work that helps people stay connected to
+            chapter activity across the region.
+          </p>
+        </MotionReveal>
       </SectionShell>
 
       <Container className="pb-20">
         <CtaBanner
           eyebrow="Keep exploring"
-          title="Read chapter news and explore statewide resources"
-          description="Find chapter news, NPSOT membership links, and trusted native plant resources."
-          primaryAction={{ href: "/resources", label: "Explore resources" }}
-          secondaryAction={{ href: siteConfig.npsot.homeUrl, label: "Visit NPSOT.org" }}
+          title="Keep exploring the chapter"
+          description="Read chapter news, browse resources, or see what is coming up next."
+          primaryAction={{ href: "/news", label: "Read chapter news" }}
+          secondaryAction={{ href: "/events", label: "View events" }}
           variant="resourcehub"
         />
       </Container>
