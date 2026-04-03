@@ -22,6 +22,10 @@ type PhotographicHeroBannerProps = {
   actions?: HeroAction[];
   className?: string;
   minHeightClassName?: string;
+  imageClassName?: string;
+  overlayClassName?: string;
+  contentClassName?: string;
+  descriptionClassName?: string;
   priority?: boolean;
   children?: React.ReactNode;
 };
@@ -35,6 +39,10 @@ export function PhotographicHeroBanner({
   actions = [],
   className,
   minHeightClassName = "min-h-[72svh] sm:min-h-[78svh] lg:min-h-[calc(100svh-5rem)]",
+  imageClassName,
+  overlayClassName,
+  contentClassName,
+  descriptionClassName,
   priority = true,
   children,
 }: PhotographicHeroBannerProps) {
@@ -60,10 +68,15 @@ export function PhotographicHeroBanner({
           height={desktopHeight}
           loading={priority ? "eager" : "lazy"}
           fetchPriority={priority ? "high" : undefined}
-          className="h-full w-full object-cover"
+          className={cn("h-full w-full object-cover", imageClassName)}
         />
       </picture>
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(18,25,19,0.22),rgba(18,25,19,0.46)_28%,rgba(18,25,19,0.7)_58%,rgba(18,25,19,0.9)_100%)] lg:bg-[linear-gradient(90deg,rgba(18,25,19,0.82)_0%,rgba(18,25,19,0.76)_36%,rgba(18,25,19,0.56)_58%,rgba(18,25,19,0.24)_78%,rgba(18,25,19,0.18)_100%),linear-gradient(180deg,rgba(18,25,19,0.24),rgba(18,25,19,0.12)_28%,rgba(18,25,19,0.5)_80%,rgba(18,25,19,0.82)_100%)]" />
+      <div
+        className={cn(
+          "absolute inset-0 bg-[linear-gradient(180deg,rgba(18,25,19,0.22),rgba(18,25,19,0.46)_28%,rgba(18,25,19,0.7)_58%,rgba(18,25,19,0.9)_100%)] lg:bg-[linear-gradient(90deg,rgba(18,25,19,0.82)_0%,rgba(18,25,19,0.76)_36%,rgba(18,25,19,0.56)_58%,rgba(18,25,19,0.24)_78%,rgba(18,25,19,0.18)_100%),linear-gradient(180deg,rgba(18,25,19,0.24),rgba(18,25,19,0.12)_28%,rgba(18,25,19,0.5)_80%,rgba(18,25,19,0.82)_100%)]",
+          overlayClassName,
+        )}
+      />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(198,177,112,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(245,233,198,0.08),transparent_24%)]" />
 
       <Container
@@ -72,12 +85,17 @@ export function PhotographicHeroBanner({
           minHeightClassName,
         )}
       >
-        <MotionReveal className="w-full max-w-3xl">
+        <MotionReveal className={cn("w-full max-w-3xl", contentClassName)}>
           <h1 className="max-w-3xl font-heading text-[clamp(3rem,8vw,6.3rem)] leading-[0.94] text-white">
             {title}
           </h1>
           {meta ? <div className="mt-5 max-w-2xl">{meta}</div> : null}
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-white/82 sm:text-xl sm:leading-9">
+          <p
+            className={cn(
+              "mt-5 max-w-2xl text-lg leading-8 text-white/82 sm:text-xl sm:leading-9",
+              descriptionClassName,
+            )}
+          >
             {description}
           </p>
           {serviceArea ? (

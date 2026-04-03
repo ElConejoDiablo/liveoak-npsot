@@ -27,26 +27,27 @@ export function NextChapterMeetingHero({
   }
 
   const locationLine = [event.locationName, event.city].filter(Boolean).join(" · ");
-  const countyLine = event.county ? `${event.county}` : undefined;
+  const locationMeta = [locationLine, event.county].filter(Boolean).join(" · ");
 
   return (
     <PhotographicHeroBanner
       variant="eventsmeeting"
       title={event.title}
       description={event.summary}
+      descriptionClassName="hidden max-w-xl text-base leading-7 text-white/84 sm:block sm:text-lg sm:leading-8"
+      contentClassName="max-w-[42rem]"
       meta={
-        <div className="space-y-3 text-white">
-          <p className="text-lg font-medium leading-8 text-white/88 sm:text-xl sm:leading-9">
+        <div className="space-y-2.5 text-white">
+          <p className="text-base font-medium leading-7 text-white/88 sm:text-xl sm:leading-9">
             {formatDateRange(event.startDateTime, event.endDateTime)}
           </p>
-          <div className="space-y-1 text-base leading-7 text-white/78 sm:text-lg sm:leading-8">
-            <p className="flex items-start gap-2">
+          {locationMeta ? (
+            <p className="flex items-start gap-2 text-sm leading-6 text-white/78 sm:text-base sm:leading-7">
               <MapPin className="mt-1 h-4 w-4 shrink-0 text-[#E8D8A5]" />
-              <span>{locationLine}</span>
+              <span>{locationMeta}</span>
             </p>
-            {countyLine ? <p className="pl-6">{countyLine}</p> : null}
-          </div>
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#E8D8A5]">
+          ) : null}
+          <p className="pt-1 text-xs font-semibold uppercase tracking-[0.22em] text-[#E8D8A5] sm:text-sm">
             {event.speakerName ? `Speaker: ${event.speakerName}` : "Speaker: TBD"}
           </p>
         </div>

@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 
 import { CtaBanner } from "@/components/sections/cta-banner";
-import { PageHero } from "@/components/sections/page-hero";
+import { PhotographicHeroBanner } from "@/components/sections/photographic-hero-banner";
 import { SectionShell } from "@/components/sections/section-shell";
 import { ResourceBrowser } from "@/components/resources/resource-browser";
 import { MotionReveal } from "@/components/shared/motion-reveal";
@@ -45,13 +45,14 @@ export default function ResourcesPage() {
 
   return (
     <>
-      <PageHero
-        eyebrow="Resources"
+      <PhotographicHeroBanner
+        variant="resourcehub"
         title="Chapter guidance and trusted native-plant references"
         description="Start with local chapter help, then branch into statewide and Texas references for plants, habitat, and membership."
         serviceArea={siteConfig.serviceAreaLabel}
-        layout="banner"
-        variant="resourcehub"
+        contentClassName="max-w-[38rem]"
+        overlayClassName="bg-[linear-gradient(180deg,rgba(18,25,19,0.38),rgba(18,25,19,0.58)_28%,rgba(18,25,19,0.76)_58%,rgba(18,25,19,0.92)_100%)] lg:bg-[linear-gradient(90deg,rgba(18,25,19,0.9)_0%,rgba(18,25,19,0.84)_34%,rgba(18,25,19,0.62)_56%,rgba(18,25,19,0.34)_76%,rgba(18,25,19,0.22)_100%),linear-gradient(180deg,rgba(18,25,19,0.28),rgba(18,25,19,0.16)_28%,rgba(18,25,19,0.54)_80%,rgba(18,25,19,0.84)_100%)]"
+        imageClassName="object-[62%_center] sm:object-center"
         actions={[
           { href: "/contact", label: "Ask the chapter" },
           { href: "/events", label: "View events", variant: "secondary" },
