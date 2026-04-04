@@ -17,14 +17,14 @@ type PlantLibraryCollectionsProps = {
 };
 
 const buildCollectionHref = (collectionId: string, query?: string) => {
-  const params = new URLSearchParams();
-
-  params.set("collection", collectionId);
-  if (query) {
-    params.set("q", query);
+  const path = `/resources/plants/collections/${collectionId}`;
+  if (!query) {
+    return path;
   }
 
-  return `/resources/plants?${params.toString()}`;
+  const params = new URLSearchParams();
+  params.set("q", query);
+  return `${path}?${params.toString()}`;
 };
 
 const buildSearchHref = (collectionId: string, query?: string) => {

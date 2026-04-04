@@ -12,6 +12,11 @@ export type StarterCollection = {
     href: string;
     label: string;
   };
+  references?: {
+    label: string;
+    href: string;
+    description: string;
+  }[];
 };
 
 const allPlants = plantLibraryGroups.flatMap((group) => group.plants);
@@ -107,6 +112,18 @@ export const starterCollections: StarterCollection[] = [
     description: "The strongest nectar and host starters for bees, butterflies, and hummingbirds.",
     intro: "Use this when you want the biggest return for pollinators with a short starter list.",
     plants: sortByUsefulStarter(uniquePlants(allPlants.filter(hasStrongPollinatorValue))).slice(0, 6),
+    references: [
+      {
+        label: "Wildflower Center plant database",
+        href: "https://www.wildflower.org/plants/",
+        description: "Useful for bloom windows, pollinator value, and site-fit checks.",
+      },
+      {
+        label: "NPSOT native plant guidance",
+        href: "https://www.npsot.org/resources/native-plants/native-plants-database/",
+        description: "A statewide Texas-native reference when you want a second check.",
+      },
+    ],
   },
   {
     id: "native-gardens",
@@ -116,6 +133,18 @@ export const starterCollections: StarterCollection[] = [
     plants: sortByUsefulStarter(
       uniquePlants(allPlants.filter((plant) => plant.chapterRecommended && (isFullSun(plant) || isPartShade(plant)))),
     ).slice(0, 6),
+    references: [
+      {
+        label: "Live Oak Chapter plant library",
+        href: "/resources/plants",
+        description: "Use the full library to compare county fit and planting guidance across the chapter set.",
+      },
+      {
+        label: "Wildflower Center native plants",
+        href: "https://www.wildflower.org/plants/",
+        description: "Helpful for site conditions and native-plant background.",
+      },
+    ],
   },
   {
     id: "prairie-structure",
@@ -123,6 +152,18 @@ export const starterCollections: StarterCollection[] = [
     description: "Foundation grasses and upright prairie plants that build texture and habitat.",
     intro: "Helpful when you want prairie shape, movement, or a backbone for larger plantings.",
     plants: sortByUsefulStarter(uniquePlants(allPlants.filter(isPrairieStructure))).slice(0, 6),
+    references: [
+      {
+        label: "Texas A&M AgriLife",
+        href: "https://agrilifeextension.tamu.edu/",
+        description: "Use for broader prairie and native landscape guidance.",
+      },
+      {
+        label: "Wildflower Center plant database",
+        href: "https://www.wildflower.org/plants/",
+        description: "Useful for grasses and prairie forbs by site conditions.",
+      },
+    ],
   },
   {
     id: "habitat-trees-shrubs",
@@ -130,6 +171,18 @@ export const starterCollections: StarterCollection[] = [
     description: "Woody plants that add shade, cover, berries, mast, and nesting structure.",
     intro: "Use this for bigger spaces, wildlife cover, and longer-term structure in the landscape.",
     plants: sortByUsefulStarter(uniquePlants(allPlants.filter(isHabitatWoody))).slice(0, 6),
+    references: [
+      {
+        label: "NPSOT plant lists",
+        href: "https://www.npsot.org/resources/native-plants/texas-area-plant-lists/",
+        description: "Useful for woody native references and local planting context.",
+      },
+      {
+        label: "Wildflower Center native trees and shrubs",
+        href: "https://www.wildflower.org/plants/",
+        description: "Good for growth habit, size, and habitat notes.",
+      },
+    ],
   },
   {
     id: "sun",
@@ -137,6 +190,18 @@ export const starterCollections: StarterCollection[] = [
     description: "Heat-tough selections for open, full-sun sites and prairie-style plantings.",
     intro: "Best for hot, open sites that stay bright most of the day and dry out quickly.",
     plants: sortByUsefulStarter(uniquePlants(allPlants.filter((plant) => isFullSun(plant) && isDrySite(plant)))).slice(0, 6),
+    references: [
+      {
+        label: "Wildflower Center plant database",
+        href: "https://www.wildflower.org/plants/",
+        description: "Helpful for drought tolerance and sun exposure notes.",
+      },
+      {
+        label: "Texas A&M AgriLife",
+        href: "https://agrilifeextension.tamu.edu/",
+        description: "Useful for landscape establishment and irrigation planning.",
+      },
+    ],
   },
   {
     id: "part-shade",
@@ -144,6 +209,18 @@ export const starterCollections: StarterCollection[] = [
     description: "Useful species for woodland edges, filtered light, and softer garden transitions.",
     intro: "Good for morning sun, filtered light, or spots where trees make full-sun plants struggle.",
     plants: sortByUsefulStarter(uniquePlants(allPlants.filter(isPartShade))).slice(0, 6),
+    references: [
+      {
+        label: "Wildflower Center native plants",
+        href: "https://www.wildflower.org/plants/",
+        description: "Helpful for woodland-edge plants and dappled-light sites.",
+      },
+      {
+        label: "NPSOT guidance",
+        href: "https://www.npsot.org/resources/native-plants/native-plants-database/",
+        description: "Good for checking species that handle part shade or mixed light.",
+      },
+    ],
   },
   {
     id: "monarch-waystation",
@@ -165,8 +242,23 @@ export const starterCollections: StarterCollection[] = [
       href: "https://monarchwatch.org/waystations/waystation_requirements.pdf",
       label: "Official Monarch Watch Waystation requirements and application",
     },
+    references: [
+      {
+        label: "Monarch Watch Waystations",
+        href: "https://monarchwatch.org/waystations/",
+        description: "Official waystation guidance and application information from Monarch Watch.",
+      },
+      {
+        label: "Monarch Watch milkweed and nectar guidance",
+        href: "https://monarchwatch.org/waystations/",
+        description: "Use the official requirements page alongside local milkweed and nectar planning.",
+      },
+    ],
   },
 ];
 
 export const getStarterCollectionById = (id?: string) =>
   starterCollections.find((collection) => collection.id === id);
+
+export const getStarterCollectionBySlug = (slug?: string) =>
+  starterCollections.find((collection) => collection.id === slug);
