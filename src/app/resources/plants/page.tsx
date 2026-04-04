@@ -121,13 +121,13 @@ export default async function PlantIndexPage({ searchParams }: PlantIndexPagePro
         </section>
 
         <section id="starter-collections" className="mt-12">
-            <PlantLibraryCollections
-              collections={starterCollections}
-              activeCollection={activeCollection}
-              query={query}
-              results={results}
-            />
-          </section>
+          <PlantLibraryCollections
+            collections={starterCollections}
+            activeCollection={activeCollection}
+            query={query}
+            results={results}
+          />
+        </section>
       </main>
     </>
   );

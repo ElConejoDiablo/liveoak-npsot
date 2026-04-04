@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { ChevronRight, Search } from "lucide-react";
 import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
@@ -27,6 +27,20 @@ const buildCollectionHref = (collectionId: string, query?: string) => {
   return `/resources/plants?${params.toString()}`;
 };
 
+const buildSearchHref = (collectionId: string, query?: string) => {
+  const params = new URLSearchParams();
+
+  if (collectionId) {
+    params.set("collection", collectionId);
+  }
+  if (query) {
+    params.set("q", query);
+  }
+
+  const search = params.toString();
+  return search ? `/resources/plants?${search}` : "/resources/plants";
+};
+
 export function PlantLibraryCollections({
   collections,
   activeCollection,
@@ -50,14 +64,15 @@ export function PlantLibraryCollections({
           <section
             key={collection.title}
             className={cn(
-              "rounded-[1.6rem] border border-primary/10 bg-white/84 p-5 shadow-[0_16px_48px_rgba(37,58,40,0.07)]",
-              activeCollection?.id === collection.id && "border-primary/30 ring-2 ring-primary/10",
+              "rounded-[1.6rem] border border-primary/10 bg-white/84 p-5 shadow-[0_16px_48px_rgba(37,58,40,0.07)] transition",
+              activeCollection?.id === collection.id &&
+                "border-primary/30 bg-[#fbf8ef] ring-2 ring-primary/10",
             )}
           >
             <div className="flex items-start justify-between gap-3">
               <h4 className="font-heading text-2xl text-foreground">{collection.title}</h4>
               {activeCollection?.id === collection.id ? (
-                <Badge className="bg-primary/10 text-primary">Open</Badge>
+                <Badge className="bg-primary/10 text-primary">Active</Badge>
               ) : null}
             </div>
             <p className="mt-2 text-sm font-medium leading-6 text-primary/80">{collection.intro}</p>
@@ -80,9 +95,11 @@ export function PlantLibraryCollections({
               </p>
               <SmartLink
                 href={buildCollectionHref(collection.id, query)}
-                className="text-sm font-semibold text-primary transition hover:underline"
+                className="inline-flex items-center gap-1 rounded-full border border-primary/10 bg-white px-4 py-2 text-sm font-semibold text-primary transition hover:border-primary/20 hover:bg-primary/5"
+                aria-label={`Open the ${collection.title} collection`}
               >
                 Open collection
+                <ChevronRight className="h-4 w-4" />
               </SmartLink>
             </div>
           </section>
@@ -159,6 +176,18 @@ export function PlantLibraryCollections({
               </div>
             </div>
             <p className="mt-3 text-base leading-7 text-foreground/72">{activeCollection.intro}</p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <Badge className="bg-primary/10 text-primary">Collection active</Badge>
+              {query ? <Badge variant="secondary" className="bg-white">Search: {query}</Badge> : null}
+              {query ? (
+                <SmartLink
+                  href={buildSearchHref(activeCollection.id)}
+                  className="inline-flex items-center rounded-full border border-primary/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-foreground transition hover:border-primary/20 hover:bg-primary/5"
+                >
+                  Clear search
+                </SmartLink>
+              ) : null}
+            </div>
             {activeCollection.checklist?.length ? (
               <div className="mt-4 grid gap-3 lg:grid-cols-[minmax(0,1.2fr)_minmax(240px,0.8fr)]">
                 <ul className="space-y-2 text-sm leading-6 text-foreground/74">
@@ -190,6 +219,22 @@ export function PlantLibraryCollections({
           {activeCollection ? ` in ${activeCollection.title}` : " in the full library"}
           {query ? ` for “${query}”` : ""}.
         </p>
+        {activeCollection || query ? (
+          <div className="flex flex-wrap gap-2">
+            {!activeCollection ? null : (
+              <Badge className="bg-primary/10 text-primary">{activeCollection.title}</Badge>
+            )}
+            {query ? <Badge variant="secondary" className="bg-white">Searching “{query}”</Badge> : null}
+            {activeCollection || query ? (
+              <SmartLink
+                href="/resources/plants"
+                className="rounded-full border border-primary/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-foreground transition hover:border-primary/20 hover:bg-primary/5"
+              >
+                Reset all
+              </SmartLink>
+            ) : null}
+          </div>
+        ) : null}
 
         {results.length ? (
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
