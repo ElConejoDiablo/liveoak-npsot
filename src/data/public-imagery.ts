@@ -20,7 +20,8 @@ export type PublicImageryKey =
   | "programsoutreach"
   | "volunteersupportworkday"
   | "resourcesreferencehelp"
-  | "resourcehub";
+  | "resourcehub"
+  | "sourcingnativeplants";
 
 export const publicImagery: Record<
   PublicImageryKey,
@@ -258,6 +259,17 @@ export const publicImagery: Record<
     src: "/hero-images/liveoak-resources-hero-local-reference-table-desktop-2400.webp",
     mobileSrc: "/hero-images/liveoak-resources-hero-local-reference-table-mobile-1200.webp",
     alt: "Chapter members gathered around a garden table comparing native plant samples, notes, and field guides",
+    width: 2400,
+    height: 1350,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center 44%",
+  },
+  sourcingnativeplants: {
+    src: "/hero-images/liveoak-sourcing-hero-nursery-desktop-2400.webp",
+    mobileSrc: "/hero-images/liveoak-sourcing-hero-nursery-mobile-1200.webp",
+    alt: "Outdoor native plant nursery with shoppers browsing local native plants and seed racks beneath oak trees",
     width: 2400,
     height: 1350,
     mobileWidth: 1200,

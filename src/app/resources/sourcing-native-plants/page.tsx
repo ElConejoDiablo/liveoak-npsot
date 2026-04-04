@@ -21,6 +21,7 @@ export default function SourcingNativePlantsPage() {
           title="Practical sourcing for native plants and seed"
           description="This page is ready for chapter-verified nursery, grower, and seed-seller cards with manual provenance notes."
           serviceArea={siteConfig.serviceAreaLabel}
+          variant="sourcingnativeplants"
         />
 
         <section className="grid gap-4 md:grid-cols-3">

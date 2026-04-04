@@ -1,9 +1,12 @@
 import { MapPin } from "lucide-react";
 
+import { publicImagery, type PublicImageryKey } from "@/data/public-imagery";
+
 type SourcingHeroProps = {
   title: string;
   description: string;
   serviceArea?: string;
+  variant?: PublicImageryKey;
   desktopImageSrc?: string;
   mobileImageSrc?: string;
   imageAlt?: string;
@@ -13,16 +16,21 @@ export function SourcingHero({
   title,
   description,
   serviceArea,
+  variant,
   desktopImageSrc,
   mobileImageSrc,
   imageAlt = "",
 }: SourcingHeroProps) {
+  const variantImage = variant ? publicImagery[variant] : null;
+  const heroDesktopImageSrc = variantImage?.src ?? desktopImageSrc;
+  const heroMobileImageSrc = variantImage?.mobileSrc ?? mobileImageSrc;
+  const heroImageAlt = variantImage?.alt ?? imageAlt;
   return (
     <section className="relative isolate overflow-hidden rounded-[2rem] border border-primary/10 bg-[#1f2a20] text-white shadow-[0_18px_60px_rgba(37,58,40,0.12)]">
-      {desktopImageSrc ? (
+      {heroDesktopImageSrc ? (
         <picture className="absolute inset-0 block h-full w-full">
-          {mobileImageSrc ? <source media="(max-width: 767px)" srcSet={mobileImageSrc} /> : null}
-          <img src={desktopImageSrc} alt={imageAlt} className="h-full w-full object-cover" />
+          {heroMobileImageSrc ? <source media="(max-width: 767px)" srcSet={heroMobileImageSrc} /> : null}
+          <img src={heroDesktopImageSrc} alt={heroImageAlt} className="h-full w-full object-cover" />
         </picture>
       ) : (
         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(27,40,28,0.92),rgba(48,61,34,0.78)),radial-gradient(circle_at_top_right,rgba(229,214,160,0.18),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(239,223,170,0.12),transparent_24%)]" />
