@@ -175,7 +175,7 @@ export const chapterEvents: ChapterEventItem[] = [
     locationName: "B Haus Nursery",
     locationAddress: "382 FM 2672",
     city: "Schulenburg, TX 78956",
-    startDateTime: "2026-04-12T09:00:00-05:00",
+    startDateTime: "2026-04-11T09:00:00-05:00",
     description:
       "Jane Doe will discuss the key native grasses in our area that benefit both prairies and gardens, with time for questions about habitat, planting, and regional fit.",
     summary:
@@ -207,7 +207,7 @@ export const chapterEvents: ChapterEventItem[] = [
     locationName: "TBD",
     locationLabel: "Location: TBD",
     city: "",
-    startDateTime: "2026-05-09",
+    startDateTime: "2026-05-09T09:00:00-05:00",
     summary:
       "The chapter meets on the second Saturday of every month. Details for the May meeting will be posted when they are confirmed.",
     description:
@@ -229,7 +229,7 @@ export const chapterEvents: ChapterEventItem[] = [
     locationName: "TBD",
     locationLabel: "Location: TBD",
     city: "",
-    startDateTime: "2026-06-13",
+    startDateTime: "2026-06-13T09:00:00-05:00",
     summary:
       "The chapter meets on the second Saturday of every month. Details for the June meeting will be posted when they are confirmed.",
     description:
@@ -251,7 +251,7 @@ export const chapterEvents: ChapterEventItem[] = [
     locationName: "TBD",
     locationLabel: "Location: TBD",
     city: "",
-    startDateTime: "2026-07-11",
+    startDateTime: "2026-07-11T09:00:00-05:00",
     summary:
       "The chapter meets on the second Saturday of every month. Details for the July meeting will be posted when they are confirmed.",
     description:
@@ -273,7 +273,7 @@ export const chapterEvents: ChapterEventItem[] = [
     locationName: "TBD",
     locationLabel: "Location: TBD",
     city: "",
-    startDateTime: "2026-08-08",
+    startDateTime: "2026-08-08T09:00:00-05:00",
     summary:
       "The chapter meets on the second Saturday of every month. Details for the August meeting will be posted when they are confirmed.",
     description:
