@@ -71,7 +71,9 @@ export default async function PlantIndexPage({ searchParams }: PlantIndexPagePro
           { href: "#how-to-use", label: "How to use this library", variant: "secondary" },
           { href: "#starter-collections", label: "Starter collections" },
         ]}
-        overlayClassName="bg-[linear-gradient(180deg,rgba(18,25,19,0.32),rgba(18,25,19,0.58)_28%,rgba(18,25,19,0.78)_58%,rgba(18,25,19,0.94)_100%)] lg:bg-[linear-gradient(90deg,rgba(18,25,19,0.9)_0%,rgba(18,25,19,0.84)_34%,rgba(18,25,19,0.62)_56%,rgba(18,25,19,0.34)_76%,rgba(18,25,19,0.22)_100%),linear-gradient(180deg,rgba(18,25,19,0.28),rgba(18,25,19,0.16)_28%,rgba(18,25,19,0.54)_80%,rgba(18,25,19,0.84)_100%)]"
+        overlayClassName="bg-[linear-gradient(180deg,rgba(18,25,19,0.20),rgba(18,25,19,0.40)_30%,rgba(18,25,19,0.58)_60%,rgba(18,25,19,0.78)_100%)] lg:bg-[linear-gradient(90deg,rgba(18,25,19,0.88)_0%,rgba(18,25,19,0.74)_26%,rgba(18,25,19,0.52)_44%,rgba(18,25,19,0.24)_68%,rgba(18,25,19,0.14)_84%,rgba(18,25,19,0.08)_100%),linear-gradient(180deg,rgba(18,25,19,0.18),rgba(18,25,19,0.08)_30%,rgba(18,25,19,0.34)_82%,rgba(18,25,19,0.72)_100%)]"
+        titleClassName="max-w-[12ch]"
+        descriptionClassName="max-w-[30rem]"
         imageClassName="object-[62%_center] sm:object-center"
       />
 
