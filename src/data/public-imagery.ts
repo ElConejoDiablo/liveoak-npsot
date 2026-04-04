@@ -24,6 +24,7 @@ export type PublicImageryKey =
   | "tricountynativeplants"
   | "pollinatorscollection"
   | "monarchwaystationcollection"
+  | "prairiestructurecollection"
   | "sourcingnativeplants";
 
 export const publicImagery: Record<
@@ -295,6 +296,17 @@ export const publicImagery: Record<
     src: "/hero-images/liveoak-collection-monarch-waystation-hero-desktop-2400.webp",
     mobileSrc: "/hero-images/liveoak-collection-monarch-waystation-hero-mobile-1200.webp",
     alt: "Suburban Monarch Waystation starter garden with milkweed, dill, a young live oak, native flowers, and butterflies in a front-yard habitat bed",
+    width: 2400,
+    height: 1350,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center 48%",
+  },
+  prairiestructurecollection: {
+    src: "/hero-images/liveoak-collection-prairie-structure-hero-desktop-2400.webp",
+    mobileSrc: "/hero-images/liveoak-collection-prairie-structure-hero-mobile-1200.webp",
+    alt: "Native prairie-style planting with layered Texas grasses, restrained wildflower accents, and a maintained path",
     width: 2400,
     height: 1350,
     mobileWidth: 1200,

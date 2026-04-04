@@ -154,6 +154,7 @@ export const starterCollections: StarterCollection[] = [
     title: "Prairie grasses and structure plants",
     description: "Foundation grasses and upright prairie plants that build texture and habitat.",
     intro: "Helpful when you want prairie shape, movement, or a backbone for larger plantings.",
+    heroVariant: "prairiestructurecollection",
     plants: sortByUsefulStarter(uniquePlants(allPlants.filter(isPrairieStructure))).slice(0, 6),
     references: [
       {
