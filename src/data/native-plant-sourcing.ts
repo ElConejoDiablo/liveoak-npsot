@@ -14,7 +14,15 @@ export type NativePlantSourceCard = {
 export const nativePlantSourceCards: NativePlantSourceCard[] = [];
 
 export const sourcingPageNotes = [
-  "Only add source cards that the chapter has manually checked.",
+  "This page helps compare nurseries, growers, and seed sources with explicit provenance notes.",
   "Tri-County Local Provenance! chips are manual-entry only and should never be inferred.",
   "The page is ready for nursery cards, seed sellers, and future verified provenance notes.",
+] as const;
+
+export const sourcingBuyerQuestions = [
+  "Where was the seed collected?",
+  "Was this grown from local seed?",
+  "Is it a straight species or a cultivar?",
+  "Can the provenance be described clearly?",
+  "Is the source offering seed, plants, or both?",
 ] as const;
