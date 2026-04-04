@@ -25,6 +25,7 @@ export type PublicImageryKey =
   | "pollinatorscollection"
   | "nativegardenscollection"
   | "suncollection"
+  | "partshadecollection"
   | "monarchwaystationcollection"
   | "prairiestructurecollection"
   | "habitattreesshrubscollection"
@@ -316,6 +317,17 @@ export const publicImagery: Record<
     mobileHeight: 1500,
     supportObjectPosition: "center center",
     compactObjectPosition: "center 46%",
+  },
+  partshadecollection: {
+    src: "/hero-images/liveoak-collection-part-shade-hero-desktop-2400.webp",
+    mobileSrc: "/hero-images/liveoak-collection-part-shade-hero-mobile-1200.webp",
+    alt: "Part-shade native garden beside a suburban house with filtered oak light, redbud, blue mistflower, and soft understory grasses",
+    width: 2400,
+    height: 1350,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center 48%",
   },
   monarchwaystationcollection: {
     src: "/hero-images/liveoak-collection-monarch-waystation-hero-desktop-2400.webp",

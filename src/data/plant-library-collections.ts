@@ -215,6 +215,7 @@ export const starterCollections: StarterCollection[] = [
     title: "Plants for part shade",
     description: "Useful species for woodland edges, filtered light, and softer garden transitions.",
     intro: "Good for morning sun, filtered light, or spots where trees make full-sun plants struggle.",
+    heroVariant: "partshadecollection",
     plants: sortByUsefulStarter(uniquePlants(allPlants.filter(isPartShade))).slice(0, 6),
     references: [
       {
