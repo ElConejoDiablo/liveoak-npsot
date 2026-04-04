@@ -21,6 +21,7 @@ export type PublicImageryKey =
   | "volunteersupportworkday"
   | "resourcesreferencehelp"
   | "resourcehub"
+  | "tricountynativeplants"
   | "sourcingnativeplants";
 
 export const publicImagery: Record<
@@ -265,6 +266,17 @@ export const publicImagery: Record<
     mobileHeight: 1500,
     supportObjectPosition: "center center",
     compactObjectPosition: "center 44%",
+  },
+  tricountynativeplants: {
+    src: "/hero-images/liveoak-plants-hero-xeriscape-desktop-2400.webp",
+    mobileSrc: "/hero-images/liveoak-plants-hero-xeriscape-mobile-1200.webp",
+    alt: "Xeriscape backyard with native Texas plants, grasses, bluebonnets, Mexican hat flowers, Turk’s cap, and a terracotta water feature",
+    width: 2400,
+    height: 1350,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center 48%",
   },
   sourcingnativeplants: {
     src: "/hero-images/liveoak-sourcing-hero-nursery-desktop-2400.webp",

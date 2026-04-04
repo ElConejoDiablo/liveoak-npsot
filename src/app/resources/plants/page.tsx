@@ -62,7 +62,7 @@ export default async function PlantIndexPage({ searchParams }: PlantIndexPagePro
   return (
     <>
       <PhotographicHeroBanner
-        variant="resourcehub"
+        variant="tricountynativeplants"
         title="Tri-County Native Plants"
         description="A local plant library for Fayette, Colorado, and Lavaca Counties, built to help you choose native plants for gardens, habitat, prairie structure, and pollinators."
         serviceArea={siteConfig.serviceAreaLabel}
