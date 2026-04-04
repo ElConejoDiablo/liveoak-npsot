@@ -24,6 +24,7 @@ export type PublicImageryKey =
   | "tricountynativeplants"
   | "pollinatorscollection"
   | "nativegardenscollection"
+  | "suncollection"
   | "monarchwaystationcollection"
   | "prairiestructurecollection"
   | "habitattreesshrubscollection"
@@ -298,6 +299,17 @@ export const publicImagery: Record<
     src: "/hero-images/liveoak-collection-native-gardens-hero-desktop-2400.webp",
     mobileSrc: "/hero-images/liveoak-collection-native-gardens-hero-mobile-1200.webp",
     alt: "Starter trays of juvenile Texas native plants with mulch and garden tools beside a tree in a practical home-scale planting setup",
+    width: 2400,
+    height: 1350,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center 46%",
+  },
+  suncollection: {
+    src: "/hero-images/liveoak-collection-sun-hero-desktop-2400.webp",
+    mobileSrc: "/hero-images/liveoak-collection-sun-hero-mobile-1200.webp",
+    alt: "Sunlit Central Texas native planting with little bluestem, black-eyed Susan, mealy blue sage, Texas lantana, and Mexican hat flowers",
     width: 2400,
     height: 1350,
     mobileWidth: 1200,

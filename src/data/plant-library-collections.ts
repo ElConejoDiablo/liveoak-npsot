@@ -195,6 +195,7 @@ export const starterCollections: StarterCollection[] = [
     title: "Plants for sun",
     description: "Heat-tough selections for open, full-sun sites and prairie-style plantings.",
     intro: "Best for hot, open sites that stay bright most of the day and dry out quickly.",
+    heroVariant: "suncollection",
     plants: sortByUsefulStarter(uniquePlants(allPlants.filter((plant) => isFullSun(plant) && isDrySite(plant)))).slice(0, 6),
     references: [
       {
