@@ -1,5 +1,5 @@
 import { CtaBanner } from "@/components/sections/cta-banner";
-import { SourcingHero } from "@/components/resources/sourcing-hero";
+import { PhotographicHeroBanner } from "@/components/sections/photographic-hero-banner";
 import { SourcingSourceCards } from "@/components/resources/sourcing-source-cards";
 import { sourcingPageNotes, nativePlantSourceCards } from "@/data/native-plant-sourcing";
 import { siteConfig } from "@/data/site";
@@ -15,15 +15,19 @@ export const metadata = createMetadata({
 
 export default function SourcingNativePlantsPage() {
   return (
-    <main className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8">
-      <div className="space-y-8">
-        <SourcingHero
-          title="Practical sourcing for native plants and seed"
-          description="This page is ready for chapter-verified nursery, grower, and seed-seller cards with manual provenance notes."
-          serviceArea={siteConfig.serviceAreaLabel}
-          variant="sourcingnativeplants"
-        />
+    <>
+      <PhotographicHeroBanner
+        variant="sourcingnativeplants"
+        title="Practical sourcing for native plants and seed"
+        description="This page is ready for chapter-verified nursery, grower, and seed-seller cards with manual provenance notes."
+        serviceArea={siteConfig.serviceAreaLabel}
+        contentClassName="max-w-3xl"
+        overlayClassName="bg-[linear-gradient(180deg,rgba(18,25,19,0.26),rgba(18,25,19,0.46)_28%,rgba(18,25,19,0.72)_58%,rgba(18,25,19,0.9)_100%)] lg:bg-[linear-gradient(90deg,rgba(18,25,19,0.86)_0%,rgba(18,25,19,0.78)_36%,rgba(18,25,19,0.52)_58%,rgba(18,25,19,0.26)_78%,rgba(18,25,19,0.18)_100%),linear-gradient(180deg,rgba(18,25,19,0.24),rgba(18,25,19,0.12)_28%,rgba(18,25,19,0.5)_80%,rgba(18,25,19,0.84)_100%)]"
+        imageClassName="object-[60%_center] sm:object-center"
+      />
 
+      <main className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8">
+        <div className="space-y-8">
         <section className="grid gap-4 md:grid-cols-3">
           {sourcingPageNotes.map((note) => (
             <div
@@ -58,7 +62,8 @@ export default function SourcingNativePlantsPage() {
             variant="resourcesreferencehelp"
           />
         </div>
-      </div>
-    </main>
+        </div>
+      </main>
+    </>
   );
 }
