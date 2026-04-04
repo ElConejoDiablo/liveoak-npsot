@@ -1,11 +1,14 @@
-import Link from "next/link";
+import { BookOpenText, Filter, Search } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
+import { PhotographicHeroBanner } from "@/components/sections/photographic-hero-banner";
 import { PlantLibraryCollections } from "@/components/resources/plant-library-collections";
-import { PlantLibrarySummary } from "@/components/resources/plant-library-summary";
-import { plantLibraryGroups } from "@/data/plant-library";
-import { starterCollections } from "@/data/plant-library-collections";
+import {
+  getStarterCollectionById,
+  starterCollections,
+} from "@/data/plant-library-collections";
+import type { PlantEntry } from "@/data/plant-library";
 import { plantLibraryItems } from "@/data/plant-library-index";
+import { siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
@@ -16,83 +19,116 @@ export const metadata = createMetadata({
   eyebrow: "Tri-County Native Plants",
 });
 
-export default function PlantIndexPage() {
+type PlantIndexPageProps = {
+  searchParams?: Promise<{
+    collection?: string;
+    q?: string;
+  }>;
+};
+
+const normalizeQuery = (value?: string) => value?.trim().toLowerCase() ?? "";
+
+const filterPlants = (query: string, collectionPlants: Array<PlantEntry>) => {
+  if (!query) return collectionPlants;
+
+  return collectionPlants.filter((plant) => {
+    const haystack = [
+      plant.commonName,
+      plant.scientificName,
+      plant.family,
+      plant.plantType,
+      plant.growthForm,
+      plant.pollinatorValue,
+      plant.bestLocalUse,
+      plant.localUseNote,
+      plant.localFitNotes,
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
+
+    return haystack.includes(query);
+  });
+};
+
+export default async function PlantIndexPage({ searchParams }: PlantIndexPageProps) {
+  const resolvedSearchParams = (await searchParams) ?? {};
+  const activeCollection = getStarterCollectionById(resolvedSearchParams.collection);
+  const query = resolvedSearchParams.q?.trim() ?? "";
+  const normalizedQuery = normalizeQuery(resolvedSearchParams.q);
+  const collectionPlants = activeCollection?.plants ?? plantLibraryItems;
+  const results = filterPlants(normalizedQuery, collectionPlants);
+
   return (
-    <main className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8">
-      <div className="max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">Chapter-owned starter library</p>
-        <h1 className="mt-4 font-heading text-5xl leading-tight text-foreground">Tri-County Native Plants</h1>
-        <p className="mt-4 text-lg leading-8 text-foreground/72">
-          Browse the chapter&apos;s local-first plant reference set. The starter collections and featured plants below
-          help visitors start with practical choices for Fayette, Colorado, and Lavaca Counties.
-        </p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Link
-            href="/resources"
-            className="rounded-full border border-primary/10 bg-white px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary/20 hover:bg-primary/5"
-          >
-            Back to Resources
-          </Link>
-          <Link
-            href="/resources/npsot"
-            className="rounded-full border border-primary/10 bg-white px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary/20 hover:bg-primary/5"
-          >
-            NPSOT Resources
-          </Link>
-          <Link
-            href="/resources/sourcing-native-plants"
-            className="rounded-full border border-primary/10 bg-white px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary/20 hover:bg-primary/5"
-          >
-            Sourcing Native Plants
-          </Link>
-        </div>
-      </div>
+    <>
+      <PhotographicHeroBanner
+        variant="resourcehub"
+        title="Tri-County Native Plants"
+        description="A local plant library for Fayette, Colorado, and Lavaca Counties, built to help you choose native plants for gardens, habitat, prairie structure, and pollinators."
+        serviceArea={siteConfig.serviceAreaLabel}
+        contentClassName="max-w-[42rem]"
+        actions={[
+          { href: "#how-to-use", label: "How to use this library", variant: "secondary" },
+          { href: "#starter-collections", label: "Starter collections" },
+        ]}
+        overlayClassName="bg-[linear-gradient(180deg,rgba(18,25,19,0.32),rgba(18,25,19,0.58)_28%,rgba(18,25,19,0.78)_58%,rgba(18,25,19,0.94)_100%)] lg:bg-[linear-gradient(90deg,rgba(18,25,19,0.9)_0%,rgba(18,25,19,0.84)_34%,rgba(18,25,19,0.62)_56%,rgba(18,25,19,0.34)_76%,rgba(18,25,19,0.22)_100%),linear-gradient(180deg,rgba(18,25,19,0.28),rgba(18,25,19,0.16)_28%,rgba(18,25,19,0.54)_80%,rgba(18,25,19,0.84)_100%)]"
+        imageClassName="object-[62%_center] sm:object-center"
+      />
 
-      <section className="mt-12">
-        <PlantLibrarySummary groups={plantLibraryGroups} />
-      </section>
-
-      <section className="mt-12">
-        <PlantLibraryCollections collections={starterCollections} />
-      </section>
-
-      <section id="native-plant-seed-set" className="mt-12">
-        <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">Plant index</p>
-          <h2 className="mt-3 font-heading text-3xl text-foreground">Browse plants by name</h2>
-          <p className="mt-2 text-lg leading-8 text-foreground/72">
-            Each card links to a chapter plant detail page with traits, county relevance, planting guidance, and
-            approved image support.
-          </p>
-        </div>
-      </section>
-
-      <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {plantLibraryItems.map((plant) => (
-          <Link
-            key={plant.scientificName}
-            href={`/resources/plants/${plant.slug}`}
-            className="rounded-[1.5rem] border border-primary/10 bg-white/84 p-5 shadow-[0_16px_48px_rgba(37,58,40,0.07)] transition hover:-translate-y-0.5 hover:border-primary/20"
-          >
-            <div className="flex flex-wrap gap-2">
-              <Badge variant="secondary">{plant.plantType}</Badge>
-              {plant.chapterRecommended ? <Badge>Chapter recommended</Badge> : null}
-              {plant.hostValue ? <Badge variant="secondary">Host plant</Badge> : null}
-              {plant.pollinatorValue ? <Badge variant="secondary">Pollinator value</Badge> : null}
-            </div>
-            <h2 className="mt-4 font-heading text-2xl leading-tight text-foreground">
-              {plant.commonName}
-            </h2>
-            <p className="mt-2 text-sm italic text-foreground/68">{plant.scientificName}</p>
-            <p className="mt-4 text-sm leading-6 text-foreground/72">
-              {plant.pollinatorValue}
+      <main className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8">
+        <section
+          id="how-to-use"
+          className="rounded-[1.8rem] border border-primary/10 bg-white/84 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)] sm:p-8"
+        >
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">How to use this library</p>
+            <h2 className="mt-3 font-heading text-3xl text-foreground">Start with a question, not a species list</h2>
+            <p className="mt-3 text-lg leading-8 text-foreground/72">
+              Use the starter collections to narrow down the kind of plant you need, then compare the detail pages for
+              county fit, planting notes, and approved images. If you already know the site condition, jump straight to
+              the browse area and filter from there.
             </p>
-            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-primary/70">
-              Counties: Fayette {plant.countyRelevance.fayette} · Colorado {plant.countyRelevance.colorado} · Lavaca {plant.countyRelevance.lavaca}
-            </p>
-          </Link>
-        ))}
-      </div>
-    </main>
+          </div>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {[
+              {
+                icon: BookOpenText,
+                title: "Read the detail page",
+                text: "Each plant page shows county relevance, planting guidance, and approved-image support.",
+              },
+              {
+                icon: Filter,
+                title: "Use the collections",
+                text: "Start with pollinators, prairie structure, or the Monarch Waystation qualifier when you need a guided path.",
+              },
+              {
+                icon: Search,
+                title: "Search by name",
+                text: "Use the browse area below to search the full library by common name, scientific name, or family.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="rounded-[1.4rem] border border-primary/10 bg-[#f7f4e8] p-5"
+              >
+                <item.icon className="h-5 w-5 text-primary/70" />
+                <h3 className="mt-3 font-heading text-2xl text-foreground">{item.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-foreground/72">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="starter-collections" className="mt-12">
+            <PlantLibraryCollections
+              collections={starterCollections}
+              activeCollection={activeCollection}
+              query={query}
+              results={results}
+            />
+          </section>
+      </main>
+    </>
   );
 }
