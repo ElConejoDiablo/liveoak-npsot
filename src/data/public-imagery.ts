@@ -23,6 +23,7 @@ export type PublicImageryKey =
   | "resourcehub"
   | "tricountynativeplants"
   | "pollinatorscollection"
+  | "monarchwaystationcollection"
   | "sourcingnativeplants";
 
 export const publicImagery: Record<
@@ -289,6 +290,17 @@ export const publicImagery: Record<
     mobileHeight: 1500,
     supportObjectPosition: "center center",
     compactObjectPosition: "center 46%",
+  },
+  monarchwaystationcollection: {
+    src: "/hero-images/liveoak-collection-monarch-waystation-hero-desktop-2400.webp",
+    mobileSrc: "/hero-images/liveoak-collection-monarch-waystation-hero-mobile-1200.webp",
+    alt: "Suburban Monarch Waystation starter garden with milkweed, dill, a young live oak, native flowers, and butterflies in a front-yard habitat bed",
+    width: 2400,
+    height: 1350,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center 48%",
   },
   sourcingnativeplants: {
     src: "/hero-images/liveoak-sourcing-hero-nursery-desktop-2400.webp",

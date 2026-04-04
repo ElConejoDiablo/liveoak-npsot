@@ -232,6 +232,7 @@ export const starterCollections: StarterCollection[] = [
       "Milkweeds and nectar plants that help gardeners work toward Monarch Watch registration.",
     intro:
       "Use this collection when you are planning a monarch habitat and want a local-first starting point.",
+    heroVariant: "monarchwaystationcollection",
     plants: sortForMonarchWaystation(uniquePlants(allPlants.filter(isMonarchWaystationPlant))).slice(0, 10),
     checklist: [
       "A habitat of at least 100 square feet works best.",
