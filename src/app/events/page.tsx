@@ -37,7 +37,7 @@ export default function EventsPage() {
       <NextChapterMeetingHero event={nextMeeting} />
 
       <SectionShell
-        title="Upcoming events and calendar"
+        title="Upcoming Events and Calendar"
         intro="The chapter meets on the second Saturday of every month."
       >
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
@@ -45,7 +45,7 @@ export default function EventsPage() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <h2 className="mt-2 font-heading text-3xl text-foreground">
-                  Upcoming events
+                  Upcoming Events
                 </h2>
               </div>
               <SmartLink
@@ -88,7 +88,7 @@ export default function EventsPage() {
       </SectionShell>
 
       <SectionShell
-        title="All upcoming dates"
+        title="All Upcoming Dates"
         intro="Chapter events appear alongside a small set of selected statewide NPSOT dates so the full schedule stays practical to scan in one place."
       >
         <div className="space-y-4">
@@ -105,8 +105,8 @@ export default function EventsPage() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="Past events"
-        title="Recaps, materials, and chapter follow-up"
+        eyebrow="Past Events"
+        title="Recaps, Materials, and Chapter Follow-Up"
         intro="Past chapter gatherings can hold recap stories, recordings, public materials, and protected meeting minutes when they are available."
         actions={
           <SmartLink

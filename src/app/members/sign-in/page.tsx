@@ -37,10 +37,10 @@ export default async function MemberSignInPage() {
           <ShieldCheck className="h-7 w-7" />
         </div>
         <p className="mt-6 text-sm font-semibold uppercase tracking-[0.22em] text-primary/72">
-          Members portal
+          Members Portal
         </p>
         <h1 className="mt-3 font-heading text-4xl text-foreground sm:text-5xl">
-          Sign in to the members portal
+          Sign in to the Members Portal
         </h1>
         <p className="mt-4 text-lg leading-8 text-foreground/72">
           Use the email address connected with your chapter access to request a

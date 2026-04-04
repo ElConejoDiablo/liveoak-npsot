@@ -42,16 +42,16 @@ export default function EventsCalendarPage() {
       </Container>
 
       <SectionShell
-        eyebrow="Calendar view"
-        title="Switch between month and week"
+        eyebrow="Calendar View"
+        title="Switch Between Month and Week"
         intro="Use the controls to narrow by event source or type, then scan the current month or zoom in on a single week."
       >
         <EventsCalendarBrowser events={events} />
       </SectionShell>
 
       <SectionShell
-        eyebrow="Statewide destinations"
-        title="Open the official statewide calendars when you want more"
+        eyebrow="Statewide Destinations"
+        title="Open the Official Statewide Calendars When You Want More"
         intro="This calendar carries a selected statewide mix. For the full NPSOT picture, use the official statewide pages below."
       >
         <div className="grid gap-5 md:grid-cols-3">

@@ -73,7 +73,7 @@ export default function MemberDocumentsPage() {
               ) : (
                 <div className="mt-5">
                   <EmptyStatePanel
-                    title="No documents posted yet"
+                    title="No Documents Posted Yet"
                     description="This category is ready for member-only files as soon as they are available."
                   />
                 </div>

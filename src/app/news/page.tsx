@@ -28,7 +28,7 @@ export default async function NewsPage() {
     <>
       <PageHero
         eyebrow="Articles"
-        title="Field notes, local stories, and native-plant articles"
+        title="Field Notes, Local Stories, and Native-Plant Articles"
         description="Seasonal reading for beginners, gardeners, volunteers, and anyone paying closer attention to native plants in Fayette, Colorado, and Lavaca Counties."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="fieldnotes"
@@ -40,8 +40,8 @@ export default async function NewsPage() {
       />
 
       <SectionShell
-        eyebrow="Featured article"
-        title="Start with the current feature"
+        eyebrow="Featured Article"
+        title="Start With the Current Feature"
         intro="Begin with the lead story, then browse the rest of the archive by topic, season, or question."
       >
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(300px,0.72fr)]">
@@ -68,8 +68,8 @@ export default async function NewsPage() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="Recent reading"
-        title="Recent articles and field notes"
+        eyebrow="Recent Reading"
+        title="Recent Articles and Field Notes"
         intro="Browse by topic, filter by tag, or search article titles and local themes."
       >
         <NewsBrowser

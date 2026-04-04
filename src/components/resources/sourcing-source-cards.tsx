@@ -10,7 +10,7 @@ export function SourcingSourceCards({ cards }: SourcingSourceCardsProps) {
   if (!cards.length) {
     return (
       <div className="rounded-[1.7rem] border border-dashed border-primary/20 bg-[#F7F4E8] p-6 shadow-[0_18px_60px_rgba(39,59,42,0.06)]">
-        <h2 className="font-heading text-2xl text-foreground">Verified source cards are added manually</h2>
+        <h2 className="font-heading text-2xl text-foreground">Verified Source Cards Are Added Manually</h2>
         <p className="mt-3 max-w-3xl text-base leading-7 text-foreground/72">
           This page is ready for nursery, grower, and seed-source cards once the chapter has manually verified a
           local source. Only chapter-checked provenance should be added here.

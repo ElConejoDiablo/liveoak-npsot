@@ -21,7 +21,7 @@ export default function ResourcesPage() {
     {
       title: "Tri-County Native Plants",
       href: "/resources/plants",
-      eyebrow: "Chapter-owned library",
+      eyebrow: "Chapter-Owned Library",
       description:
         "Start here for the Live Oak Chapter plant library, starter collections, and local-first plant detail pages.",
       bullets: ["Plant index", "Starter collections", "Featured local plants"],
@@ -29,7 +29,7 @@ export default function ResourcesPage() {
     {
       title: "NPSOT Resources",
       href: "/resources/npsot",
-      eyebrow: "Statewide guidance",
+      eyebrow: "Statewide Guidance",
       description:
         "Go here for statewide NPSOT links, broader Texas-native references, and official member and learning resources.",
       bullets: ["NPSOT guidance", "Official links", "Texas-native references"],
@@ -37,7 +37,7 @@ export default function ResourcesPage() {
     {
       title: "Sourcing Native Plants",
       href: "/resources/sourcing-native-plants",
-      eyebrow: "Local sourcing",
+      eyebrow: "Local Sourcing",
       description:
         "Use this for nurseries, seed sellers, and chapter-verified provenance notes when they are available.",
       bullets: ["Nursery cards", "Seed and plant sources", "Manual provenance notes"],
@@ -48,7 +48,7 @@ export default function ResourcesPage() {
     <>
       <PhotographicHeroBanner
         variant="resourcehub"
-        title="Resources for native plants in the Tri-County Prairie Belt"
+        title="Resources for Native Plants in the Tri-County Prairie Belt"
         description="Start with the chapter for local guidance, trusted plant references, and practical help for Fayette, Colorado, and Lavaca Counties."
         serviceArea={siteConfig.serviceAreaLabel}
         contentClassName="max-w-[38rem]"
@@ -57,8 +57,8 @@ export default function ResourcesPage() {
       />
 
       <SectionShell
-        eyebrow="Choose a destination"
-        title="Resources split into three practical paths"
+        eyebrow="Choose a Destination"
+        title="Resources Split Into Three Practical Paths"
         intro="The chapter now separates the local plant library, statewide NPSOT guidance, and sourcing information so visitors can get to the right place faster."
       >
         <div className="grid gap-4 md:grid-cols-3">
@@ -100,8 +100,8 @@ export default function ResourcesPage() {
 
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
         <CtaBanner
-          eyebrow="Need help choosing the right path?"
-          title="Need something specific?"
+          eyebrow="Need Help Choosing the Right Path?"
+          title="Need Something Specific?"
           description="Contact the chapter if you want help finding the right destination, plant reference, or local next step."
           primaryAction={{ href: "/contact", label: "Contact the chapter" }}
           variant="resourcesreferencehelp"

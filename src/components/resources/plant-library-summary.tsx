@@ -17,7 +17,7 @@ export function PlantLibrarySummary({ groups }: PlantLibrarySummaryProps) {
       <div className="grid gap-4 md:grid-cols-4">
         <div className="rounded-[1.6rem] border border-primary/10 bg-white/78 p-5 shadow-[0_18px_60px_rgba(39,59,42,0.08)]">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">
-            Starter set
+            Starter Set
           </p>
           <p className="mt-3 font-heading text-4xl text-foreground">
             {totalPlants}
@@ -64,7 +64,7 @@ export function PlantLibrarySummary({ groups }: PlantLibrarySummaryProps) {
                   <div className="flex flex-wrap gap-2">
                     <Badge variant="secondary">{plant.plantType}</Badge>
                     {plant.chapterRecommended ? (
-                      <Badge>Chapter recommended</Badge>
+                      <Badge>Chapter Recommended</Badge>
                     ) : null}
                   </div>
                   <h4 className="mt-4 font-heading text-2xl leading-tight text-foreground">

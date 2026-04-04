@@ -110,10 +110,10 @@ export function PlantLibraryCollections({
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">
-              Browse and search
+              Browse and Search
             </p>
             <h3 className="mt-3 font-heading text-3xl text-foreground">
-              Search the full Tri-County library
+              Search the Full Tri-County Library
             </h3>
             <p className="mt-2 text-lg leading-8 text-foreground/72">
               Use the search field to narrow the full library by plant name. If a starter collection is active, the
@@ -145,11 +145,11 @@ export function PlantLibraryCollections({
             </div>
           </label>
           <div className="flex items-end">
-            <button
+              <button
               type="submit"
               className="inline-flex h-12 items-center justify-center rounded-full border border-primary/10 bg-primary px-5 text-sm font-semibold text-white transition hover:bg-primary/90"
             >
-              Search library
+              Search Library
             </button>
           </div>
         </form>
@@ -159,7 +159,7 @@ export function PlantLibraryCollections({
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">
-                  Active collection
+                  Active Collection
                 </p>
                 <h4 className="mt-2 font-heading text-2xl text-foreground">{activeCollection.title}</h4>
               </div>
@@ -177,14 +177,14 @@ export function PlantLibraryCollections({
             </div>
             <p className="mt-3 text-base leading-7 text-foreground/72">{activeCollection.intro}</p>
             <div className="mt-4 flex flex-wrap gap-2">
-              <Badge className="bg-primary/10 text-primary">Collection active</Badge>
-              {query ? <Badge variant="secondary" className="bg-white">Search: {query}</Badge> : null}
+              <Badge className="bg-primary/10 text-primary">Collection Active</Badge>
+          {query ? <Badge variant="secondary" className="bg-white">Search: {query}</Badge> : null}
               {query ? (
                 <SmartLink
                   href={buildSearchHref(activeCollection.id)}
                   className="inline-flex items-center rounded-full border border-primary/10 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-foreground transition hover:border-primary/20 hover:bg-primary/5"
                 >
-                  Clear search
+                  Clear Search
                 </SmartLink>
               ) : null}
             </div>
@@ -200,7 +200,7 @@ export function PlantLibraryCollections({
                 </ul>
                 {activeCollection.externalLink ? (
                   <div className="rounded-[1.1rem] border border-primary/10 bg-white p-4 text-sm leading-6 text-foreground/72">
-                    <p className="font-semibold text-foreground">Official Monarch Watch guidance</p>
+                    <p className="font-semibold text-foreground">Official Monarch Watch Guidance</p>
                     <SmartLink
                       href={activeCollection.externalLink.href}
                       className="mt-2 inline-flex font-semibold text-primary transition hover:underline"
@@ -246,7 +246,7 @@ export function PlantLibraryCollections({
               >
                 <div className="flex flex-wrap gap-2">
                   <Badge variant="secondary">{plant.plantType}</Badge>
-                  {plant.chapterRecommended ? <Badge>Chapter recommended</Badge> : null}
+                  {plant.chapterRecommended ? <Badge>Chapter Recommended</Badge> : null}
                   {plant.hostValue ? <Badge variant="secondary">Host plant</Badge> : null}
                   {plant.pollinatorValue ? <Badge variant="secondary">Pollinator value</Badge> : null}
                 </div>

@@ -19,7 +19,7 @@ export default function ProgramsPage() {
     <>
       <PageHero
         eyebrow="Programs"
-        title="Programs that bring native plants into everyday chapter life"
+        title="Programs That Bring Native Plants Into Everyday Chapter Life"
         description="These are the kinds of chapter activities that help people learn, observe, and care for native plants close to home."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="learning"
@@ -31,8 +31,8 @@ export default function ProgramsPage() {
       />
 
       <SectionShell
-        eyebrow="Program areas"
-        title="Choose the kind of chapter learning you want"
+        eyebrow="Program Areas"
+        title="Choose the Kind of Chapter Learning You Want"
         intro="Some activities center on talks and conversation, while others focus on field observation, seed work, outreach, or hands-on habitat care."
       >
         <div className="space-y-8">
@@ -51,8 +51,8 @@ export default function ProgramsPage() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="Seasonal rhythm"
-        title="Seasonal highlights across the chapter year"
+        eyebrow="Seasonal Rhythm"
+        title="Seasonal Highlights Across the Chapter Year"
         intro="Native plant learning changes with the season, from spring bloom watching to seed work and fall pollinator support."
       >
         <div className="grid gap-4 lg:grid-cols-3">
@@ -86,8 +86,8 @@ export default function ProgramsPage() {
 
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
         <CtaBanner
-          eyebrow="Stay involved"
-          title="Join the chapter, attend an event, or ask how to help"
+          eyebrow="Stay Involved"
+          title="Join the Chapter, Attend an Event, or Ask How to Help"
           description="Attend an event, volunteer, or join NPSOT to stay involved with the chapter."
           primaryAction={{ href: "/contact", label: "Contact the chapter" }}
           secondaryAction={{ href: siteConfig.joinUrl, label: "Join NPSOT" }}

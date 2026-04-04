@@ -30,7 +30,7 @@ export default function PastEventsPage() {
       <Container className="py-14 sm:py-18">
         <MotionReveal className="max-w-4xl">
           <p className="text-sm font-semibold uppercase tracking-[0.26em] text-primary/74">
-            Past events
+            Past Events
           </p>
           <h1 className="mt-5 font-heading text-4xl leading-tight text-foreground sm:text-5xl lg:text-[3.8rem]">
             Recaps, recordings, and follow-up from earlier chapter gatherings
@@ -43,7 +43,7 @@ export default function PastEventsPage() {
 
       <SectionShell
         eyebrow="Archive"
-        title="Past chapter gatherings"
+        title="Past Chapter Gatherings"
         intro="Recaps are listed with the newest first. Public materials stay public here, while approved meeting minutes remain inside the members portal."
       >
         {events.length ? (
@@ -67,14 +67,14 @@ export default function PastEventsPage() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="More follow-up"
-        title="Look for recaps and follow-up materials"
+        eyebrow="More Follow-Up"
+        title="Look for Recaps and Follow-Up Materials"
         intro="Public recap stories live in the article archive. Protected minutes and member-only handouts stay inside the members portal."
       >
         <div className="grid gap-5 md:grid-cols-2">
           <MotionReveal className="rounded-[1.8rem] border border-primary/10 bg-white/82 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]">
             <h2 className="font-heading text-2xl text-foreground">
-              Chapter articles
+              Chapter Articles
             </h2>
             <p className="mt-3 text-base leading-7 text-foreground/72">
               Read meeting recaps, plant notes, and follow-up stories tied to chapter events.
@@ -93,7 +93,7 @@ export default function PastEventsPage() {
             className="rounded-[1.8rem] border border-primary/10 bg-white/82 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
           >
             <h2 className="font-heading text-2xl text-foreground">
-              Members portal documents
+              Members Portal Documents
             </h2>
             <p className="mt-3 text-base leading-7 text-foreground/72">
               Approved meeting minutes and member-only follow-up materials stay behind the existing sign-in flow.

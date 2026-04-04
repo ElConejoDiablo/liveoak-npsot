@@ -25,7 +25,7 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="Reach the chapter with one simple form or a direct email"
+        title="Reach the Chapter With One Simple Form or a Direct Email"
         description="Use the chapter contact form for event questions, volunteer interest, membership follow-up, native plant questions, or requests to hear about upcoming events."
         serviceArea={siteConfig.serviceAreaLabel}
         layout="utility"
@@ -43,7 +43,7 @@ export default function ContactPage() {
 
       <SectionShell
         eyebrow="Get in touch"
-        title="Use the contact form or chapter email"
+        title="Use the Contact Form or Chapter Email"
         intro="Ask about events, volunteering, membership, or local native plants. Messages go straight to the chapter email."
       >
         <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
@@ -70,7 +70,7 @@ export default function ContactPage() {
             </div>
             <div className="mt-6 border-t border-primary/10 pt-5">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/72">
-                Follow the chapter
+                Follow the Chapter
               </p>
               <p className="mt-2 text-sm leading-6 text-foreground/66">
                 Find updates and public-facing chapter activity on these channels.
@@ -110,8 +110,8 @@ export default function ContactPage() {
       <Container className="pb-20">
         <div className="grid gap-5 rounded-[1.9rem] border border-primary/10 bg-[linear-gradient(135deg,rgba(33,55,39,0.96),rgba(57,81,58,0.96))] p-6 text-white shadow-[0_28px_90px_rgba(29,48,35,0.26)] sm:p-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.85fr)] lg:items-center">
           <div>
-            <h2 className="font-heading text-3xl sm:text-4xl">
-              Welcoming and easy to reach
+        <h2 className="font-heading text-3xl sm:text-4xl">
+              Welcoming and Easy to Reach
             </h2>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-white/78">
               Whether you are new to native plants, looking for a local event,

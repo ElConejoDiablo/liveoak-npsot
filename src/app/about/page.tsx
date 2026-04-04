@@ -19,17 +19,17 @@ export const metadata = createMetadata({
 export default function AboutPage() {
   const chapterCards = [
     {
-      title: "Learn from people who know this region",
+      title: "Learn From People Who Know This Region",
       description:
         "Conversations, observations, and shared experience that help people understand native plants, seasonal change, and the ecosystems of Fayette, Colorado, and Lavaca Counties.",
     },
     {
-      title: "Take part in events that strengthen local landscapes",
+      title: "Take Part in Events That Strengthen Local Landscapes",
       description:
         "Walks, talks, chapter gatherings, and public events that connect people with native plants, habitat, and the communities they care for.",
     },
     {
-      title: "Share the practical resources that make stewardship possible",
+      title: "Share the Practical Resources That Make Stewardship Possible",
       description:
         "Plants, seeds, tools, time, and helping hands that support native gardening, habitat care, and local restoration close to home.",
     },
@@ -51,7 +51,7 @@ export default function AboutPage() {
       />
 
       <SectionShell
-        title="What the chapter makes possible close to home"
+        title="What the Chapter Makes Possible Close to Home"
         intro="The Live Oak Chapter helps people learn native plants, join local events, and support healthier habitat across Fayette, Colorado, and Lavaca Counties. It also creates practical ways for people to share plants, seeds, tools, time, and local knowledge rooted in this region's ecosystems."
       >
         <div className="grid gap-4 md:grid-cols-3">
@@ -99,8 +99,8 @@ export default function AboutPage() {
 
       <Container className="pb-20">
         <CtaBanner
-          eyebrow="Keep exploring"
-          title="Keep exploring the chapter"
+          eyebrow="Keep Exploring"
+          title="Keep Exploring the Chapter"
           description="Read chapter news, browse resources, or see what is coming up next."
           primaryAction={{ href: "/news", label: "Read chapter news" }}
           secondaryAction={{ href: "/events", label: "View events" }}

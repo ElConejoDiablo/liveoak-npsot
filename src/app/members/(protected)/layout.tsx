@@ -12,7 +12,7 @@ export default async function ProtectedMembersLayout({
 
   return (
     <MemberShell
-      title="Members portal"
+      title="Members Portal"
       description="A protected chapter workspace for member documents, exchange posts, shared help, and simple follow-through on successful interactions."
       pointsTotal={user.pointsTotal}
       memberName={allowlistedMember.name}

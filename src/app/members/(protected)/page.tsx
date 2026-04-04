@@ -164,7 +164,7 @@ export default async function MembersHomePage() {
           ) : (
             <div className="mt-5">
               <EmptyStatePanel
-                title="No open member posts yet"
+                title="No Open Member Posts Yet"
                 description="Create the first exchange or help post when a member has seeds, plants, tools, or local help to offer."
                 action={{ href: "/members/exchange/new", label: "Create a member post" }}
               />
@@ -175,7 +175,7 @@ export default async function MembersHomePage() {
 
       <section className="rounded-[1.8rem] border border-primary/10 bg-[#F5F0E1] p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]">
         <h2 className="font-heading text-2xl text-foreground">
-          Clear next steps
+          Clear Next Steps
         </h2>
         <div className="mt-5 flex flex-wrap gap-3">
           <SmartLink

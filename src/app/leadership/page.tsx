@@ -18,7 +18,7 @@ export default function LeadershipPage() {
     <>
       <PageHero
         eyebrow="Leadership"
-        title="Meet the chapter officers"
+        title="Meet the Chapter Officers"
         description="These are the current officers serving the Live Oak Chapter."
         serviceArea={siteConfig.serviceAreaLabel}
         layout="compact"
@@ -35,8 +35,8 @@ export default function LeadershipPage() {
       />
 
       <SectionShell
-        eyebrow="Current officers"
-        title="Current chapter officers"
+        eyebrow="Current Officers"
+        title="Current Chapter Officers"
         intro="Meet the current officers of the Live Oak Chapter."
       >
         <div className="grid gap-5 lg:grid-cols-3">
@@ -50,8 +50,8 @@ export default function LeadershipPage() {
 
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
         <CtaBanner
-          eyebrow="Questions for the board?"
-          title="Use the chapter contact page for leadership questions and introductions"
+          eyebrow="Questions for the Board?"
+          title="Use the Chapter Contact Page for Leadership Questions and Introductions"
           description="The chapter contact page is the best place for board questions, partnerships, and general introductions."
           primaryAction={{ href: siteConfig.contactUrl, label: "Email the chapter" }}
           secondaryAction={{ href: "/about", label: "Read about the chapter" }}

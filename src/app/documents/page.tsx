@@ -24,7 +24,7 @@ export default function DocumentsPage() {
     <>
       <PageHero
         eyebrow="Documents"
-        title="Posted chapter materials, recaps, and practical guides"
+        title="Posted Chapter Materials, Recaps, and Practical Guides"
         description="This page now highlights what the chapter has already published, while still showing which document types are not posted yet."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="documents"
@@ -36,7 +36,7 @@ export default function DocumentsPage() {
           "Public reference pages maintained by the chapter",
           "Clear notes on what still is not posted yet",
         ]}
-        visualTitle="Handouts, notices, and chapter records"
+        visualTitle="Handouts, Notices, and Chapter Records"
         visualNote="A public library for real chapter materials first, with unposted document types clearly marked."
         actions={[
           { href: "/news", label: "Browse chapter materials" },
@@ -45,8 +45,8 @@ export default function DocumentsPage() {
       />
 
       <SectionShell
-        eyebrow="Document library"
-        title="Browse posted materials by type"
+        eyebrow="Document Library"
+        title="Browse Posted Materials by Type"
         intro="Available chapter guides, recaps, and archive pages appear first. Unposted document types stay clearly marked so the page remains honest."
       >
         <div className="grid gap-5 xl:grid-cols-2">
@@ -103,7 +103,7 @@ export default function DocumentsPage() {
 
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
         <EmptyStatePanel
-          title="Need a document that is not posted yet?"
+          title="Need a Document That Is Not Posted Yet?"
           description={documentsEmptyState}
           action={{ href: "/contact", label: "Contact the chapter" }}
         />

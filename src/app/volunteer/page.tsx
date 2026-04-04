@@ -18,8 +18,8 @@ export default function VolunteerPage() {
   return (
     <>
       <PageHero
-        eyebrow="Volunteer and get involved"
-        title="Volunteer in ways that fit your time and skills"
+        eyebrow="Volunteer and Get Involved"
+        title="Volunteer in Ways That Fit Your Time and Skills"
         description="Helping can mean welcoming visitors, supporting events, sharing plant knowledge, or pitching in with the practical work that keeps the chapter going."
         serviceArea={siteConfig.serviceAreaLabel}
         variant="stewardship"
@@ -31,8 +31,8 @@ export default function VolunteerPage() {
       />
 
       <SectionShell
-        eyebrow="Volunteer paths"
-        title="Where volunteers help most"
+        eyebrow="Volunteer Paths"
+        title="Where Volunteers Help Most"
         intro="Choose the kind of help that fits your time, comfort level, and interests."
       >
         <div className="grid gap-4 md:grid-cols-3">
@@ -62,13 +62,13 @@ export default function VolunteerPage() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="Why it matters"
-        title="Why shared work matters"
+        eyebrow="Why It Matters"
+        title="Why Shared Work Matters"
         intro="Local events, outreach tables, and stewardship projects run better when more people can share the work."
       >
         <ImageFeatureSection
-          eyebrow="Community stewardship"
-          title="Clear roles make it easier to help"
+          eyebrow="Community Stewardship"
+          title="Clear Roles Make It Easier to Help"
           description="Volunteering works best when people can see where help is needed and step in at a level that fits their time and experience."
           bullets={[
             "A welcoming place for newcomers who are still learning the basics",
@@ -81,8 +81,8 @@ export default function VolunteerPage() {
 
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
         <CtaBanner
-          eyebrow="Get involved"
-          title="Reach out if you would like to help"
+          eyebrow="Get Involved"
+          title="Reach Out if You Would Like to Help"
           description="A short note is enough to let the chapter know how you would like to get involved."
           primaryAction={{ href: "/contact", label: "Contact the chapter" }}
           secondaryAction={{ href: siteConfig.contactUrl, label: "Email about volunteering" }}

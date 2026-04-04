@@ -35,7 +35,7 @@ export function MemberShell({
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary/74">
-                Members portal
+                Members Portal
               </p>
               <h1 className="mt-4 font-heading text-4xl leading-tight text-foreground sm:text-5xl">
                 {title}

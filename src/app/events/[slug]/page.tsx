@@ -149,7 +149,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
           </aside>
 
           <section className="rounded-[1.8rem] border border-primary/10 bg-white/80 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]">
-            <h2 className="font-heading text-3xl text-foreground">Event details</h2>
+            <h2 className="font-heading text-3xl text-foreground">Event Details</h2>
             {event.details?.length ? (
               <ul className="mt-5 space-y-3 text-base leading-8 text-foreground/74">
                 {event.details.map((detail) => (
@@ -181,8 +181,8 @@ export default async function EventDetailPage({ params }: EventPageProps) {
 
       {otherUpcoming.length ? (
         <SectionShell
-          eyebrow="More chapter events"
-          title="More coming up with the Live Oak Chapter"
+          eyebrow="More Chapter Events"
+          title="More Coming Up With the Live Oak Chapter"
           intro="Keep going with the next local dates on the chapter calendar."
         >
           <div className="grid gap-4 md:grid-cols-2">

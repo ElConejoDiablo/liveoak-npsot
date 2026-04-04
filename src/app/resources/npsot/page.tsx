@@ -18,10 +18,10 @@ export default function NpsotResourcesPage() {
     <main className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8">
       <div className="max-w-3xl">
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">
-          Statewide guidance
+          Statewide Guidance
         </p>
         <h1 className="mt-4 font-heading text-5xl leading-tight text-foreground">
-          NPSOT resources
+          NPSOT Resources
         </h1>
         <p className="mt-4 text-lg leading-8 text-foreground/72">
           These links cover statewide guidance from NPSOT, official membership information, and broader Texas-native
@@ -44,8 +44,8 @@ export default function NpsotResourcesPage() {
       </div>
 
       <SectionShell
-        eyebrow="Official links"
-        title="Statewide NPSOT guidance"
+        eyebrow="Official Links"
+        title="Statewide NPSOT Guidance"
         intro="Use these statewide links for membership, native-garden guidance, and reference material from the Native Plant Society of Texas."
       >
         <ResourceBrowser groups={resourceGroups} />
@@ -53,8 +53,8 @@ export default function NpsotResourcesPage() {
 
       <div className="mt-12">
         <CtaBanner
-          eyebrow="Still not sure where to start?"
-          title="Chapter staff can help you choose the right resource"
+          eyebrow="Still Not Sure Where to Start?"
+          title="Chapter Staff Can Help You Choose the Right Resource"
           description="If you need the local plant library, sourcing help, or a statewide reference, the chapter can point you in the right direction."
           primaryAction={{ href: "/contact", label: "Contact the chapter" }}
           variant="resourcesreferencehelp"

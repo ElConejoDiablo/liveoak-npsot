@@ -68,7 +68,7 @@ export default async function PlantIndexPage({ searchParams }: PlantIndexPagePro
         serviceArea={siteConfig.serviceAreaLabel}
         contentClassName="max-w-[42rem]"
         actions={[
-          { href: "#how-to-use", label: "How to use this library", variant: "secondary" },
+          { href: "#how-to-use", label: "How to Use This Library", variant: "secondary" },
           { href: "#starter-collections", label: "Starter collections" },
         ]}
         overlayClassName="bg-[linear-gradient(180deg,rgba(18,25,19,0.20),rgba(18,25,19,0.40)_30%,rgba(18,25,19,0.58)_60%,rgba(18,25,19,0.78)_100%)] lg:bg-[linear-gradient(90deg,rgba(18,25,19,0.88)_0%,rgba(18,25,19,0.74)_26%,rgba(18,25,19,0.52)_44%,rgba(18,25,19,0.24)_68%,rgba(18,25,19,0.14)_84%,rgba(18,25,19,0.08)_100%),linear-gradient(180deg,rgba(18,25,19,0.18),rgba(18,25,19,0.08)_30%,rgba(18,25,19,0.34)_82%,rgba(18,25,19,0.72)_100%)]"
@@ -83,8 +83,8 @@ export default async function PlantIndexPage({ searchParams }: PlantIndexPagePro
           className="rounded-[1.8rem] border border-primary/10 bg-white/84 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)] sm:p-8"
         >
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">How to use this library</p>
-            <h2 className="mt-3 font-heading text-3xl text-foreground">Start with a question, not a species list</h2>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">How to Use This Library</p>
+            <h2 className="mt-3 font-heading text-3xl text-foreground">Start With a Question, Not a Species List</h2>
             <p className="mt-3 text-lg leading-8 text-foreground/72">
               Use the starter collections to narrow down the kind of plant you need, then compare the detail pages for
               county fit, planting notes, and approved images. If you already know the site condition, jump straight to
@@ -96,17 +96,17 @@ export default async function PlantIndexPage({ searchParams }: PlantIndexPagePro
             {[
               {
                 icon: BookOpenText,
-                title: "Read the detail page",
+                title: "Read the Detail Page",
                 text: "Each plant page shows county relevance, planting guidance, and approved-image support.",
               },
               {
                 icon: Filter,
-                title: "Use the collections",
+                title: "Use the Collections",
                 text: "Start with pollinators, prairie structure, or the Monarch Waystation qualifier when you need a guided path.",
               },
               {
                 icon: Search,
-                title: "Search by name",
+                title: "Search by Name",
                 text: "Use the browse area below to search the full library by common name, scientific name, or family.",
               },
             ].map((item) => (

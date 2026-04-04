@@ -192,10 +192,10 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           <Container>
             <div className="mb-8 max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary/74">
-                Continue reading
+                Continue Reading
               </p>
               <h2 className="mt-3 font-heading text-3xl text-foreground sm:text-4xl">
-                Related reading from the chapter
+                Related Reading From the Chapter
               </h2>
             </div>
             <div className="grid gap-5 lg:grid-cols-3">
@@ -209,8 +209,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
       <Container className="pb-20">
         <CtaBanner
-          eyebrow="Keep going"
-          title="Keep learning with the chapter"
+          eyebrow="Keep Going"
+          title="Keep Learning With the Chapter"
           description="Attend an event, join NPSOT, or reach out to the chapter if you would like to stay involved."
           primaryAction={{ href: "/events", label: "View events" }}
           secondaryAction={{ href: siteConfig.joinUrl, label: "Join NPSOT" }}

@@ -89,8 +89,8 @@ export function StarterCollectionPage({ collection }: StarterCollectionPageProps
       {collection.references?.length ? (
         <section className="rounded-[1.8rem] border border-primary/10 bg-white/84 p-6 shadow-[0_18px_60px_rgba(39,58,40,0.08)] sm:p-8">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">Further reading</p>
-            <h2 className="mt-3 font-heading text-3xl text-foreground">Useful references</h2>
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">Further Reading</p>
+        <h2 className="mt-3 font-heading text-3xl text-foreground">Useful References</h2>
             <p className="mt-3 text-base leading-7 text-foreground/72">
               These compact references support the chapter&apos;s own plant content without replacing it.
             </p>

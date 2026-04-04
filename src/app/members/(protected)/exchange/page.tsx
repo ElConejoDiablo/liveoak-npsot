@@ -180,7 +180,7 @@ export default async function MemberExchangePage({ searchParams }: ExchangePageP
         </div>
       ) : (
         <EmptyStatePanel
-          title="No member posts match these filters"
+          title="No Member Posts Match These Filters"
           description="Try another category or status, or create a new member post for seeds, plants, tools, giveaways, or practical help."
           action={{ href: "/members/exchange/new", label: "Create a member post" }}
         />

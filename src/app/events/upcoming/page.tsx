@@ -33,7 +33,7 @@ export default function UpcomingEventsPage() {
       <Container className="py-14 sm:py-18">
         <MotionReveal className="max-w-4xl">
           <p className="text-sm font-semibold uppercase tracking-[0.26em] text-primary/74">
-            Upcoming events
+            Upcoming Events
           </p>
           <h1 className="mt-5 font-heading text-4xl leading-tight text-foreground sm:text-5xl lg:text-[3.8rem]">
             One list for chapter dates and selected statewide NPSOT events
@@ -45,8 +45,8 @@ export default function UpcomingEventsPage() {
       </Container>
 
       <SectionShell
-        eyebrow="List view"
-        title="Upcoming chapter and statewide events"
+        eyebrow="List View"
+        title="Upcoming Chapter and Statewide Events"
         intro="Filter the list by source or event type, then open chapter detail pages or official NPSOT event pages for the full particulars."
       >
         {events.length ? (
@@ -64,8 +64,8 @@ export default function UpcomingEventsPage() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="Official statewide sources"
-        title="Keep the broader NPSOT calendar in reach"
+        eyebrow="Official Statewide Sources"
+        title="Keep the Broader NPSOT Calendar in Reach"
         intro="The statewide pages below are the official source for more chapter meetings, virtual programs, and symposium announcements across Texas."
       >
         <div className="grid gap-5 md:grid-cols-3">

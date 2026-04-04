@@ -24,7 +24,7 @@ export default function SourcingNativePlantsPage() {
     <>
       <PhotographicHeroBanner
         variant="sourcingnativeplants"
-        title="Practical sourcing for native plants and seed"
+        title="Practical Sourcing for Native Plants and Seed"
         description="This page is ready for chapter-verified nursery, grower, and seed-seller cards with manual provenance notes."
         serviceArea={siteConfig.serviceAreaLabel}
         contentClassName="max-w-3xl"
@@ -35,8 +35,8 @@ export default function SourcingNativePlantsPage() {
       <main className="mx-auto max-w-7xl px-5 py-16 sm:px-6 lg:px-8">
         <div className="space-y-12">
           <SectionShell
-            eyebrow="How to use this page"
-            title="Compare sourcing choices with provenance in mind"
+            eyebrow="How to Use This Page"
+            title="Compare Sourcing Choices With Provenance in Mind"
             intro="Use this page to compare nurseries, growers, and seed sellers by what they offer and how clearly they can explain plant origin."
           >
             <div className="grid gap-4 md:grid-cols-3">
@@ -52,8 +52,8 @@ export default function SourcingNativePlantsPage() {
           </SectionShell>
 
           <SectionShell
-            eyebrow="What the chip means"
-            title="Tri-County Local Provenance! is manual and chapter-checked"
+            eyebrow="What the Chip Means"
+            title="Tri-County Local Provenance! Is Manual and Chapter-Checked"
             intro="The chip only appears when the chapter has manually verified provenance tied to the Tri-County service area."
           >
             <div className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)]">
@@ -82,8 +82,8 @@ export default function SourcingNativePlantsPage() {
           </SectionShell>
 
           <SectionShell
-            eyebrow="What to ask before you buy"
-            title="Questions that help you judge a nursery, grower, or seed seller"
+            eyebrow="What to Ask Before You Buy"
+            title="Questions That Help You Judge a Nursery, Grower, or Seed Seller"
             intro="Use these questions to compare sources without assuming every good source will have the same level of provenance detail."
           >
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -101,9 +101,9 @@ export default function SourcingNativePlantsPage() {
           <section className="space-y-4">
             <div className="max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">
-                Manual provenance only
+                Manual Provenance Only
               </p>
-              <h2 className="mt-3 font-heading text-3xl text-foreground">Source cards</h2>
+              <h2 className="mt-3 font-heading text-3xl text-foreground">Source Cards</h2>
               <p className="mt-2 text-lg leading-8 text-foreground/72">
                 Add only sources that the chapter has checked by hand. Provenance notes should stay explicit and local,
                 and the Tri-County provenance chip should only appear when a source is manually verified.
@@ -113,14 +113,14 @@ export default function SourcingNativePlantsPage() {
           </section>
 
           <SectionShell
-            eyebrow="Local or regional"
-            title="Local provenance is best, but regional sources can still help"
+            eyebrow="Local or Regional"
+            title="Local Provenance Is Best, But Regional Sources Can Still Help"
             intro="When a strict Tri-County provenance source is not available, a clearly described regional source can still be useful for native plant buyers."
           >
             <div className="grid gap-4 lg:grid-cols-2">
               <div className="rounded-[1.5rem] border border-primary/10 bg-[#f7f4e8] p-5">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">
-                  Best case
+                  Best Case
                 </p>
                 <p className="mt-3 text-sm leading-7 text-foreground/72">
                   Use local provenance when you can, especially for restoration, larger habitat plantings, and projects
@@ -129,7 +129,7 @@ export default function SourcingNativePlantsPage() {
               </div>
               <div className="rounded-[1.5rem] border border-primary/10 bg-white/84 p-5 shadow-[0_16px_48px_rgba(37,58,40,0.07)]">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">
-                  Also useful
+                  Also Useful
                 </p>
                 <p className="mt-3 text-sm leading-7 text-foreground/72">
                   Strong regional sources can still be worth buying when the provenance is clear and the plant is a good
@@ -141,8 +141,8 @@ export default function SourcingNativePlantsPage() {
 
           <div>
             <CtaBanner
-              eyebrow="Need a chapter check?"
-              title="Ask before you buy if you need a provenance confirmation"
+              eyebrow="Need a Chapter Check?"
+              title="Ask Before You Buy if You Need a Provenance Confirmation"
               description="The chapter can help members and visitors think through local sources, plant provenance, and the right next step."
               primaryAction={{ href: "/contact", label: "Contact the chapter" }}
               variant="resourcesreferencehelp"

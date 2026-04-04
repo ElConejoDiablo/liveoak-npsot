@@ -38,8 +38,8 @@ export default async function Home() {
       />
 
       <SectionShell
-        eyebrow="Happening now"
-        title="Start with what is happening now"
+        eyebrow="Happening Now"
+        title="Start With What Is Happening Now"
         intro="Check the next chapter event, catch up on the latest story, or head straight to a useful local page."
       >
         <div className="grid gap-5 xl:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
@@ -58,7 +58,7 @@ export default async function Home() {
                 Quick links
               </p>
               <h2 className="mt-3 font-heading text-3xl leading-tight text-foreground">
-                Popular chapter links
+                Popular Chapter Links
               </h2>
               <div className="mt-5 space-y-3">
                 {homepageActionPaths.map((action) => (
@@ -87,8 +87,8 @@ export default async function Home() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="About the chapter"
-        title="A place to learn together, ask questions, and stay close to local landscapes"
+        eyebrow="About the Chapter"
+        title="A Place to Learn Together, Ask Questions, and Stay Close to Local Landscapes"
         intro="The chapter gives people a nearby place to learn about native plants, share field observations, and build confidence through events, walks, and practical conversation."
         actions={
           <SmartLink
@@ -134,8 +134,8 @@ export default async function Home() {
 
       <Container className="pb-20">
         <CtaBanner
-        eyebrow="Get involved"
-        title="Join NPSOT, attend an event, or reach out to the chapter"
+          eyebrow="Get Involved"
+          title="Join NPSOT, Attend an Event, or Reach Out to the Chapter"
         description="Whether you want to become a member, attend an event, volunteer locally, or ask a question, it is easy to get involved."
           primaryAction={{ href: siteConfig.joinUrl, label: "Join NPSOT" }}
           secondaryAction={{ href: "/events", label: "View events" }}

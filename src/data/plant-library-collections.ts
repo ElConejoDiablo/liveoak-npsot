@@ -110,7 +110,7 @@ const sortForMonarchWaystation = (plants: PlantEntry[]) =>
 export const starterCollections: StarterCollection[] = [
   {
     id: "pollinators",
-    title: "Best plants for pollinators",
+    title: "Best Plants for Pollinators",
     description: "The strongest nectar and host starters for bees, butterflies, and hummingbirds.",
     intro: "Use this when you want the biggest return for pollinators with a short starter list.",
     heroVariant: "pollinatorscollection",
@@ -130,7 +130,7 @@ export const starterCollections: StarterCollection[] = [
   },
   {
     id: "native-gardens",
-    title: "Starter plants for native gardens",
+    title: "Starter Plants for Native Gardens",
     description: "Reliable chapter-friendly species that are easy to explain, find, and grow.",
     intro: "Good first stop if you are starting a native bed and want dependable, easy-to-read choices.",
     heroVariant: "nativegardenscollection",
@@ -152,7 +152,7 @@ export const starterCollections: StarterCollection[] = [
   },
   {
     id: "prairie-structure",
-    title: "Prairie grasses and structure plants",
+    title: "Prairie Grasses and Structure Plants",
     description: "Foundation grasses and upright prairie plants that build texture and habitat.",
     intro: "Helpful when you want prairie shape, movement, or a backbone for larger plantings.",
     heroVariant: "prairiestructurecollection",
@@ -172,7 +172,7 @@ export const starterCollections: StarterCollection[] = [
   },
   {
     id: "habitat-trees-shrubs",
-    title: "Trees and shrubs for habitat",
+    title: "Trees and Shrubs for Habitat",
     description: "Woody plants that add shade, cover, berries, mast, and nesting structure.",
     intro: "Use this for bigger spaces, wildlife cover, and longer-term structure in the landscape.",
     heroVariant: "habitattreesshrubscollection",
@@ -192,7 +192,7 @@ export const starterCollections: StarterCollection[] = [
   },
   {
     id: "sun",
-    title: "Plants for sun",
+    title: "Plants for Sun",
     description: "Heat-tough selections for open, full-sun sites and prairie-style plantings.",
     intro: "Best for hot, open sites that stay bright most of the day and dry out quickly.",
     heroVariant: "suncollection",
@@ -212,7 +212,7 @@ export const starterCollections: StarterCollection[] = [
   },
   {
     id: "part-shade",
-    title: "Plants for part shade",
+    title: "Plants for Part Shade",
     description: "Useful species for woodland edges, filtered light, and softer garden transitions.",
     intro: "Good for morning sun, filtered light, or spots where trees make full-sun plants struggle.",
     heroVariant: "partshadecollection",
