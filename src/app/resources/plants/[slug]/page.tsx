@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PlantPageProps) {
       title: "Plant not found",
       description: "The requested plant is not in the starter library.",
       path: `/resources/plants/${slug}`,
-      eyebrow: "Resources",
+      eyebrow: "Tri-County Native Plants",
     });
   }
 
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PlantPageProps) {
     title: plant.commonName,
     description: `${plant.commonName} (${plant.scientificName}) in the Live Oak Chapter starter library.`,
     path: `/resources/plants/${plant.slug}`,
-    eyebrow: "Resources",
+    eyebrow: "Tri-County Native Plants",
   });
 }
 

@@ -169,7 +169,9 @@ export const headerNavigation: NavigationItem[] = [
   { href: "/about", label: "About" },
   { href: "/events", label: "Events" },
   { href: "/news", label: "Articles" },
-  { href: "/resources", label: "Resources" },
+  { href: "/resources/plants", label: "Tri-County Native Plants" },
+  { href: "/resources/npsot", label: "NPSOT Resources" },
+  { href: "/resources/sourcing-native-plants", label: "Sourcing Native Plants" },
 ];
 
 export const mobilePrimaryNavigation: NavigationItem[] = [

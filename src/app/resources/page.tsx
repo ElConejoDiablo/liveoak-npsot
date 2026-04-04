@@ -1,41 +1,46 @@
+import { ArrowRight } from "lucide-react";
+
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { PhotographicHeroBanner } from "@/components/sections/photographic-hero-banner";
 import { SectionShell } from "@/components/sections/section-shell";
-import { ResourceBrowser } from "@/components/resources/resource-browser";
-import { PlantLibraryCollections } from "@/components/resources/plant-library-collections";
-import { PlantLibrarySummary } from "@/components/resources/plant-library-summary";
 import { MotionReveal } from "@/components/shared/motion-reveal";
 import { SmartLink } from "@/components/shared/smart-link";
-import { plantLibraryGroups } from "@/data/plant-library";
-import { starterCollections } from "@/data/plant-library-collections";
-import { resourceGroups } from "@/data/resources";
 import { siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
   title: "Resources",
   description:
-    "Find official NPSOT links, native plant references, and habitat resources for Fayette, Colorado, and Lavaca Counties.",
+    "Choose the chapter-owned plant library, statewide NPSOT guidance, or practical native plant sourcing information for Fayette, Colorado, and Lavaca Counties.",
   path: "/resources",
   eyebrow: "Resources",
 });
 
 export default function ResourcesPage() {
-  const chapterStartingPoints = [
+  const destinations = [
     {
-      title: "Identify and Nurture Your Local Plants",
+      title: "Tri-County Native Plants",
+      href: "/resources/plants",
+      eyebrow: "Chapter-owned library",
       description:
-        "Use chapter knowledge and trusted references to narrow down what belongs here, how to recognize it, and how to care for it over time.",
+        "Start here for the Live Oak Chapter plant library, starter collections, and local-first plant detail pages.",
+      bullets: ["Plant index", "Starter collections", "Featured local plants"],
     },
     {
-      title: "Find Guidance for Gardens and Habitat",
+      title: "NPSOT Resources",
+      href: "/resources/npsot",
+      eyebrow: "Statewide guidance",
       description:
-        "Learn where to start with native plants, pollinator support, and practical habitat care close to home.",
+        "Go here for statewide NPSOT links, broader Texas-native references, and official member and learning resources.",
+      bullets: ["NPSOT guidance", "Official links", "Texas-native references"],
     },
     {
-      title: "Coming Soon - Live Oak Plant and Pollinator ID App",
+      title: "Sourcing Native Plants",
+      href: "/resources/sourcing-native-plants",
+      eyebrow: "Local sourcing",
       description:
-        "A chapter resource is on the way to help people compare local plants, pollinators, and field observations in one place.",
+        "Use this for nurseries, seed sellers, and chapter-verified provenance notes when they are available.",
+      bullets: ["Nursery cards", "Seed and plant sources", "Manual provenance notes"],
     },
   ] as const;
 
@@ -52,73 +57,52 @@ export default function ResourcesPage() {
       />
 
       <SectionShell
-        eyebrow="Local guidance"
-        title="Your local chapter provides local guidance"
-        intro="The chapter can help you identify plants, find trusted references, and point you toward the right next step for native gardening, habitat care, or NPSOT membership."
+        eyebrow="Choose a destination"
+        title="Resources split into three practical paths"
+        intro="The chapter now separates the local plant library, statewide NPSOT guidance, and sourcing information so visitors can get to the right place faster."
       >
         <div className="grid gap-4 md:grid-cols-3">
-          {chapterStartingPoints.map((item, index) => (
+          {destinations.map((item, index) => (
             <MotionReveal
               key={item.title}
               delay={index * 0.05}
               className="rounded-[1.7rem] border border-primary/10 bg-white/78 p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)]"
             >
-              <h2 className="font-heading text-2xl leading-tight text-foreground">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary/70">
+                {item.eyebrow}
+              </p>
+              <h2 className="mt-3 font-heading text-2xl leading-tight text-foreground">
                 {item.title}
               </h2>
               <p className="mt-3 text-base leading-7 text-foreground/72">
                 {item.description}
               </p>
+              <ul className="mt-4 space-y-2 text-sm leading-6 text-foreground/70">
+                {item.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-2">
+                    <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-primary/60" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-5">
+                <SmartLink
+                  href={item.href}
+                  className="inline-flex items-center rounded-full border border-primary/10 bg-white px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary/20 hover:bg-primary/5"
+                >
+                  Open {item.title}
+                </SmartLink>
+              </div>
             </MotionReveal>
           ))}
         </div>
       </SectionShell>
 
-      <SectionShell
-        eyebrow="Local reference library"
-        title="Plant References and Guidance"
-        intro="Use the grouped library below for plant databases, monarch habitat guidance, membership links, and other references that support native plants in this region."
-      >
-        <ResourceBrowser groups={resourceGroups} />
-      </SectionShell>
-
-      <SectionShell
-        id="native-plant-seed-set"
-        eyebrow="Native plant seed set"
-        title="Chapter-owned plant reference library"
-        intro="This is the first structured seed set for a local-first native plant library. It is intentionally small, county-aware, and designed to expand as chapter research and review continue."
-      >
-        <div className="space-y-10">
-          <PlantLibrarySummary groups={plantLibraryGroups} />
-          <SmartLink
-            href="/resources/plants"
-            className="inline-flex items-center rounded-full border border-primary/10 bg-white px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary/20 hover:bg-primary/5"
-          >
-            Browse the full plant index
-          </SmartLink>
-          <div className="flex flex-wrap gap-2">
-            <SmartLink
-              href="/resources/plants"
-              className="rounded-full border border-primary/10 bg-white px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary/20 hover:bg-primary/5"
-            >
-              Plants by name
-            </SmartLink>
-            <SmartLink
-              href="/resources/plants#native-plant-seed-set"
-              className="rounded-full border border-primary/10 bg-white px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary/20 hover:bg-primary/5"
-            >
-              Starter collections
-            </SmartLink>
-          </div>
-          <PlantLibraryCollections collections={starterCollections} />
-        </div>
-      </SectionShell>
-
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">
         <CtaBanner
-          eyebrow="Statewide guidance from NPSOT"
+          eyebrow="Need help choosing the right path?"
           title="Need something specific?"
-          description="Contact the chapter if you want help finding the right plant reference, membership link, or local next step."
+          description="Contact the chapter if you want help finding the right destination, plant reference, or local next step."
           primaryAction={{ href: "/contact", label: "Contact the chapter" }}
           variant="resourcesreferencehelp"
         />

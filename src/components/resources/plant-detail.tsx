@@ -307,8 +307,8 @@ export function PlantDetail({ plant, approvedImages = [], canManageImages = fals
             are added.
           </p>
           <div className="mt-4">
-            <SmartLink href="/resources" className="text-sm font-semibold text-primary transition hover:underline">
-              Back to Resources
+            <SmartLink href="/resources/plants" className="text-sm font-semibold text-primary transition hover:underline">
+              Back to Tri-County Native Plants
             </SmartLink>
           </div>
         </section>
