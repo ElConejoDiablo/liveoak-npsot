@@ -23,6 +23,7 @@ export type PublicImageryKey =
   | "resourcehub"
   | "tricountynativeplants"
   | "pollinatorscollection"
+  | "nativegardenscollection"
   | "monarchwaystationcollection"
   | "prairiestructurecollection"
   | "habitattreesshrubscollection"
@@ -286,6 +287,17 @@ export const publicImagery: Record<
     src: "/hero-images/liveoak-collection-pollinators-hero-desktop-2400.webp",
     mobileSrc: "/hero-images/liveoak-collection-pollinators-hero-mobile-1200.webp",
     alt: "Native pollinator garden with bluebonnets, purple verbena, blue-eyed grass, antelope-horns blossoms, bees, and Anise Swallowtail butterflies",
+    width: 2400,
+    height: 1350,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center 46%",
+  },
+  nativegardenscollection: {
+    src: "/hero-images/liveoak-collection-native-gardens-hero-desktop-2400.webp",
+    mobileSrc: "/hero-images/liveoak-collection-native-gardens-hero-mobile-1200.webp",
+    alt: "Starter trays of juvenile Texas native plants with mulch and garden tools beside a tree in a practical home-scale planting setup",
     width: 2400,
     height: 1350,
     mobileWidth: 1200,

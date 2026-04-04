@@ -133,6 +133,7 @@ export const starterCollections: StarterCollection[] = [
     title: "Starter plants for native gardens",
     description: "Reliable chapter-friendly species that are easy to explain, find, and grow.",
     intro: "Good first stop if you are starting a native bed and want dependable, easy-to-read choices.",
+    heroVariant: "nativegardenscollection",
     plants: sortByUsefulStarter(
       uniquePlants(allPlants.filter((plant) => plant.chapterRecommended && (isFullSun(plant) || isPartShade(plant)))),
     ).slice(0, 6),
