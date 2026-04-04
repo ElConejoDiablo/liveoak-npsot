@@ -34,6 +34,13 @@ enum ExchangeImageVisibility {
   public_teaser
 }
 
+enum PlantImageSourceType {
+  owned
+  licensed_approved_external
+  unapproved_external
+  none
+}
+
 enum PointLedgerReason {
   completed_interaction
 }
@@ -122,6 +129,29 @@ model ExchangePostImage {
   createdAt  DateTime                @default(now())
 
   @@index([postId, sortOrder])
+}
+
+model PlantImage {
+  id                       String                @id @default(cuid())
+  plantSlug                String
+  imageUrl                 String
+  blobPath                 String
+  altText                  String
+  caption                  String?
+  photographerCredit       String?
+  photographerCreditUrl    String?
+  location                 String?
+  licenseNote              String?
+  sourceType               PlantImageSourceType @default(none)
+  approvedForWebPublication Boolean              @default(false)
+  isPrimary                Boolean              @default(false)
+  sortOrder                Int                  @default(0)
+  uploadedBy               String?
+  createdAt                DateTime             @default(now())
+  updatedAt                DateTime             @updatedAt
+
+  @@index([plantSlug, approvedForWebPublication, sortOrder])
+  @@index([plantSlug, isPrimary])
 }
 
 model ExchangeReply {

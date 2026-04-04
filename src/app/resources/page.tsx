@@ -2,7 +2,12 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 import { PhotographicHeroBanner } from "@/components/sections/photographic-hero-banner";
 import { SectionShell } from "@/components/sections/section-shell";
 import { ResourceBrowser } from "@/components/resources/resource-browser";
+import { PlantLibraryCollections } from "@/components/resources/plant-library-collections";
+import { PlantLibrarySummary } from "@/components/resources/plant-library-summary";
 import { MotionReveal } from "@/components/shared/motion-reveal";
+import { SmartLink } from "@/components/shared/smart-link";
+import { plantLibraryGroups } from "@/data/plant-library";
+import { starterCollections } from "@/data/plant-library-collections";
 import { resourceGroups } from "@/data/resources";
 import { siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
@@ -70,11 +75,43 @@ export default function ResourcesPage() {
       </SectionShell>
 
       <SectionShell
-        eyebrow="Plant references and guidance"
+        eyebrow="Local reference library"
         title="Plant References and Guidance"
         intro="Use the grouped library below for plant databases, monarch habitat guidance, membership links, and other references that support native plants in this region."
       >
         <ResourceBrowser groups={resourceGroups} />
+      </SectionShell>
+
+      <SectionShell
+        id="native-plant-seed-set"
+        eyebrow="Native plant seed set"
+        title="Chapter-owned plant reference library"
+        intro="This is the first structured seed set for a local-first native plant library. It is intentionally small, county-aware, and designed to expand as chapter research and review continue."
+      >
+        <div className="space-y-10">
+          <PlantLibrarySummary groups={plantLibraryGroups} />
+          <SmartLink
+            href="/resources/plants"
+            className="inline-flex items-center rounded-full border border-primary/10 bg-white px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary/20 hover:bg-primary/5"
+          >
+            Browse the full plant index
+          </SmartLink>
+          <div className="flex flex-wrap gap-2">
+            <SmartLink
+              href="/resources/plants"
+              className="rounded-full border border-primary/10 bg-white px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary/20 hover:bg-primary/5"
+            >
+              Plants by name
+            </SmartLink>
+            <SmartLink
+              href="/resources/plants#native-plant-seed-set"
+              className="rounded-full border border-primary/10 bg-white px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary/20 hover:bg-primary/5"
+            >
+              Starter collections
+            </SmartLink>
+          </div>
+          <PlantLibraryCollections collections={starterCollections} />
+        </div>
       </SectionShell>
 
       <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8">

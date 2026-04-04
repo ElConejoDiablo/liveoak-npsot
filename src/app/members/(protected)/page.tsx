@@ -56,6 +56,17 @@ export default async function MembersHomePage() {
               </p>
             </div>
           </div>
+          <div className="mt-6">
+            <SmartLink
+              href="/members/plant-images"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "h-11 rounded-full border-primary/15 bg-white/80 px-5",
+              )}
+            >
+              Manage plant images
+            </SmartLink>
+          </div>
         </div>
 
         <div className="rounded-[1.9rem] border border-primary/10 bg-[#F5F0E1] p-6 shadow-[0_18px_60px_rgba(39,59,42,0.08)] sm:p-8">

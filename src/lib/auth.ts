@@ -261,6 +261,16 @@ export async function requireMemberContext() {
   return context;
 }
 
+export async function requireAdminMemberContext() {
+  const context = await requireMemberContext();
+
+  if (context.user.role !== "admin") {
+    redirect("/members" as Route);
+  }
+
+  return context;
+}
+
 export async function requireMemberActionContext() {
   const context = await getCurrentMemberContext();
 
