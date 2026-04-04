@@ -25,6 +25,7 @@ export type PublicImageryKey =
   | "pollinatorscollection"
   | "monarchwaystationcollection"
   | "prairiestructurecollection"
+  | "habitattreesshrubscollection"
   | "sourcingnativeplants";
 
 export const publicImagery: Record<
@@ -307,6 +308,17 @@ export const publicImagery: Record<
     src: "/hero-images/liveoak-collection-prairie-structure-hero-desktop-2400.webp",
     mobileSrc: "/hero-images/liveoak-collection-prairie-structure-hero-mobile-1200.webp",
     alt: "Native prairie-style planting with layered Texas grasses, restrained wildflower accents, and a maintained path",
+    width: 2400,
+    height: 1350,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center 48%",
+  },
+  habitattreesshrubscollection: {
+    src: "/hero-images/liveoak-collection-habitat-trees-shrubs-hero-desktop-2400.webp",
+    mobileSrc: "/hero-images/liveoak-collection-habitat-trees-shrubs-hero-mobile-1200.webp",
+    alt: "Oak woodland habitat planting with Turk’s cap, beautyberry, native grasses, and layered understory shrubs in morning light",
     width: 2400,
     height: 1350,
     mobileWidth: 1200,

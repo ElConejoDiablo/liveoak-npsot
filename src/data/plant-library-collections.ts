@@ -174,6 +174,7 @@ export const starterCollections: StarterCollection[] = [
     title: "Trees and shrubs for habitat",
     description: "Woody plants that add shade, cover, berries, mast, and nesting structure.",
     intro: "Use this for bigger spaces, wildlife cover, and longer-term structure in the landscape.",
+    heroVariant: "habitattreesshrubscollection",
     plants: sortByUsefulStarter(uniquePlants(allPlants.filter(isHabitatWoody))).slice(0, 6),
     references: [
       {
