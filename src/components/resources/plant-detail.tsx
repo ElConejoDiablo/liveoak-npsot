@@ -207,6 +207,49 @@ export function PlantDetail({ plant, approvedImages = [], canManageImages = fals
           </section>
         ) : null}
 
+        {plant.buyLocalWithProvenance?.length ? (
+          <section className="space-y-3">
+            <h2 className="font-heading text-2xl text-foreground">Buy Local with Provenance</h2>
+            <div className="space-y-4">
+              {plant.buyLocalWithProvenance.map((entry) => (
+                <div key={`${entry.vendorName}-${entry.provenanceClaim}`} className="rounded-[1rem] border border-primary/10 bg-[#fbf9f2] p-4">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <p className="text-sm font-semibold text-foreground">{entry.vendorName}</p>
+                    <Badge variant="secondary" className="bg-white">
+                      {entry.offeringType}
+                    </Badge>
+                    {entry.verifiedByChapter ? (
+                      <Badge variant="secondary" className="bg-white">
+                        Chapter verified
+                      </Badge>
+                    ) : null}
+                  </div>
+                  {entry.provenanceClaim ? (
+                    <p className="mt-2 text-sm leading-6 text-foreground/76">{entry.provenanceClaim}</p>
+                  ) : null}
+                  <div className="mt-2 flex flex-wrap gap-3 text-sm leading-6 text-foreground/72">
+                    {entry.city ? <span>{entry.city}</span> : null}
+                    {entry.county ? <span>{entry.county} County</span> : null}
+                    {entry.provenanceArea ? <span>{entry.provenanceArea}</span> : null}
+                    {entry.lastVerified ? <span>Last verified: {entry.lastVerified}</span> : null}
+                  </div>
+                  {entry.notes ? <p className="mt-2 text-sm leading-6 text-foreground/72">{entry.notes}</p> : null}
+                  {entry.vendorUrl ? (
+                    <a
+                      href={entry.vendorUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-3 inline-flex rounded-full border border-primary/10 bg-white px-4 py-2 text-sm font-medium text-foreground transition hover:border-primary/20 hover:bg-white/90"
+                    >
+                      Visit vendor
+                    </a>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <section className="space-y-3">
           <h2 className="font-heading text-2xl text-foreground">Sources</h2>
           <p className="text-sm leading-6 text-foreground/72">{plant.sourceNotes}</p>

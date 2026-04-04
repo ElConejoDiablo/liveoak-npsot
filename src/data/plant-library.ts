@@ -13,6 +13,19 @@ export type PlantSourceLink = {
 
 export type PlantImageSourceType = "owned" | "licensed-approved-external" | "unapproved-external" | "none";
 
+export type PlantBuyLocalWithProvenanceEntry = {
+  vendorName: string;
+  vendorUrl?: string;
+  city?: string;
+  county?: string;
+  offeringType: "seed" | "plant" | "seed and plant";
+  provenanceClaim: string;
+  provenanceArea?: string;
+  notes?: string;
+  verifiedByChapter?: boolean;
+  lastVerified?: string;
+};
+
 export type PlantEntry = {
   commonName: string;
   scientificName: string;
@@ -57,6 +70,7 @@ export type PlantEntry = {
   imageLocation?: string;
   imageLicenseNote?: string;
   imageApprovedForWebPublication?: boolean;
+  buyLocalWithProvenance?: PlantBuyLocalWithProvenanceEntry[];
 };
 
 export type PlantLibraryGroup = {
