@@ -1,5 +1,6 @@
 import type { PlantEntry } from "@/data/plant-library";
 import { plantLibraryGroups } from "@/data/plant-library";
+import type { PublicImageryKey } from "@/data/public-imagery";
 
 export type StarterCollection = {
   id: string;
@@ -17,6 +18,7 @@ export type StarterCollection = {
     href: string;
     description: string;
   }[];
+  heroVariant?: PublicImageryKey;
 };
 
 const allPlants = plantLibraryGroups.flatMap((group) => group.plants);
@@ -111,6 +113,7 @@ export const starterCollections: StarterCollection[] = [
     title: "Best plants for pollinators",
     description: "The strongest nectar and host starters for bees, butterflies, and hummingbirds.",
     intro: "Use this when you want the biggest return for pollinators with a short starter list.",
+    heroVariant: "pollinatorscollection",
     plants: sortByUsefulStarter(uniquePlants(allPlants.filter(hasStrongPollinatorValue))).slice(0, 6),
     references: [
       {

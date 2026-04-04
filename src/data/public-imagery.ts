@@ -22,6 +22,7 @@ export type PublicImageryKey =
   | "resourcesreferencehelp"
   | "resourcehub"
   | "tricountynativeplants"
+  | "pollinatorscollection"
   | "sourcingnativeplants";
 
 export const publicImagery: Record<
@@ -277,6 +278,17 @@ export const publicImagery: Record<
     mobileHeight: 1500,
     supportObjectPosition: "center center",
     compactObjectPosition: "center 48%",
+  },
+  pollinatorscollection: {
+    src: "/hero-images/liveoak-collection-pollinators-hero-desktop-2400.webp",
+    mobileSrc: "/hero-images/liveoak-collection-pollinators-hero-mobile-1200.webp",
+    alt: "Native pollinator garden with bluebonnets, purple verbena, blue-eyed grass, antelope-horns blossoms, bees, and Anise Swallowtail butterflies",
+    width: 2400,
+    height: 1350,
+    mobileWidth: 1200,
+    mobileHeight: 1500,
+    supportObjectPosition: "center center",
+    compactObjectPosition: "center 46%",
   },
   sourcingnativeplants: {
     src: "/hero-images/liveoak-sourcing-hero-nursery-desktop-2400.webp",
